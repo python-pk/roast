@@ -220,7 +220,7 @@ subtest 'IO::CatHandle' => {
     is-deeply $cat.unlock, Nil, '.unlock on exhausted cat handle';
 }
 
-# https://github.com/rakudo/rakudo/issues/3742
+
 subtest 'check leaking of file descriptors with lock/close' => {
     my $p = $*CWD.child("foo1.txt").open(:w);
     isa-ok $p, IO::Handle, 'did the first open work';

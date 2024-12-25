@@ -140,7 +140,7 @@ plan 82;
         'can we assign after a .reverse?';
 }
 
-# https://github.com/rakudo/rakudo/issues/3334
+
 {
     my @a[2;2] = (1,1),(1,1);
 

@@ -137,7 +137,7 @@ plan 39;
         'take with multiple arguments .flat tens out';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3105
+
 {
     my sub grep-div(@a, $n) {
         gather for @a {
@@ -149,7 +149,7 @@ plan 39;
     is ~grep-div(evens, 3)[^16], ~grep-div((1...100), 6), "Nested identical gathers";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2024
+
 {
     class E {
         has $.n is rw;
@@ -162,7 +162,7 @@ plan 39;
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     sub foo {
         my @a = (1,2,3,4,5);
@@ -191,7 +191,7 @@ plan 39;
   is ~@outer, "5 1 2 3 5", "method form of take works.";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2959
+
 {
     my $x;
     my @a = gather { $x = take 3; };
@@ -229,7 +229,7 @@ plan 39;
 }
 
 # XXX GLR
-# https://github.com/Raku/old-issue-tracker/issues/1082
+
 #?rakudo skip 'RT #66820, and hangs under GLR'
 {
     my $cat;
@@ -237,7 +237,7 @@ plan 39;
     is $cat, "11 21 2 3", 'bound gather result has up-to-date value while gathering';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2685
+
 {
     my @grid = [ $++ xx 5 ] xx 5;
     my @neigh = [ ] xx 5;
@@ -252,7 +252,7 @@ plan 39;
     ok @neigh[1][1].elems == 8, "There are eight neighbors";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3416
+
 {
     throws-like 'say (gather for 1..3 { INIT take "OH HAI"; take $_ })',
         X::ControlFlow,
@@ -261,14 +261,14 @@ plan 39;
         '"INIT take" inside of a "gather for" fails with X::ControlFlow';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4320
+
 {
     my @result = flat gather { take "foo=bar".split("=") };
     is @result, <foo bar>,
         'take on a listy expression takes each element of that list';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4668
+
 {
     my $l = gather { take-rw my $ = 1 };
     lives-ok { $l.AT-POS(0) = 42 }, 'AT-POS on gather Seq with take-rw value lives';
@@ -291,7 +291,7 @@ plan 39;
     ok @neighbors[1][1][0] =:= @spot[0][0], 'Got the reference equality expected from take-rw';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5166
+
 {
     my @result = gather {
         'abc' ~~ m:g/. { take 'X' }/;

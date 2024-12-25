@@ -47,7 +47,7 @@ $child.public = 5;
 nok $child.report.defined,
     'If parent and child have an attribute of the same name, they do not share storage location';
 
-# https://github.com/Raku/old-issue-tracker/issues/507
+
 {
     throws-like q{
         class RT61500_A { has $!foo = 7 };

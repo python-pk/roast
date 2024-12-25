@@ -141,7 +141,7 @@ is  " \t a\n \t b\n".indent(1).raku,
     " \t  a\n \t  b\n".raku,
     'Indentation should not be appended after a trailing \n';
 
-# https://github.com/rakudo/rakudo/issues/2409
+
 group-of 6 => 'indent/dedent' => {
     # NOTE: whitespacing is important in this test. Don't modify
     #?rakudo todo 'https://github.com/rakudo/rakudo/issues/2409'

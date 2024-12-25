@@ -53,7 +53,7 @@ throws-like '"a" !!eq "a"', X::Syntax::Confused, 'Doubled prefix:<!> is illegal'
 ok "a" ![!eq] "a", '![!eq] is legal and works (1)';
 nok "a" ![!eq] "b", '![!eq] is legal and works (2)';
 
-# https://github.com/Raku/old-issue-tracker/issues/3252
+
 ok True !&& False, '!&& is legal and works (1)';
 nok True !&& True, '!&& is legal and works (2)';
 ok False !|| False, '!|| is legal and works (1)';
@@ -70,7 +70,7 @@ is &infix:<![!%%]>(3,2), False, "Meta not can autogen (![!%%])";
 is infix:<!===>(1,2), True, "Meta not can autogen (!===) without &";
 is &[!===](1,2), True, "Meta not can autogen (!===) with &[]";
 
-# https://github.com/Raku/old-issue-tracker/issues/4386
+
 subtest 'chaining of !before/!after' => {
     plan 12;
 

@@ -20,7 +20,7 @@ eval-lives-ok q[ package StubD { ... }; class StubD { method foo { } }; ],
 throws-like q[my class StubbedButNotDeclared { ... }], X::Package::Stubbed,
     'stubbing a class but not providing a definition dies';
 
-# https://github.com/Raku/old-issue-tracker/issues/2302
+
 {
     throws-like { EVAL 'class A { ... }; say A.WHAT' },
         X::Package::Stubbed,
@@ -31,7 +31,7 @@ throws-like q[my class StubbedButNotDeclared { ... }], X::Package::Stubbed,
         parent-name => 'A';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5671
+
 subtest "all forms of yadas work to stub classes" => {
     plan 2;
     subtest "lives when stubbed, then defined" => {
@@ -51,7 +51,7 @@ subtest "all forms of yadas work to stub classes" => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4670
+
 {
     is_run ｢class X::B { ... }; X::B.new.a.print; class X::B { has $.a = 42}｣,
         { :out<42>, :err('') }, 'Can stub a class in a core namespace';

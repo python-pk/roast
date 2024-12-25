@@ -91,7 +91,7 @@ for ThreadPoolScheduler.new, CurrentThreadScheduler -> $*SCHEDULER {
       X::Supply::Combinator, combinator => 'zip-latest' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5471
+
 #?rakudo.jvm skip 'Unhandled exception; category = 1'
 {
 	my $source = Supply.interval(0.5);

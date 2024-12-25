@@ -52,15 +52,15 @@ class Bar is Foo2 {
 
 is Bar.new.a("not an Int"), 'Any-method in Foo';
 
-# https://github.com/Raku/old-issue-tracker/issues/1105
+
 {
     try { EVAL 'class RT67024 { method a(){0}; method a($x){1} }' };
     ok  $!  ~~ Exception, 'redefinition of non-multi method (RT #67024)';
     ok "$!" ~~ /multi/, 'error message mentions multi-ness';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1286
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
+
 {
     role R5 {
         multi method rt69192()       { push @.order, 'empty' }
@@ -81,7 +81,7 @@ is Bar.new.a("not an Int"), 'Any-method in Foo';
     {
         my RT69192 $bot .= new();
         $bot does (R5, R6);
-        # https://github.com/Raku/old-issue-tracker/issues/1286
+        
         $bot.*rt69192('RT #69192');
         is $bot.order, <Str>, 'multi method called once on Str signature';
     }
@@ -151,7 +151,7 @@ is Bar.new.a("not an Int"), 'Any-method in Foo';
         'error message for failed dispatch contains invocant type';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1272
+
 {
     class A {
         has $.foo = "bar";
@@ -169,7 +169,7 @@ is Bar.new.a("not an Int"), 'Any-method in Foo';
         '$.foo attribute has no accessor when foo() method is present';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/226
+
 {
     throws-like 'class RT57788 { method m() { }; method m() { } }', Exception;
 }
@@ -184,7 +184,7 @@ is Bar.new.a("not an Int"), 'Any-method in Foo';
         'multis with different names but same signatures are not ambiguous';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1722
+
 {
     my class A {
         multi submethod foo(Str $a) { "specific" }

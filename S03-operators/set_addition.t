@@ -232,7 +232,7 @@ for
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/3945
+
 {
     is-deeply (1..3, 1..3 Z(+) 2..4, 1..4),
       ((1,2,2,3,3,4).Bag, (1,1,2,2,3,3,4).Bag),
@@ -251,7 +251,7 @@ for
       'did Z handle ⊎ correctly (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/2167
+
 {
     is-deeply 1 (+) ($ = :42foo,), (1=>1,"foo"=>42).Bag,
       'no explosion';

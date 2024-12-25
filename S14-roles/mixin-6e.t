@@ -53,7 +53,7 @@ is $y.test,     42,         'method from other role was OK too';
     is $x.b,        2,          'mixining in two roles one after the other';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1350
+
 {
     role ProvidesFoo { method foo { } }
     class NoFoo { };
@@ -61,21 +61,21 @@ is $y.test,     42,         'method from other role was OK too';
         'mixin with "does" lists method during introspection';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2064
+
 {
     throws-like { EVAL q[{ role A { my $!foo; }; role B { my $!foo; }; class C does A does B {} }] },
        X::Syntax::Variable::Twigil, twigil => '!', scope => 'my',
        'RT #77184'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2494
+
 {
     my $a = 0 but True;
     is +$a, 0, 'RT #100782 1/2';
     is ?$a, Bool::True, 'RT #100782 2/2';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2943
+
 {
     my $rt115390 = 0;
     for 1..1000 -> $i {
@@ -87,11 +87,11 @@ is $y.test,     42,         'method from other role was OK too';
         'no crash with mixin in loop when it is not the last statement in loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2279
+
 is (class { } but role { method answer() { 42 } }).answer, 42,
     'can mix a role into a type object';
 
-# https://github.com/Raku/old-issue-tracker/issues/3216
+
 {
     use experimental :macros;
     throws-like q[role popo { macro marco { $^a but popo }; marco popo; }],
@@ -100,7 +100,7 @@ is (class { } but role { method answer() { 42 } }).answer, 42,
         ;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3745
+
 {
     my $x;
     lives-ok { $x = True but [1, 2] }, 'but with array literal on RHS works';
@@ -131,7 +131,7 @@ throws-like 'True but (1, 1)', Exception, gist => { $^g ~~ /'Int'/ && $g ~~ /res
     is C.foo( :b(3) ), 13, 'multi-dispatch mixin sanity';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4547
+
 {
     group-of 3 => 'can mixin Block with True' => {
         my $b = Block but True;

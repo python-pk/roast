@@ -65,16 +65,16 @@ ok 'a, b, c' !~~ /:s^<alpha>+%\,$/, 'with no spaces around %, no spaces can be m
 ok 'a, b, c'  ~~ /:s^ <alpha> +% \, $/, 'with spaces around %, spaces can be matched';
 ok 'a , b ,c' ~~ /:s^ <alpha> +% \, $/, 'same, but with leading spaces';
 
-# https://github.com/Raku/old-issue-tracker/issues/1979
+
 ok ('a b,c,d' ~~ token { \w \s \w+ % \, }), 'can combine % with backslash character classes';
 
-# https://github.com/Raku/old-issue-tracker/issues/3221
+
 {
     ok ("a" x 1_0 ~~ /a ** 1_0/, 'underscore in quantifier numeral (1)' );
     ok ( "a_0" !~~ /a ** 1_0/, 'underscore in quantifier numeral (2)' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2683
+
 {
     throws-like q[/ * /], X::Syntax::Regex::SolitaryQuantifier,
         message => "Quantifier quantifies nothing",
@@ -84,23 +84,23 @@ ok ('a b,c,d' ~~ token { \w \s \w+ % \, }), 'can combine % with backslash charac
         'adequate error message when quantifier follows nothing (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2156
+
 {
     throws-like q[/ : /], X::Syntax::Regex::SolitaryBacktrackControl,
         'adequate error message when backtrack control is out of control';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1482
+
 ok '1a2a3bc' ~~ /^ \d+ % abc $/, '% only takes single atom as separator';
 nok '1ab2ab3c' ~~ /^ \d+ % abc $/, '% only takes single atom as separator';
 
-# https://github.com/Raku/old-issue-tracker/issues/4370
+
 {
     my $m = 'AAA' ~~ /$<letter>=(A)**{3}/;
     is +$m<letter>, 3, 'dynamic quantifiers interact correctly with captures';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2116
+
 {
     throws-like q[/ {}* /], X::Syntax::Regex::NonQuantifiable,
         message => 'Can only quantify a construct that produces a match',

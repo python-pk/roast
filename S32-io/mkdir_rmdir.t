@@ -36,7 +36,7 @@ plan 6;
     fails-like { $dir.rmdir }, X::IO::Rmdir;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4899
+
 {
     try { "/".IO.mkdir } for ^5;
     pass '"/".IO.mkdir does not segfault';

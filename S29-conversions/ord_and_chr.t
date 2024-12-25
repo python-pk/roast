@@ -169,7 +169,7 @@ is chr(0x1F42A).ord, 0x1F42A, "chr > ord round trip of high character";
 
 is chrs("104", "101", "108", "108", "111"), 'hello', 'chrs works with a list of numifiable strings';
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 subtest 'chr with large codepoints throws useful error' => {
     my @tests = 'chr 2⁶³-1',   '(2⁶³-1).chr', 'chr 2⁶³',
                 '2⁶³.chr',     'chr 2¹⁰⁰',    '(2¹⁰⁰).chr';
@@ -177,7 +177,7 @@ subtest 'chr with large codepoints throws useful error' => {
     throws-like $_, Exception, .raku for @tests;
 }
 
-# https://github.com/rakudo/rakudo/issues/1625
+
 #?rakudo.jvm todo 'java.lang.IllegalArgumentException: Not a valid Unicode code point: 0x7FFFFFFF'
 throws-like { 0x7FFFFFFF.chr.unival }, X::AdHoc,
   message => / 'out of bounds' /;

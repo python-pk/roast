@@ -10,7 +10,7 @@ Misc. Junction tests
 
 =end pod
 
-# https://github.com/Raku/old-issue-tracker/issues/834
+
 {
     isa-ok any(6,7), Junction;
     is any(6,7).WHAT.gist, Junction.gist, 'junction.WHAT works';
@@ -317,7 +317,7 @@ ok(!(?(1&0) != ?(1&&0)), 'boolean context');
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/434
+
 ok Mu & Mu ~~ Mu, 'Mu & Mu ~~ Mu works';
 
 ## See also S03-junctions/autothreading.t
@@ -357,7 +357,7 @@ ok Mu & Mu ~~ Mu, 'Mu & Mu ~~ Mu works';
   ok $res == 3, "index on junctions: 3";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/745
+
 {
     lives-ok { try { for any(1,2) -> $x {}; } },
              'for loop over junction in try block';
@@ -369,14 +369,14 @@ ok Mu & Mu ~~ Mu, 'Mu & Mu ~~ Mu works';
     is rt63686(), 'happiness', 'for loop over junction in sub';
 }
 
-# https://github.com/rakudo/rakudo/issues/3198
+
 {
     my @seen;
     @seen.push(.^name) for any 1;
     is-deeply @seen, ['Junction'], 'for loop over Junction gets the Junction';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1167
+
 # Error with stringifying .WHAT on any junctions
 {
     ok((WHAT any()) ~~ Junction, "test WHAT on empty any junction");
@@ -396,7 +396,7 @@ ok Mu & Mu ~~ Mu, 'Mu & Mu ~~ Mu works';
     jok(5 < @x.all, '.all method works on array objects');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/688
+
 #?DOES 2
 {
     my @a = "foo", "foot";
@@ -411,7 +411,7 @@ ok Mu & Mu ~~ Mu, 'Mu & Mu ~~ Mu works';
         'junction can be used to index Hash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2670
+
 {
     is (all() ~~ /^ \d+ $/).gist,  'all()',
         'regex match in all junction is an empty all junction (1)';
@@ -425,13 +425,13 @@ ok Mu & Mu ~~ Mu, 'Mu & Mu ~~ Mu works';
         'successful regex match in any junction';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2533
+
 {
     is ("foo" & "a nice old foo" ~~ /foo/).gist, 'all(｢foo｣, ｢foo｣)',
         'successful regex match in all junction';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3313
+
 {
     is (all("a","b") ~~ /a/).gist, 'all(｢a｣, Nil)',
         'successful regex match in all junction if one element does not match';
@@ -448,10 +448,10 @@ ok Mu & Mu ~~ Mu, 'Mu & Mu ~~ Mu works';
    is any(Foo.new).gist, 'any(gisted)', 'any(Foo.new).gist';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2623
+
 ok { a => 1} ~~ List|Hash, 'Can construct junction with List type object';
 
-# https://github.com/Raku/old-issue-tracker/issues/2511
+
 ok (0|1 == 0&1), 'test junction evaluation order';
 ok (0&1 == 0|1), 'test junction evaluation order';
 
@@ -500,7 +500,7 @@ throws-like 'multi sub foo($) { }; foo(Junction)', X::Multi::NoMatch,
 throws-like 'sub foo($) { }; foo(Junction)', X::TypeCheck::Binding,
     'Do not try to auto-thread Junction type object (only case)';
 
-# https://github.com/Raku/old-issue-tracker/issues/5691
+
 {
     my %h;
     %h{ any ^2 }.push: 42;
@@ -564,7 +564,7 @@ subtest q<meta-assignment to a scalar doesn't cause freezing> => {
 }
 
 # GH rakudo/rakudo#4742
-# https://github.com/rakudo/rakudo/issues/4742
+
 subtest "IO" => {
     my @routines =
         say => %(
@@ -602,7 +602,7 @@ subtest "Value Object", {
     cmp-ok $j1.WHICH, &[===], $j2.WHICH, "but they're identity";
 }
 
-# https://github.com/rakudo/rakudo/issues/2719
+
 {
     is-deeply "foo".starts-with("f"|"b"), (True | False), 'starts-with';
     is-deeply "foo".ends-with("f"|"b"), (False | False),  'ends-with'; 

@@ -31,14 +31,14 @@ is('fooäàAÁâåbar' ~~ m:m:i/<-[A]>+/, 'foo',      'negated character class')
 
 is('fooäàAÁâåbar' ~~ m:m:i/<[a..b]>+/, 'äàAÁâåba', 'range in character class');
 
-# https://github.com/Raku/old-issue-tracker/issues/4803
+
 {
     $_ = "Bruce Gray";
     my $x = "Andrew Egeler";
     is m:i:m/$x/, Nil, "interpolation longer than topic doesn't blow up";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5549
+
 {
     my @strings = "All hell is breaking loose", "Āll hell is breakinġ loose";
     for @strings {

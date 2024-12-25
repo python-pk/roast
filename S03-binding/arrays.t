@@ -219,14 +219,14 @@ plan 48;
   is ~@array,     "a B c", 'binding @array := $arrayitem works (3)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/513
+
 {
     throws-like 'my @rt61566 := 1',
         X::TypeCheck::Binding,
         'can only bind Positional stuff to @a';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3161
+
 throws-like { sub foo { fail }; my @a := foo },
     X::TypeCheck::Binding, :got(Failure),
 'binding Failure to Array throws useful error';

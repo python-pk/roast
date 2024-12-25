@@ -148,7 +148,7 @@ is (1..^2).pick, 1, 'pick on 1-elem range';
 
 ok ('a'..'z').pick ~~ /\w/, 'Range.pick on non-Int range';
 
-# https://github.com/Raku/old-issue-tracker/issues/2633
+
 nok ([==] (^2**64).roll(10).map(* +& 15)), 'Range.pick has enough entropy';
 
 # sanity on Enums
@@ -166,7 +166,7 @@ nok ([==] (^2**64).roll(10).map(* +& 15)), 'Range.pick has enough entropy';
     is More.pick(0), (), 'zero pick on Enum is sane';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2633
+
 {
     my $v = 2;
     for (1..259) {
@@ -174,7 +174,7 @@ nok ([==] (^2**64).roll(10).map(* +& 15)), 'Range.pick has enough entropy';
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6585
+
 subtest '.pick on object Hashes' => {
     plan 2;
     my %obj{Any} = question => 42;

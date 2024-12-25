@@ -69,10 +69,10 @@ plan 31;
         'keyword needs at least one whitespace after it';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4485
+
 lives-ok { EVAL 'while 0 { my $_ }' }, 'Can declare $_ in a loop body';
 
-# https://github.com/Raku/old-issue-tracker/issues/4519
+
 {
     my $undone = 0;
     my $x = 0;
@@ -147,14 +147,14 @@ lives-ok { EVAL 'while 0 { my $_ }' }, 'Can declare $_ in a loop body';
     is (+$_ if $_ %% 2 until ++$_ > 9), '2 4 6 8', 'can use while as list comprehension';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4918
+
 {
     sub f($x) { my $z; do +$z while ++$z < $x }
     is-deeply f(5), (1, 2, 3, 4).Seq,
         'can return values from loop at end of sub';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4955
+
 {
     is-deeply { (loop (my int $i = 0; $i < 10; $i++) { +$i }) }(),
         (0, 1, 2, 3, 4, 5, 6, 7, 8, 9).Seq,

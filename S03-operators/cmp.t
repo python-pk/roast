@@ -98,7 +98,7 @@ plan 64;
     is (5..^10) cmp (5,6,7,8,9,10), Less, "(5..^10) cmp (5,6,7,8,9,10),";
 }
 
-# https://github.com/rakudo/rakudo/issues/4471
+
 {
     is () cmp (0,), Less, 'empty list on the left';
     is (0,) cmp (), More, 'empty list on the right';

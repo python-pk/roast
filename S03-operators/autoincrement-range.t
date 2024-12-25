@@ -251,7 +251,7 @@ my $x;
     is( --$x, "\x[b66]ZZ", "'\x[b67]AA'-- is '\x[b66]ZZ'" );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5545
+
 {
     diag( "Tests for '\x[e50]' .. '\x[e59]' (Thai)" );
     $x = "\x[e59]\x[e59]";

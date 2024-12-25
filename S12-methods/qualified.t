@@ -38,7 +38,7 @@ subtest "simple" => {
     is-deeply (-42).::Int::abs, 42, 'qualified method call with starting colons';
     throws-like { (42).::Str::abs }, X::Method::InvalidQualifier, 'InvalidQualifier thrown with starting colons';
 
-    # https://github.com/Raku/old-issue-tracker/issues/5823
+    
     throws-like '.::', X::Syntax::Malformed, 'empty name in qualified method call';
 }
 

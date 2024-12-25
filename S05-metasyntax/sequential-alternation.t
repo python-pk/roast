@@ -36,8 +36,8 @@ plan 14;
 
 # L<S05/Backtracking control>
 
-# https://github.com/Raku/old-issue-tracker/issues/5804
-# https://github.com/Raku/old-issue-tracker/issues/6474
+
+
 {
     is 'ab' ~~ / [ab || a ] b /,       'ab', 'backtrack into ||';
     is 'ab' ~~ / [ab || a ]: b /,      Nil,  'don\'t backtrack into [ || ]:';

@@ -145,7 +145,7 @@ my @array2 = ("test", 1, Mu);
     is(+@array10, 3, "trailing commas make correct array");
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3830
+
 #?rakudo skip "multi-dim arrays NYI"
 {
 # declare a multidimension array
@@ -201,7 +201,7 @@ my @array2 = ("test", 1, Mu);
         lvalue in assignment is then lvalue to end-indexed slice as rvalue";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1964
+
 {
     is ~<a b>.[^*], 'a b', 'Infinite range subscript as rvalues clip to existing elems';
     is ~<a b>.[lazy ^10], 'a b', 'Lazy range subscript as rvalues clip to existing elems';
@@ -221,7 +221,7 @@ my @array2 = ("test", 1, Mu);
   # other than .defined is called on it.
   lives-ok { @arr[*-1].defined }, "readonly accessing [*-1] of an empty array is not fatal";
 
-  # https://github.com/Raku/old-issue-tracker/issues/2681
+  
   throws-like { @arr[*-1].flurb },
     X::OutOfRange,
     "readonly accessing [*-1] of an empty array throws X::OutOfRange";
@@ -267,13 +267,13 @@ my @array2 = ("test", 1, Mu);
     "binding [-1] of a normal array throws X::Subscript::Negative";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1574
+
 {
     is [][].elems, 0, '[][] returns empty list/array';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/282
-# https://github.com/Raku/old-issue-tracker/issues/227
+
+
 # by current group understanding of #perl6, postcircumfix:<[ ]> is actually
 # defined in Any, so that .[0] is the identity operation for non-Positional
 # types
@@ -287,7 +287,7 @@ my @array2 = ("test", 1, Mu);
       'but Mu has no .[]';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2034
+
 {
     my @a = <1 2 3>;
     is @a[*], <1 2 3> , 'using * to access all array elements works';
@@ -297,13 +297,13 @@ my @array2 = ("test", 1, Mu);
     is ($a[] X~ 'a'), '1a 2a 3a', 'using [] decontainerizes';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1591
+
 {
     my @a = <1 2 3>;
     isa-ok +@a, Int, "Numifying an Array yields an Int";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1786
+
 {
     my @a = 0, 1, 2;
     for @a {
@@ -320,7 +320,7 @@ my @array2 = ("test", 1, Mu);
     is ~@b, '0 2 3', "non-modifier form of 'if' within 'for' loop also works"
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2454
+
 # Array.hash used to eat up the array in some early version of rakudo/nom
 {
     my @a = a => 1, b => 2;
@@ -329,7 +329,7 @@ my @array2 = ("test", 1, Mu);
     is @a.elems, 2, '... and did not consume itself in the process';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2261
+
 {
     my @a = <a b c>;
     @a[0 ..^ *-1] >>~=>> "x";
@@ -341,7 +341,7 @@ my @array2 = ("test", 1, Mu);
     ok Array(1,2,3) eqv [1,2,3],          'Array(1,2,3) makes correct array';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/520
+
 #?rakudo todo "regression to AdHoc exception"
 {
     throws-like { EVAL 'my @a = 1..*; @a[Inf] = "dog"' },
@@ -369,7 +369,7 @@ my @array2 = ("test", 1, Mu);
     is @b.sum, 10, 'handle sparse arrays correctly';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5269
+
 {
     my %foo;
     %foo<bar>[*-0] = 42;
@@ -409,7 +409,7 @@ subtest 'reification of zen and whatever slices' => {
     my $s = (gather pass 'whatever slice does reify')[*];
 }
 
-# https://github.com/rakudo/rakudo/issues/1832
+
 subtest 'no funny business in assignment' => {
     plan 9;
     my package R1832 { our @bar = 42, |0 };
@@ -432,7 +432,7 @@ subtest 'no funny business in assignment' => {
     is-deeply (my @a6 is default(42) = 1, Nil, |2), [1, 42, 2],
         'can use return value of assignment (3)';
 
-    # https://github.com/rakudo/rakudo/issues/1843
+    
     my @res;
     sub init() { my @a = 1, (init() unless $++); @res.push: @a; 42 };
     init();

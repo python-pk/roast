@@ -62,7 +62,7 @@ sub test_stuff($x) is test-assertion {
   test_stuff($x);
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/823
+
 # used to be Rakudo regression, RT #64098
 {
     augment class Mu {
@@ -86,25 +86,25 @@ ok Bool::True.raku ~~/^ 'Bool::True'/, 'Bool::True.raku';
     is $foo, Negation::isnt, 'assignment from enum works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1091
+
 {
     enum RT66886 <b>;
     throws-like 'RT66886::c', Exception, 'accessing non-value of enum dies proper-like';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     enum RT65658 <Todo Bug Feature Ticket>;
     is RT65658(2), RT65658::Feature, 'can index enum by number';
     is RT65658((Todo + 3.2).Int), RT65658::Ticket, 'enum and math and index';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1434
+
 {
     eval-lives-ok 'enum X is export <A B C>', 'marking enum export does not die';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2526
+
 #?rakudo todo 'RT #101900'
 {
     throws-like 'enum rt_101900 < a b >; class A { }; note A but rt_101900::a',
@@ -112,14 +112,14 @@ ok Bool::True.raku ~~/^ 'Bool::True'/, 'Bool::True.raku';
         "Cannot mixin an enum into a class";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4335
+
 {
     my enum Bar <A B C>;
     ok B.can("value"), '.can(...) on an enum';
     ok B.^can("value"), '.^can(...) on an enum';
 }
 
-# https://github.com/rakudo/rakudo/issues/2535
+
 {
     my enum WithPriv <AA BB>;
     AA does role {

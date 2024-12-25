@@ -3,7 +3,7 @@ use Test;
 
 plan 4;
 
-# https://github.com/rakudo/rakudo/issues/2446
+
 subtest "Subset of a coercion", {
     plan 7;
     subset OfCoercion of Int();
@@ -18,7 +18,7 @@ subtest "Subset of a coercion", {
     }
     foo("13");
 
-    # https://github.com/rakudo/rakudo/issues/1405
+    
     subset NumStr1 of Num(Str);
     ok Str ~~ NumStr1, "constraint type matches against coercive subset";
     ok Num ~~ NumStr1, "target type matches against coercive subset";
@@ -63,7 +63,7 @@ subtest "Subset of a definite coercion", {
                 "incorrect coercion into a typeobject throws on the subset";
 }
 
-# https://github.com/rakudo/rakudo/issues/2427
+
 subtest "Nested coercers", {
     plan 5;
     class Source {

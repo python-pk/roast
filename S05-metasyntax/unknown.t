@@ -21,27 +21,27 @@ lives-ok({"aa!" ~~ /'a'/}, 'quoted "a" is valid');
     ok '!' !~~ /<foo>/, '\\{ in a rule (-)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1716
+
 {
     dies-ok {EVAL('/ a+ + /')}, 'Cannot parse regex a+ +';
     #?rakudo todo 'faulty regex error'
     ok "$!" ~~ /:i quantif/, 'error message mentions quantif{y,ier}';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2042
-# https://github.com/Raku/old-issue-tracker/issues/2088
+
+
 #?DOES 3
 {
     throws-like '$_ = "0"; s/-/1/', X::Syntax::Regex::UnrecognizedMetachar, metachar => '-';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2115
+
 # not sure this is the right place for this test
 {
     lives-ok { /$'x'/ }, 'can parse /$\'x\'/';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4415
+
 throws-like '/00:11:22/', X::Syntax::Regex::UnrecognizedModifier, modifier => '11';
 
 # vim: expandtab shiftwidth=4

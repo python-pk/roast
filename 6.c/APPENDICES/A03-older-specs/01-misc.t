@@ -5,7 +5,7 @@ use Test::Util;
 
 plan 9;
 
-# https://github.com/Raku/old-issue-tracker/issues/6320
+
 #?rakudo.jvm skip "Unsupported VM encoding 'utf8-c8'"
 #?DOES 1
 {
@@ -65,7 +65,7 @@ plan 9;
   }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6320
+
 is_run ｢'-'.IO.slurp.print｣, 'meows', {:out<meows>, :err(''), :0status},
     'can .slurp from "-".IO path';
 
@@ -98,9 +98,9 @@ is_run ｢'-'.IO.slurp.print｣, 'meows', {:out<meows>, :err(''), :0status},
         [ \(/<[abc]>/, '', :th{4;}), 'b', "aabb\x[308]b\x[308]cc \t  xz \t  y", ],
         [ \(/<[abc]>/, '', :5nth), 'c', "aabbb\x[308]b\x[308]c \t  xz \t  y", ],
         [ \(/<[abc]>/, '', :nth{5;}), 'c', "aabbb\x[308]b\x[308]c \t  xz \t  y", ],
-        # https://github.com/Raku/old-issue-tracker/issues/5702
+        
         [ \(/<[abc]>/, '', :5x), ('a', 'a', 'b', 'b', 'c'), "b\x[308]b\x[308]c \t  xz \t  y", ],
-        # https://github.com/Raku/old-issue-tracker/issues/5702
+        
         [ \(/<[abc]>/, '', :x(1..5)), ('a', 'a', 'b', 'b', 'c'), "b\x[308]b\x[308]c \t  xz \t  y", ],
         [ \(/<[cz]> \s+ <[xy]>/, 'Z P', :ss), "c \t  x", "aabbb\x[308]b\x[308]cZ \t  Pz \t  y", ],
         [ \(/<[cz]> \s+ <[xy]>/, 'Z P', :ss, :global), ( "c \t  x", "z \t  y" ), "aabbb\x[308]b\x[308]cZ \t  PZ \t  P", ],
@@ -170,7 +170,7 @@ is_run ｢'-'.IO.slurp.print｣, 'meows', {:out<meows>, :err(''), :0status},
         }
     }
 
-    # https://github.com/rakudo/rakudo/issues/1523#issuecomment-365447388
+    #issuecomment-365447388
     subtest 'no-matches .subst-mutate: with multi-match opts = empty List' => {
         plan 17 × 2 × my @matchers := /b/, 'b';
         for @matchers -> \mt {
@@ -218,7 +218,7 @@ is_run ｢'-'.IO.slurp.print｣, 'meows', {:out<meows>, :err(''), :0status},
         }
     }
 
-    # https://github.com/Raku/old-issue-tracker/issues/6043
+    
     subtest '.subst-mutate with multi-match args set $/ to a List of matches' => {
         plan 2*(2+5);
         for 1234567, '1234567' -> $type {
@@ -253,7 +253,7 @@ is_run ｢'-'.IO.slurp.print｣, 'meows', {:out<meows>, :err(''), :0status},
         :x(my class SomeInvalidXParam {}.new) },
     X::Str::Match::x, 'giving .subst-mutate invalid args throws';
 
-    # https://github.com/Raku/old-issue-tracker/issues/4984
+    
     try { ($ = 42).subst-mutate: Str, Str }; pass "Cool.subst-mutate with wrong args does not hang";
 
     group-of 2 => '$/ is set when matching in a loop' => {
@@ -280,7 +280,7 @@ group-of 7 => 'Pair.freeze' => {
         is $p.value, 42, 'did not change integer value';
     }
 
-    # https://github.com/Raku/old-issue-tracker/issues/6442
+    
     {
         my $value = 17;
         my $pair = number => $value;
@@ -296,7 +296,7 @@ group-of 2 => ':count arg on &lines/Str.lines' => {
     is "a\nb\nc\n".lines(:count), 3, 'Str.lines(:count)';
 }
 
-# https://github.com/rakudo/rakudo/issues/2433
+
 group-of 5 => 'language switching' => {
     group-of 4 => 'version as first thing' => {
         sub versify ($ver?) {
@@ -371,7 +371,7 @@ group-of 5 => 'language switching' => {
 group-of 1 => 'IO::Handle.new can take a bunch of options' => {
     # No final decision has been rendered yet, but it's likely we'll want
     # to limit what IO::Handle.new can take, so keep those tests here
-    # https://github.com/rakudo/rakudo/issues/2039
+    
     # https://irclogs.raku.org/perl6-dev/2018-07-11.html#13:45
     group-of 4 => '.print-nl method' => {
         my $file = make-temp-file;
@@ -414,12 +414,12 @@ group-of 12 => '$CALLER::_' => {
     #?rakudo todo "NYI"
     is(callerunderscore(), "-bar-", 'CALLER:: $_ set twice');
     for ("quux") {
-        # https://github.com/Raku/old-issue-tracker/issues/3651
+        
         #?rakudo todo "NYI"
         is(callerunderscore(), '-quux-', 'CALLER:: $_ set by for');
     }
     given 'hirgel' {
-        # https://github.com/Raku/old-issue-tracker/issues/3651
+        
         #?rakudo todo "NYI"
         is callerunderscore, '-hirgel-', '$CALLER::_ set by given';
     }

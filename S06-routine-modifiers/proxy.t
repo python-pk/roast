@@ -93,7 +93,7 @@ sub lvalue_test3() {
 
 }
 
-# https://github.com/rakudo/rakudo/issues/1466
+
 subtest '.raku on Proxied object does not crash' => {
     plan 4;
     eval-lives-ok ｢(Proxy.new: :STORE{$^a,$^b}, :FETCH{Int}).VAR.raku｣,

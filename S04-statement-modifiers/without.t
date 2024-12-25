@@ -51,7 +51,7 @@ plan 9;
     is $a.WHAT, Failure, 'Statement-modifier without runs block with placeholder';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2257
+
 {
     is (1,2, without Nil), "1 2", "without is a terminator even after comma";
 }

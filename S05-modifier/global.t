@@ -29,7 +29,7 @@ Testing the C<:global> regex modifier - more tests are always welcome
     is ~(@matches[2]), "or", "Third match is 'or'";
 }
 
-# https://github.com/rakudo/rakudo/issues/3554
+
 {
     my @got;
     if "test1 test2 test3 test4" ~~ m:g/ (\w+) {} / {

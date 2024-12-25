@@ -286,7 +286,7 @@ plan 107;
     is $c, 6, 'do autothread over blocks with explicit Any';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1787
+
 # L<S03/Junctive operators/Use of negative operators with junctions>
 {
     my Mu $x = 'a' ne ('a'|'b'|'c');
@@ -304,7 +304,7 @@ plan 107;
     nok 3 != $z, '!= autothreads like not == (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1365
+
 # autothreading over named-only params
 {
     sub foo(Int :$n) { $n }
@@ -312,7 +312,7 @@ plan 107;
 }
 
 # test that junctions doen't flatten ranges
-# https://github.com/Raku/old-issue-tracker/issues/1918
+
 {
     ok ((1..42) | (8..35)).max == 42, 'infix | does not flatten ranges';
 }
@@ -380,7 +380,7 @@ subtest "smartmatch against ranges" => {
     nok none(1,10,13) ~~ 1..7,  "none, when at least one matches";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5925
+
 subtest 'smartmatch against Bool:U' => {
     plan 16;
 
@@ -405,7 +405,7 @@ subtest 'smartmatch against Bool:U' => {
     nok none(42,   True ) ~~ Bool, 'none (false by True Bool)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5801
+
 subtest 'defined with Junctions autothreads' => {
     plan 2;
     constant $f = Failure.new;

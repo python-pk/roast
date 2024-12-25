@@ -189,7 +189,7 @@ is(%z{0},           $base, '%z{0}');
     is $z.pred, -1, '.pred for Num'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/742
+
 throws-like 'my $a; $a++ ++;', Exception, 'parse error for "$a++ ++"';
 
 {
@@ -198,7 +198,7 @@ throws-like 'my $a; $a++ ++;', Exception, 'parse error for "$a++ ++"';
     is $_, 5, 'increment of $_ via .++';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2798
+
 {
     my Bool $x;
     my $y;

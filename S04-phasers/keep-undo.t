@@ -82,7 +82,7 @@ plan 16;
     ok  $undone, 'fail() triggers UNDO';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2678
+
 {
     is_run( q[UNDO { say 'undone' }; die 'foobar'],
         {
@@ -91,7 +91,7 @@ plan 16;
         },
         'UNDO fires after die' );
 
-    # https://github.com/Raku/old-issue-tracker/issues/2678
+    
     #?rakudo.jvm todo ""
     is_run( q[do { UNDO { say 'undone' }; die 'foobar' }],
         {
@@ -102,7 +102,7 @@ plan 16;
 
     my $undone = 0;
     try { UNDO $undone = 1; die 'foobar' };
-    # https://github.com/Raku/old-issue-tracker/issues/2678
+    
     #?rakudo.jvm todo ""
     ok $undone, 'UNDO fires after die if block is a "try" block';
 

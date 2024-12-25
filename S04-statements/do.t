@@ -85,7 +85,7 @@ eval-lives-ok 'my $i = 1; do { $i++ } if $i;',
 }
 
 # L<S04/The do-once loop/"can take" "loop control statements">
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 #?rakudo skip 'next without loop construct RT #124573'
 {
     my $i;
@@ -98,7 +98,7 @@ eval-lives-ok 'my $i = 1; do { $i++ } if $i;',
     is $ret, (), "'next' in 'do' block drives return value";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 #?rakudo 3 skip "Undeclared name A"
 is EVAL('my $i; A: do { $i++; last A; $i-- }; $i'), 1,
     "'last' works with label";
@@ -107,7 +107,7 @@ is EVAL('my $i; A: do { $i++; next A; $i-- }; $i'), 1,
 is EVAL('my $i; A: do { $i++; redo A until $i == 5; $i-- }; $i'), 4,
     "'redo' works with label";
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 #?rakudo skip 'last without loop construct RT #124575'
 {
     is EVAL('
@@ -125,7 +125,7 @@ is EVAL('my $i; A: do { $i++; redo A until $i == 5; $i-- }; $i'), 4,
 # IRC notes:
 # <agentzh> audreyt: btw, can i use redo in the do-once loop?
 # <audreyt> it can, and it will redo it
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 #?rakudo skip 'redo without loop construct RT #124576'
 {
     is EVAL('
@@ -160,10 +160,10 @@ is EVAL('my $i; A: do { $i++; redo A until $i == 5; $i-- }; $i'), 4,
     is $a, 3, "final `}' on a line reverted to `;'";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/450
+
 lives-ok { my $a = do given 5 {} }, 'empty do block lives (RT #61034)';
 
-# https://github.com/rakudo/rakudo/issues/2601
+
 {
     $_ = 101;
     is (do if 42 { $_ }), 101, 'Correct $_ value visible inside do if 42 { ... } construct';

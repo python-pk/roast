@@ -76,7 +76,7 @@ plan 14;
     'initilized called in the right order (MI)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/785
+
 {
     # I think this test is obsolete given the above tests, but maybe I'm missing something
     my %counter;
@@ -100,26 +100,26 @@ plan 14;
         'method BUILD produces a compile-time warning';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2450
+
 {
     class C { has %!p; submethod BUILD(:%!p) {} };
     lives-ok { C.new }, 'can call BUILD without providing a value for a !-twigiled named parameter';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3604
+
 {
     lives-ok {
         role A { has $!a; submethod BUILD(:$!a) {}}; class B does A {}; B.new
     }, 'BUILD provided by role can use attributes in signature';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5372
+
 {
     my class Foo { submethod BUILD { fail "noway" } }
     fails-like { Foo.new }, X::AdHoc, :message<noway>, 'fail in BUILD works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2566
+
 group-of 15 => 'BUILD with a native typed attribute' => {
     my class rt104980 {
         has str    $.a-str;
@@ -172,7 +172,7 @@ group-of 15 => 'BUILD with a native typed attribute' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/2832
+
 {
     class P { has $.x = 42; submethod BUILD() { $!x } }
     is P.new.x, 42, 'mentioning attribute in BUILD does no interfere';

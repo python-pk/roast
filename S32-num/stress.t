@@ -2,9 +2,9 @@ use Test;
 
 plan 2;
 
-# https://github.com/Raku/old-issue-tracker/issues/5518
 
-# https://github.com/rakudo/rakudo/issues/1651
+
+
 subtest 'No drift when roundtripping Num -> perl -> Num -> perl' => {
     # In this test, it's fine if the original .Str gives the string that
     # doesn't match what the user has entered (since it may be a number that
@@ -29,7 +29,7 @@ subtest 'No drift when roundtripping Num -> perl -> Num -> perl' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5565
+
 
 subtest 'parsed literals match &val and Str.Num' =>  {
     plan 2*my $rounds = 100;

@@ -44,7 +44,7 @@ plan 109;
 # ok(EVAL('sub ret { return }; 1'), "return without value parses ok");
 
 sub bare_return { return };
-# https://github.com/Raku/old-issue-tracker/issues/4533
+
 sub implicit_bare_return { };
 
 ok(bare_return() =:= Nil, "A bare return is Nil");
@@ -336,7 +336,7 @@ is Foo.new.officialsubmeth(), 43,
 is Foo::official(), 44,
     "return correctly from official sub only";
 
-# https://github.com/Raku/old-issue-tracker/issues/1764
+
 {
     sub named() {
         return 1, 2, :c(3);
@@ -346,7 +346,7 @@ is Foo::official(), 44,
     is named().[2].value, '3', ' ... correct value';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/537
+
 {
     sub rt61732_c { 1; CATCH {} }
     #?rakudo todo 'RT #61732'
@@ -358,13 +358,13 @@ is Foo::official(), 44,
     is rt61732_d(), 1, 'get right value from sub with double ;';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/776
+
 {
     sub rt63912 { return 1, 2; }
     lives-ok { rt63912() }, 'can call sub that returns two things (no parens)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1505
+
 {
     class RT72836 {
         method new() { }
@@ -373,7 +373,7 @@ is Foo::official(), 44,
         'can use value returned from empty routine';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/465
+
 {
     sub bar61126($code) { $code() }; sub foo61126 { bar61126 { return 1 }; return 2; };
     is foo61126, 1;
@@ -382,7 +382,7 @@ is Foo::official(), 44,
     is baz61126, 1;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2982
+
 {
     throws-like 'my class A { has Str method foo(--> Int) { "hi" } }', X::Redeclaration;
     throws-like 'my class A { has Int method foo() { return "hi" } }; A.foo', X::TypeCheck::Return;
@@ -410,14 +410,14 @@ is Foo::official(), 44,
     dies-ok { return-MyInt(Cool) }, "Can't return Cool through Int typecheck";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5733
+
 is sub { 42.return }(), 42, "Sub doing 42.return works";
 
-# https://github.com/Raku/old-issue-tracker/issues/3453
+
 is-deeply sub { sub foo($x = return 42) { 70 }; say foo }(), 42,
     'can return from parameter defaults';
 
-# https://github.com/rakudo/rakudo/issues/2201
+
 lives-ok { sub foo(--> Callable:D) is rw { my $x is default(Nil) = Nil; $x }; foo },
     'Containerized Nil passes Callable:D constraint';
 

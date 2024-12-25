@@ -25,7 +25,7 @@ is_run('await start { say $*IN.get.uc for ^3 }',
        },
        'reading from $*IN from another thread works (file)');
 
-# https://github.com/Raku/old-issue-tracker/issues/3719
+
 {
     my $temp-file = 'handle-between-threads-' ~ $*PID;
     spurt $temp-file, "foo";

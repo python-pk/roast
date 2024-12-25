@@ -103,7 +103,7 @@ throws-like q['3e4d5'.Int], X::Str::Numeric,
 # Special values
 is((1.9e3).Int, 1900, "int 1.9e3 is 1900");
 
-# https://github.com/Raku/old-issue-tracker/issues/949
+
 throws-like 'int 3.14', X::Syntax::Confused,
     'dies: int 3.14 (prefix:int is gone)';
 
@@ -197,7 +197,7 @@ subtest 'Int.new' => { # coverage; 2016-10-05
 
     is-deeply Int.new, 0, 'no args default to 0';
 
-    # https://github.com/Raku/old-issue-tracker/issues/6539
+    
 
     subtest '.new of subclass of Int' => {
         plan 3*
@@ -285,7 +285,7 @@ subtest 'Int.new' => { # coverage; 2016-10-05
 
 ok Int ~~ UInt, "accept undefined Int";
 
-# https://github.com/rakudo/rakudo/issues/2157
+
 subtest 'no funny business with Ints that are not representable in double' => {
     plan 3*4;
     is-deeply $_+1, 9930972392403502
@@ -609,7 +609,7 @@ subtest 'no funny business with Ints that are not representable in double' => {
         ~ '7777506072339445587895905719156736', 'huge Ints stringify correctly';
 }
 
-# https://github.com/rakudo/rakudo/issues/3419
+
 {
     dies-ok { Int.new(Int) }, 'does Int.new(Int) die?';
 }

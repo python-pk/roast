@@ -331,7 +331,7 @@ subtest "Regression: broken chain" => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/3611
+
 {
     my $dispatched;
     my proto sub foo(Int:D, uint32) {*}

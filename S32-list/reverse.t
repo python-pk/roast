@@ -87,7 +87,7 @@ is(@a, @e, "list was reversed");
     is(@a[1], "foo", 'in place reversal works');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2177
+
 {
     is-deeply (<a b>, <c d>).reverse, (<c d>, <a b>), '.reverse does NOT flatten lists';
 }
@@ -108,7 +108,7 @@ is(@a, @e, "list was reversed");
       'reverse also works on Lists';
 }
 
-# https://github.com/rakudo/rakudo/issues/3595
+
 {
     is-deeply (1 .. -Inf).reverse[^5], (Nil,Nil,Nil,Nil,Nil),
       "infinite range from end produces Nils";

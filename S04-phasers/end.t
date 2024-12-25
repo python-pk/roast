@@ -4,7 +4,7 @@ use Test::Util;
 
 plan 8;
 
-# https://github.com/Raku/old-issue-tracker/issues/3435
+
 {
     is_run( 'END exit(5)',
         {
@@ -15,7 +15,7 @@ plan 8;
         'can use &exit from END block' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2674
+
 {
     {
         my $a = 42;
@@ -32,7 +32,7 @@ plan 8;
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2713
+
 lives-ok { EVAL 'my %rt112408 = END => "parsing clash with block-less END"' },
     'Can use END as a bareword hash key (RT #112408)';
 

@@ -29,11 +29,11 @@ r((1 => 1, 3 => -1), :partial, 'a|c d e|e|g h');
 is (1..*).rotor((1..*))[^4].join('|'),
    '1|2 3|4 5 6|7 8 9 10', '.rotor on infinite list';
 
-# https://github.com/Raku/old-issue-tracker/issues/5107
+
 throws-like { <a b c>.rotor: 1 => -2 }, X::OutOfRange,
     ’using negative gap that lands past the list's head throws‘;
 
-# https://github.com/Raku/old-issue-tracker/issues/5104
+
 subtest 'non-Int numerals as arguments to rotor get coersed to Int' => {
     plan 4;
     is-deeply (^9 .rotor: 2.5       ), (^9 .rotor: 2     ), 'one-arg';
@@ -42,27 +42,27 @@ subtest 'non-Int numerals as arguments to rotor get coersed to Int' => {
     is-deeply (^9 .rotor: 2.5 => 2.5), (^9 .rotor: 2 => 2), 'pair(Rat,Rat)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5865
+
 is-eqv ().rotor(1), ().Seq, '.rotor on empty list gives empty Seq';
 is-eqv ().rotor(1, :partial), ().Seq,
     '.rotor(:partial) on empty list gives empty Seq';
 
-# https://github.com/Raku/old-issue-tracker/issues/6060
+
 is-eqv (gather do for ^2 { "x".take }).rotor(3, :partial), (<x x>,).Seq,
     ".rotor(:partial) works with gather/take";
 
-# https://github.com/Raku/old-issue-tracker/issues/5636
+
 is-eqv <a b c d e f>.rotor(1...*),
     (("a",), ("b", "c"), ("d", "e", "f")).Seq,
     '.rotor does not hang when given infinite iterable as cycle';
 
-# https://github.com/Raku/old-issue-tracker/issues/6157
+
 is-eqv <a b c d e f>.rotor(2 => -2, 1),
     (("a", "b"), ("a",), ("b", "c"), ("b",), ("c", "d"), ("c",), ("d", "e"),
       ("d",), ("e", "f"), ("e",)).Seq,
     ".rotor works as expected with negative gap";
 
-# https://github.com/rakudo/rakudo/issues/1397
+
 subtest '.rotor: 2 => -1, :partial obeys Iterator protocol' => {
     plan 2;
 
@@ -87,7 +87,7 @@ is-eqv <a b c d e f g h>.rotor((1,2,3,Inf)),
     (("a",), ("b", "c",), ("d", "e", "f",), ("g", "h",)).Seq,
     '.rotor with Inf consumes everything';
 
-# https://github.com/rakudo/rakudo/issues/3444
+
 is-eqv (1,2,3).rotor( 1 Xxx 1 ),
     ((1,), (2,), (3,)).Seq,
     '.rotor with a Seq as a specification source';

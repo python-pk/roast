@@ -477,7 +477,7 @@ for
       '|| could we specify a single index';
 }
 
-# https://github.com/rakudo/rakudo/issues/2488
+
 {
     my @matrix;
     my sub reset() { @matrix = [1,2,3], [4,5,6], [7,8,9] }

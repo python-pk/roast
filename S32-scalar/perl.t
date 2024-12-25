@@ -26,7 +26,7 @@ plan 7;
     ok $ra.VAR.of =:= Int, 'make sure roundtripped values are Int';
 } #3
 
-# https://github.com/Raku/old-issue-tracker/issues/3669
+
 
 is-perl-idempotent 2/6, :eqv, 'Rat.raku is idempotent';
 

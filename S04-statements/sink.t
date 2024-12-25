@@ -4,26 +4,26 @@ use Test::Util;
 
 plan 10;
 
-# https://github.com/Raku/old-issue-tracker/issues/3084
+
 {
     my $c = [[1], [2], [3]].map( { $_ } ).Array;
     $c.unshift(7);
     is $c.elems, 4, ".unshift in sink context doesn't empty Array";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3127
+
 {
     eval-lives-ok "List.sink", "can sink a List";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5123
+
 {
     my $sunk = False;
     my ($a) = class { method sink { $sunk = True } }.new;
     is $sunk, False, 'my ($a) = ... does not trigger sinking';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5233
+
 {
     my @results = gather for 1..1 { ^10 .map: *.take }
 
@@ -83,7 +83,7 @@ plan 10;
     is $sunk, False, "we don't sink the result of thing() .= method-name";
 }
 
-# https://github.com/rakudo/rakudo/issues/1531
+
 subtest 'sub calls in last statement of sunk `for` get sunk' => {
     plan 4;
     my $a; $a Z+= 2 for ^3;
@@ -99,11 +99,11 @@ subtest 'sub calls in last statement of sunk `for` get sunk' => {
         'block `for` with sub that returns Failure';
 }
 
-# https://github.com/rakudo/rakudo/issues/1693
+
 is_run ｢unit package A; our sub need() {}; for <s> { A::need }; print 'pass'｣,
     { :out<pass>, :err(''), :0status}, 'no crash in for ... { Package::foo }';
 
-# https://github.com/rakudo/rakudo/issues/2069
+
 {
     my int $seen;
     my sub foo {

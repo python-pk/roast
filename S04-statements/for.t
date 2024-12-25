@@ -298,7 +298,7 @@ class TestClass{ has $.key is rw  };
     is($a, $b, 'List context');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/284
+
 {
     # this was a rakudo bug with mixed 'for' and recursion, which seems to
     # confuse some lexical pads or the like, see RT #58392
@@ -318,7 +318,7 @@ class TestClass{ has $.key is rw  };
     is $gather, '21....1....1....', 'Can mix recursion and for';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2555
+
 # another variation
 {
     my $t = '';
@@ -387,7 +387,7 @@ throws-like 'for(0..5) { }', X::Comp::Group, 'keyword needs at least one whitesp
   #diag ">$str<";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/802
+
 {
   my $str = '';
   for 1..5 -> $x, $y? {
@@ -469,7 +469,7 @@ throws-like 'for(0..5) { }', X::Comp::Group, 'keyword needs at least one whitesp
     is (for ^5 { 41; next if $_ == 2; $_; }).flat, (0,1,3,4),
                 "for loop with label-less next flattens out nexted iterations";
 
-# https://github.com/Raku/old-issue-tracker/issues/3883
+
 # see RT #124568
     my $l = (for ^5 { 41; next if $_ == 2; $_; });
     is $l[2].raku, 3, "for loop iteration with label-less 'next' gives Empty";
@@ -477,13 +477,13 @@ throws-like 'for(0..5) { }', X::Comp::Group, 'keyword needs at least one whitesp
     is (for ^5 { 41; last if $_ == 2; $_; }).flat, (0,1),
                 "for loop with label-less last flattens out last iteration";
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 #?rakudo todo 'Rakudo still uses Nil here RT #124569'
     $l = (for ^5 { 41; last if $_ == 2; $_; });
     is $l[2].raku, "()", "for loop iteration with label-less 'last' gives ()";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/637
+
 {
     try { EVAL('for (my $ii = 1; $ii <= 3; $ii++) { say $ii; }') };
     ok "$!" ~~ /C\-style/,   'mentions C-style';
@@ -491,14 +491,14 @@ throws-like 'for(0..5) { }', X::Comp::Group, 'keyword needs at least one whitesp
     ok "$!" ~~ /loop/,       'mentions loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/955
+
 {
     my $parsed = 0;
     try { EVAL '$parsed = 1; for (1..3)->$n { last }' };
     ok ! $parsed, 'for (1..3)->$n   fails to parse';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1438
+
 {
     sub rt71268 { for ^1 {} }
     lives-ok { ~(rt71268) }, 'can stringify "for ^1 {}" without death';
@@ -506,7 +506,7 @@ throws-like 'for(0..5) { }', X::Comp::Group, 'keyword needs at least one whitesp
     is rt71268(), Nil, 'result of "for ^1 {}" is Nil';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/637
+
 {
     # TODO Replace Perl 6 with Raku when the message changes in the core
     throws-like 'for (my $i; $i <=3; $i++) { $i; }', X::Obsolete, 'Unsupported use of C-style "for (;;)" loop; in Perl 6 please use "loop (;;)"';
@@ -517,7 +517,7 @@ throws-like 'for(0..5) { }', X::Comp::Group, 'keyword needs at least one whitesp
     ok $! ~~ / 'C-style' /, 'Sensible error message';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/923
+
 {
     my $a = 0;
     for 1..10000000000 {
@@ -527,12 +527,12 @@ throws-like 'for(0..5) { }', X::Comp::Group, 'keyword needs at least one whitesp
     is $a, 1, 'for on Range with huge max value is lazy and enters block';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/424
+
 lives-ok {
     for 1 .. 5 -> $x, $y? { }
 }, 'Iteration variables do not need to add up if one is optional';
 
-# https://github.com/Raku/old-issue-tracker/issues/2209
+
 {
     my $a = 0;
     for 1, 2, 3 { sub foo {}; $a++ }
@@ -547,21 +547,21 @@ lives-ok {
     is $x, 2, 'Lazy lists interact properly with multi-element for loops';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1439
+
 # list comprehension
 {
     sub f() { for ^1 { } };
     is f(), Nil, 'for-loop as last statement returns Nil';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1636
+
 # more list comprehension
 {
     my @s = ($_ * 2 if $_ ** 2 > 3 for 0 .. 5);
     is ~@s, '4 6 8 10', 'Can use statement-modifying "for" in list comprehension';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3625
+
 {
     my \rt123506a = ($_ for ^1);
     is-eqv rt123506a, (0,),
@@ -571,7 +571,7 @@ lives-ok {
         'assigning list comprehension to sigilless works (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2771
+
 {
     my @rt113026 = 1 .. 10;
     my $iter = 0;
@@ -586,7 +586,7 @@ lives-ok {
        'array expanded in for loop is expanded';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2227
+
 {
     my $c = 0;
     dies-ok { for ^8 { .=fmt('%03b'); $c++ } }, '$_ is read-only here';
@@ -603,7 +603,7 @@ dies-ok
         Foo.new(items => (1, 2, 3, 4)).foo
     }, 'for in called method runs (was a sink context bug)';
 
-# https://github.com/Raku/old-issue-tracker/issues/2101
+
 {
     my @a = 1;
     for 1..10 {
@@ -613,7 +613,7 @@ dies-ok
     is @a, [1, 2, 3, 4, 5, 6, 7, 8,9, 10, 11];
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2412
+
 is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
 
 {
@@ -621,7 +621,7 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
     is f(), Nil, 'for-loop as last statement returns Nil';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2145
+
 {
     sub incr1 (*@v is raw) { @v[0]++; @v[1]++; };
     sub incr2 (*@v is raw) { for @v { $_++} };
@@ -637,7 +637,7 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
     throws-like { incr4($a, $b) }, X::Multi::NoMatch;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     my $str = 'ACCB';
     my $rt123323;
@@ -652,7 +652,7 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
     is $a, 'a', '$0 works in substition in for loop (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3414
+
 {
     my class RT122095 {};
     my $a = RT122095.new();
@@ -666,7 +666,7 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
     is $good, True, '.WHICH value did not change in for loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4645
+
 {
     my @strs = ("11 22 33", "44 55 66", "77 88 99");
 
@@ -677,7 +677,7 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
     is @strs.join(' '), '11-22-33 44-55-66 77-88-99', 'substitution with backreferences in for loop'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4395
+
 {
     my $x = 'a1'; $x ~~ s/(\d+)/<$0>/;
     is $x, 'a<1>', 'substitution with backreferences outside of loop';
@@ -688,13 +688,13 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2080
+
 {
     sub foo { my $s; (for 1..3 { $s += $_ }) }
     is foo(), (6, 6, 6), 'for loops do not decontainerize';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5291
+
 {
     my $out = '';
     quietly $out ~= ("{$_}") for <aa bb>;
@@ -702,14 +702,14 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
         'topic of for loop has correct value in ("{$_}") construct';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3567
+
 {
     my class Sinker { method sink() { take "Blub" } }
     is-deeply (gather for ^5 { Sinker.new(); }), <Blub Blub Blub Blub Blub>.Seq,
         "for loop properly sinks final statement method call";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6336
+
 #?rakudo.jvm skip 'labeled next without loop construct'
 #?DOES 1
 {
@@ -758,7 +758,7 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
   }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6337
+
 {
     my $i = 0;
     sub foo($?) { ^2 .map: { $i++ } }; for 1 { .&foo() };
@@ -774,7 +774,7 @@ is (for 5 { (sub { "OH HAI" })() }), "OH HAI", 'Anon sub inside for works.';
     is $loops, 5, 'Lazy for loop does no more work than required';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4636
+
 
 {
     my Int @a;

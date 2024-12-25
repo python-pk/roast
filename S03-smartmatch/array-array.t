@@ -83,7 +83,7 @@ plan 73;
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3576
+
 
 {
     eval-lives-ok '["a","b","c"] ~~ [**, "b", "c"]', "Str and Whatever (1)";

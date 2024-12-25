@@ -94,7 +94,7 @@ subtest '&slurp(IO::Handle)' => {
     ], 'slurp() uses $*ARGFILES (binary mode)';
 
     is-deeply slurp('foo'.&f.open), 'foo', 'slurp($fh)';
-    # https://github.com/Raku/old-issue-tracker/issues/5283
+    
     #?rakudo.jvm todo 'problem with equivalence of Buf objects'
     is-deeply slurp('foo'.&f.open: :bin), Buf[uint8].new(102,111,111),
         'slurp($fh, :bin)';
@@ -153,7 +153,7 @@ subtest '&slurp(IO::Handle)' => {
   }
 }
 
-# https://github.com/rakudo/rakudo/issues/3566
+
 {
     lives-ok { my Buf $b = slurp($?FILE,:bin) },
       'does slurp() with :bin return a Buf-like thing';

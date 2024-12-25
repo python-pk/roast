@@ -210,7 +210,7 @@ for
       "$name with a Failure:D on the LHS throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/3945
+
 {
     is-deeply (1..3, 1..3 Z(&) 2..4, 1..4),
       ((2,3).Set, (1,2,3).Set),
@@ -229,7 +229,7 @@ for
       'did Z handle ∩ correctly (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/2167
+
 {
     is-deeply 1 (&) ($ = :42foo,), Set.new, 'no explosion';
 }

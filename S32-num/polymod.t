@@ -12,7 +12,7 @@ is   1234567890.polymod(10 xx *), (0,9,8,7,6,5,4,3,2,1), '  1234567890 10 xx *';
 is 0x1234567890.polymod(16 xx *), (0,9,8,7,6,5,4,3,2,1), '0x1234567890 16 xx *';
 is 0x1234567890.polymod(16 xx 5), (0,9,8,7,6,74565),     '0x1234567890 16 xx 5';
 
-# https://github.com/Raku/old-issue-tracker/issues/5327
+
 subtest '.polymod with a lazy list does not lose divisors when list runs out', {
     plan 3;
     is-deeply 42    .polymod(lazy 2, 3),
@@ -23,7 +23,7 @@ subtest '.polymod with a lazy list does not lose divisors when list runs out', {
                     (12,),               'last mod is zero';
 }
 
-# https://github.com/rakudo/rakudo/issues/4523
+
 {
     is-deeply 100.polymod(    1 xx *), (100,), 'modulo 1 stops (1)';
     is-deeply 100.polymod(10, 1 xx *), (0,10), 'modulo 1 stops (2)';
@@ -31,7 +31,7 @@ subtest '.polymod with a lazy list does not lose divisors when list runs out', {
 
 is 10e0.polymod(1.5), (1,6), 'polymod on non-integers';
 
-# https://github.com/rakudo/rakudo/issues/5726 (Digest and others)
+ (Digest and others)
 is-deeply 1234567.polymod(256 xx 7), (135, 214, 18, 0, 0, 0, 0, 0),
   'fixed length produces right number of values, even with zeroes';
 

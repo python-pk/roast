@@ -74,7 +74,7 @@ is-deeply %h<a b c>:delete:k, ('a', 'b'), ':delete:k adverbs';
 # Arrays are not Hashes
 # ---------------------
 
-# https://github.com/Raku/old-issue-tracker/issues/3367
+
 {
     my @a;
     @a[3] = 1;

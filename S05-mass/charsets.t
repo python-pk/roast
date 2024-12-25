@@ -40,7 +40,7 @@ plan 17;
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3351
+
 {
     'o' ~~ /<:!Upper>*/;
     is ~$/, 'o', 'Can match negated quantified character class';

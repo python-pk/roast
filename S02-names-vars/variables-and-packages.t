@@ -164,7 +164,7 @@ plan 39;
     "can't redeclare something with an implicit outer binding";
 }
 
-# https://github.com/rakudo/rakudo/issues/2570
+
 {
   throws-like { EVAL q/
     sub s($i is copy) {
@@ -180,7 +180,7 @@ plan 39;
 }
 
 {
-    # https://github.com/Raku/old-issue-tracker/issues/1665
+    
     my $t;
     for 'a' {
         $t = sub { $OUTER::_ };

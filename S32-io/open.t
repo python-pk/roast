@@ -212,7 +212,7 @@ subtest '.open uses attributes by default' => {
     is-deeply $fh.encoding, Nil,          '.encoding is Nil due to :bin';
     is-deeply $fh.chomp,    False,        '.chomp remains same after open';
 
-    # https://github.com/Raku/old-issue-tracker/issues/5283
+    
     #?rakudo.jvm todo 'problem with Buf[uint8]'
     is-deeply $fh.slurp, Buf[uint8].new($content.encode),
         '.encoding is respected';
@@ -232,7 +232,7 @@ subtest '.open uses attributes by default' => {
     $fh.close;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6394
+
 subtest '.DESTROY does not close standard handles' => {
     plan 3;
     for $*IN, $*OUT, $*ERR {
@@ -241,7 +241,7 @@ subtest '.DESTROY does not close standard handles' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4473
+
 throws-like ｢('a' x 975).IO.open｣, Exception,
     :message{not /:i  'Malformed UTF-8'/},
 '.open error does not incorrectly complain about malformed UTF-8';

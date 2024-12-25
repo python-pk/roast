@@ -123,7 +123,7 @@ $echoTap.close;
     is $splitResult.decode('utf-8'), "пиво\n", 'Coped with UTF-8 bytes split across packets';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5542
+
 {
     my $failed = False;
     my $badInputTap = $server.tap(-> $c {
@@ -152,7 +152,7 @@ $echoTap.close;
         $c.write($binary).then({ $c.close });
     });
 
-    # https://github.com/Raku/old-issue-tracker/issues/5249
+    
     #?rakudo.jvm todo 'unknown problem, did hang (sometimes)'
     {
         my $received = await client(Buf.new);
@@ -197,7 +197,7 @@ $echoTap.close;
     $byteCountTap.close;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6541
+
 {
     my Str @hosts = '127.0.0.1';
 
@@ -308,7 +308,7 @@ $echoTap.close;
     is @second-got.join(""), "hello second", "second server socket got the right message";
 }
 
-# https://github.com/rakudo/rakudo/issues/2411
+
 {
     my $listen-socket = IO::Socket::Async.listen($s-address, 0);
     react {

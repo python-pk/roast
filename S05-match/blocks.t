@@ -12,7 +12,7 @@ kind of block, and in the condition, if any.
 
 =end description
 
-# https://github.com/Raku/old-issue-tracker/issues/276
+
 if 1 {
     ok 'a' ~~ /./, 'Can match in an if block';
     is ~$/, 'a', '... and can use the match var';

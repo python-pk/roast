@@ -102,7 +102,7 @@ for <first second> {
         'our once { ...; Mu } block was invoked exactly once';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2899
+
 {
     my $run = False;
     my $i = 0;
@@ -111,7 +111,7 @@ for <first second> {
     is $i, 42, 'once block in statement modifier evaluates to correct result';
 }
 
-# https://github.com/rakudo/rakudo/issues/1610
+
 throws-like ｢my \z := once 42; z = 100｣, X::Assignment::RO,
     '`once` does not containerize its values';
 

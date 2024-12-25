@@ -67,7 +67,7 @@ do-test
         is $^client.recv(26), ([~] 'a' .. 'z'), "remaining 26 were buffered";
 
         # Multibyte characters
-        # https://github.com/Raku/old-issue-tracker/issues/2981
+        
 
         $received = $^client.recv(1);
         is $received, chr(0xA001), "received {chr 0xA001}";
@@ -75,7 +75,7 @@ do-test
 
         $received = $^client.recv(1);
         is $received.chars, 1, "received another character";
-        # https://github.com/Raku/old-issue-tracker/issues/2981
+        
 
         is $received, chr(0xA002), "combined the bytes form {chr 0xA002}";
 
@@ -115,7 +115,7 @@ do-test
         $received = $^client.get();
         is $received, 'All mimsy were the borogoves,',
           "\\r\\n separator";
-        # https://github.com/Raku/old-issue-tracker/issues/2627
+        
 
         is $received.encode('ascii').elems, 29,
           "\\r was not left behind on the string";
@@ -168,7 +168,7 @@ do-test
         $^client.close();
     };
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 do-test
     # server
     {
@@ -296,7 +296,7 @@ do-test
         $^client.close();
     };
 
-# https://github.com/rakudo/rakudo/issues/1721
+
 {
   my $str := "foo\nbar\r\nmeows\n";
   do-test
@@ -316,7 +316,7 @@ do-test
     }
 }
 
-{ # https://github.com/rakudo/rakudo/issues/1738
+{ 
     my $sync := Channel.new;
     start {
         my $server := IO::Socket::INET.new:
@@ -335,7 +335,7 @@ do-test
 
 if $*DISTRO.is-win            or  # test for WSL below
    $*KERNEL.name eq "linux"   and $*KERNEL.release ~~ /:i <|w>Microsoft<|w>/ {
-    # https://github.com/Raku/old-issue-tracker/issues/6094
+    
     skip 'Winsock 1 second delay for connection failure RT #130892', 1
 }
 else {

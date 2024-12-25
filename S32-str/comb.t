@@ -75,7 +75,7 @@ is (<a ab>, <bc ad ba>).comb(/\S*a\S*/), <a ab ad ba>,
     is @l[1].to, 9, '.to of the second item is correct';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1040
+
 {
     my $expected_reason = rx:s/none of these signatures match/;
 
@@ -93,7 +93,7 @@ is (<a ab>, <bc ad ba>).comb(/\S*a\S*/), <a ab ad ba>,
     is comb(/\d+/ , "Th3r3 4r3 s0m3 numb3rs 1n th1s str1ng" , 2), <3 3>, 'Subroutine form with limit';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3672
+
 {
     is comb("o","ooo"), <o o o>, "comb(Str,Str)";
     is "qqq".comb("q"), <q q q>, "Str.comb(Str)";
@@ -158,7 +158,7 @@ is (<a ab>, <bc ad ba>).comb(/\S*a\S*/), <a ab ad ba>,
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5025
+
 is-deeply "hello".comb(/:m <[o]>/), ('o',).Seq,
     '.comb(/:m <[o]>/) construct does not crash';
 
@@ -194,12 +194,12 @@ subtest 'edge-case combers' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5827
+
 is (gather 'abc'.comb(/. { take $/.Str } <!> /)).join(','),
     'a,b,c',
     '$/ inside comb';
 
-# https://github.com/rakudo/rakudo/issues/1564
+
 subtest 'comb(Regex) returns Seq' => {
     plan 8;
     cmp-ok 'abc'.comb(/./),  'eqv', <a b c>.Seq, 'method (Str)';
@@ -217,7 +217,7 @@ subtest 'comb(Regex) returns Seq' => {
         'sub (Cool) with limit';
 }
 
-# https://github.com/rakudo/rakudo/issues/2745
+
 {
     is-deeply ‘abc’.comb(1, 999), <a b c>, 'comb(1,999)';
     is-deeply ‘abc’.comb(1,  -1), (),      'comb(1,-1)';

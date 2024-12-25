@@ -52,7 +52,7 @@ ok C2 ~~ rB, 'class matches second role';
 ok rA !~~ C2, 'first role does not match class';
 ok rB !~~ C2, 'second role does not match class';
 
-# https://github.com/Raku/old-issue-tracker/issues/803
+
 role RT64002 does rA does rB {}
 ok RT64002 ~~ rA, 'role matches first role it does';
 ok RT64002 ~~ rB, 'role matches second role it does';
@@ -72,7 +72,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
 }
 
 # diamond composition
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     role DA {
         method foo { "OH HAI" };
@@ -85,7 +85,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
     is DE.new.foo, 'OH HAI', 'same with punning and inheritance';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1371
+
 {
     role RT69919 {
         my $lex = 'Luthor';
@@ -98,7 +98,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
 
 
 # inheritance through role composition - specced in A12
-# https://github.com/Raku/old-issue-tracker/issues/1303
+
 {
     class irA {};
     role  irB is   irA {};
@@ -108,7 +108,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1512
+
 {
     role RT72856A { method foo {} };
     role RT72856B { method foo {} };
@@ -119,7 +119,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
     ok $! ~~ /RT72856B/, 'colliding role mentioned in error (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1666
+
 {
     role UsesSettingSub {
         method doit() {
@@ -131,7 +131,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
         'can use a sub from the setting in a method composed from a role';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/894
+
 {
     my class A {
         method foo { "OH HAI" }
@@ -163,7 +163,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
         END
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3795
+
 {
     my role R1 {
         multi method m(Int $x) { ... }
@@ -240,7 +240,7 @@ ok rB !~~ RT64002, 'role not matched by second role it does';
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/2418
+
 {
     lives-ok {
         'role A { method x { ... } }; class B does A { has  $.x }'.EVAL

@@ -111,7 +111,7 @@ lives-ok { my int @nx[2;2] = (0, 1), (2, 3); my @x[2;2] = @nx },
 lives-ok { my @x[2;2] = (0, 1), (2, 3); my int @nx[2;2] = @x },
     'Can assign non-native shaped to native shaped';
 
-# https://github.com/Raku/old-issue-tracker/issues/4772
+
 {
     lives-ok { my Str @a[3;3] = <a b c>, <d e f>, <g h i> },
         'Can assign list of lists that matches shape of typed 3-dim array';

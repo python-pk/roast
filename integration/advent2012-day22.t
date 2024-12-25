@@ -25,7 +25,7 @@ is-deeply @ip4addrs, [<127.0.0.1 173.194.32.32>], '.comb';
 
 @ip = ();
 @ip.push(.list) for m:g/ (\d ** 1..3) ** 4 % '.' /;
-# https://github.com/Raku/old-issue-tracker/issues/3377
+
 subtest 'integer parse' => {
     plan 11;
 

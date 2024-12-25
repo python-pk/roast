@@ -211,17 +211,17 @@ is sprintf('%s', -Inf),            -Inf,    'sprintf %s handles Inf';
 
 is sprintf('%d %1$x %1$o', 12),    '12 c 14',  'positional argument specifier $';
 
-# https://github.com/Raku/old-issue-tracker/issues/3099
+
 is sprintf('%10s', "☃" x 3), '       ☃☃☃', 'multi-byte characters are counted correctly for %Ns strings';
 
-# https://github.com/Raku/old-issue-tracker/issues/3174
+
 is sprintf("%x %x", 301281685344656640, 301281685344656669), '42e5e18b84c9d00 42e5e18b84c9d1d',   'RT #118601';
-# https://github.com/Raku/old-issue-tracker/issues/3151
+
 is sprintf("%d", 42**20),                                    '291733167875766667063796853374976', 'RT #118253';
-# https://github.com/Raku/old-issue-tracker/issues/3099
+
 is map({chars sprintf "[%18s]\n", "ಠ" x $_ }, 0..6),         [21, 21, 21, 21, 21, 21, 21],        'RT #117547';
 
-# https://github.com/Raku/old-issue-tracker/issues/3019
+
 {
     is sprintf('%12.5f',  NaN), '         NaN', 'RT #116280';
     is sprintf('%12.5f',  Inf), '         Inf', 'RT #116280';
@@ -239,7 +239,7 @@ is map({chars sprintf "[%18s]\n", "ಠ" x $_ }, 0..6),         [21, 21, 21, 21, 
     is sprintf('%G', -Inf),  "-Inf",   '-Inf properly handled %G';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     throws-like { sprintf 'D6.2', 'foo' }, X::Str::Sprintf::Directives::Count,
     :args-used(0),
@@ -247,7 +247,7 @@ is map({chars sprintf "[%18s]\n", "ಠ" x $_ }, 0..6),         [21, 21, 21, 21, 
     'Invalid formats do not spill internal details';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     throws-like { sprintf("%d-%s", 42) }, X::Str::Sprintf::Directives::Count,
     :args-used(2),
@@ -265,7 +265,7 @@ is map({chars sprintf "[%18s]\n", "ಠ" x $_ }, 0..6),         [21, 21, 21, 21, 
     :args-have(1),
     "Warn of possible '\$' in format";
 }
-# https://github.com/Raku/old-issue-tracker/issues/3542
+
 #
 #   This test was removed since it is a duplicate of the test found in
 #   "rakudo/t/05-messages/02-errors.t", line 135.
@@ -281,7 +281,7 @@ is map({chars sprintf "[%18s]\n", "ಠ" x $_ }, 0..6),         [21, 21, 21, 21, 
     is sprintf("%.3f", 1.969), "1.969", '%.3f of 1.969 should be 1.969';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3248
+
 {
     is sprintf('%.50f', 1.115),
         '1.11500000000000000000000000000000000000000000000000',
@@ -320,13 +320,13 @@ is map({chars sprintf "[%18s]\n", "ಠ" x $_ }, 0..6),         [21, 21, 21, 21, 
     is sprintf( '%.*d', [0,  0]),      '', '%.*d (number is zero)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3716
+
 {
     is sprintf('%064b', -100), '-' ~ ('0' x 56) ~ '1100100',
         '%064b format works with negatives';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6672
+
 subtest 'sprintf with Numeric/Str type objects' => {
     plan 18*my @types := Num, Int, Rat, Complex, Str;
     sub qs (|c) { quietly sprintf |c }
@@ -359,7 +359,7 @@ subtest 'sprintf with Numeric/Str type objects' => {
 is sprintf("%.16e", sqrt 3.0e0), '1.7320508075688772e+00',
     'sprintf maintains sane precision when stringifying nums';
 
-# https://github.com/rakudo/rakudo/issues/4321{
+{
 {
     enum Str ( :Free<f>, :Inuse<n> );
     lives-ok { "ok %s".sprintf: Free };

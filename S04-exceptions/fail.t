@@ -34,7 +34,7 @@ given (Failure.new()) {
   is $was_after_sub,  0, "fail() causes our try to die";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/941
+
 {
     our Int sub rt64990 { fail() }
     ok rt64990() ~~ Failure, 'sub typed Int can fail()';
@@ -43,7 +43,7 @@ given (Failure.new()) {
     ok repeat() ~~ Failure, 'sub typed Int can return Failure';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1385
+
 {
     sub rt70229 { return fail() }
     my $rt70229 = rt70229();
@@ -51,7 +51,7 @@ given (Failure.new()) {
     dies-ok { ~$rt70229 }, 'attempt to stringify Failure dies';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2180
+
 {
     sub rt77946 { return fail() }
     my $rt77946 = rt77946();
@@ -59,7 +59,7 @@ given (Failure.new()) {
     isa-ok $rt77946.defined, Bool, 'Failure.defined returns a Bool';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2582
+
 {
     my $f = (sub { fail('foo') }).();
     is $f.exception, 'foo', 'can extract exception from Failure';
@@ -88,7 +88,7 @@ given (Failure.new()) {
     lives-ok { use fatal; my $x = defined it-will-fail(); 1 }, 'use fatal respects defined';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3183
+
 {
     sub fatal-scope(&todo) {
         use fatal;
@@ -106,7 +106,7 @@ given (Failure.new()) {
     is fatal-scope(&non-fatal-scope), 42, "Fatal scopes are lexical rather than dynamic";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2947
+
 {
     # We now allow more things in Failure.new than when the original RT
     # was filed.
@@ -172,11 +172,11 @@ subtest 'Failure.self' => {
     is-deeply $f, $f.self, 'handled exceptions are passed through as is';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3799
+
 is_run ｢Failure.new(Exception.new); Nil｣, {:out(""), :err(*), :1status},
     'Failure.new(Exception.new) does not segfault';
 
-# https://github.com/Raku/old-issue-tracker/issues/6313
+
 {
     without Failure.new {
         is-deeply .raku.EVAL.handled, True,
@@ -184,13 +184,13 @@ is_run ｢Failure.new(Exception.new); Nil｣, {:out(""), :err(*), :1status},
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4661
+
 throws-like {
     sub s { fail 'important failure message' }; my Int $x = s();
 }, Exception, message => /important/,
     'assigning Failure to typed variable that cannot hold it explodes it';
 
-# https://github.com/rakudo/rakudo/issues/2764
+
 {
     CATCH {
         isa-ok $_, X::AdHoc, 'did we get a die';

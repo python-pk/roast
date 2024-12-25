@@ -32,7 +32,7 @@ is(+$list_sub, 3, 'Finding the length of the list works as expected.');
   is(@list, ('foo',), 'The list constains the expected value');
 }
 
-# https://github.com/rakudo/rakudo/issues/2060
+
 {
     my @a is List = 1, 2, 3;
     throws-like { @a = 4,5,6 }, X::Assignment::RO, 'An immutable List created via `is List` cannot be re-assigned';

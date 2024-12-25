@@ -30,12 +30,12 @@ plan 49;
   is +^ 0xdeaddead0000deaddead0000dead, -0xdeaddead0000deaddead0000deae,
      'numeric bitwise negation';
 
-  # https://github.com/Raku/old-issue-tracker/issues/2987
+  
   is 0x0123456789abcdef, 81985529216486895,
       'correct bit result with big enough hexadecimal (0x) literal';
 
   # Negative numbers.  These really need more tests for bigint vs sized natives
-  # https://github.com/Raku/old-issue-tracker/issues/2987
+  
   is (-5 +& -2),(-6), "logical AND of two negative Int is twos complement";
   is (-7 +| -6),(-5), "logical OR of two negative Int is twos complement";
   is (-7 +^ -6),( 3), "logical XOR of two negative Int is twos complement";
@@ -119,7 +119,7 @@ sub check_string_bitop (Str:D $a, Str:D $b) is test-assertion {
   is( 32 +> 1,            16,     'shift one bit right' );
   is( 257 +< 7,           32896,  'shift seven bits left' );
   is( 33023 +> 7,         257,    'shift seven bits right' );
-  # https://github.com/Raku/old-issue-tracker/issues/2985
+  
   is (-4..-1 X+> 1..3), (-2,-1,-1,-2,-1 xx 8), "right shift is 2s complement";
 
   is 0xdeaddead0000deaddead0000dead +< 4, 0xdeaddead0000deaddead0000dead0, 'shift bigint 4 bits left';
@@ -137,7 +137,7 @@ sub check_string_bitop (Str:D $a, Str:D $b) is test-assertion {
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2072
+
 # precedence of +< and +>
 {
   is( 48 + 0 +< 8, 48 + (0 +< 8), 'precedence of +<' );
@@ -146,7 +146,7 @@ sub check_string_bitop (Str:D $a, Str:D $b) is test-assertion {
   is( 2 ** 5 +> 2, (2 ** 5) +> 2, 'precedence of +>' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2638
+
 {
     my ($x, $y) = (2**30, 1);
     is +^$x +& $y, 1, 'large-ish bit ops';
@@ -187,8 +187,8 @@ sub check_string_bitop (Str:D $a, Str:D $b) is test-assertion {
 #if ("ok \xFF\x{FF}\n" ~& "ok 41\n" eq "ok 41\n") { say "ok 19" } else { say "not ok 19" }
 #if ("ok \x{FF}\xFF\n" ~& "ok 42\n" eq "ok 42\n") { say "ok 20" } else { say "not ok 20" }
 
-# https://github.com/Raku/old-issue-tracker/issues/4881
-# https://github.com/Raku/old-issue-tracker/issues/6231
+
+
 subtest '+> bit shift' => {
     my @p = 1, 2, 4, 10, 30, 31, 32, 33, 40, 60, 63, 64, 65, 100, 500, 1000;
     my @n = 1, 3, 4, 10, 15, 50, 75, 100, 500, 751, 1000;
@@ -209,7 +209,7 @@ subtest '+> bit shift' => {
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/6245
+
 subtest 'combination of bit ops in loop keeps giving good result' => {
     plan 2;
 

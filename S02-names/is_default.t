@@ -67,7 +67,7 @@ subset IntOrNil of Any where Int | Nil;
     ok $a.d_var.default === Nil, 'is the default set correctly for $!d';
 } #19
 
-# https://github.com/Raku/old-issue-tracker/issues/4291
+
 {
     my ($a, $b) is default(42);
     is $a, 42, 'is default() works on a group of variables too (1)';
@@ -411,7 +411,7 @@ subtest "Hash Attributes" => {
       X::Parameter::Default::TypeCheck,
       expected => Hash[Int],
       got      => Nil;
-# https://github.com/Raku/old-issue-tracker/issues/6512
+
     throws-like 'class IntFoo { has Int $!a is default("foo") }',
       X::TypeCheck::Attribute::Default,
       expected => Int,
@@ -439,14 +439,14 @@ subtest "Hash Attributes" => {
       subtype => 'default';
 } #4
 
-# https://github.com/Raku/old-issue-tracker/issues/4553
+
 lives-ok { EVAL 'my Any $a is default(3)' }, 'Default value that is subtype of constraint works fine';
 lives-ok { EVAL 'class Any3 { has Any $!a is default(3) }' }, 'Default value that is subtype of attribute constraint works fine';
 
-# https://github.com/Raku/old-issue-tracker/issues/4557
+
 lives-ok { EVAL 'my $a is default(Mu); 1' }, 'Mu as a default value on an unconstrained Scalar works';
 
-# https://github.com/Raku/old-issue-tracker/issues/6513
+
 subtest 'can use `Mu` as default for attributes' => {
     plan 3;
 
@@ -459,13 +459,13 @@ subtest 'can use `Mu` as default for attributes' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4561
+
 eval-lives-ok 'my $a is default(Failure.new); 1',
     'Failure.new as a default value on an unconstrained Scalar works';
 eval-lives-ok 'class NoneFailure { has $!a is default(Failure.new); 1}',
     'Failure.new as a default value on an unconstrained Scalar attribute works';
 
-# https://github.com/Raku/old-issue-tracker/issues/4555
+
 subtest 'is default() respects type constraint' => {
     plan 2;
     subtest 'variable' => {
@@ -489,7 +489,7 @@ subtest 'is default() respects type constraint' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4555
+
 subtest 'default `is default()` gets adjusted to type constraint' => {
     plan 2;
     subtest 'variable' => {
@@ -514,7 +514,7 @@ subtest 'default `is default()` gets adjusted to type constraint' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4640
+
 {
     class DefaultTyped { has Int:D $.a is rw is default(42) }
     is DefaultTyped.new.a, 42, 'uninitialized typed:D attribute should have its default';

@@ -17,7 +17,7 @@ plan 51;
         Parens works also
     ) 1, 'multiline embedded comment with #`()';
 
-    # https://github.com/Raku/old-issue-tracker/issues/2976
+    
     eval-lives-ok "#`( foo )", "comment as first and only statement";
 
     eval-lives-ok "2 * 3\n #`<<<\n comment>>>", "multiline comment with <<<";
@@ -84,7 +84,7 @@ plan 51;
     >>> 1, '#`<<<...>>>';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3341
+
 {
     eval-lives-ok( q{{
         my $var = \#`((( comment ))) 12;
@@ -174,7 +174,7 @@ plan 51;
 }
 
 # L<S02/Single-line Comments/"single-line comments">
-# https://github.com/Raku/old-issue-tracker/issues/1410
+
 {
     lives-ok { EVAL "#=======\n#=======\nuse strict;" },
       "pragma use after single line comments";
@@ -228,7 +228,7 @@ is $outerVal, 22, 'Single paragraph Pod, multiple lines parses to whitespace in 
 
 }} }, 'Single paragraph Pod, multiple lines eval throws no error';
 
-# https://github.com/rakudo/rakudo/issues/3143
+
 {
     throws-like { Q:to/DOC/.EVAL }, X::Syntax::Comment::Embedded;
     #`!

@@ -15,7 +15,7 @@ use MONKEY-SEE-NO-EVAL;
 
 plan 58;
 
-# https://github.com/Raku/old-issue-tracker/issues/4548
+
 {
     is $required-Test.gist, '(Test)', "successful require PACKAGE returns PACKAGE";
     is (require "InnerModule.rakumod"), "InnerModule.rakumod",
@@ -37,13 +37,13 @@ lives-ok {
 
 my $name = 'InnerModule.rakumod';
 
-# https://github.com/Raku/old-issue-tracker/issues/4208
+
 {
     require $name '&bar';
     is bar(),'Inner::bar','can load InnerModule from a variable at run time';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5034
+
 {
     require NoModule <&bar>;
     my $result = bar();
@@ -57,7 +57,7 @@ my $name = 'InnerModule.rakumod';
 }
 nok ::('&bar'), ｢&bar didn't leak to outer scope｣;
 
-# https://github.com/Raku/old-issue-tracker/issues/3162
+
 throws-like { require InnerModule:file($name) <quux> },
     X::Import::MissingSymbols,
 '&-less import of sub does not produce `Null PMC access` error';
@@ -115,7 +115,7 @@ lives-ok { chdir $?FILE.IO.parent(2).child('packages/FooBarBaz/lib'); require "F
          'can change directory and require a module';
 chdir $cwd;
 
-# https://github.com/Raku/old-issue-tracker/issues/2966
+
 lives-ok { try require "THIS_FILE_HOPEFULLY_NEVER_EXISTS.rakumod"; },
          'requiring something non-existent does not make it segfault';
 
@@ -158,7 +158,7 @@ eval-lives-ok q|BEGIN require Fancy::Utilities <&allgreet>;|,'require can import
      }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6179
+
 {
     require ::('SetConst');
     ok ::('SetConst::X') eqv set(<x y>),

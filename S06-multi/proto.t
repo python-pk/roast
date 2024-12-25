@@ -47,7 +47,7 @@ is(bar(B.new), 3, 'dispatch on class worked (anon cap)');
 is(bar(42),    1, 'dispatch with no possible candidates fell back to proto (anon cap)');
 throws-like 'bar(41)', Exception, 'impossible dispatch failed (anon cap)';
 
-# https://github.com/Raku/old-issue-tracker/issues/965
+
 {
     my $rt65322 = q[
         multi sub rt65322( Int $n where 1 ) { 1 }
@@ -72,13 +72,13 @@ throws-like 'bar(41)', Exception, 'impossible dispatch failed (anon cap)';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1205
+
 {
     throws-like 'proto rt68242($a){};proto rt68242($c,$d){};', X::Redeclaration,
         'attempt to define two proto subs with the same name dies';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2658
+
 {
     my package Cont {
         our proto sub ainer($) {*}
@@ -97,7 +97,7 @@ throws-like 'bar(41)', Exception, 'impossible dispatch failed (anon cap)';
     is f('a'), 7, 'can use {*} in an expression in a proto (1)';
     is f(1),  11, 'can use {*} in an expression in a proto (2)';
 
-    # https://github.com/Raku/old-issue-tracker/issues/2893
+    
     my $called_with = '';
     proto cached($a) {
         state %cache;
@@ -121,7 +121,7 @@ throws-like 'bar(41)', Exception, 'impossible dispatch failed (anon cap)';
     is maybe(-5), 0, "It's ok not to dispatch to the multis";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1905
+
 {
     eval-lives-ok q{
         class TestA { has $.b; proto method b {} };
@@ -131,7 +131,7 @@ throws-like 'bar(41)', Exception, 'impossible dispatch failed (anon cap)';
     }, 'proto method before same-named attribute';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3001
+
 {
     throws-like q[
         proto f(Int $x) {*}; multi f($) { 'default' }; f 'foo'

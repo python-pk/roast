@@ -25,14 +25,14 @@ dies-ok { Supplier.new.Supply.interval(1) }, 'can not be called as an instance m
       :virtual-time;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4406
+
 is_run(
        'my $timer = Supply.interval(0.1); $timer.tap({ die "uh-oh" }); sleep 5;',
        { status => * != 0, err => /"uh-oh"/},
        'Exception thrown in a timer and unhandled terminates program',
 );
 
-# https://github.com/Raku/old-issue-tracker/issues/5398
+
 {
     my $code = 'react { whenever Supply.interval: .01 { done } };'
             ~ ' say "Did not hang"';
@@ -43,7 +43,7 @@ is_run(
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5820
+
 {
     # treat too-small values as minimum timer resolution (e.g. 0.001 seconds)
     # emitting optional warning in such cases is allowed

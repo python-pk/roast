@@ -32,7 +32,7 @@ $s.emit($_) for ^$times;
 await $promise;
 is $done, $times, 'did we receive all?';
 
-# https://github.com/Raku/old-issue-tracker/issues/5156
+
 {
     my $r = Supplier.new;
     my $s = $r.Supply;

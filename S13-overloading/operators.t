@@ -19,7 +19,7 @@ plan 7;
         else { ($arg-1)! * $arg;}
     };
     is 5!, 120, 'Can define recursive postfix operator';
-    # https://github.com/Raku/old-issue-tracker/issues/3219
+    
     is 5.!, 120, 'Can use newly defined postfix operator with leading dot';
 }
 
@@ -37,7 +37,7 @@ plan 7;
 }
 
 # overloaded invoke
-# https://github.com/Raku/old-issue-tracker/issues/1906
+
 # (even though the ticket title claims it, the actual problem was not related
 # to monkey typing/augmenting at all)
 
@@ -51,7 +51,7 @@ plan 7;
     is B.new(x => 'a').('b'), 'ab', 'can overload invoke';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6593
+
 is_run ｢$ = ""; sub postfix:<♥> ($) { "pass" }; print "{ 5♥ }"｣,
     {:out<pass>, :err(''), :0status},
 'earlier quoted strings do not interfere with later interpolation of newly defined ops';

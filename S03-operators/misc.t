@@ -93,11 +93,11 @@ ok(?((any(1..6) == one(1|2|3|4|5|6))), "any elements will match via junction");
 }
 
 # L<S03/List infix precedence/"the zip operator">
-# https://github.com/Raku/old-issue-tracker/issues/1633
+
 my @z=2,3;
 is (2 Z 3), @z, 'joining of single items';
 
-# https://github.com/Raku/old-issue-tracker/issues/3065
+
 {
     throws-like { EVAL q[.say for (1 , 2, 3)«~» "!"] },
         X::Syntax::Confused,
@@ -105,7 +105,7 @@ is (2 Z 3), @z, 'joining of single items';
         message => { m/"Two terms in a row"/ };
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3496
+
 {
     multi infix:«≃» { $^l lt $^r };
     multi infix:«!≃» { not($^l ≃ $^r) };
@@ -115,19 +115,19 @@ is (2 Z 3), @z, 'joining of single items';
 
 # Duplicate prefixes
 {
-    # https://github.com/Raku/old-issue-tracker/issues/1562
+    
     throws-like "1%^^1", X::Syntax::DuplicatedPrefix, prefixes => "^^",
         "%^^ fails to parse (RT #73198)";
-    # https://github.com/Raku/old-issue-tracker/issues/1921
+    
     throws-like "555 ~~!~~ 666", X::Syntax::DuplicatedPrefix, prefixes => "~~",
         "~~!~~ fails to parse (RT #76436)";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2445
+
 # comparison complains if either of its arguments is undefined
 {
     throws-like {Int < 0}, Exception;
-    # https://github.com/Raku/old-issue-tracker/issues/2445
+    
     #?rakudo todo ""
     throws-like {"cat" gt Str}, Exception;
 }
@@ -199,7 +199,7 @@ is (2 Z 3), @z, 'joining of single items';
     is-deeply v42 ≠ v42, False, 'Version ≠ Version (false)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6629
+
 is-deeply (0 ≠ 0 | 1 or 42), 42, 'Junctions with ≠ works like for negated ops';
 
 subtest 'does works with non-roles' => {
@@ -216,7 +216,7 @@ subtest 'does works with non-roles' => {
     is-deeply $o.Bars, $mod, '`does` a custom class adds method from .^name';
 }
 
-# https://github.com/rakudo/rakudo/issues/2568
+
 {
     is-deeply 3 ~ ( 5 | "18" ), any("35","318"),
       "does a junction survive ~ Junction";

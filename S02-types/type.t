@@ -43,11 +43,11 @@ my Str $bar;
     throws-like 'my int $alpha = Nil', Exception, 'native int type cannot be undefined';
     lives-ok({my Int $beta = Nil},      'object Int type can be undefined');
     eval-lives-ok('my num $alpha = 1e0',    'Has native type num');
-    # https://github.com/Raku/old-issue-tracker/issues/3360
+    
     #?rakudo todo "assigning Nil to natives"
     eval-lives-ok('my num $alpha = Nil', 'native num type can be undefined');
     lives-ok({my Num $beta = Nil},      'object Num type can be undefined');
-    # https://github.com/Raku/old-issue-tracker/issues/2447
+    
     lives-ok({my Str ($a) = ()}, 'object Str type can be undefined, list context');
 }
 
@@ -180,7 +180,7 @@ throws-like q[my num $n; $n = <42+0i>], X::Syntax::Number::LiteralType, 'num doe
     ok Array ~~ Positional, 'Array does Positional too';
 }
 
-# https://github.com/rakudo/rakudo/issues/5256
+
 {
     subtest "testing .elems on core type objects" => {
         for

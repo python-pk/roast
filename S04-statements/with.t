@@ -225,7 +225,7 @@ for
     ok $foo ~~ $expected, "\$_: if on { $if // $if.^name }, orwith on { $orwith // $orwith.^name }";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5863
+
 subtest '`else` and kin with `without` errors out' => {
     plan 3;
     throws-like 'without 1 {} else     {}', X::Syntax::WithoutElse,

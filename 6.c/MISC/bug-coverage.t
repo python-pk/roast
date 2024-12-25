@@ -8,7 +8,7 @@ use Test::Util;
 
 plan 17;
 
-# https://github.com/rakudo/rakudo/issues/2280
+
 is-deeply (11**5, */-2 … 0)[31], <-161051/2147483648>,
     'thou shall not coredump';
 
@@ -50,7 +50,7 @@ subtest '.count-only/.bool-only for iterated content' => {
     test-iter-opt Bag.new(<a b c>).pick(2).iterator, 2, 'baggy .pick(n)';
 }
 
-# https://github.com/rakudo/rakudo/issues/1407
+
 subtest 'enums with names of core types do not blow things up unexpectedly' => {
     plan 3;
     my enum Foo «:Map<foo> :Positional<ber> :Callable<meow>»;
@@ -62,7 +62,7 @@ subtest 'enums with names of core types do not blow things up unexpectedly' => {
     is-deeply @a,      [<a b c>],         'Array works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6664
+
 subtest 'no crashes with native types in conditionals' => {;
     plan 6;
     subtest 'if' => {
@@ -183,44 +183,44 @@ subtest 'thunking closure scoping' => {
         for ^2 -> \c { Nil for first { take c; 0 }, ^2; }
     }, (0, 0, 1, 1).Seq, 'nested `for`s with thunk in statement modifier';
 
-    # https://github.com/rakudo/rakudo/issues/1212
+    
     is-deeply <a b c>[$_ xx 2], <b b>.Seq, 'xx inside `with`' with 1;
 
-    # https://github.com/Raku/old-issue-tracker/issues/6008
+    
     is-deeply gather {
         sub itcavuc ($c) { try {take $c} andthen 42 };
         itcavuc $_ for 2, 4, 6;
     }, (2, 4, 6).Seq, 'try with block and andthen';
 
-    # https://github.com/Raku/old-issue-tracker/issues/6625
+    
     is-deeply gather {
         sub foo ($str) { { take $str }() orelse Nil }
         foo "cc"; foo "dd";
     }, <cc dd>.Seq, 'block in a sub with orelse';
 
-    # https://github.com/Raku/old-issue-tracker/issues/6340
+    
     is-deeply gather for ^7 {
         my $x = 1;
         1 andthen $x.take andthen $x = 2 andthen $x = 3 andthen $x = 4;
     }, 1 xx 7, 'loop + lexical variable plus chain of andthens';
 
-    # https://github.com/Raku/old-issue-tracker/issues/6554
+    
     is-deeply gather for <a b c> { $^v.uc andthen $v.take orelse .say },
         <a b c>.Seq, 'loop + andthen + orelse';
 
-    # https://github.com/Raku/old-issue-tracker/issues/4731
+    
     is-deeply gather { (.take xx 10) given 42 }, 42 xx 10,
         'parentheses + xx + given';
 
-    # https://github.com/Raku/old-issue-tracker/issues/5291
+    
     is-deeply gather { take ("{$_}") for <aa bb> }, <aa bb>.Seq,
         'postfix for + take + block in a string';
 
-    # https://github.com/Raku/old-issue-tracker/issues/4663
+    
     is-deeply gather { take (* + $_)(32) given 10 }, 42.Seq,
         'given + whatever code closure execution';
 
-    # https://github.com/Raku/old-issue-tracker/issues/4901
+    
     is-deeply gather {
         sub foo($x) { (* ~ $x)($_).take given $x }; foo(1); foo(2)
     }, ("11", "22").Seq, 'sub + given + whatevercode closure execution';
@@ -229,7 +229,7 @@ subtest 'thunking closure scoping' => {
 
 ## test was moved from previous subtest 'thunking closure scoping' in order
 ## to make it fudgeable
-# https://github.com/Raku/old-issue-tracker/issues/6553
+
 #?rakudo.jvm skip 'UnwindException in thread "main"'
 #?DOES 1
 {
@@ -243,7 +243,7 @@ subtest 'thunking closure scoping' => {
   }
 }
 
-# https://github.com/rakudo/rakudo/issues/1538
+
 subtest 'block in string in parentheses in `for` statement mod' => {
     plan 4;
     sub foo($z) {
@@ -258,13 +258,13 @@ subtest 'block in string in parentheses in `for` statement mod' => {
     is-deeply (foo 444), 'HERE: bar 44499', 'fourth run';
 }
 
-{ # https://github.com/rakudo/rakudo/issues/1645
+{ 
     sub f { 4 ?? 8 !! 15 }; f for ^10000;
     pass 'no segfaults in sub call with ternary';
 }
 
 {
-    # https://github.com/Raku/old-issue-tracker/issues/5228
+    
     my $failed = 0;
 
     sub match ($str, $flip) {
@@ -283,7 +283,7 @@ subtest 'block in string in parentheses in `for` statement mod' => {
     is $failed, 0, '$match should not be true and false';
 }
 
-# https://github.com/rakudo/rakudo/issues/1695
+
 subtest '$_ and with/andthen/for combinations are not buggy' => {
     plan 4;
 
@@ -307,7 +307,7 @@ is_run ｢
     print @x.elems
 ｣, {:out<20>, :err(''), :0status}, 'no "Illegal Instruction" crashes';
 
-# https://github.com/rakudo/rakudo/issues/2222
+
 throws-like ｢my $ = 5 »*» (2..4)｣, X::HyperOp::NonDWIM,
     'non DWIM hyper throws good error';
 
@@ -344,11 +344,11 @@ group-of 11 => 'cover potential bugs in possible optimization of `for ...`' => {
 }
 
 group-of 2 => 'negative offset in JIT lables errors' => {
-    # https://github.com/rakudo/rakudo/issues/2347
+    
     is_run ｢my $a = ("a" x 200).comb; $a ~~ s:g/<ws>// for ^20; print 'pass'｣,
         {:out<pass>, :err(''), :0status}, '.comb';
 
-    # https://github.com/rakudo/rakudo/issues/2346
+    
     is_run ｢
         my token octet   { (\d+) }
         my regex address { <octet> ** 4 % '.' }
@@ -365,7 +365,7 @@ group-of 2 => 'negative offset in JIT lables errors' => {
     ｣, {:out<pass>, :err(''), :0status}, 'tokens and subs';
 }
 
-{ # https://github.com/rakudo/rakudo/issues/2345
+{ 
     (my $lib := make-temp-dir).add('Foo.rakumod').spurt: ｢$ = IO::Path:D｣;
     is_run ｢use Foo; -> --> IO::Path:D {".".IO}(); print 'pass'｣,
         :compiler-args['-I', $lib.absolute], {:out<pass>, :err(''), :0status},
@@ -373,7 +373,7 @@ group-of 2 => 'negative offset in JIT lables errors' => {
 }
 
 #?rakudo.jvm todo 'dies for unknown reason'
-{ # https://github.com/rakudo/rakudo/issues/1207
+{ 
     (my $lib := make-temp-dir).add('Foo.rakumod').spurt:
         ｢our sub module-transform { my Int:D % = :1a }｣;
     is_run ｢
@@ -387,7 +387,7 @@ group-of 2 => 'negative offset in JIT lables errors' => {
     'use of :D in a module does not mess up parametarization of a Hash';
 }
 
-{ # https://github.com/rakudo/rakudo/issues/2400
+{ 
     my $lib := make-temp-dir;
     $lib.add('Bar.rakumod').spurt: ｢my $ = Hash[Any:D,List:D]｣;
     $lib.add('Foo.rakumod').spurt: ｢

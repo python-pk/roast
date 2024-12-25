@@ -222,7 +222,7 @@ PROCESS::<$SCHEDULER> := ThreadPoolScheduler.new(max_threads => 4);
         'No error due to trying to do non-blocking await when lock held (lock/unlock)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6046
+
 #?rakudo.jvm skip 'UnwindException'
 {
     my $kill = Promise.new;
@@ -261,7 +261,7 @@ PROCESS::<$SCHEDULER> := ThreadPoolScheduler.new(max_threads => 4);
     ok [eq](@responses), 'Rest of responses also correct';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6521
+
 {
     my @foo = do {
         await start { do for ^2 { my uint64 @ = 9, 9; }.Slip },
@@ -280,7 +280,7 @@ PROCESS::<$SCHEDULER> := ThreadPoolScheduler.new(max_threads => 4);
 }
 
 #?rakudo.jvm skip 'atomicint NYI'
-{ # https://github.com/rakudo/rakudo/issues/1323
+{ 
     # Await must be called in sink context here to trigger the covered bug.
     # Gymnastics with atomic ints are just to reduce test runtime; the point
     # of the test is that await awaits in this case for all Promises to

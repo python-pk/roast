@@ -85,13 +85,13 @@ caught that case.
     ok $result, 'C<all(@x) ~~ {...} when true for one';
 };
 
-# https://github.com/Raku/old-issue-tracker/issues/609
+
 # need to test in EVAL() since class definitions happen at compile time,
 # ie before the plan is set up.
 eval-lives-ok 'class A { method foo { return "" ~~ * } }; A.new.foo',
               'smartmatch in a class lives (RT #62196)';
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     ok sub {} ~~ Callable, '~~ Callable (true)';
     nok 68762 ~~ Callable, '~~ Callable (false)';
@@ -129,7 +129,7 @@ eval-lives-ok 'class A { method foo { return "" ~~ * } }; A.new.foo',
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     role RT72048_role {}
     class RT72048_class does RT72048_role {}

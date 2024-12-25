@@ -80,7 +80,7 @@ plan 36;
 }
 
 # normal closure:
-# https://github.com/Raku/old-issue-tracker/issues/4112
+
 #?rakudo skip 'leave NYI RT #124960'
 {
     is EVAL(q{
@@ -175,7 +175,7 @@ plan 36;
     is $str, '1', 'die aborts ENTER queue';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3363
+
 {
     my $str;
     try {
@@ -187,7 +187,7 @@ plan 36;
     is $!.message, 'foo', 'single exception from LEAVE is rethrown after running LEAVEs';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2785
+
 {
     my $a = 0;
     my $b = 0;
@@ -195,14 +195,14 @@ plan 36;
     ok($a == 1 && $b == 2, "LEAVE fires in a multi sub");
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2988
+
 {
     my $x = 0;
     for 1..10 { LEAVE { $x++ }; next }
     is $x, 10, "next triggers LEAVE";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3022
+
 {
     my $str='';
     for 1..2 {
@@ -212,7 +212,7 @@ plan 36;
     is $str, 'foobar1foobar2', 'can run for loop in phaser in for loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3160
+
 {
     is_run( q[sub foo { LEAVE { say 'OK' }; die 'foobar' }; foo()],
         {
@@ -222,7 +222,7 @@ plan 36;
         'LEAVE fires after die in sub' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2806
+
 {
     my $rt113950_last = "hello!";
     loop {
@@ -241,14 +241,14 @@ plan 36;
         '"next" triggers LEAVE phaser in "for" loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2999
+
 {
     is ENTER { 42 }, 42, 'ENTER works as an r-value (mainline)';
     sub enter-test() { ENTER 'SANDMAN' }
     is enter-test(), 'SANDMAN', 'ENTER works as an r-value (sub)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4346
+
 {
     sub doit() {
         if True {
@@ -268,7 +268,7 @@ plan 36;
         exceptions => sub (@ex) { @ex>>.message ~~ <omg wtf> };
 }
 
-{ # https://github.com/rakudo/rakudo/issues/1455
+{ 
     my $res;
     -> { LEAVE $res := now - ENTER now }();
     isa-ok $res, Duration, 'using ENTER inside LEAVE does not crash';
@@ -293,7 +293,7 @@ plan 36;
      is $set.elems, 2, 'decont in ENTER works without locals';
 }
 
-# https://github.com/rakudo/rakudo/issues/3411
+
 {
     my $entered;
     class A {
@@ -305,14 +305,14 @@ plan 36;
     is $entered, 1, 'Did ENTER only run once';
 }
 
-# https://github.com/rakudo/rakudo/issues/1815
+
 {
     my int $entered;
     class { method apply { ENTER ++$entered; } }.apply;
     is $entered, 1, 'Did the ENTER only fire once';
 }
 
-# https://github.com/rakudo/rakudo/issues/2380
+
 {
     my $left;
     sub foo() {

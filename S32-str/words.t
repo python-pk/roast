@@ -30,7 +30,7 @@ is( "a\c[COMBINING DOT ABOVE, COMBINING DOT BELOW] bc d".words,
     is @list.join('|'), 'split|this|string', 'Str.words';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3272
+
 {
     my $RT120517 = "FOO";
     is qq:ww/$RT120517 "BAR BAZ"/.raku, qq:ww/FOO "BAR BAZ"/.raku, "interpolated variable .raku's like a literal"
@@ -43,7 +43,7 @@ is( "a\c[COMBINING DOT ABOVE, COMBINING DOT BELOW] bc d".words,
     my @first-words = try words($str);
     is +@first-words, 3, 'words($str)';
 
-    # https://github.com/Raku/old-issue-tracker/issues/4408
+    
     # Test sub form of words with * and Inf args; RT #125626
     my @words = try words($str, Inf);
     is +@words, 3, 'words($str, Inf)';

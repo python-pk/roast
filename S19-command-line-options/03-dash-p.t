@@ -40,7 +40,7 @@ is_run(
     :compiler-args['-p'],
 );
 
-# https://github.com/Raku/old-issue-tracker/issues/3772
+
 is_run(
     's[(\d)] = "{$0 * 10}"',      # program
     "5 breads and 2 fishes\n",  # input

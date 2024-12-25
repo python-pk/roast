@@ -88,7 +88,7 @@ is(@t[1], 200,             'array attribute initialized/works');
 $bar.bar[2] = 300;
 is($bar.bar[2], 300,       'array attribute initialized/works');
 
-# https://github.com/Raku/old-issue-tracker/issues/1630
+
 {
     class RT73808 {
         has ($!a, $!b);
@@ -102,7 +102,7 @@ is($bar.bar[2], 300,       'array attribute initialized/works');
         'Providing a list of attributes to a single "has" works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2322
+
 throws-like q[
     class RT81718 {
         has $.bughunt is rw;
@@ -111,14 +111,14 @@ throws-like q[
     }
 ], X::Syntax::NoSelf, 'no attr access for sub inside class';
 
-# https://github.com/Raku/old-issue-tracker/issues/1741
+
 {
     class A { };
     class B { has A $.foo .= new };
     isa-ok B.new.foo, A, 'class attribute can be initialized using .=';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2921
+
 {
     eval-lives-ok '(class A { has $.x }).new.x.HOW',
         "HOW on attributes lives, custom class";
@@ -126,14 +126,14 @@ throws-like q[
         "HOW on attributes lives, builtin";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2836
+
 {
     eval-lives-ok q{
         my class A { state $b; }
     }, "No segfault on state variables";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1758
+
 # Note, lazy ranges autotruncate if they run off the end (including infinite),
 # others not
 {
@@ -159,20 +159,20 @@ throws-like q[
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1854
+
 {
     lives-ok { EVAL 'my class RT75858 { has $.x where 1 }' },
         'can use where clause on an attribute';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3415
+
 {
     my class RT122109 { has $.x where * > 0 };
     dies-ok { RT122109.new(:x(-42)) },
         'where clause on attributes is taken into account';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2929
+
 {
     class RT115310 { has @.a of int };
     my $foo = RT115310.new;
@@ -181,7 +181,7 @@ throws-like q[
     throws-like '$foo.a = 1,"b"', Exception, 'typed array attribute (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5735
+
 {
     class RT129830 { has Int @.array; has Str %.hash };
     is
@@ -194,7 +194,7 @@ throws-like q[
         '.gist works on attribute types (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4875
+
 {
     my class Foo::Bar {};
     my $o := my class { has Foo::Bar $.a .= new }.new;
@@ -202,7 +202,7 @@ throws-like q[
 	      '.= able to initialize attributes with types that has `::` in name';
 }
 
-# https://github.com/rakudo/rakudo/issues/2692
+
 {
     my class A {
         has uint8 $.i = 0xFF;

@@ -6,7 +6,7 @@ plan 10;
 
 ## NFKC
 
-# https://github.com/Raku/old-issue-tracker/issues/4133
+
 #?rakudo 1 skip 'NFKC type NYI RT #124989'
 {
     is q:nfkc"ẛ̣".WHAT, NFKC, ":nfkc adverb on quoteforms produces NFKC string type.";

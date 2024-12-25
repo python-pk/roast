@@ -68,7 +68,7 @@ Testing operator overloading subroutines
 # I mean, + is all well and good for number classes.  But what about
 # defining other conversions that may happen?
 
-# https://github.com/Raku/old-issue-tracker/issues/2394
+
 {
     throws-like { EVAL q[ multi sub circumfix:<⌊⌋>($a) { return $a.floor; } ] },
         X::Syntax::AddCategorical::TooFewParts,
@@ -134,7 +134,7 @@ Testing operator overloading subroutines
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/3041
+
 {
     lives-ok { sub prefix:<\o/>($) {} }, 'can declare operator with a backslash (1)';
     lives-ok { sub postfix:<\\>($) {} }, 'can declare operator with a backslash (2)';
@@ -143,7 +143,7 @@ Testing operator overloading subroutines
     is $RT116643, 42, 'can declare and use operator with a backslash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2970
+
 {
     lives-ok { sub circumfix:<w "> ($a) { }; },
         'can define circumfix operator with a double quote (")';
@@ -151,7 +151,7 @@ Testing operator overloading subroutines
     is $RT115724 , 111, 'can define and use circumfix operator with a double quote (")';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3112
+
 {
     throws-like { EVAL q< sub infix:[/./] { 42 } > },
         X::Syntax::Extension::TooComplex,
@@ -159,7 +159,7 @@ Testing operator overloading subroutines
         'infix definition for /./ fails with X::Syntax::Extension::TooComplex';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3237
+
 {
     lives-ok { sub infix:["@"] ($a, $b) { 42 } },
         'can define infix with brackets as delimiter';

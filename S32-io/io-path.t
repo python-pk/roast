@@ -50,8 +50,8 @@ isa-ok $path.IO,   IO::Path, 'IO::Path.IO returns IO::Path';
   }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4877
-# https://github.com/Raku/old-issue-tracker/issues/6200
+
+
 subtest '.raku.EVAL rountrips' => {
     my @tests = gather {
         .IO.take for q/\x[308]foo|ba"'\''r/, "/foo|\\bar", "/foo\tbar";
@@ -85,20 +85,20 @@ subtest '.raku.EVAL rountrips' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5265
+
 {
     try IO::Path.new: 'foo', 'bar';
     cmp-ok $!, &[!~~], X::Constructor::Positional,
       'IO::Path.new with wrong args must not claim it only takes named ones';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5306
+
 {
     is IO::Handle.new(:path('-')).path.gist, '"-".IO', '"-" as the path of an IO::Handle gists correctly';
     is '-'.IO.gist, '"-".IO', '"-".IO gists correctly';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6111
+
 {
     my $file = ("S32-io-path-RT-130889-test" ~ rand);
     LEAVE $file.IO.unlink;

@@ -12,10 +12,10 @@ plan 5;
     close $fh;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5087
+
 {
   if $*KERNEL.name eq 'linux' {
-    # https://github.com/Raku/old-issue-tracker/issues/5527
+    
     my $files = gather {
         for '/proc/1'.IO.dir() -> $file {
             take $file if $file.f && $file.r;
@@ -32,7 +32,7 @@ plan 5;
   }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 #?rakudo.jvm skip 'hangs'
 #?DOES 1
 {
@@ -48,7 +48,7 @@ plan 5;
     }}, '.eof on TTY STDIN works right';
 }
 
-# https://github.com/rakudo/rakudo/issues/1322
+
 subtest '.eof works right even when we seek past end and back' => {
     plan 6;
 
@@ -71,7 +71,7 @@ subtest '.eof works right even when we seek past end and back' => {
     is-deeply $fh.eof, True, "seek'ed past end again";
 }
 
-# https://github.com/rakudo/rakudo/issues/1533
+
 subtest '.eof on empty files' => {
     plan 3;
     with make-temp-file(:content('')).open {

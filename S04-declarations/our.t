@@ -60,8 +60,8 @@ is($a, 3, '$a has changed'); # XXX is that right?
     throws-like '$d1', X::Undeclared, 'our() variable not yet visible outside its package';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2498
-# https://github.com/Raku/old-issue-tracker/issues/2547
+
+
 {
     lives-ok { our @e1 = 1..3 },   'we can declare and initialize an our-scoped array';
     lives-ok { our %e2 = a => 1 }, 'we can declare and initialize an our-scoped hash';
@@ -69,7 +69,7 @@ is($a, 3, '$a has changed'); # XXX is that right?
     is(%OUR::e2<a>, 1, 'our-scoped hash has correct value' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3068
+
 {
     our @f1;
     our %f2;
@@ -77,7 +77,7 @@ is($a, 3, '$a has changed'); # XXX is that right?
     ok(%f2 ~~ Hash,  'our-declared %-sigil var is a Hash');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3116
+
 {
     package Gee {
         our $msg;
@@ -88,7 +88,7 @@ is($a, 3, '$a has changed'); # XXX is that right?
     is(Gee::talk, "hello", 'our-var returned by our-sub gives previously set value');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2967
+
 {
     sub foo() { our $foo = 3 };
     is foo(),    3, 'return value of sub call declaring our-scoped var';
@@ -96,7 +96,7 @@ is($a, 3, '$a has changed'); # XXX is that right?
     is $foo,     3, '... and the value stays';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2594
+
 {
     package Color { our ($red, $green, $blue) = 1..* };
     is $Color::blue, 3, 'declaring and initializing several vars at once';

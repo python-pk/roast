@@ -62,7 +62,7 @@ is Foo.new("a string").a, 'a string', "our own 'new' was called";
   is $foo.x[0], 3, "... and keeps its value properly."
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/829
+
 {
     class RT64116 { has %.env is rw };
 
@@ -72,7 +72,7 @@ is Foo.new("a string").a, 'a string', "our own 'new' was called";
     is $a.env<foo>, 'bar', 'assignment works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1931
+
 {
     use MONKEY-TYPING;
     class MonkeyNew { has $.x is rw };
@@ -99,7 +99,7 @@ is Foo.new("a string").a, 'a string', "our own 'new' was called";
     lives-ok -> { NativeStr.new(:attr<foo>) }, ".new with a native str attribute";
 }
 
-{ # https://github.com/rakudo/rakudo/issues/1793
+{ 
     class {
         has $.b;
         submethod TWEAK {
@@ -131,7 +131,7 @@ is Foo.new("a string").a, 'a string', "our own 'new' was called";
     lives-ok { A.new }, 'can we create with a custom "bless" method';
 }
 
-# https://github.com/rakudo/rakudo/issues/1679
+
 subtest "all parents' attributes are set with .new" => {
     plan 3;
     my class A { has @.a }

@@ -2,7 +2,7 @@ use Test;
 
 plan 15;
 
-# https://github.com/Raku/old-issue-tracker/issues/5643
+
 {
     my class Dummy { has ($.a, $.b, $.c, $.d, $.e) }
 

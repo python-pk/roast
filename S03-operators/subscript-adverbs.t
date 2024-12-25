@@ -309,7 +309,7 @@ plan 110;
         "non-existing entries should not be weeded out (4:!v)";
 } #16
 
-# https://github.com/Raku/old-issue-tracker/issues/3290
+
 {
     my @array;
     lives-ok { for @array[*]:kv -> $k, $v { } },

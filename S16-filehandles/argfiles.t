@@ -47,7 +47,7 @@ is-deeply @lines, [<one two three>], 'lines() should read from $*ARGFILES, which
 $output = Test::Util::run('.say for lines()', :args($tmp-file-name xx 3));
 @lines  = lines($output);
 
-# https://github.com/Raku/old-issue-tracker/issues/4692
+
 is-deeply @lines, [|<one two three> xx 3], 'lines() using $*ARGFILES, works for more than one file';
 
 {
@@ -70,7 +70,7 @@ is-deeply @lines, [<one two three>], '$*ARGFILES should not use $*IN if files ar
 $output = Test::Util::run('.say for lines(); .say for lines()', "foo\nbar\nbaz\n", :@args);
 @lines  = lines($output);
 
-# https://github.com/Raku/old-issue-tracker/issues/4313
+
 is-deeply @lines, [<one two three>], 'Calling lines() twice should not read from $*IN';
 
 $output = Test::Util::run("@*ARGS = '$tmp-file-name'; .say for lines()", "foo\nbar\nbaz\n");
@@ -78,7 +78,7 @@ $output = Test::Util::run("@*ARGS = '$tmp-file-name'; .say for lines()", "foo\nb
 
 is-deeply @lines, [<one two three>], 'Changing @*ARGS before calling things on $*ARGFILES should open the new file';
 
-# https://github.com/Raku/old-issue-tracker/issues/3693
+
 $output = Test::Util::run('$*IN.nl-in = "+"; say get() eq "A";', "A+B+C+");
 is $output, "True\n", 'Can change $*IN.nl-in and it has effect';
 
@@ -101,7 +101,7 @@ subtest '.lines accepts all Numerics as limit' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5927
+
 is_run ｢.put for $*ARGFILES.lines: 1000｣, "a\nb\nc", {
     :out("a\nb\nc\n"),
     :err(''),

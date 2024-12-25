@@ -155,7 +155,7 @@ is(AP_1.new.y,   'b',  'use of type params in attr initialization works after 2n
        'MD with generics at class composition times fails (wrong arity)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2081
+
 {
     lives-ok { role A[::T $?] {}; class B does A[] {} },
         'question mark for optional parameter is parsed correctly';
@@ -164,7 +164,7 @@ is(AP_1.new.y,   'b',  'use of type params in attr initialization works after 2n
         'cannot put question mark on a type constraint';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2641
+
 {
     role Foo[::T] { has T @.a = T }; class Bar {};
     is( Foo[Bar].new.a[0], Bar, 'generic role with defaulted and typed attr' );
@@ -221,7 +221,7 @@ is(AP_1.new.y,   'b',  'use of type params in attr initialization works after 2n
     nok Bar ~~ RC[Bar], "indirect parent doesn't accidentally typecheck against the role";
 }
 
-# https://github.com/rakudo/rakudo/issues/3483
+
 {
     throws-like q:to/CODE/, X::Role::Unimplemented::Multi, "use of ::?CLASS results in the right exception";
 my role R {

@@ -6,7 +6,7 @@ plan 10;
 
 ## NFC
 
-# https://github.com/Raku/old-issue-tracker/issues/4136
+
 #?rakudo 1 skip 'NFC quoting adverb NYI RT #124995'
 {
     is q:nfc"ẛ̣".WHAT, NFC, ":nfc adverb on quoteforms produces NFC string type.";
@@ -24,7 +24,7 @@ plan 10;
 }
 
 ## NFD
-# https://github.com/Raku/old-issue-tracker/issues/4137
+
 #?rakudo 1 skip 'NFD quoting adverb NYI RT #124996'
 {
     is q:nfd"ẛ̣".WHAT, NFD, ":nfd adverb on quoteforms produces NFD string type.";

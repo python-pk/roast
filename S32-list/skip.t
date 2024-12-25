@@ -108,7 +108,7 @@ This test tests the C<skip> builtin.
     is-deeply skip(5,$range<>), (), 'skip(N,Range) works if empty';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6529
+
 subtest '.skip-all and .push-all on slipping slippy iterators' => {
     # Some implementations implemented specific iterators to be used
     # in certain cases, such as a .map() that returns a Slip. It was found
@@ -151,7 +151,7 @@ subtest '.skip-all and .push-all on slipping slippy iterators' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6558
+
 subtest 'Seq.skip does not leave original Seq consumable' => {
     plan 4;
 
@@ -194,7 +194,7 @@ subtest 'Seq.skip does not leave original Seq consumable' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/1384
+
 subtest 'Any:U.skip works with Callable' => {
     plan 3;
     is-deeply Any.skip(*-0),         ().Seq, '*-1';

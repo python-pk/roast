@@ -31,7 +31,7 @@ plan 10;
     is(+$d, 3, 'Array object length, nested (), outer []s');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2471
+
 {
     my @a = [1], [2], [3];
     my @b = map { @a[1 - $_][0] }, 0 .. 3;

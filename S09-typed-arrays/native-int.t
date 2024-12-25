@@ -150,7 +150,7 @@ for flat @int,@uint -> $T {
     is @arr.push(42), (42,), "can push to $t array";
     is @arr.elems, 1, "push to $t array works (1)";
     is @arr[0], 42,   "push to $t array works (2)";
-    # https://github.com/Raku/old-issue-tracker/issues/4223
+    
     throws-like { @arr.push('it real good') }, X::TypeCheck,
       got => Str,
       "Cannot push non-int/Int to $t array";
@@ -189,7 +189,7 @@ for flat @int,@uint -> $T {
     is @arr.elems, 6, "unshift to $t array works (1)";
     is @arr[0],  1,   "unshift to $t array works (2)";
     is @arr[1], 42,   "unshift to $t array works (3)";
-    # https://github.com/Raku/old-issue-tracker/issues/4223
+    
     throws-like { @arr.unshift('part of the day not working') }, Exception,
       "Cannot unshift non-int/Int to $t array";
 
@@ -308,7 +308,7 @@ for flat @int,@uint -> $T {
     is @unsorted.sort, "", "Can we sort 0-element $t array";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3740
+
 # some unsigned native int tests
 for @uint -> $T {
     my $t = $T.^name;
@@ -329,7 +329,7 @@ for @uint -> $T {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5941
+
 dies-ok { my int @a = ^Inf; 42 }, 'Trying to assign ^Inf to an int array dies';
 
 {

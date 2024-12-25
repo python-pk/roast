@@ -37,7 +37,7 @@ is &?ROUTINE.name, "MAIN", "...and we're actually in MAIN now";
         X::UnitScope::Invalid, what => "sub"
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5200
+
 {
     is_run 'sub MAIN($x where { $x > 1 }); print "pass"', :args[2],
       {:out<pass>, :err(''), :0status}, 'can have where in sub MAIN(...);';

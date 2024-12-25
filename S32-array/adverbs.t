@@ -438,7 +438,7 @@ for $@n, Any, $@s, Str -> @a, $T {
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4697
+
 {
     my @a;
     @a[$(7,8,9)] = 101;

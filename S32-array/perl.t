@@ -35,7 +35,7 @@ plan 9;
         'can .raku.EVAL roundtrip a circular array within a circular hash';
 }
 
-# https://github.com/rakudo/rakudo/issues/5093
+
 is (my @ = 1..*).raku, '[...]', "doesn't die on a lazy iterator";
 
 # vim: expandtab shiftwidth=4

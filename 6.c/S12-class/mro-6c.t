@@ -32,7 +32,7 @@ plan 5;
         'Cannot do multi inheritance that causes inconsistent MRO';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2077
+
 eval-lives-ok q[
     class GrandParent { };
     class Parent is GrandParent { };

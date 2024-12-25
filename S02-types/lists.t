@@ -8,7 +8,7 @@ plan 30;
 
 # Indexing lists
 
-# https://github.com/Raku/old-issue-tracker/issues/2575
+
 {
   my $foo = 42;
 
@@ -122,7 +122,7 @@ plan 30;
     is <1 2 3>.rt62836_x, 62836, 'call user-declared method in List:: class';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1037
+
 {
     my $rt66304 = (1, 2, 4);
     isa-ok $rt66304, List, 'List assigned to scalar is-a List';
@@ -142,8 +142,8 @@ plan 30;
     is $z, 'bacon', "3rd-party reification of List doesn't duplicate rest";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2695
-# https://github.com/rakudo/rakudo/issues/3658
+
+
 throws-like { 'foo'[2..3] }, X::OutOfRange,
   got => 2,
   'obtaining values from out-of-range indices in a slice throws'

@@ -2,8 +2,8 @@ use Test;
 
 plan 13;
 
-# https://github.com/Raku/old-issue-tracker/issues/4637
-# https://github.com/Raku/old-issue-tracker/issues/3020
+
+
 # Covers (wanted the right thing of recv) and (difference
 # between recv and read semantics).
 

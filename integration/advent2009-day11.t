@@ -31,7 +31,7 @@ my $bob = DogWalker.new(name => 'Bob', dog => $fido);
 is $bob.name, 'Bob', 'dog walker has a name';
 is $bob.dog_name, 'Fido', 'dog name can be accessed by delegation';
 
-# https://github.com/Raku/old-issue-tracker/issues/1768
+
 is Dog.^methods(:local)[0,1].map({.name}).sort.join('|'),
     'bark|name', 'can introspect Dog';
 

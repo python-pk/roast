@@ -81,7 +81,7 @@ ok(~&foo ~~ /foo/,  'a multi stringifies sensibly');
     is nsi_2(1, 2, 3),                   'nsi 2', 'interaction between named and slurpy (4)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1204
+
 {
     multi rt68234(:$key!) { 'with key' };    #OK not used
     multi rt68234(*%_)    { 'unknown' };    #OK not used
@@ -89,7 +89,7 @@ ok(~&foo ~~ /foo/,  'a multi stringifies sensibly');
     is rt68234(:unknown), 'unknown', 'can find multi method with slurpy';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1198
+
 {
     multi rt68158() { 1 }
     multi rt68158(*@x) { 2 }    #OK not used
@@ -97,7 +97,7 @@ ok(~&foo ~~ /foo/,  'a multi stringifies sensibly');
     is rt68158(9), 2, 'slurpy called when non-slurpy can not bind';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/928
+
 {
     multi rt64922($x, %h?) { 1 }    #OK not used
     multi rt64922(@x) { 2 }    #OK not used
@@ -105,7 +105,7 @@ ok(~&foo ~~ /foo/,  'a multi stringifies sensibly');
     is rt64922([1,2]), 2, 'optional parameter does not break type-based candidate sorting';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/997
+
 {
     multi rt65672()   { 99 }
     multi rt65672($x) { $x }
@@ -122,7 +122,7 @@ ok(~&foo ~~ /foo/,  'a multi stringifies sensibly');
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/1766
+
 # a multi declaration should only return the current candidate, not the whole
 # set of candidates.
 {
@@ -139,7 +139,7 @@ multi with_cap($a) { $a }
 multi with_cap($a,$b,|cap) { return with_cap($a + $b, |cap) }
 is with_cap(1,2,3,4,5,6), 21, 'captures in multi sigs work';
 
-# https://github.com/Raku/old-issue-tracker/issues/2894
+
 {
     proto sub fizzbuzz($) {*};
     multi sub fizzbuzz(Int $ where * %% 15) { 'FizzBuzz' };
@@ -151,14 +151,14 @@ is with_cap(1,2,3,4,5,6), 21, 'captures in multi sigs work';
     is $a, <1 Fizz Buzz FizzBuzz>, "ordered multi subs";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1226
+
 {
     multi rt68528(:$a!, *%_) { return "first"  };
     multi rt68528(:$b,  *%_) { return "second" };
     is(rt68528(:a, :b), "first", "first defined wins the tie");
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1744
+
 {
     multi rt74900() { "zero" };
     multi rt74900(Int $a?) { "Int" };

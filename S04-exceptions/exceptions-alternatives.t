@@ -50,7 +50,7 @@ is_run json-ex('justsomerandomsyntaxerror'), {
     :1status,
 }, 'can handle X::Undeclared::Symbols exception';
 
-# https://github.com/Raku/old-issue-tracker/issues/5726
+
 #?rakudo.js.browser skip "EVAL time use doesn't work in the browser"
 #?rakudo.jvm todo 'X::CompUnit::UnsatisfiedDependency+{X::Comp}'
 {

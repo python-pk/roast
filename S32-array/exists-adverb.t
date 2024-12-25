@@ -97,7 +97,7 @@ sub gen_array { (1..10).list }
     is @a.elems, 10, "should be untouched";
 } #46
 
-# https://github.com/rakudo/rakudo/issues/2929
+
 {
     #?rakudo.jvm todo 'got X::Multi::Ambiguous (in error reporting)'
     throws-like {

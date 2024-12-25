@@ -33,7 +33,7 @@ plan 10;
     is A."with space"(), 23, 'can declare indirect method name with space';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4634
+
 {
     ok ::('&say')   =:= &say, '::("&foo") without whitespace';
     ok ::( '&say')  =:= &say, '::("&foo") with whitespace (1)';

@@ -42,7 +42,7 @@ nok(index("Hello", "", 999).defined, "Substr is empty, pos > length of str");
 
 is(index("ababcabcd", "abcd"), 5, "Start-of-substr matches several times");
 
-# https://github.com/Raku/old-issue-tracker/issues/1546
+
 is(index("uuúuúuùù", "úuù"), 4, "Accented chars");
 is(index("Ümlaut", "Ü"), 0, "Umlaut");
 
@@ -79,7 +79,7 @@ fails-like { index("xxy", "y", -1) }, X::OutOfRange,
   got => -1,
   'index with negative start position fails';
 
-# https://github.com/Raku/old-issue-tracker/issues/4466
+
 {
     for -1e34, -1e35 -> $pos {
         fails-like { index( 'xxy','y', $pos ) }, X::OutOfRange,

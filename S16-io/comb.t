@@ -133,7 +133,7 @@ for 100000 -> $sep {
     test-comb($text,@clean,$sep);
 }
 
-# https://github.com/rakudo/rakudo/issues/1564
+
 subtest '.comb(Regex) returns Seq' => {
     plan 4;
     my $path := make-temp-file :content<abc>;

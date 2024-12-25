@@ -4,7 +4,7 @@ use lib $?FILE.IO.parent(2).add("packages/S12-meta/lib");
 
 plan 7;
 
-# https://github.com/Raku/old-issue-tracker/issues/5411
+
 {
     my class Foo {
         has $.a = Metamodel::ClassHOW.new_type(name => "Bar");
@@ -15,7 +15,7 @@ plan 7;
         'Storing a meta-object in an attribute then composing/gisting works out';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4228
+
 {
     use TestHOW;
 
@@ -40,7 +40,7 @@ plan 7;
         'Smartmatch returns True for a scalar with a run-time created class and an instance of the class';
 }
 
-# https://github.com/rakudo/rakudo/issues/2607
+
 {
     my $inner = Metamodel::ClassHOW.new_type(name => 'Inner');
     $inner.^compose;
@@ -53,7 +53,7 @@ plan 7;
     lives-ok { $outer.new(inner => $inner.new) }, 'Runtime created classes can be used as attributes';
 }
 
-# https://github.com/rakudo/rakudo/issues/4571
+
 {
     my class ASNType {
         has $.type is rw;

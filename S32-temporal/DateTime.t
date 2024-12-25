@@ -416,7 +416,7 @@ is dt(timezone => 3661).offset, 3661, 'DateTime.offset (1 hour, 1 minute, 1 seco
 # Miscellany
 # --------------------------------------------------------------------
 
-# https://github.com/Raku/old-issue-tracker/issues/2174
+
 # Ensure that any method of producing a DateTime keeps attributes
 # that should be Ints Ints.
 {
@@ -625,7 +625,7 @@ is DateTime.now.Date, Date.today,
     }, '.later does not try to create an impossible datetime';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     my $now = DateTime.now;
     my $today = Date.today;
@@ -635,7 +635,7 @@ is DateTime.now.Date, Date.today,
     ok $not-now !~~ $today, "negative smartmatch against a Date";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     my $d0 = ds('1971-10-28T10:45:00');
     my $d1 = $d0;
@@ -656,22 +656,22 @@ is DateTime.now.Date, Date.today,
     ok $d2 after $d1,   "$d2 after $d1";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3963
+
 throws-like { DateTime.new("1994-05-03T00:00:00+00:99") }, X::OutOfRange, what => rx{minute};
 
-# https://github.com/Raku/old-issue-tracker/issues/4484
+
 is ds("2015-08-23T02:27:33-07:00"), ds("2015-08-23t02:27:33-07:00"), "t and T work, are same";
 is ds("2015-08-23T02:27:33Z"), ds("2015-08-23t02:27:33z"), "z and Z work, are same";
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 is ds('1994-05-03T12:00:00Z').later(days => 536106031).Str, "+1469802-10-18T12:00:00Z", "adding large values of days does not overflow";
 is ds('2015-12-24T12:23:00Z').later(days => -537643699).Str, "-1470003-07-12T12:23:00Z", "subtracting large values days does not overflow";
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 is ds("2000-01-01T00:00:00,456"), "2000-01-01T00:00:00.456000Z",
   'second value with a comma works';
 
-# https://github.com/Raku/old-issue-tracker/issues/4909
+
 is ds("+9992000-01-01T00:00:00"), "+9992000-01-01T00:00:00Z",
   'large value of year in string works';
 is ds("-4004-10-23T00:00:00"), "-4004-10-23T00:00:00Z",
@@ -685,7 +685,7 @@ is DateTime.new(127317232781632218937129), "+4034522497029953-07-13T17:38:49Z",
 is ds("2016-02-29T00:00:00").later(:1year), "2017-02-28T00:00:00Z",
   'moving a year from a leap-date into a year without leap-date';
 
-# https://github.com/Raku/old-issue-tracker/issues/5000
+
 {
     my role Foo { has @.a = 7, 8, 9 }
     my class BarDate is DateTime does Foo {}
@@ -712,7 +712,7 @@ is ds("2016-02-29T00:00:00").later(:1year), "2017-02-28T00:00:00Z",
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5421
+
 subtest 'synthetics not allowed in date formats' => {
     plan 2;
     throws-like { DateTime.new: "20\x[308]16-07-05T00:00:00+01:00" },
@@ -825,7 +825,7 @@ subtest 'can parse leap second in non-UTC timezones' => {
     plan +my @tzs = flat (
         100*h, 30*h, 24*h, 12*h, 3*h, 0,
 
-        # https://github.com/rakudo/rakudo/issues/2381
+        
         .5*h, 9.25*h, 5.45*h, '7200',
     ).map: {-$_, $_}
 
@@ -911,8 +911,8 @@ throws-like { DateTime.new: :2016year, 42 }, Exception,
     is-deeply $dt1 >= $dt2, False, 'DateTime >= DateTime';
 }
 
-# https://github.com/rakudo/rakudo/issues/1762
-# https://github.com/rakudo/rakudo/issues/1760
+
+
 subtest 'subsecond .later/.earlier' => {
     plan 6;
     is-deeply
@@ -936,7 +936,7 @@ subtest 'subsecond .later/.earlier' => {
         DateTime.new('1879-03-13T23:59:57.293Z'), '2.707s earlier';
 }
 
-# https://github.com/rakudo/rakudo/issues/2615
+
 {
     class DateTimed is DateTime { }
     my $date = DateTimed.new('2019-01-24T11:10:32');
@@ -949,7 +949,7 @@ subtest 'subsecond .later/.earlier' => {
 lives-ok { DateTime.new(2020,3,10,11,38,.000001).Str },
   'Check of default stringification of second 0 partial works';
 
-# https://github.com/rakudo/rakudo/issues/3683
+
 {
     my $then = now;
     is-deeply DateTime($then), DateTime.new($then),
@@ -960,7 +960,7 @@ lives-ok { DateTime.new(2020,3,10,11,38,.000001).Str },
       'does DateTime(then-str) work';
 }
 
-# https://github.com/rakudo/rakudo/issues/4175
+
 {
     my $now = DateTime.now;
     is-deeply

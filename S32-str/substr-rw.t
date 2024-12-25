@@ -129,7 +129,7 @@ plan 46;
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2868
+
 {
     my $str = 'ab';
     substr-rw($str, 0, 3) = '/';
@@ -137,21 +137,21 @@ plan 46;
         'substr-rw handles end positions that are out of range';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4321
+
 {
     my $s = 'foobar';
     $s.substr-rw(3, 3) = 1;
     is $s, 'foo1', 'assigning a non-string coerces';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5198
+
 {
     my $s = '.' x 4 ~ 'a';
     $s.substr-rw(1,1) = '';
     is $s, '...a', '.substr-rw on a string constructed with `x` operator';
 }
 
-# https://github.com/rakudo/rakudo/issues/1720
+
 {
     my $a = "foobaz";
     $a.substr-rw(3, 3.3) = "bar";
@@ -167,14 +167,14 @@ plan 46;
     is $a, "foobazbar", 'Callable as width ok';
 }
 
-# https://github.com/rakudo/rakudo/issues/5677
+
 {
     my $s = "foobar";
     $s.substr-rw(6, 0) = "yyy";
     is $s, 'foobaryyy', 'can we append using substr-rw';
 }
 
-# https://github.com/rakudo/rakudo/issues/5726 (Format::Lisp)
+ (Format::Lisp)
 {
     my $a = "foobar";
     $a.substr-rw(*-3, 3) = "zzz";

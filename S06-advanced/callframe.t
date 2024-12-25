@@ -43,11 +43,11 @@ f();
 is $x,  23, '$x successfully modified';
 is $y, 353, '$y not modified';
 
-# https://github.com/Raku/old-issue-tracker/issues/2150
+
 ok callframe.raku.starts-with("CallFrame."),   'CallFrame.raku works';
 ok callframe.gist.starts-with($*PROGRAM-NAME), 'CallFrame.gist works';
 
-# https://github.com/Raku/old-issue-tracker/issues/5117
+
 lives-ok { sub{callframe.raku}() }, '.raku on callframe in a sub does not crash';
 
 lives-ok {
@@ -77,7 +77,7 @@ lives-ok
     },
     "Exploring call frames until no code object does not crash";
 
-# https://github.com/rakudo/rakudo/issues/1781
+
 {
     my $seen;
     multi sub a() { ++$seen if callframe(1).my.EXISTS-KEY(<$seen>) };
@@ -96,7 +96,7 @@ lives-ok
     is $seen, 300, 'did we get the right callframe each time?';
 }
 
-# https://github.com/rakudo/rakudo/issues/2853
+
 {
     my $seen;
     multi sub b() { ++$seen if CallFrame.new(1).my.EXISTS-KEY(<$seen>) };

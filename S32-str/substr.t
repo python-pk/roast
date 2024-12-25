@@ -93,7 +93,7 @@ plan 57;
     is $str.substr(10..*),  "and bar", "substr (substr(Range Inf))";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2906
+
 {
     is "abcd".substr(2, Inf), 'cd', 'substr to Inf';
 }
@@ -103,14 +103,14 @@ plan 57;
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3646
+
 {
     is ("0" x 3 ~ "1").substr(2), '01',
         'substr on a string built with infix:<x> works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1966
-# https://github.com/Raku/old-issue-tracker/issues/5281
+
+
 subtest '.substr fails when start is beyond end of string' => {
     plan 4;
     fails-like { 'foo'.substr: 5    }, X::OutOfRange, '(from) method';

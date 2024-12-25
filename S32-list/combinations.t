@@ -54,7 +54,7 @@ is-deeply (1, 2, 3).combinations(-2..-1), (), "-2..-1 items is empty";
 is-deeply combinations(3,-1), (), "negative k combinations function is empty";
 is-deeply combinations(3,4), (), "too high k combinations function is empty";
 
-# https://github.com/Raku/old-issue-tracker/issues/5196
+
 {
     is-deeply combinations(-2,2), (),
         'negative $n in sub combinations (1)';
@@ -66,7 +66,7 @@ is-deeply combinations(3,4), (), "too high k combinations function is empty";
         'negative $k in sub combinations gives empty list (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5197
+
 subtest {
     plan 12;
 

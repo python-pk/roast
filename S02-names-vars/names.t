@@ -26,11 +26,11 @@ plan 156;
 {
     my $bear = 2.16;
     is($bear,       2.16, 'simple variable lookup');
-    # https://github.com/Raku/old-issue-tracker/issues/4424
+    
     #?rakudo skip 'this kind of lookup NYI RT #125659'
     is($::{'bear'}, 2.16, 'variable lookup using $::{\'foo\'}');
     is(::{'$bear'}, 2.16, 'variable lookup using ::{\'$foo\'}');
-    # https://github.com/Raku/old-issue-tracker/issues/4424
+    
     #?rakudo skip 'this kind of lookup NYI RT #125659'
     is($::<bear>,   2.16, 'variable lookup using $::<foo>');
     is(::<$bear>,   2.16, 'variable lookup using ::<$foo>');
@@ -45,7 +45,7 @@ plan 156;
     is(::<$!@#$>,   2.22, 'variable lookup using ::<$symbols>');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     module A {
         our sub _b() { 'sub A::_b' }
@@ -53,10 +53,10 @@ plan 156;
     is A::_b(), 'sub A::_b', 'A::_b() call works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2149
+
 is-deeply ::.^methods, PseudoStash.^methods, ':: is a valid PseudoStash';
 
-# https://github.com/Raku/old-issue-tracker/issues/743
+
 {
     throws-like 'OscarMikeGolf::whiskey_tango_foxtrot()',
       Exception,
@@ -64,23 +64,23 @@ is-deeply ::.^methods, PseudoStash.^methods, ':: is a valid PseudoStash';
     throws-like 'Test::bravo_bravo_quebec()',
       Exception,
       'dies when calling non-existent sub in existing package';
-    # https://github.com/Raku/old-issue-tracker/issues/1706
+    
     class TestA { };
     throws-like 'TestA::frobnosticate(3, :foo)',
       Exception,
       'calling non-existing function in foreign class dies';;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1433
+
 {
     sub self { 4 };
     is self(), 4, 'can define and call a sub self()';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2110
+
 # Subroutines whose names begin with a keyword followed by a hyphen
 # or apostrophe
-# https://github.com/Raku/old-issue-tracker/issues/1481
+
 # Subroutines with keywords for names (may need to be called with
 # parentheses).
 #?DOES 114
@@ -107,22 +107,22 @@ is-deeply ::.^methods, PseudoStash.^methods, ':: is a valid PseudoStash';
     is m, 42, 'local subs override quoters';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2016
+
 isa-ok (rule => 1), Pair, 'rule => something creates a Pair';
 
-# https://github.com/Raku/old-issue-tracker/issues/1360
+
 {
     throws-like { EVAL 'Module.new' },
       X::Undeclared::Symbols,
       'error message mentions name not recognized, no maximum recursion depth exceeded';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1680
+
 # Rakudo had troubles with names starting with Q
 lives-ok { EVAL 'class Quox { }; Quox.new' },
   'class names can start with Q';
 
-# https://github.com/Raku/old-issue-tracker/issues/288
+
 throws-like {
     EVAL 'class A { has $.a};  my $a = A.new();';
     EVAL 'class A { has $.a};  my $a = A.new();';
@@ -131,19 +131,19 @@ throws-like {
   X::Redeclaration,
   'can *not* redefine a class in EVAL -- classes are package scoped';
 
-# https://github.com/Raku/old-issue-tracker/issues/2362
+
 {
     class Class { };
     ok Class.new ~~ Class, 'can call a class Class';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1822
+
 {
     throws-like 'my ::foo $x, say $x', Exception,
         'no Null PMC access when printing a variable typed as ::foo ';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2803
+
 {
     my module A {
         enum Day is export <Mon Tue>;
@@ -154,7 +154,7 @@ throws-like {
     is &Day(), 'sub Day', 'can get sub using & to disamgibuate';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2962
+
 {
     my module foo {}
     sub foo() { "OH HAI" }
@@ -163,7 +163,7 @@ throws-like {
     is &foo(), 'OH HAI', 'can get sub using & to disambiguate';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5479
+
 subtest 'can use compile-time variables in names' => {
     plan 2;
     constant $i = 42;
@@ -172,7 +172,7 @@ subtest 'can use compile-time variables in names' => {
     is-deeply $foo:bar<42>, 'meow', 'literal lookup';
 }
 
-{ # https://github.com/rakudo/rakudo/issues/1606
+{ 
     role Foo[\T] { };
     role Foo::Bar[\T] { };
     role Foo::Bar::Baz[\T1, \T2] { }

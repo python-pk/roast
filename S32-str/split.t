@@ -403,7 +403,7 @@ test( "hello world",$_,3,$_,
 }
 
 #?DOES 2
-# https://github.com/Raku/old-issue-tracker/issues/681
+
 test( "hello-world",$_,3,$_,
   <<"" hello - world "">>,                             # r
   <<"" "" hello "" - "" world "" "">>,                 # rv
@@ -428,7 +428,7 @@ test( "hello-world",$_,3,$_,
   (0=>"","hello",0=>"","-world"), # rlpse
 ) for /<.ws>/, /<.wb>/;
 
-# https://github.com/Raku/old-issue-tracker/issues/681
+
 my $p = 0=>"";
 #?DOES 1
 test( "-a-b-c-",/<.ws>/,4,/<.ws>/,
@@ -455,7 +455,7 @@ test( "-a-b-c-",/<.ws>/,4,/<.ws>/,
   ($p,"-",$p,"a",$p,"-b-c-"),      # rlpse
 );
 
-# https://github.com/Raku/old-issue-tracker/issues/681
+
 #?DOES 1
 test( "-a-b-c-",/<.wb>/,4,/<.wb>/,
   <- a - b - c ->,                                 # r
@@ -488,7 +488,7 @@ dies-ok {"  abc  def  ".split()}, q/Str.split() disallowed/;
 is "a.b".split(/\./).join(','), <a b>.join(','),
    q{"a.b".split(/\./)};
 
-# https://github.com/Raku/old-issue-tracker/issues/3964
+
 #?rakudo skip 'No such method null for invocant of type Cursor RT #124685'
 {
     is "abcd".split(/<null>/).join(','), <a b c d>.join(','),
@@ -506,14 +506,14 @@ is "a.b".split(/\./).join(','), <a b>.join(','),
 is-deeply 'aaaaabbbbb'.split(<aaa aa bb bbb>, :v),
     ('', 'aaa', '', 'aa', '', 'bbb', '', 'bb', '').Seq, 'overlapping needles';
 
-# https://github.com/Raku/old-issue-tracker/issues/5401
+
 {
     # .List is to check it's not a BOOTArray
     # (which doesn't have p6 method resolution)
     is-deeply *.split("-").("a-b-c").List, <a b c>, '*.split result is HLLized';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5654
+
 subtest '.split works on Cool same as it works on Str' => {
     plan 11;
 
@@ -534,10 +534,10 @@ subtest '.split works on Cool same as it works on Str' => {
     is-eqv 12345.split(('2', /4/)), ("1", "3", "5").Seq,  '@needles form';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6118
+
 is-eqv "A-B C".split([" ", "-"]), ("A", "B", "C").Seq, "Split with alternates completes and doesn't give an exception";
 
-# https://github.com/Raku/old-issue-tracker/issues/6135
+
 subtest 'split skip-empty skips all empty chunks' => {
     my @tests = '' => ';', '' => '', '' => rx/^/, '' => /$/, ';' => ';';
     plan +@tests;
@@ -546,7 +546,7 @@ subtest 'split skip-empty skips all empty chunks' => {
     for @tests;
 }
 
-# https://github.com/rakudo/rakudo/issues/3758
+
 {
     my ($a,$b,@c) = "aa bb".split(/\s+/);
     is $a, "aa", 'did we get aa';

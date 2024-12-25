@@ -143,7 +143,7 @@ $multiline = "Hello\n    World";
     is no-r(@q3[0]), "line one\nline two\n", "mixing tabs and spaces even more evil-ly";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3121
+
 {
     constant TEXT = q :to 'END';
     Hello world
@@ -153,7 +153,7 @@ $multiline = "Hello\n    World";
     is no-r(TEXT), "Hello world\n:)\n", "Constant heredocs work";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3110
+
 {
     my $eefee = q:to<END>;
 
@@ -180,7 +180,7 @@ END
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3299
+
 {
     #  Should also try this with varying $?TABSTOP when that gets implemented
 
@@ -213,7 +213,7 @@ END
         "Heredoc tab explosion makefile use case is usesul.";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6456
+
 #?rakudo skip 'RT #131927'
 {
     # Don't change the space in front of any of these, or you'll change the test!

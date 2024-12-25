@@ -52,7 +52,7 @@ throws-like { mods_param_rw_enforces($[1,2]) },
 lives-ok  { mods_param_rw($foo) }, 'pass by "is rw" doesn\'t die';
 is($foo, 2, 'pass by reference works');
 
-# https://github.com/Raku/old-issue-tracker/issues/5728
+
 multi sub param_rw_ro ($x is rw) { "fee $x" }
 multi sub param_rw_ro ($x) { "foo $x" }
 $foo = "fie";
@@ -102,7 +102,7 @@ lives-ok { boom(42) }, "can modify a copy";
     ok "$!" ~~ /nonesuch/, 'error message mentions the name of the trait';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6661
+
 is_run ｢
     sub foo1 is tighter(&[**]) is tighter(&[**])
              is looser(&[**])  is looser(&[**])

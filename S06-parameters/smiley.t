@@ -20,7 +20,7 @@ is { sub a(--> Int)   { 42  }; a  }(),  42, 'can --> Int   return an Int:D';
 is { sub a(--> Int:_) { Int }; a  }(), Int, 'can --> Int:_ return an Int:U';
 is { sub a(--> Int:_) { 42  }; a  }(),  42, 'can --> Int:_ return an Int:D';
 is { sub a(--> Int:U) { Int }; a  }(), Int, 'can --> Int:U return an Int:U';
-# https://github.com/Raku/old-issue-tracker/issues/4627
+
 throws-like { sub a(--> Int:U) {  42 }; a },
   X::TypeCheck::Return,                     'can --> Int:U return an Int:D';
 throws-like { sub a(--> Int:D) { Int }; a },
@@ -74,7 +74,7 @@ throws-like 'use parameters :U, :D', X::Pragma::OnlyOne,    :name<parameters>,
 throws-like 'use parameters :foo',   X::InvalidTypeSmiley,  :name<foo>,
     'does use parameters :foo fail';
 
-# https://github.com/Raku/old-issue-tracker/issues/5214
+
 is Int:U        .gist, '(Int:U)',   '.gist on :U smileys';
 is Proc::Async:U.gist, '(Async:U)', '.gist on :U smileys uses shortname';
 is Int:D        .gist, '(Int:D)',   '.gist on :D smileys';

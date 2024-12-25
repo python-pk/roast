@@ -7,9 +7,9 @@ grammar Alts {
     proto token alt {*}
     token alt:sym<foo> { <sym> };
     token alt:sym<bar> { 'bar' };
-    # https://github.com/Raku/old-issue-tracker/issues/2787
+    
     token alt:sym«baz» { 'argl' };
-    # https://github.com/Raku/old-issue-tracker/issues/2787
+    
     token alt:sym«=>»  { <sym> };
 }
 
@@ -27,7 +27,7 @@ ok !Alts.subparse('baz'), 'does not match sym of third alternative';
 ok !Alts.subparse('aldkfj'), 'does not match completely unrelated string';
 ok !Alts.subparse(''), 'does not match empty string';
 
-# https://github.com/Raku/old-issue-tracker/issues/2787
+
 ok Alts.subparse('=>'), 'can parse symbol inside double-angles';
 
 
@@ -120,7 +120,7 @@ is ~LTM.subparse('aaa', :rule('ass1')),    'aaa',    '<?{...}> does not terminat
 is ~LTM.subparse('aaa', :rule('ass2')),    'aaa',    '<!{...}> does not terminate LTM';
 is ~LTM.subparse('aaa', :rule('block')),   'aa',     'However, code blocks do terminate LTM';
 
-# https://github.com/Raku/old-issue-tracker/issues/3246
+
 {
     grammar G {
 

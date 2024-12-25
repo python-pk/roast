@@ -191,10 +191,10 @@ is %dupl<a>, 3, "hash creation with duplicate keys works correctly";
       "doesn't really make sense, but shouldn't segfault, either ($!)";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/650
+
 lives-ok { Hash.new("a" => "b") }, 'Hash.new($pair) lives';
 
-# https://github.com/Raku/old-issue-tracker/issues/1421
+
 {
     my %rt71022;
     %rt71022<bughunt> = %rt71022<bughunt>;
@@ -202,7 +202,7 @@ lives-ok { Hash.new("a" => "b") }, 'Hash.new($pair) lives';
         'non-existent hash element assigned to itself is not defined, not segfault' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1426
+
 {
     class RT71064 {
         method postcircumfix:<{ }>($x) { 'bughunt' }    #OK not used
@@ -227,14 +227,14 @@ lives-ok { Hash.new("a" => "b") }, 'Hash.new($pair) lives';
     is-deeply %h<foo>, (bar => "baz").hash, "multi-level auto-vivify";
 } #4
 
-# https://github.com/Raku/old-issue-tracker/issues/1960
+
 {
     my %h = statement => 3;
     is %h.keys.[0], 'statement',
         '"statement" autoquoted hash key does not collide with "state"';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/282
+
 # By collective knowledge of #perl6 and @larry, .{ } is actually defined in
 # Any
 {
@@ -258,7 +258,7 @@ lives-ok { Hash.new("a" => "b") }, 'Hash.new($pair) lives';
     is @result.elems, 3,        '{} zen slice decontainerizes';
 } #2
 
-# https://github.com/Raku/old-issue-tracker/issues/1855
+
 {
     my %h = (ab => 'x', 'a' => 'y');
     'abc' ~~ /^(.)./;
@@ -267,14 +267,14 @@ lives-ok { Hash.new("a" => "b") }, 'Hash.new($pair) lives';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/492
+
 {
     my %hash;
     %hash<foo> := 'bar';
     is %hash<foo>, 'bar', 'binding hash value works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3190
+
 {
     my %hash;
     %hash<bar><baz> := 'zoom';
@@ -284,41 +284,41 @@ lives-ok { Hash.new("a" => "b") }, 'Hash.new($pair) lives';
     is %hash<foo><baz>, 42, 'did the assignment vivify';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1829
+
 eval-lives-ok('my $rt75694 = { has-b => 42 }', "can have a bareword key starting with 'has-' in a hash");
 
-# https://github.com/Raku/old-issue-tracker/issues/2479
+
 {
     eval-lives-ok 'my $rt = { grammar => 5 }',
                   "can have a bareword 'grammar' as a hash key";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2179
+
 {
     my $h = Hash.new(a => 3);
     $h<a> = 5;
     is $h<a>, 5, 'can normally modify items created from Hash.new';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2112
+
 {
     isa-ok {}[*-1], Failure, 'array-indexing a hash with a negative index is Failure';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1564
+
 {
     my Hash $RT73230;
     $RT73230[1];
     is($RT73230.raku, 'Hash', 'test for positional (.[]) indexing on a Hash');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3096
+
 {
     my %hash = a => 1;
     is item(%hash).raku, (${ a => 1 }).raku, 'item(%hash) is equivalent to ${%hash}';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2106
+
 {
     throws-like { ~[]<c> }, Exception,
         message => 'Type Array does not support associative indexing.',
@@ -333,13 +333,13 @@ eval-lives-ok('my $rt75694 = { has-b => 42 }', "can have a bareword key starting
         'adequate Failure error message when hash-indexing a non-hash using .{}';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3571
+
 {
     my %hash = not => 42;
     is %hash<not>, 42, "can use bare 'not' as hash key";
 }
 
-# https://github.com/rakudo/rakudo/issues/1344
+
 {
     my %h = :42foo;
     cmp-ok %h.list,  'eqv', (:42foo,), 'Hash.list  returns a List';
@@ -355,7 +355,7 @@ eval-lives-ok('my $rt75694 = { has-b => 42 }', "can have a bareword key starting
     is Hash.new.of.^name, 'Mu', 'does Hash object return proper type';
 }
 
-# https://github.com/rakudo/rakudo/issues/3374
+
 {
     my $x;
     is-deeply {:$x :$x}, Hash.new("x",Any),
@@ -368,7 +368,7 @@ eval-lives-ok('my $rt75694 = { has-b => 42 }', "can have a bareword key starting
       'is {:$x :y($x)} ok';
 }
 
-# https://github.com/rakudo/rakudo/issues/4678
+
 my %h;
 %h<a> = %h;
 for <Str gist raku> -> $method {

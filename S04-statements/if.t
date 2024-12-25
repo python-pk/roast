@@ -144,7 +144,7 @@ if Mu { flunk('if (Mu) {} failed'); } else { pass('if (Mu) {} works'); }
     is $got, '', 'else -> $c { } binding previous if';
 }
 # Sing it again.  This time with slurpy.
-# https://github.com/Raku/old-issue-tracker/issues/2577
+
 {
     my ($got, $a_val, $b_val);
     my sub testa { $a_val };
@@ -209,7 +209,7 @@ is-deeply (if 0 { 42 }), Empty, "if evaluates to () when no block chosen";
 # L<S04/Statement parsing/keywords require whitespace>
 throws-like 'if($x > 1) {}', X::Comp::Group, 'keyword needs at least one whitespace after it';
 
-# https://github.com/Raku/old-issue-tracker/issues/1883
+
 # scoping of $_ in 'if' shouldn't break aliasing
 {
     my @a = 0, 1, 2;
@@ -217,7 +217,7 @@ throws-like 'if($x > 1) {}', X::Comp::Group, 'keyword needs at least one whitesp
     is ~@a, '0 2 3', '"if" does not break lexical aliasing of $_'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2577
+
 subtest 'slurpy parameters on block' => {
     plan 2;
     subtest 'if' => {

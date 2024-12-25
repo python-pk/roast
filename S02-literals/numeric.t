@@ -25,7 +25,7 @@ ok <-1/-3>.WHAT === Str, 'negative allowed only on numerator';
 isa-ok <-1/3>, Rat, 'negative Rat literal';
 ok <-1/3> * -3 == 1, 'negative Rat literal';
 
-# https://github.com/Raku/old-issue-tracker/issues/3875
+
 is <0x01/0x03>, (0x01/0x03), 'Rat works with hexadecimal numbers';
 is <0b01/0b10>, (0b01/0b10), 'Rat works with binary numbers';
 #?rakudo 2 todo 'Adverbial numbers in Rat literals not supported'
@@ -67,7 +67,7 @@ is-approx   <3.1e-99+2.9e-99i>.im,  2.9e-99, '<3.1e-99+2.9e-99i> produces correc
 is  <NaN+Inf\i>,   NaN + Inf\i, '<NaN+Inf\i> produces correct value';
 is  <NaN-Inf\i>,   NaN - Inf\i, '<NaN-Inf\i> produces correct value';
 
-# https://github.com/Raku/old-issue-tracker/issues/5759
+
 {
     isa-ok <0--Inf\i>, Str, '0--Inf\i is a Str';
     isa-ok <0++Inf\i>, Str, '0++Inf\i is a Str';
@@ -80,11 +80,11 @@ is  <NaN-Inf\i>,   NaN - Inf\i, '<NaN-Inf\i> produces correct value';
     isa-ok <-+Inf-1i>, Str, '-+Inf-1i is a Str';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1721
+
 is-approx 3.14159265358979323846264338327950288419716939937510e0,
           3.141592, 'very long Num literals';
 
-# https://github.com/Raku/old-issue-tracker/issues/1566
+
 {
     eval-lives-ok '0.' ~ '0' x 19,
         'parsing 0.000... with 19 decimal places lives';
@@ -102,7 +102,7 @@ is-approx 3.14159265358979323846264338327950288419716939937510e0,
         'parsing 0.000... with 1024 decimal places lives';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1403
+
 ok 0e999999999999999 == 0, '0e999999999999 equals zero';
 
 # We are not afraid of unicode
@@ -121,7 +121,7 @@ ok 0e999999999999999 == 0, '0e999999999999 equals zero';
 }
 
 
-# https://github.com/rakudo/rakudo/issues/2094
+
 subtest '#2094 prefix as post fix works on number literals' => {
    plan 6;
    cmp-ok 42.:<->,      '==', -42, 'use negation as postfix';
@@ -132,7 +132,7 @@ subtest '#2094 prefix as post fix works on number literals' => {
    cmp-ok 42.:<<'~'>>, '===', "42", "use <<' '>> to wrap the prefix";
 }
 
-# https://github.com/rakudo/rakudo/issues/3694
+
 #?rakudo.jvm skip 'uniprop NYI'
 #?DOES 1
 {

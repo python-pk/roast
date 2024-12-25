@@ -87,7 +87,7 @@ subtest 'is required with hash attributes' => {
         'Default hash value is not used if argument is passed';
 }
 
-# https://github.com/rakudo/rakudo/issues/4624
+
 {
     my class Box {
         has Any:D $.value is required;

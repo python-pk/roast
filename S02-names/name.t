@@ -66,7 +66,7 @@ plan 28;
 #    is &a.VAR.name, '&a', "initialized typed sub should have name";
 } #2
 
-# https://github.com/Raku/old-issue-tracker/issues/4616
+
 {
     is &[==].name, 'infix:<==>', '== op name uses <>';
     is &[=>].name, 'infix:«=>»', '=> op name uses «»';
@@ -87,7 +87,7 @@ plan 28;
     is &[$<].name, 'infix:<$\<>', 'custom $< op name uses <> and backslash';
 }
 
-# https://github.com/rakudo/rakudo/issues/2928
+
 {
     my $a = 1;
     is $a.VAR.name,  '$a', 'VAR.name ok';

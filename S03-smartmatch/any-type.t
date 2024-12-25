@@ -15,7 +15,7 @@ subtest "Basics" => {
     ok !(Chihuahua ~~ Cat), "chihuahua is not a cat";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1449
+
 subtest "RT 71462" => {
     plan 10;
     is 'RT71462' ~~ Str,      True,  '~~ Str returns a Bool (1)';
@@ -30,7 +30,7 @@ subtest "RT 71462" => {
     is 5         ~~ Callable, False, '~~ Callable returns a Bool (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1956
+
 subtest "RT 76610" => {
     plan 2;
     module M { };
@@ -38,7 +38,7 @@ subtest "RT 76610" => {
     ok not $/, '42 is not a module';
 }
 
-# https://github.com/rakudo/rakudo/issues/3383
+
 subtest "GH 3383" => {
     plan 6;
     ok Array        ~~ Positional,        "Array ~~ Positional";

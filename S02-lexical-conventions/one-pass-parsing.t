@@ -7,7 +7,7 @@ plan 5;
 lives-ok { EVAL 'regex { <[ } > ]> }; 1' },
   "can parse non-backslashed curly and right bracket in cclass";
 
-# https://github.com/Raku/old-issue-tracker/issues/1753
+
 {
     lives-ok { EVAL 'sub if() { "#foo" }; say if();' },
       "Can call sub if()";

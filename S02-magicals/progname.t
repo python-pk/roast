@@ -14,7 +14,7 @@ ok(PROCESS::<$PROGRAM> ~~ /S02'-'magicals['/'|'\\']progname'.'\w+$/, "progname v
 
 lives-ok { my $*PROGRAM-NAME = "coldfusion" }, '$*PROGRAM-NAME is assignable';
 
-# https://github.com/Raku/old-issue-tracker/issues/2776
+
 {
     is_run 'print $*PROGRAM-NAME', {
         out => -> $x { $x !~~ /IGNOREME/ },

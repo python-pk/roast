@@ -146,7 +146,7 @@ is(+Range, 0, 'type numification');
     ok(-.2 ~~ $inf, 'negative non-int matches *..*');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/674
+
 # ranges constructed from parameters
 {
     sub foo($a) { ~($a .. 5) };
@@ -157,7 +157,7 @@ is(+Range, 0, 'type numification');
 {
     for 1 -> $i {
         for $i..5 -> $j { };
-        # https://github.com/Raku/old-issue-tracker/issues/1014
+        
         is($i, 1, 'Iter range from param doesnt modify param');
     }
 }
@@ -359,14 +359,14 @@ lives-ok({"\0".."~"}, "low ascii range completes");
     dies-ok { ^Inf .minmax },  "cannot have exclusions for minmax otherwise";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4903
+
 is-deeply Int.Range, -Inf^..^Inf, 'Int.range is -Inf^..^Inf';
 
-# https://github.com/Raku/old-issue-tracker/issues/5553
+
 is-deeply (eager (^10+5)/2), (2.5, 3.5, 4.5, 5.5, 6.5),
     'Rat range constructed with Range ops does not explode';
 
-# https://github.com/Raku/old-issue-tracker/issues/5620
+
 subtest '.rand does not generate value equal to excluded endpoints' => {
     plan 3;
 
@@ -437,7 +437,7 @@ subtest 'no .int-bounds for Infs and NaN as Range endpoints' => {
         'we can get int-bounds from non-int range with `0` end-point';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4297
+
 subtest 'no floating point drifts in degenerate Ranges' => {
     plan 3;
     (NaN..NaN).map: {
@@ -453,13 +453,13 @@ subtest 'no floating point drifts in degenerate Ranges' => {
     is-deeply (Inf..0).elems, 0, 'Inf..0 Range has zero elems'
 }
 
-# https://github.com/rakudo/rakudo/issues/2517
+
 {
     my @a = "1"..9;
     is-deeply @a, ["1","2","3","4","5","6","7","8","9"], 'did we get strings';
 }
 
-# https://github.com/rakudo/rakudo/issues/5222
+
 {
     for 1..1, 1^..2, 1..^2, 1^..^3, "a".."a", 1..* -> $range {
         is-deeply $range.Bool, True, "$range.raku().Bool is True";
@@ -470,7 +470,7 @@ subtest 'no floating point drifts in degenerate Ranges' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/3596
+
 {
     is-deeply (Inf .. Inf)[^5], (Nil, Nil, Nil, Nil, Nil),
       'Inf .. Inf produces Nils';

@@ -2,7 +2,7 @@ use Test;
 
 plan 4;
 
-# https://github.com/Raku/old-issue-tracker/issues/2340
+
 subtest 'signature binding outside of routine calls' => {
     plan 2;
 
@@ -14,7 +14,7 @@ subtest 'signature binding outside of routine calls' => {
     is $o, 3, 'o eq 3 after binding';
 };
 
-# https://github.com/Raku/old-issue-tracker/issues/5110
+
 subtest 'smartmatch on signatures with literals' => {
     plan 5;
     subtest 'strings' => {
@@ -62,10 +62,10 @@ subtest 'smartmatch on signatures with literals' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5503
+
 eval-lives-ok ｢:($:)｣, 'invocant marker is allowed in bare signature';
 
-# https://github.com/Raku/old-issue-tracker/issues/5507
+
 is :(*%) ~~ :(), False, 'smartmatch with no slurpy on right side';
 
 # vim: expandtab shiftwidth=4

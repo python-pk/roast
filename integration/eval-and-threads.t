@@ -2,7 +2,7 @@ use Test;
 
 plan 1;
 
-# https://github.com/Raku/old-issue-tracker/issues/6131
+
 lives-ok {
     await Promise.allof((^3).map: {
         start {

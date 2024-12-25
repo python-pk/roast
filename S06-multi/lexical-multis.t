@@ -53,7 +53,7 @@ multi waz() { 1 }
 is(waz(), 1,             'multi from package still callable outside the inner scope...');
 dies-ok { EVAL("waz('vtak')") }, '...but lexical multi no longer callable';
 
-# https://github.com/Raku/old-issue-tracker/issues/2207
+
 {
     dies-ok { multi foo() { }; multi foo($x) { }; +&foo }, 'die in numification of proto';   #OK not used
 }

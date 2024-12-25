@@ -17,7 +17,7 @@ plan 9;
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5531
+
 isnt IO::Path::QNX.new("-a").absolute, '',
     '.absolute on paths starting with `-` does not produce empty string (QNX)';
 

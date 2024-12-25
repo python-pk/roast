@@ -4,7 +4,7 @@ use Test::Util;
 
 plan 1;
 
-# https://github.com/Raku/old-issue-tracker/issues/4403
+
 is_run ｢
     my $prog   = $*DISTRO.is-win ?? 'cmd'   !! 'cat';
     my @target = $*DISTRO.is-win ?? «/c ""» !! '/dev/null';

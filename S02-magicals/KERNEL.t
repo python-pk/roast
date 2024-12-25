@@ -5,7 +5,7 @@ use Test::Util;
 plan 42;
 
 # $?KERNEL.name is the kernel we were compiled in.
-# https://github.com/Raku/old-issue-tracker/issues/3918
+
 #?rakudo skip 'unimpl $?KERNEL RT #124624'
 {
     ok $?KERNEL.name,      "We were compiled in '{$?KERNEL.name}'";
@@ -34,10 +34,10 @@ plan 42;
 ok $*KERNEL.name,      "We are running under '{$*KERNEL.name}'";
 ok $*KERNEL.auth,      "Authority is '{$*KERNEL.auth}'";
 ok $*KERNEL.version,   "Version is '{$*KERNEL.version}'";
-# https://github.com/Raku/old-issue-tracker/issues/3918
+
 #?rakudo todo 'no Kernel.signature yet RT #124624'
 ok $*KERNEL.signature, "Signature is '{$*KERNEL.signature}'";
-# https://github.com/Raku/old-issue-tracker/issues/3918
+
 #?rakudo todo 'no Kernel.desc yet RT #124624'
 ok $*KERNEL.desc,      "Description is '{$*KERNEL.desc}'";
 ok $*KERNEL.release,   "Release info is '{$*KERNEL.release}'";
@@ -55,7 +55,7 @@ diag "'{$*KERNEL.name}' is an unknown KERNEL, please report" if !
   "We know of the KERNEL we are running under";
 
 isa-ok $*KERNEL.version, Version;
-# https://github.com/Raku/old-issue-tracker/issues/3918
+
 isa-ok $*KERNEL.signature, Blob;
 isa-ok $*KERNEL.bits, Int;
 

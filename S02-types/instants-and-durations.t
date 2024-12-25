@@ -45,7 +45,7 @@ for -2**63, -400.2, -33/7, -1, 0, 1, 33/7, 400.2, 2**32 -> $e {
         with Instant.from-posix: $e, True;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6486
+
 isa-ok now.Instant, Instant, "Instant.Instant";
 ok (Instant.Instant ~~ Instant:U), "Instant.Instant (undefined)";
 ok (now.Instant ~~ Instant:D), "Instant.Instant (defined)";

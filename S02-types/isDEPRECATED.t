@@ -127,7 +127,7 @@ Please use 'bar' instead.
 TEXT
 } #2
 
-# https://github.com/Raku/old-issue-tracker/issues/3302
+
 {
     sub rt120908 is DEPRECATED((sub { "a" })()) { };
     rt120908();
@@ -135,7 +135,7 @@ TEXT
         'right deprecation for rt120908()';
 }
 
-# https://github.com/rakudo/rakudo/issues/5055
+
 {
     sub gh5055() is DEPRECATED('the literal 42') is hidden-from-backtrace { 42 }
 	gh5055();

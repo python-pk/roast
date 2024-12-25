@@ -128,7 +128,7 @@ is(@lines8[2], "The End", 'lines($in,3) worked in list context');
 is(@lines8[3], "and finally... Its not over yet!", 'get($in) worked after lines($in,$n)');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4408
+
 {
     my $in = open($filename);
     my @lines = try $in.lines(*);
@@ -136,7 +136,7 @@ is(@lines8[3], "and finally... Its not over yet!", 'get($in) worked after lines(
     $in.close;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4408
+
 {
     my $in = open($filename);
     my @lines = try $in.lines(Inf);
@@ -144,7 +144,7 @@ is(@lines8[3], "and finally... Its not over yet!", 'get($in) worked after lines(
     $in.close;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4408
+
 {
     my $in = open($filename);
     my @lines = try lines($in,*);
@@ -152,7 +152,7 @@ is(@lines8[3], "and finally... Its not over yet!", 'get($in) worked after lines(
     $in.close;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4408
+
 {
     # Test lines($fh,Inf)
     my $in = open($filename);
@@ -202,7 +202,7 @@ ok($in8.close, 'file closed okay (in8)');
     #ok($fh10.close, 'file closed okay (10)');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/969
+
 {
     my $rt65348_out = open($filename, :w);
     isa-ok $rt65348_out, IO::Handle;
@@ -301,7 +301,7 @@ $out.say("Foo Bar Baz");
 $out.say("The End");
 $out.close;
 
-# https://github.com/Raku/old-issue-tracker/issues/3597
+
 {
     my $fh = open($filename, :r);
     ok(!$fh.t, 'checking if a file handle is a TTY - negative case');
@@ -317,7 +317,7 @@ $out.close;
 }
 unlink($filename);
 
-# https://github.com/Raku/old-issue-tracker/issues/2691
+
 {
     $out = open($filename, :w);
     $out.print('blarg');

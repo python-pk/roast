@@ -50,11 +50,11 @@ class Faz hides Fiz {
 
 is Faz.new.m1(42), 1, 'hides Fiz means we skip over Fiz in deferal';
 
-# https://github.com/Raku/old-issue-tracker/issues/4364
+
 lives-ok { EVAL('class C { method foo(*%_, *@_) { } }; C.new.foo') },
     '*%_ before a *@_ also correctly prevents generation of auto-%_';
 
-# https://github.com/Raku/old-issue-tracker/issues/4775
+
 {
     my grammar Foo { rule TOP { . } };
     is Foo.parse('f', :subclass_arg_to_ignore), 'f',

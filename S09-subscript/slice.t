@@ -25,7 +25,7 @@ plan 56;
     is-deeply(@array[@slice[1]], (9),     "slice from array slice, part 1");
     is-deeply(@array[@slice[0,1]], (7,9), "slice from array slice, part 2");
     is-deeply(@array[0..1], (3,7),	   "range from array");
-    # https://github.com/rakudo/rakudo/issues/2185
+    
     is-deeply(@array[0,(1,2)], (3,(7,9)),	   "nested slice");
     is-deeply(@array[0,1..2], (3,(7,9)),	   "slice plus range from array");
     is-deeply(@array[0..1,2,3], ((3,7),9,11), "range plus slice from array");
@@ -63,14 +63,14 @@ plan 56;
     is +@other, 0, '@array[2..1] is an empty slice';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/556
+
 #?rakudo skip '*..* does not slice'
 {
     eval-lives-ok '(0,1)[ * .. * ]', 'Two Whatever stars slice lives';
     is EVAL('(0,1)[ * .. * ]'), [0, 1], 'Two Whatever stars slice';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/676
+
 {
     my @array = <1 2 3>;
     isa-ok @array, Array;
@@ -82,7 +82,7 @@ plan 56;
            'slice with one element specified by variables';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2614
+
 {
     my @a1 = 1,2,3,4, 5;
     my @a2 = @a1[2 ..^ @a1];
@@ -90,7 +90,7 @@ plan 56;
     is @a3.join('|'), '4|5', 'can use 1..^@a for subscripting';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3251
+
 #?rakudo skip '.= with non-identifier postfixes'
 {
     my @a = 42..50;
@@ -98,21 +98,21 @@ plan 56;
     is @a, (43,44), 'did we assign slice ok';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3643
+
 {
     my $b = Buf.new(0, 0);
     $b[0, 1] = 2, 3;
     is-deeply $b, Buf.new(2, 3), 'can assign to a Buf slice';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6419
+
 {
     my %h;
     %h<a> = ('1','3','4');
     is-deeply %h<a>[*], ('1', '3', '4'), '[*] slice returns all elements of a list of hash value';
 }
 
-# https://github.com/rakudo/rakudo/issues/1320
+
 subtest 'no "drift" when re-using lazy iterable for indexing' => {
     plan 3;
     my @a = <a b>;
@@ -130,7 +130,7 @@ subtest 'no "drift" when re-using lazy iterable for indexing' => {
         'lazy iterable with iterator starting non-lazy';
 }
 
-# https://github.com/rakudo/rakudo/issues/2872
+
 subtest 'infinite ranges and whatever stars' => {
     plan 6;
     is-deeply (^3)[0 ..  Inf],       (0, 1, 2), 'Inf range inclusive';
@@ -141,7 +141,7 @@ subtest 'infinite ranges and whatever stars' => {
     is        (^3)[{ $^elems - 1 }], 2,         'Callable';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6233
+
 subtest 'nested slices' => {
     plan 62;
     is-deeply ("a".."z")[(3, (4, (5,)))],      ("d", ("e", ("f",))),                 'Nested slice, no adverbs';
@@ -294,7 +294,7 @@ subtest 'nested slices' => {
     is-deeply @a[(3, (30, (5,)))]:!exists:!p, (3 => False, (30 => True, (5 => False,))),        'Nested slice, !exists + !p adverbs';
 }
 
-# https://github.com/rakudo/rakudo/issues/4216
+
 {
     my @a;
 

@@ -168,7 +168,7 @@ sub accumtest($expect, $op) is test-assertion {
 }
 
 # L<S03/Tight or precedence/'if all arguments are false'>
-# https://github.com/Raku/old-issue-tracker/issues/1502
+
 # infix ^^ return wrong types
 {
     is 0 ^^ False ^^ '', '', '^^ given all false values returns last (1)';
@@ -250,7 +250,7 @@ sub accumtest($expect, $op) is test-assertion {
 
 ok (0 || 0 || 1), '0 || 0 || 1 is true';
 
-# https://github.com/Raku/old-issue-tracker/issues/2167
+
 {
     my $x;
     $x &&= 5;
@@ -275,14 +275,14 @@ ok (0 || 0 || 1), '0 || 0 || 1 is true';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2426
+
 {
     my @a = 1;
     @a ||= ();
     is ~@a, '1', '||= works with array on the LHS';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3014
+
 {
     my role SomeRole { };
     my $x = SomeRole;
@@ -290,7 +290,7 @@ ok (0 || 0 || 1), '0 || 0 || 1 is true';
     ok $x.defined, '//= can cope with role type objects';
 }
 
-# https://github.com/rakudo/rakudo/issues/1389
+
 subtest 'xor warns when used with bad precedence' => {
     plan 3;
     is_run ｢uc 'f♥oo' xor 'b♥ar'｣, {:err{.contains: 'Useless' & 'b♥ar' & none 'f♥oo'}}, '2-arg';

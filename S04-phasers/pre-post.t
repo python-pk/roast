@@ -150,7 +150,7 @@ throws-like '$pt.test(1)',
     ok $str ~~ /foo/, 'POST runs on exception, with correct $!';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4113
+
 #?rakudo todo 'POST and exceptions RT #124961'
 {
     my $str;
@@ -162,7 +162,7 @@ throws-like '$pt.test(1)',
     is $str, 'ayeno', 'POST has undefined $! on no exception';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4113
+
 #?rakudo.moar todo "POST and exceptions"
 #?rakudo.js todo "POST and exceptions"
 #?rakudo.jvm skip "POST and exceptions"

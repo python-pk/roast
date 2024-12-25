@@ -39,13 +39,13 @@ ok((MyPack::val_v), "default sub called in package namespace");
     is default_with_list(), 1, 'can have a list literal as default value';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1288
+
 {
     sub rt69200(Bool :$x) { $x };
     is rt69200(:x), True, '":x" is the same as "x => True" in sub call';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3141
+
 {
     sub a ( $a=1 --> Hash ) {  my %h = ($a => "foo") };
     ok a(2)<2> :exists,
@@ -55,12 +55,12 @@ ok((MyPack::val_v), "default sub called in package namespace");
         'comma allowed between parameter with default value and returns-arrow ("-->")';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3580
+
 {
     is -> $a = 0 { $a }(42), 42, "default lambda parameters don't choke on block";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4428
+
 {
     sub foo($r = rx{foo}) {
         ok $r ~~ Regex, 'rx{foo} works as a default';
@@ -68,7 +68,7 @@ ok((MyPack::val_v), "default sub called in package namespace");
     foo();
 }
 
-# https://github.com/rakudo/rakudo/issues/4647
+
 {
     # Inlined to avoid errors in forwarding arguments to other routines.
     -> :@l {

@@ -429,7 +429,7 @@ for
       "$rname with a Failure:D on the LHS throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/2167
+
 {
     is-deeply 1 (>) ($ = :42foo,), False, 'no explosion (>)';
     is-deeply 1 (<) ($ = :42foo,), False, 'no explosion (<)';

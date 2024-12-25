@@ -234,7 +234,7 @@ my @e;
     is(~@r, ~@e, "operator call on integer list elements (Same thing, dot form)");
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3450
+
 {
     my (@r, @e);
     @e = (2, 5, 10);
@@ -313,11 +313,11 @@ my @e;
     @r = ("f", "oo", "bar")>>.chars;
     is(~@r, ~@e, "method call on list elements (ASCII)");
 
-    # https://github.com/Raku/old-issue-tracker/issues/2593
+    
     @r = ("f", "oo", "bar").>>.chars;
     is(~@r, ~@e, "method call on list elements (ASCII, Same thing, dot form)");
 
-    # https://github.com/Raku/old-issue-tracker/issues/3450
+    
     @r = ("f", "oo", "bar")»."chars"();
     is(~@r, ~@e, "method call on list elements (quoted method name)");
 
@@ -805,7 +805,7 @@ my @e;
 }
 
 # test non-UTF-8 input
-# https://github.com/Raku/old-issue-tracker/issues/3432
+
 #?rakudo skip 'EVAL(Buf) RT #122256'
 #?DOES 1
 {
@@ -822,7 +822,7 @@ my @e;
 }
 
 # L<S03/"Hyper operators"/is assumed to be infinitely extensible>
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     @r = <A B C D E> »~» (1, 2, 3, *);
     @e = <A1 B2 C3 D3 E3>;
@@ -849,19 +849,19 @@ my @e;
     is ~@r, ~@e, 'dwimmy hyper takes longer length given two arguments ending with *';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2017
+
 
 {
     # niecza doesn't propagate slangs into &EVAL yet
     eval-lives-ok 'sub infix:<+++>($a, $b) { ($a + $b) div 2 }; 10 >>+++<< 14', 'can use hypers with local scoped user-defined operators';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1709
+
 {
     is ~(-<<(1..3)), '-1 -2 -3', 'ranges and hyper ops mix';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2158
+
 # Parsing hyper-subtraction
 {
     is ((9, 8) <<-<< (1, 2, 3, 4)), (8, 6, 6, 4), '<<-<<';
@@ -870,7 +870,7 @@ my @e;
     is ((9, 8) <<->> (1, 2, 5)), (8, 6, 4), '<<->>';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2169
+
 # L<S03/Hyper operators/'@array »+=»'>
 # Hyper assignment operators
 {
@@ -896,11 +896,11 @@ my @e;
     is "$a, $b, $c", $e, '»~=» changes each scalar';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2353
+
 is ((1, 2) >>[+]<< (100, 200)).join(','), '101,202',
     '>>[+]<< works';
 
-# https://github.com/Raku/old-issue-tracker/issues/2139
+
 {
     is ( { 1 + 1 }, { 2 + 2 } ).>>.(),
        (2, 4),
@@ -910,7 +910,7 @@ is ((1, 2) >>[+]<< (100, 200)).join(','), '101,202',
        '.>>.() means the same as >>.()';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2138
+
 {
     sub infix:<+-*/>($a, $b) {
         ( { $a + $b }, { $a - $b }, { $a * $b }, { $a / $b } )>>.()
@@ -920,19 +920,19 @@ is ((1, 2) >>[+]<< (100, 200)).join(','), '101,202',
         'can call Callable objects in a list in parallel using >>.()';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2044
+
 {
     #?rakudo todo "can_meta check for meta operators NYI"
     throws-like 'my @a >>[=]>> (1,2,3)', Exception, "hypering assignment dies correctly";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3581
+
 {
     is 42 «~~« (Array, List, Seq), (False, False, False), "hyper against an undefined Iterable doesn't hang";
     is 42 «~~« (Hash, Bag, Pair), (False, False, False), "hyper against an undefined Associative doesn't hang";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3287
+
 {
     # <empty list> <hyper> <empty list>
     is () »+« (), (), "no-dwim hyper between empty lists doesn't hang";
@@ -972,7 +972,7 @@ is ((1, 2) >>[+]<< (100, 200)).join(','), '101,202',
 
 throws-like '3 «.» foo', Exception, "«.» can't be hypered";
 
-# https://github.com/Raku/old-issue-tracker/issues/4272
+
 {
     is 10 <<*<< (1 .. 4), <10 20 30 40>,
         'hyper op works with range on non-magical side (1)';
@@ -1007,13 +1007,13 @@ my &post = &postfix:<»i>;
 is post((2,3,4)).gist, '(0+2i 0+3i 0+4i)', "Hyper postfix can autogen with &";
 is &postfix:<»i>((2,3,4)).gist, '(0+2i 0+3i 0+4i)', "Hyper postfix can autogen without &";
 
-# https://github.com/Raku/old-issue-tracker/issues/3148
+
 is_run # shouldn't warn about unitialized values of type Any in Numeric context
     ｢my %l = foo => 1, bar => 2; my %r = bar => 3, baz => 4; say %l >>+<< %r｣,
     {:out{.contains: all <bar baz foo>}, :err(''), :0status},
     "union hyperoperator on a hash shouldn't warn about missing keys";
 
-# https://github.com/Raku/old-issue-tracker/issues/6058
+
 subtest 'method call variants respect nodality' => {
     plan 20;
 
@@ -1114,35 +1114,35 @@ subtest 'method call variants respect nodality' => {
   }
 }
 
-# https://github.com/rakudo/rakudo/issues/2674
+
 is-deeply { a => (1,2,3) }.map({ .key <<=>>> .value }).list, ((:1a, :2a, :3a),),
     'No crash when RHS to be expanded is an itemized list';
 
-# https://github.com/rakudo/rakudo/issues/2480
+
 lives-ok {
     my @GH2480 = [[1], [2, 3]];
     my @GH2480-m = @GH2480 »*» 0;
     @GH2480-m[0][0] = 42;
 }, 'An array built with a hyperoperator is mutable';
 
-# https://github.com/rakudo/rakudo/issues/2482
+
 lives-ok {
     my @t2482 = |<1 2> >>xx>> 2;
     is-deeply @t2482, [<1 1>.Seq, <2 2>.Seq], 'Hyper on slip values is correct';
 }, 'Values created with a hyperoperator can be wrapped in a slip';
 
-# https://github.com/rakudo/rakudo/issues/4237
+
 is-deeply (:42a, :666b).Map>>.Str, (a => "42", b => "666").Map,
   'does hypering a Map give a Map without issues';
 
-# https://github.com/rakudo/rakudo/issues/4838
+
 {
     my @a = 0,0,0;
     is-deeply @a >>!=<< @a, [False, False, False],
       "is != treated as an infix, instead of a meta-ed assignment";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4700
+
 {
     my $t4700 := (:a, :b, :c) >>~>> "foo";
     isa-ok $t4700, List,
@@ -1153,7 +1153,7 @@ is-deeply (:42a, :666b).Map>>.Str, (a => "42", b => "666").Map,
         'hypered infix:<~> on list of pairs appends to stringified value';
 }
 
-# https://github.com/rakudo/rakudo/issues/2128
+
 {
     throws-like { with ^1 .hyper { .iterator; .iterator.pull-one } },
       X::Seq::Consumed,

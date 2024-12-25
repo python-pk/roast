@@ -170,19 +170,19 @@ plan 40;
     is $!.s, 'bar', '... and got the right object back';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2668
+
 {
     my $x = 0;
     try { $x = $_ } given '42';
     is $x, '42', 'try block in statement-modifying contextualizer';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3565
+
 lives-ok { try +'foo' }, 'Failure does not escape try (statement form)';
 lives-ok { try { +'foo' } }, 'Failure does not escape try (block form)';
 lives-ok { try { +'foo'; CATCH { default { } } } }, 'Failure does not escape try (block form with CATCH)';
 
-# https://github.com/Raku/old-issue-tracker/issues/3083
+
 lives-ok { try ... }, '... failure does not escape try (statement form)';
 lives-ok { try { ... } }, '... failure does not escape try (block form)';
 

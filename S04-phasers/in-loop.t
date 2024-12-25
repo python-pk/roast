@@ -18,7 +18,7 @@ plan 21;
 
 # L<S04/"Phasers">
 
-# https://github.com/Raku/old-issue-tracker/issues/4107
+
 #?rakudo todo "NEXT/LEAVE ordering"
 {
     my $str;
@@ -42,7 +42,7 @@ plan 21;
        'trait blocks work properly in for loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4107
+
 #?rakudo todo "NEXT/LEAVE ordering"
 {
     my $str;
@@ -75,7 +75,7 @@ plan 21;
        'trait blocks work properly in for loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3404
+
 {
     my $str = "";
 
@@ -87,7 +87,7 @@ plan 21;
        'LAST does not fire for empty loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3324
+
 {
     my $rt121156;
     my $i = 0;
@@ -111,14 +111,14 @@ plan 21;
         'LEAVE in while loop works as expected';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3417
+
 {
     my $rt122134;
     for 1 { last; ENTER { $rt122134 = "hurz" } };
     is $rt122134, 'hurz', 'no UnwindException with "last" and "ENTER" in for loop';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4517
+
 {
     sub rt126001_a () { for 1, 2       { LAST   return $_   } }
     sub rt126001_b () { for 1, 2 -> $x { LAST { return $x } } }
@@ -149,7 +149,7 @@ plan 21;
         'LAST in loop works fine with recursion';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4352
+
 {
   {
     my @a = [];
@@ -203,7 +203,7 @@ plan 21;
 
 }
 
-# https://github.com/rakudo/rakudo/issues/1623
+
 subtest 'FIRST+LAST loops as last statement in subs work and do not crash' => {
     plan 2;
     {
@@ -230,7 +230,7 @@ subtest 'FIRST+LAST loops as last statement in subs work and do not crash' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/1900
+
 {
     doesn't-warn {
         loop {

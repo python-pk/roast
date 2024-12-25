@@ -10,7 +10,7 @@ Tests C<CONTROL> blocks.
 
 =end desc
 
-# https://github.com/Raku/old-issue-tracker/issues/3774
+
 is_run( 'next; CONTROL { }',
         { status => sub { 0 != $^a },
           out    => '',
@@ -74,7 +74,7 @@ is_run( 'next; CONTROL { }',
     ok $ok, "done causes CX::Done control exception";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4300
+
 is_run( 'sub mention-me() { take 1; }; mention-me',
         { status => sub { 0 != $^a },
           out    => '',
@@ -109,7 +109,7 @@ is_run( 'sub mention-me() { take 1; }; mention-me',
     isa-ok @controls[0], CX::Whatever, 'Correct control exception type';
 }
 
-# https://github.com/rakudo/rakudo/issues/2665
+
 #?rakudo.jvm skip 'aborts after printing "different warning"'
 #?DOES 2
 {

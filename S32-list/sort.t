@@ -182,13 +182,13 @@ plan 74;
     is ~(42,).sort, "42",  "method form of sort should work on lists";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1094
+
 {
     my @list = 1, 2, Code, True;
     quietly lives-ok { @list.sort: { $^a cmp $^b } }, 'sort by class name';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1190
+
 {
     sub foo () { 0 }   #OK not used
     throws-like { EVAL '(1..10).sort(&foo)' }, Exception,
@@ -197,7 +197,7 @@ plan 74;
         'sort does not accept &rand';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1435
+
 # can sort a class without parrot internal error
 {
     class RT71258_1 { };
@@ -208,7 +208,7 @@ plan 74;
         'sorting by stringified class instance (name and memory address)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5500
+
 {
     my &code-method = *.sort;
     my &code-sub    =  &sort;
@@ -216,17 +216,17 @@ plan 74;
     isa-ok code-sub(   <y z x>), Seq, '&sort stored in a sub returns a List';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4855
+
 isa-ok (<2 1 3>   .sort), Seq, 'detached .sort returns a List';
 
-# https://github.com/Raku/old-issue-tracker/issues/4842
+
 isa-ok (*.sort)(<2 3 1>), Seq, 'auto-primed *.sort returns a Seq';
 
-# https://github.com/Raku/old-issue-tracker/issues/6101
+
 eval-lives-ok ｢.elems, .sort with @｣,
     '.sort on reified empty array does not crash';
 
-# https://github.com/rakudo/rakudo/issues/1472
+
 subtest 'degenerate cases' => {
     plan 13;
 
@@ -251,7 +251,7 @@ subtest 'degenerate cases' => {
     is-deeply (2, 1).sort(-> $, $ {-1}), (2, 1).Seq, '2-item, 2-arity (3)';
 }
 
-# https://github.com/rakudo/rakudo/issues/1739
+
 is-eqv <a c b>.sort(&lc), <a b c>.Seq, 'no crashes when using &lc in .sort';
 
 # R#2937

@@ -322,7 +322,7 @@ plan 90;
     is $dones-run, 0, '...and done will not be run';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4510
+
 {
     my $i = 0;
     react {
@@ -333,7 +333,7 @@ plan 90;
     is $i, 2, 'react/whenever with supply that immediately emits values works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5481
+
 {
     my $i = 0;
     react whenever Supply.interval: 0.01 { done() if $_ == 3; $i++ }
@@ -372,7 +372,7 @@ plan 90;
     is @collected, ['a bear', 'the wolf'], 'Can only be in one whenever block at a time';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4541
+
 throws-like 'emit 42', X::ControlFlow, illegal => 'emit';
 throws-like 'done', X::ControlFlow, illegal => 'done';
 
@@ -452,7 +452,7 @@ throws-like 'done', X::ControlFlow, illegal => 'done';
     nok $closed, 'CLOSE phasers do not run twice (normal termination then .close)';
 }
 
-# https://github.com/rakudo/rakudo/issues/1230
+
 #?rakudo.jvm skip 'atomicint NYI'
 {
     my atomicint $total = 0;
@@ -514,7 +514,7 @@ lives-ok {
     is await(foo(69)), 69, 'QUIT in whenever triggered without iterations sees correct outer (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5593
+
 lives-ok {
     for ^5 {
         my $p = Promise.new;
@@ -613,7 +613,7 @@ lives-ok {
     ok $closed, 'Supply is closed by Supply block after it sends done';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4833
+
 {
   lives-ok {
     for ^500 {
@@ -633,14 +633,14 @@ lives-ok {
   }, 'No hang or crash using react to consume channels';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5481
+
 {
     my $i = 0;
     react whenever Supply.from-list(1..5) { $i += $_ }
     is $i, 15, 'react without block works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6056
+
 {
     my @pre-emit;
     my $ran-done = True;
@@ -700,7 +700,7 @@ lives-ok {
         'supply block loop is terminated on emit to dead consumer (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/1410
+
 lives-ok {
     my $s = supply {
         my $b = Supplier::Preserving.new;

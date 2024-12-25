@@ -54,7 +54,7 @@ is $action.calls, 'ab', '... and in the right order';
         method b($/) {
             # the given/when is pretty pointless, but rakudo
             # used to segfault on it, so test it here
-            # https://github.com/Raku/old-issue-tracker/issues/838
+            
 
             given 2 {
                 when * {
@@ -76,7 +76,7 @@ is $action.calls, 'ab', '... and in the right order';
     is $match.ast.[1], 'bbb',  'make $/ x 3 worked';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/826
+
 # used to be a Rakudo regression, RT #64104
 {
     grammar Math {
@@ -93,7 +93,7 @@ is $action.calls, 'ab', '... and in the right order';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1454
+
 # another former rakudo regression, RT #71514
 {
     grammar ActionsTestGrammar {
@@ -110,7 +110,7 @@ is $action.calls, 'ab', '... and in the right order';
 
     is ActionsTestGrammar.parse("ab\ncd", :actions(TestActions)).ast, 123,
         'Can call Str.subst in an action method without any trouble';
-    # https://github.com/Raku/old-issue-tracker/issues/2231
+    
     isa-ok ActionsTestGrammar.parse('a', :actions(
         class { method TOP($/) { make { a => 1 } } }
     )).ast, Hash, 'Can make() a Hash';

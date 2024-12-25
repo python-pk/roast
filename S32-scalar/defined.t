@@ -90,7 +90,7 @@ ok(defined(@bax), 'variable @bax is defined after assigning Nil');
 }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2308
+
 # Ensure that we always get Bools
 {
     isa-ok defined(Mu), Bool, 'defined(Mu) returns a Bool';
@@ -127,7 +127,7 @@ my %a = (a => 1);
 ok defined(%a{"a"}),        "defined on a hash with parens (1)";
 ok !defined(%a{"b"}),       "defined on a hash with parens (2)";
 
-# https://github.com/Raku/old-issue-tracker/issues/1925
+
 ok defined('a' => 5) ~~ Bool, 'defined is a listop, not a prefix op';
 ok &defined, '&defined is available';
 

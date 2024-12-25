@@ -69,7 +69,7 @@ for @endings -> (:key($eol), :value($EOL)) {
 
 unlink $filename; # cleanup
 
-# https://github.com/Raku/old-issue-tracker/issues/5087
+
 {
     try shell(:out, :err, $*EXECUTABLE ~ ’ -pe '' /proc/$$/statm‘)
         .out.slurp;
@@ -77,7 +77,7 @@ unlink $filename; # cleanup
 }
 
 {
-    # https://github.com/Raku/old-issue-tracker/issues/5927
+    
     my $file := make-temp-file content => join "\n", <a b c>;
     is-deeply $file.lines(2000), ('a', 'b', 'c'),
         'we stop when data ends, even if limit has not been reached yet';

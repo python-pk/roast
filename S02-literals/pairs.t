@@ -161,7 +161,7 @@ sub f9 (:$bar!) { WHAT($bar) }
     is (a => 3).elems, 1, 'Pair.elems';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1751
+
 #?DOES 32
 {
     for <
@@ -174,18 +174,18 @@ sub f9 (:$bar!) { WHAT($bar) }
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5522
+
 throws-like ":7\x[308]a", X::Syntax::Malformed,
     'synthetic numerals in colon pairs in :42foo format throw';
 
-# https://github.com/Raku/old-issue-tracker/issues/5600
+
 is-perl-idempotent(((Int) => 42));
 is-perl-idempotent(((Pair) => 42), ".raku of (Pair) => 42 is idempotent"); # .gist WAT?
 is-perl-idempotent(((Num) => 42));
 is-perl-idempotent(((Str) => 42));
 is-perl-idempotent((:a(Bool)));
 
-# https://github.com/Raku/old-issue-tracker/issues/4836
+
 is-perl-idempotent(((Nil) => 42));
 
 # vim: expandtab shiftwidth=4

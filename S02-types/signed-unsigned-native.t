@@ -180,7 +180,7 @@ is-false $i32 >= $u32, 'greater than or equal on 32bit int / uint';
 is-false $i64 >= $u64, 'greater than or equal on 64bit int / uint';
 is-false $i   >= $u,   'greater than or equal on int / uint';
 
-# https://github.com/rakudo/rakudo/issues/3936
+
 {
     is-deeply (my byte   $ = +^0),                  255, 'byte scaled ok';
     is-deeply (my uint8  $ = +^0),                  255, 'uint8 scaled ok';

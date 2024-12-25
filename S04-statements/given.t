@@ -51,7 +51,7 @@ Tests the given block, as defined in L<S04/"Switch statements">
     }
 
     ok($foo, "foo was found in nested when");
-    # https://github.com/Raku/old-issue-tracker/issues/2481
+    
     ok $match, 'regex in when-clause set match object';
 };
 
@@ -421,7 +421,7 @@ subtest "given/when with explicit conditions" => {
     is $tracker, 2, 'statement-modifying when';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2210
+
 eval-lives-ok 'given 3 { sub a() { } }', 'can define a sub inside a given';
 eval-lives-ok 'sub a() { } given 3',     'can define a sub inside a statement-modifying given';
 
@@ -434,7 +434,7 @@ eval-lives-ok 'sub a() { } given 3',     'can define a sub inside a statement-mo
 }
 
 # Make sure lexically scoped topic is accessible within a nested closure.
-# https://github.com/rakudo/rakudo/issues/4850
+
 {
     my &c;
     given 'foo' {

@@ -181,7 +181,7 @@ for 1, 1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1449755609 {
 throws-like { $ = Duration.new: "meow" }, X::Str::Numeric,
     'Duration.new with wrong-typed arg throws';
 
-# https://github.com/Raku/old-issue-tracker/issues/5074
+
 does-ok Duration.new(Inf).tai, Rational, 'Duration.new(Inf) works';
 does-ok Duration.new(NaN).tai, Rational, 'Duration.new(NaN) works';
 
@@ -204,7 +204,7 @@ subtest 'infix:<%>(Duration, Real)' => {
 
 is-deeply Duration.new.tai, 0.0, 'Duration defaults to 0.0';
 
-# https://github.com/rakudo/rakudo/issues/2221
+
 {
     lives-ok {
         srand(42);

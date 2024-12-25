@@ -156,7 +156,7 @@ These tests are the testing for "List parameters" section of Synopsis 06
        'Testing the rest slurpy *@r';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/545
+
 {
     my @array_in = <a b c>;
 
@@ -263,15 +263,15 @@ These tests are the testing for "List parameters" section of Synopsis 06
 throws-like 'sub rt65324(*@x, $oops) { say $oops }', X::Parameter::WrongOrder,
              "Can't put required parameter after variadic parameters";
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 throws-like 'sub typed-slurpy-pos(Int *@a) { }',
     X::Parameter::TypedSlurpy, kind => 'positional';
 
-# https://github.com/Raku/old-issue-tracker/issues/3314
+
 throws-like 'sub typed-slurpy-pos(Int *%h) { }',
     X::Parameter::TypedSlurpy, kind => 'named';
 
-# https://github.com/Raku/old-issue-tracker/issues/545
+
 {
     sub array_slurpy_copy(*@a is copy) {
         return @a;
@@ -281,7 +281,7 @@ throws-like 'sub typed-slurpy-pos(Int *%h) { }',
     is @c[0], 'a', 'slurpy is copy-array works fine, thank you';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1488
+
 {
     sub A (*@_) {
         is @_, [5, 4], 'slurpy @_ contains proper values';
@@ -292,21 +292,21 @@ throws-like 'sub typed-slurpy-pos(Int *%h) { }',
     A(5, 4);
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1693
+
 {
     is -> *@a { @a[+0] }.([5]), 5,
         'slurpy array can be indexed if index contains prefix:<+>';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5331
+
 is { @_.gist; 'passed' }(1..Inf), 'passed',
     '.gist on @_ containing lazy list does not hang';
 
-# https://github.com/Raku/old-issue-tracker/issues/5636
+
 is-deeply -> *@a { @a.is-lazy.say }(1…∞), True,
     'slurpy positional param does not hang when given infinite lists';
 
-# https://github.com/rakudo/rakudo/issues/2195
+
 -> *@ ($?), *%h {
     # Note: bug is avoided if `%h` has anything in it, so leave it empty
     -> *%z { is-deeply %z, {}, 'no crashes with slurpies' }(|%h)

@@ -4,7 +4,7 @@ use Test::Util;
 plan 2;
 
 
-# https://github.com/rakudo/rakudo/issues/2158
+
 #?rakudo.jvm skip "Unknown encoding 'utf8-c8'"
 {
     my $str = 'I ❤ Raku!';

@@ -4,7 +4,7 @@ use Test::Util;
 
 plan 9;
 
-# https://github.com/Raku/old-issue-tracker/issues/1338
+
 {
     my $alive = 0;
     my $exception-produced = 0;
@@ -30,7 +30,7 @@ plan 9;
     ok $caught, 'CONTROL catches exceptions'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1621
+
 {
     my $caught = 0;
     {
@@ -53,7 +53,7 @@ is_run 'warn; say "alive"',
     },
     'warn() without arguments';
 
-# https://github.com/Raku/old-issue-tracker/issues/3987
+
 is_run 'warn("OH NOEZ"); say "alive"',
     {
         status => 0,
@@ -78,7 +78,7 @@ is_run 'quietly {warn("OH NOEZ") }; say "alive"',
     },
     'quietly suppresses warnings';
 
-# https://github.com/Raku/old-issue-tracker/issues/6647
+
 is_run ｢
     warn <foo-1  foo-2  foo-3>.all;
     warn ('foo-4',  ('foo-5', 'foo-6').any).all
@@ -86,7 +86,7 @@ is_run ｢
     .contains: <foo-1  foo-2  foo-3  foo-4  foo-5  foo-6>.all
 }}, 'no crashes or hangs with Junctions in warn()';
 
-# https://github.com/rakudo/rakudo/issues/1833
+
 {
     my int $warnings;
     {

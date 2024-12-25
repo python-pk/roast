@@ -98,7 +98,7 @@ is $str, 'inner', 'return in pointy returns from enclosing sub';
 throws-like q{{ -> { $^a, $^b } }}, X::Signature::Placeholder,
     '-> { $^a, $^b } is illegal';
 
-# https://github.com/Raku/old-issue-tracker/issues/450
+
 lives-ok {my $x = -> {}; my $y = $x(); },
          'can define and execute empty pointy block';
 
@@ -122,13 +122,13 @@ lives-ok {my $x = -> {}; my $y = $x(); },
        'The .signature of a block does not contain Any';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2940
+
 {
     throws-like q[say -> {YOU_ARE_HERE}], X::Syntax::Reserved,
         '{YOU_ARE_HERE} disallowed outside of a setting';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4611
+
 {
     is (-> --> Int { 42 })(), 42, 'pointy with return type allows return if it matches';
     throws-like '(-> --> Int { |(1,2,3) })()', X::TypeCheck::Return;

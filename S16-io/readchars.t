@@ -15,7 +15,7 @@ plan 4;
 
 dies-ok { open(make-temp-dir).readchars }, 'readchars on a directory fails';
 
-# https://github.com/Raku/old-issue-tracker/issues/6281
+
 with make-temp-file.IO {
     .spurt: "a♥c";
     with .open {

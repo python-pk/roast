@@ -315,9 +315,9 @@ sub showkv($x) {
     @a = $b.pick(-2.5);
     is +@a, 0, '.pick(<negative number>) does not return any items';
 
-    # https://github.com/rakudo/rakudo/issues/1438
+    
 	  lives-ok { $b.pick(1).gist }, ".pick() gives valid result with argument";
-    # https://github.com/Raku/old-issue-tracker/issues/6228
+    
     is +$b.pick(2.5), 2, ".pick int-ifies arg";
 }
 
@@ -460,13 +460,13 @@ sub showkv($x) {
       'do wrong values make initialization croak';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3805
+
 isnt
   '91D95D6EDD0F0C61D02A2989781C5AEB10832C94'.Bag.WHICH,
   <a b c>.Bag.WHICH,
   'Faulty .WHICH creation';
 
-# https://github.com/Raku/old-issue-tracker/issues/3126
+
 {
     my @pairings;
     my Bag $bag .= new: <foo foo bar>;
@@ -479,7 +479,7 @@ isnt
         'can use cross operator X with bag keys';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4399
+
 {
     my class MyBag is Bag { }
     my $b = MyBag.new(|<a foo a a a a b foo>);
@@ -528,7 +528,7 @@ isnt
     is %h4.sort, (:1a, :2b, :3c, :4d), 'did we see all the kxxv';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5513
+
 subtest '.hash does not cause keys to be stringified' => {
     plan 3;
     is Bag.new($(<a b>)).hash.keys[0][0], 'a', 'Bag.new';
@@ -566,8 +566,8 @@ subtest '.hash does not cause keys to be stringified' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6632
-# https://github.com/Raku/old-issue-tracker/issues/6633
+
+
 {
     my %h is Bag = <a b b c c c d d d d>;
     is %h.elems, 4, 'did we get right number of elements';
@@ -579,7 +579,7 @@ subtest '.hash does not cause keys to be stringified' => {
     dies-ok { %h<a> = False }, 'cannot delete from Bag by assignment';
 }
 
-# https://github.com/rakudo/rakudo/issues/2289
+
 is-deeply (1,2,3).Bag.ACCEPTS( ().Bag ), False, 'can we smartmatch empty';
 
 {
@@ -591,7 +591,7 @@ is-deeply (1,2,3).Bag.ACCEPTS( ().Bag ), False, 'can we smartmatch empty';
     is-deeply $bag.MixHash, <a b c>.MixHash, 'coerce Bag -> MixHash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6689
+
 {
     my %b is Bag[Int] = 1,2,3;
     is-deeply %b.keys.sort, (1,2,3), 'parameterized Bag';
@@ -600,7 +600,7 @@ is-deeply (1,2,3).Bag.ACCEPTS( ().Bag ), False, 'can we smartmatch empty';
     dies-ok { my %b is Bag[Int] = <a b c> }, 'must have Ints on creation';
 }
 
-# https://github.com/rakudo/rakudo/issues/1862
+
 is <a b c>.Set.item.VAR.^name, 'Scalar', 'does .item work on Sets';
 
 {
@@ -610,7 +610,7 @@ is <a b c>.Set.item.VAR.^name, 'Scalar', 'does .item work on Sets';
 
 lives-ok { my %h is Bag = 42 }, "Can we initialize a Bag with a single value";
 
-# https://github.com/rakudo/rakudo/issues/5057
+
 {
     my $b := <a b c d e a b>.Bag;
     is-deeply $b>>.&{ 3 }, <a a a b b b c c c d d d e e e>.Bag,
@@ -619,14 +619,14 @@ lives-ok { my %h is Bag = 42 }, "Can we initialize a Bag with a single value";
       'did on-the-fly value leave original unchanged';
 }
 
-# https://github.com/rakudo/rakudo/issues/5190
+
 {
     my class Foo is Bag {}
     isa-ok Foo.new("a") (+) Foo.new("b"), Foo,
       "union of two Foo instances should be a Foo instance";
 }
 
-# https://github.com/rakudo/rakudo/issues/5229
+
 {
     is-deeply List.Bag,  Bag.new(List),  'got a Bag with a List';
     is-deeply Array.Bag, Bag.new(Array), 'got a Bag with an Array';

@@ -15,13 +15,13 @@ eval-lives-ok 'use A::A; use A::B; A::B::D ~~ A::B::B or die()',
 eval-lives-ok 'use A::A; use A::B; A::B::D.new()',
               '... and instantiation works';
 
-# https://github.com/Raku/old-issue-tracker/issues/600
+
 eval-lives-ok 'use A; A.new()', 'RT #62162';
 
 eval-dies-ok "use DependencyLoop::A;", 'dependency loop detected in use';
 
 eval-lives-ok 'use RoleA',
-              # https://github.com/Raku/old-issue-tracker/issues/1179
+              
               'can use multiple "Role $name" statements (in multiple files) RT #67976';
 
 eval-lives-ok
@@ -36,7 +36,7 @@ eval-lives-ok
     'use Main::Nested; my Main::Nested $foo;',
     'Nested package not cought by lexically imported main package';
 
-# https://github.com/Raku/old-issue-tracker/issues/3075
+
 use RT117117::Backends;
 use RT117117::Backend::AST;
 use RT117117::Backend::GNUC;

@@ -102,7 +102,7 @@ my $got_a_str = 0;  sub get_a_str  { $got_a_str++;  "Pugs" }
     is $cake.self_in_code, "echo", "self is the object being initialized";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6199
+
 {
     is (42 but role { has int $.x = 100 }).x, 100,
         'Native int default in mixed in role works';
@@ -112,7 +112,7 @@ my $got_a_str = 0;  sub get_a_str  { $got_a_str++;  "Pugs" }
         'Native str default in mixed in role works';
 }
 
-# https://github.com/rakudo/rakudo/issues/3450
+
 {
     class Foo {
         has Int $.a;

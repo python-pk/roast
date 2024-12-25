@@ -7,7 +7,7 @@ plan 84;
 {
     my Int @x;
     ok @x.VAR.of === Int, '@x.VAR.of of typed array (my Int @x)';
-    # https://github.com/Raku/old-issue-tracker/issues/2148
+    
     ok @x.WHAT.gist ~~ /Array/, '.WHAT.gist of the type object makes sense';
     lives-ok { @x = 1, 2, 3 }, 'can assign values of the right type';
     lives-ok { @x = 1..3    }, 'can assign range of the right type';
@@ -134,7 +134,7 @@ plan 84;
         'type check Positional of Num allows subtyped Int array to be returned implicitly';
 } #8
 
-# https://github.com/Raku/old-issue-tracker/issues/1332
+
 #?rakudo skip 'type on our-variables'
 {
     our Int @a1;
@@ -143,7 +143,7 @@ plan 84;
         'Can assign to untyped package array in presence of typed array';
 } #1
 
-# https://github.com/Raku/old-issue-tracker/issues/1471
+
 {
     class RT71958 {
         has @.rt71958 is rw;
@@ -153,7 +153,7 @@ plan 84;
              'can assign to untyped array in presence of typed array';
 } #1
 
-# https://github.com/Raku/old-issue-tracker/issues/2895
+
 {
     throws-like 'my Int @a = "ab", "cd"', X::TypeCheck::Assignment,
         'typed arrays do check type during list assignment';
@@ -161,14 +161,14 @@ plan 84;
         'typed arrays do check type during list assignment in sink';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3196
+
 {
     my Int @a;
     throws-like { @a[@a.elems] = "a"; }, X::TypeCheck::Assignment,
         'assignment checks for types';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4329
+
 {
     subset Y of Int where 1..10;
     my Y @x;
@@ -184,7 +184,7 @@ plan 84;
     is @a, @b, 'do typed arrays with empty elements roundtrip';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1096
+
 {
     sub foo(--> Array of Str) {
         my Str @a = <foo bar baz>;
@@ -196,7 +196,7 @@ plan 84;
         'Get back the typed array correctly (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3270
+
 {
     my @RT120506-bind := Array[Array[Bool]].new($(Array[Bool].new(True, False, True)), $(Array[Bool].new(True)));
     is-deeply @RT120506-bind[0, 1]».List, ((True, False, True), (True,)),
@@ -209,7 +209,7 @@ plan 84;
     is @RT120506-assign[0].WHAT, Array[Bool], "Type is maintained (assignment)";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3380
+
 {
     sub RT121804 returns Array of Hash {
         my %a1 = :x<y>, :y<z>, :w<c>;
@@ -221,7 +221,7 @@ plan 84;
         "Can assign to and return Array[Hash] from type-constrained sub";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2321
+
 {
     my Int @rt81682 = ^3;
     my Int $x = 5;
@@ -234,14 +234,14 @@ plan 84;
         'can bind element of typed array to scalar container of same type (but not explicitly typed)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3674
+
 {
     my Int @a;
     dies-ok { @a[0] := "foo" }, 'Binding literal to typed array checks types';
     dies-ok { my Str $x = "foo"; @a[0] := $x; }, 'Binding variablle to typed array checks type';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3245
+
 {
     my Int @a = 0 .. 2;
     @a[1]:delete;
@@ -250,7 +250,7 @@ plan 84;
         'deleted element of typed arrays does not lose type info inside .map';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3563
+
 {
     my Int @a;
     @a[4]++;
@@ -258,14 +258,14 @@ plan 84;
         '.gist on typed array shows real type objects';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4575
+
 {
     sub rt126134 (Int @a) { pass '@a of Foo accepted by sub (Foo @a)' };
     my @a of Int;
     rt126134 @a;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4577
+
 {
     {
         my @a of Int; my @b;

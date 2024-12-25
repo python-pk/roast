@@ -16,7 +16,7 @@ EVAL q[
 ];
 ok ! $!, 'no exception thrown';
 ok $eval_worked, 'EVAL code executed';
-# https://github.com/Raku/old-issue-tracker/issues/3947
+
 is $main_invoked, 0, 'sub MAIN is not called in EVAL()';
 
 # vim: expandtab shiftwidth=4

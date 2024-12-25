@@ -23,7 +23,7 @@ for ThreadPoolScheduler.new, CurrentThreadScheduler -> $*SCHEDULER {
     tap-ok Supply.from-list(1..10).head(*-15), [], "head minus fifteen works";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4824
+
 {
     my $channel = Channel.new;
     my $f = Supplier.new;
@@ -45,7 +45,7 @@ for ThreadPoolScheduler.new, CurrentThreadScheduler -> $*SCHEDULER {
     is $channel.list.join(', '), '42, 43, 44', 'does indeed fire';
 }
 
-# https://github.com/rakudo/rakudo/issues/3877
+
 {
     my $s = Supplier.new;
     my int $seen;

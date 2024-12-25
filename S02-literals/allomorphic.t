@@ -342,7 +342,7 @@ subtest '.ACCEPTS' => {
     isa-ok val(<1 2 3>.Slip), Slip, 'val List candidate preserves slip-ness if passed Slip';
 }
 
-# https://github.com/rakudo/rakudo/issues/1387
+
 subtest '.succ on allomorphs' => {
     # math on allomorphs collapses them to standard numerics
     plan 5*my @tests = <2> => 3, <2e0> => 3e0, <2.1> => 3.1, <2+1i > => <3+1i>;
@@ -360,7 +360,7 @@ subtest '.succ on allomorphs' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/1387
+
 subtest '.pred on allomorphs' => {
     # math on allomorphs collapses them to standard numerics
     plan 5*my @tests = <2> => 1, <2e0> => 1e0, <2.1> => 1.1, <2+1i > => <1+1i>;
@@ -456,7 +456,7 @@ group-of 4 => '.comb on allomorphs uses Str variant' => {
     is-eqv <01.0+42i >.comb, <0 1 . 0 + 4 2 i>».Str.Seq, 'ComplexStr';
 }
 
-# https://github.com/rakudo/rakudo/issues/3308
+
 isa-ok Str($*USER), Str, 'No leaking of guts types when coercing allomorph to Str';
 
 subtest '.substr-rw allomorphs' => {

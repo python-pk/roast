@@ -47,7 +47,7 @@ subtest 'cover metaop call simplification optimization' => {
         is-deeply @a, [11], '(1)';
     }
 
-    # https://github.com/rakudo/rakudo/issues/1989
+    
     subtest 'metassign to array/hash returned from a method' => {
         plan 2;
         my class Foo { has @.a is rw; has %.h is rw };
@@ -62,12 +62,12 @@ subtest 'cover metaop call simplification optimization' => {
         throws-like ｢my $a  = 42; ($a ||= 42) R+= 10｣, X::Assignment::RO, '(3)';
         throws-like ｢my $a  = 42; 1000 += ((10 R+= ($a [R-]= 42)) //= 100)｣, X::Assignment::RO,
             '(4)';
-        # https://github.com/rakudo/rakudo/issues/1987
+        
         throws-like '42.abs += 42', X::Assignment::RO, '(5)';
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/1890
+
 {
     lives-ok { [] ,= 42 }, ',= metaop works properly with []';
     lives-ok { my @a; my @b; @a [R,]= @b }, '[R,]= metaop properly works with two empty lists';

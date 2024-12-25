@@ -19,7 +19,7 @@ class Foo2 {
 my $foo2 = Foo2.new(:a(39), :b(3));
 is($foo2.check(), 42, 'initializing attributes in new');
 
-# https://github.com/Raku/old-issue-tracker/issues/651
+
 {
     try { EVAL 'NoSuchClass.new()' };
     ok  $!  ~~ Exception, 'death to instantiating nonexistent class';
@@ -33,7 +33,7 @@ is($foo2.check(), 42, 'initializing attributes in new');
        'error for "NoSuch::Subclass.new()" mentions NoSuch::Subclass';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/956
+
 #instantiation from class name unexpectedly creates a class object instead of Str object
 {
     class Foo { };

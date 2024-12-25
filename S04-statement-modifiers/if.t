@@ -64,7 +64,7 @@ plan 16;
 }
 
 # return value of false 'if' should be Empty
-# https://github.com/Raku/old-issue-tracker/issues/1053
+
 {
     is-deeply (42 if 0), Empty, '"$something if 0" is Empty';
 }
@@ -75,19 +75,19 @@ plan 16;
     is $a, 'ok', 'Statement-modifier if runs bare block';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2199
+
 {
     my $a = 'oops';
     { $a = $^x } if 100;
     is $a, 100, 'Statement-modifier if runs block with placeholder';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2257
+
 {
     is (1,2, if 3), "1 2", "if is a terminator even after comma";
 }
 
-# https://github.com/rakudo/rakudo/issues/2601
+
 {
     my $res;
     for 1..3 {
@@ -96,7 +96,7 @@ plan 16;
     is $res, 2, 'Correct handling of $_ in block to left of statement modifer if';
 }
 
-# https://github.com/rakudo/rakudo/issues/3034
+
 {
     my $called = False;
     my module M {

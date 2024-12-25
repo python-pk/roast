@@ -79,7 +79,7 @@ plan 66;
         'Encoding back to utf8-c8 roundtrips';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4327
+
 if $*DISTRO.is-win {
     skip('Not clear how to recreate this situation on Windows', 2);
 }
@@ -101,13 +101,13 @@ else {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4794
+
 is Buf.new(0xFE).decode('utf8-c8').chars, 1, 'Decoding Buf with just 0xFE works';
 
 #?rakudo.js.browser skip "writing to files doesn't work in the browser"
 # @bufs.elems * 2 + 2
 #?DOES 20
-# https://github.com/Raku/old-issue-tracker/issues/5330
+
 {
     my @bufs =
         Buf.new(61,29,61,200,30,99,107,150,71,11,253,134,110,27,35,227,88,140,
@@ -181,7 +181,7 @@ is Buf.new(0xFE).decode('utf8-c8').chars, 1, 'Decoding Buf with just 0xFE works'
     $fh.close;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5165
+
 
 if $*DISTRO.is-win {
     skip('Not clear if there is an alternative to this issue on Windows', 4);
@@ -233,12 +233,12 @@ if $*DISTRO.is-win {
     is ($c8 ~ 'L'      ) ~~ /L/, 'L',
         "Regex still matches when utf8-c8 graphemes are adjacent (start)";
 }
-# https://github.com/Raku/old-issue-tracker/issues/5408
+
 {
     is-deeply Blob[uint8].new(233).decode("utf8-c8").encode("utf8-c8"), Blob[uint8].new(233), 'utf8-c8 does not generate spurious NUL 1';
     is-deeply Blob[uint8].new(233, 128).decode("utf8-c8").encode("utf8-c8"), Blob[uint8].new(233, 128), 'utf8-c8 does not generate spurious NUL 2';
 }
-# https://github.com/Raku/old-issue-tracker/issues/5409
+
 {
     is-deeply Blob[uint8].new(101, 204, 129).decode("utf8-c8").encode("utf8-c8"), Blob[uint8].new(101, 204, 129), 'Non normalized NFC is not mangled by utf-c8';
 }

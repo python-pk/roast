@@ -4,7 +4,7 @@ plan 46;
 
 # L<S04/The Relationship of Blocks and Declarations/There is a new state declarator that introduces>
 
-# https://github.com/Raku/old-issue-tracker/issues/1106
+
 # state initialized with //= instead of =
 {
     sub rt67040 {
@@ -216,7 +216,7 @@ plan 46;
     lives-ok { $y = 3 }, 'the state variable in subset types works (3)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1109
+
 sub bughunt1 { (state $svar) }    #OK not used
 {
     sub bughunt2 { state $x //= 17; ++$x }
@@ -224,7 +224,7 @@ sub bughunt1 { (state $svar) }    #OK not used
        'a state variable in parens works with a state variable with //= init';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2964
+
 {
     lives-ok { state $i++ }, 'can parse "state $i++"';
 }
@@ -244,7 +244,7 @@ sub bughunt1 { (state $svar) }    #OK not used
 # niecza regression: state not working at top level
 eval-lives-ok 'state $x; $x', 'state outside control structure';
 
-# https://github.com/Raku/old-issue-tracker/issues/2548
+
 #?rakudo todo 'initialization happens only on first call(?)'
 {
     sub f($x) {
@@ -273,24 +273,24 @@ eval-lives-ok 'state $x; $x', 'state outside control structure';
     is foo(), 1, 'anonymous state variable (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6096
+
 lives-ok { sub foo () {$ = 42}; for ^2000000 { $ = foo } },
     'Intensive use of state variable in inline-friendly sub does not hit problems';
 
-# https://github.com/rakudo/rakudo/issues/1341
+
 {
 	my @arr = do loop { state $x = 0; last if ++$x > 2; $x };
 	is-deeply @arr, [1, 2], 'Statevars work in block following "do" statement prefix';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5622
+
 {
     my @arr = ();
     for ^2 { for ^2 { @arr.push( "{ (state $a)++ }") } };
     is-deeply @arr, ["0", "0", "0", "0"], 'Statevar uses the correct scope';
 }
 
-# https://github.com/rakudo/rakudo/issues/3083
+
 {
     my multi foo() {
         state $foo = 42;

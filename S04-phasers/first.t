@@ -52,7 +52,7 @@ plan 7;
     is $str, 'Here012', 'FIRST in while loop runs';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3325
+
 {
     my $i=0;
     my $str = '';

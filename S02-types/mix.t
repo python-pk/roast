@@ -414,7 +414,7 @@ sub showkv($x) {
       'do wrong values make initialization croak';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3805
+
 isnt
   '91D95D6EDD0F0C61D02A2989781C5AEB10832C94'.Mix.WHICH,
   <a b c>.Mix.WHICH,
@@ -458,7 +458,7 @@ isnt
     is %h3.sort, (a=>1.1, b=>2.2, c=>3.3, d=>4.4), 'did we see all the antipairs';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5513
+
 subtest '.hash does not cause keys to be stringified' => {
     plan 3;
     is Mix.new($(<a b>)).hash.keys[0][0], 'a', 'Mix.new';
@@ -513,7 +513,7 @@ subtest '.hash does not cause keys to be stringified' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6343
+
 {
     is-deeply (a => -1, a => 1).Mix,      mix(),
       'final value 0 disappears in Mix for empty mix';
@@ -521,14 +521,14 @@ subtest '.hash does not cause keys to be stringified' => {
       'final value 0 disappears in Mix';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6430
+
 {
     is-deeply (a => ½).Mix    .roll, 'a', 'Mix.roll with fractional weights';
     is-deeply (a => ½).MixHash.roll, 'a', 'MixHash.roll with fractional weights';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6632
-# https://github.com/Raku/old-issue-tracker/issues/6633
+
+
 {
     my %h is Mix = <a b b c c c d d d d>;
     is %h.elems, 4, 'did we get right number of elements';
@@ -540,7 +540,7 @@ subtest '.hash does not cause keys to be stringified' => {
     dies-ok { %h<a> = False }, 'cannot delete from Mix by assignment';
 }
 
-# https://github.com/rakudo/rakudo/issues/2289
+
 is-deeply (1,2,3).Mix.ACCEPTS(().Mix), False, 'can we smartmatch empty';
 
 {
@@ -552,7 +552,7 @@ is-deeply (1,2,3).Mix.ACCEPTS(().Mix), False, 'can we smartmatch empty';
     is-deeply $mix.MixHash, <a b c>.MixHash, 'coerce Mix -> MixHash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6689
+
 {
     my %m is Mix[Int] = 1,2,3;
     is-deeply %m.keys.sort, (1,2,3), 'parameterized Mix';
@@ -561,7 +561,7 @@ is-deeply (1,2,3).Mix.ACCEPTS(().Mix), False, 'can we smartmatch empty';
     dies-ok { my %m is Mix[Int] = <a b c> }, 'must have Ints on creation';
 }
 
-# https://github.com/rakudo/rakudo/issues/1862
+
 is <a b c>.Mix.item.VAR.^name, 'Scalar', 'does .item work on Mixes';
 
 {
@@ -571,7 +571,7 @@ is <a b c>.Mix.item.VAR.^name, 'Scalar', 'does .item work on Mixes';
 
 lives-ok { my %h is Mix = 42 }, "Can we initialize a Mix with a single value";
 
-# https://github.com/rakudo/rakudo/issues/5057
+
 {
     my $m := <a b c d e a b>.Mix;
     is-deeply $m>>.&{ 3 }, <a a a b b b c c c d d d e e e>.Mix,
@@ -580,7 +580,7 @@ lives-ok { my %h is Mix = 42 }, "Can we initialize a Mix with a single value";
       'did on-the-fly value leave original unchanged';
 }
 
-# https://github.com/rakudo/rakudo/issues/5229
+
 {
     is-deeply List.Mix,  Mix.new(List),  'got a Mix with a List';
     is-deeply Array.Mix, Mix.new(Array), 'got a Mix with an Array';

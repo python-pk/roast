@@ -115,7 +115,7 @@ plan 14;
     is funny_nil(), Nil, 'Nil from an empty block turns into no code';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2949
+
 {
     macro rt115500v1() {
         my $q1 = quasi { 6 };

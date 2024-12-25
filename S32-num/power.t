@@ -39,9 +39,9 @@ is-deeply(0 ** NaN, NaN, "0**NaN=NaN");
 #?rakudo 2 todo 'wrong results for "NaN" used with "**"'
 is-deeply(NaN ** 1i, NaN, "NaN**1i=NaN");
 is-deeply(1i ** NaN, NaN, "1i**NaN=NaN");
-# https://github.com/Raku/old-issue-tracker/issues/3804
+
 is-deeply(NaN ** 0, 1e0, "NaN**0=1");
-# https://github.com/Raku/old-issue-tracker/issues/5752
+
 is-deeply(1 ** NaN, 1e0, '1**NaN=1');
 
 is-deeply(NaN ** NaN, NaN, "NaN**NaN=NaN");
@@ -132,7 +132,7 @@ is-approx(27 ** ⅔, 9, "27 ** ⅔ ==  9");
 is-approx(27 ** -⅓, ⅓, "27 ** -⅓ == ⅓");
 is-approx(27 ** -⅔, ⅑, "27 ** -⅔ == ⅑");
 
-# https://github.com/Raku/old-issue-tracker/issues/4787
+
 
 #?rakudo.jvm skip 'unival NYI'
 #?DOES 1

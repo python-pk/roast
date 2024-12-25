@@ -101,14 +101,14 @@ throws-like { Buf.new().subbuf(0, -1) }, X::OutOfRange,
   range => "0..0",
   "throw on negative len";
 
-# https://github.com/Raku/old-issue-tracker/issues/3530
+
 {
     use experimental :pack;
     my Blob $x;
     throws-like { $x ~= pack "V",1 }, X::Buf::AsStr;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3486
+
 {
     my $a = buf8.new([]);
     throws-like { "Foo: $a" }, X::Buf::AsStr;
@@ -135,7 +135,7 @@ throws-like { Buf.new().subbuf(0, -1) }, X::OutOfRange,
     is $d.bytes, 40, "buf64 .bytes correct";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4243
+
 # .append tests
 {
     for <append push> -> $what {
@@ -203,7 +203,7 @@ throws-like { Buf.new().subbuf(0, -1) }, X::OutOfRange,
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3702
+
 {
     my Buf $raw-bin .= new(0x55 xx 3);
     is $raw-bin.elems, 3, 'Can create Buf with .= new';
@@ -237,7 +237,7 @@ throws-like { Buf.new().subbuf(0, -1) }, X::OutOfRange,
     is $c.elems, 0, "did Buf.new on empty array work";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5158
+
 ok Blob eqv Blob, 'Blob eqv Blob lives, works';
 nok Buf eqv Blob, 'Buf eqv Blob lives, works';
 
@@ -295,7 +295,7 @@ nok Buf eqv Blob, 'Buf eqv Blob lives, works';
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4711
+
 subtest 'infix:<~> works with Blob' => {
     plan 6;
 
@@ -311,7 +311,7 @@ subtest 'infix:<~> works with Blob' => {
         '[~] with 3 blobs';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5460
+
 {
     my int $i;
     is Blob.new(($i = 10) +& 0xFF).raku,'Blob.new(10)',
@@ -348,7 +348,7 @@ subtest 'infix:<~> works with Blob' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/2218
+
 {
     for buf8, buf16, buf32, buf64 -> \buf {
         my $a := buf.new(255,127);
@@ -360,7 +360,7 @@ subtest 'infix:<~> works with Blob' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/2509
+
 {
     for Blob,blob8,blob16,blob32,blob64, Buf,buf8,buf16,buf32,buf64 -> \buf {
         is-deeply EVAL('my @a is buf = ^10'), buf.new(^10),
@@ -376,7 +376,7 @@ subtest 'infix:<~> works with Blob' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/5348
+
 {
     is buf64.new(3, 1, 18446744073709551615).gist,
       'Buf[uint64]:0x<0000000000000003 0000000000000001 FFFFFFFFFFFFFFFF>',

@@ -23,13 +23,13 @@ sub t2(@a) {
 is t2([1]), "godis", "signature smart-match against array works (1)";
 is t2([1,2]), "om nom nom", "signature smart-match against array works (2)";
 
-# https://github.com/Raku/old-issue-tracker/issues/2059
+
 {
     sub f($ = rand) { };
     ok \() ~~ &f.signature, 'can smart-match against a signature with a default value';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3173
+
 {
     lives-ok { \(1) ~~ :(Str(int) $x) },
         'can match integer capture against signature with native integer coercing to Str';
@@ -49,7 +49,7 @@ subtest 'non-Capture/non-Signature types on LHS' => {
         False, 'Rat (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/2596
+
 {
     my sub f ( $a, *%_ ) { }
     is-deeply &f.signature ~~ :( $, | ), True,

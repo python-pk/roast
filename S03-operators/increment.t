@@ -113,7 +113,7 @@ is($moo, 0, "var was not touched");
     is $x.pred, Bool::False, '.succ on False works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1747
+
 throws-like 'my $x = 0; ++++$x', X::Multi::NoMatch,
     'can not double-increment, because the return value is not a container';
 
@@ -131,7 +131,7 @@ throws-like 'my $x = 0; ++++$x', X::Multi::NoMatch,
     is   $i, -1, 'prefix:<--> on Any:U makes it -1';
 }
 
-# https://github.com/rakudo/rakudo/issues/3379
+
 {
     my $a = "⁰";
     is (^101).map({$a++}),

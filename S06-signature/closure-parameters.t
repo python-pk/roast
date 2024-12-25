@@ -78,12 +78,12 @@ plan 28;
     is foo(), 'OH HAI', 'can use &a as a named parameter';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4511
+
 {
     throws-like 'sub f (Int &b:(--> Bool)) { }', X::Redeclaration, 'only one way of specifying sub-signature return type allowed';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3575
+
 lives-ok {
     my class Dog {};
     sub foo(&block:(Dog --> Bool)) {
@@ -92,7 +92,7 @@ lives-ok {
     foo(sub (Dog $x --> Bool) { $x })
 }, 'unpacking Callable signature with colon';
 
-# https://github.com/rakudo/rakudo/issues/1326
+
 subtest 'can use signature unpacking with anonymous parameters' => {
     plan 2;
     is -> &:(Str), 42 {100}(-> Str $v { $v.uc }, 42), 100,
@@ -102,7 +102,7 @@ subtest 'can use signature unpacking with anonymous parameters' => {
         'typcheck correctly fails with wrong arg';
 }
 
-# https://github.com/rakudo/rakudo/issues/4537
+
 {
     my sub testit(Int $v, :&fn:(Int)) { fn($v) }
     my sub fn(Int $v) { $v * 2 };

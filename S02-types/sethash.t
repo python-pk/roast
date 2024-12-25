@@ -377,7 +377,7 @@ sub showset($s) { $s.keys.sort.join(' ') }
     is $s.elems, 0, '.grabpairs *should* change the SetHash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3836
+
 {
     my %h is SetHash = a => True, b => False, c => True;
     is +%h.elems, 2, 'Inititalization worked';
@@ -451,7 +451,7 @@ sub showset($s) { $s.keys.sort.join(' ') }
       'do wrong values make initialization croak';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4399
+
 {
     class RT125611 is SetHash {
         method foo( $foo ) {
@@ -462,7 +462,7 @@ sub showset($s) { $s.keys.sort.join(' ') }
     is $rt125611<a>, True, 'can assign to subclassed SetHash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4975
+
 {
     ok <one two three>.map({$_}) ~~ SetHash.new(<two three one>), 'smartmatch a Seq';
 }
@@ -510,7 +510,7 @@ group-of 10 => 'SetHash autovivification of non-existent keys' => {
     is-deeply   $sh5<as>,       Bool::True,  'correct result of assignment';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5223
+
 subtest 'cloned SetHash gets its own elements storage' => {
     plan 4;
     my $a = SetHash.new: <a b c>;
@@ -621,7 +621,7 @@ for SetHash, BagHash, MixHash -> \T {
     throws-like { SetHash.new(^Inf) }, X::Cannot::Lazy, :what<SetHash>;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5892
+
 subtest 'elements with weight zero are removed' => {
     plan 3;
     my $b = <a b b c d e f>.SetHash; $_-- for $b.values;
@@ -632,8 +632,8 @@ subtest 'elements with weight zero are removed' => {
     is-deeply $b, ().SetHash, 'weight set to zero';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6215
-# https://github.com/Raku/old-issue-tracker/issues/5892
+
+
 subtest "elements with negative weights are allowed in SetHashes" => {
     plan 2;
     my $b = <a b b c>.SetHash; $_ = -1 for $b.values;
@@ -642,8 +642,8 @@ subtest "elements with negative weights are allowed in SetHashes" => {
     is-deeply $b, ("b","a","c").SetHash, 'negative Pair value => True => element present';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6632
-# https://github.com/Raku/old-issue-tracker/issues/6633
+
+
 {
     my %h is SetHash = <a b c d>;
     is %h.elems, 4, 'did we get right number of elements';
@@ -658,7 +658,7 @@ subtest "elements with negative weights are allowed in SetHashes" => {
     is %h.elems, 1, 'did we get right number of elements assignment';
 }
 
-# https://github.com/rakudo/rakudo/issues/2289
+
 is-deeply (1,2,3).SetHash.ACCEPTS(().SetHash), False, 'can we smartmatch empty';
 
 {
@@ -670,7 +670,7 @@ is-deeply (1,2,3).SetHash.ACCEPTS(().SetHash), False, 'can we smartmatch empty';
     is-deeply $set.MixHash, <a b c>.MixHash, 'coerce SetHash -> MixHash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6689
+
 {
     my %sh is SetHash[Int] = 1,2,3;
     is-deeply %sh.keys.sort, (1,2,3), 'parameterized SetHash';
@@ -680,7 +680,7 @@ is-deeply (1,2,3).SetHash.ACCEPTS(().SetHash), False, 'can we smartmatch empty';
     dies-ok { my %sh is SetHash[Int] = <a b c> }, 'must have Ints on creation';
 }
 
-# https://github.com/rakudo/rakudo/issues/1862
+
 is <a b c>.SetHash.item.VAR.^name, 'Scalar', 'does .item work on SetHashes';
 
 {
@@ -688,7 +688,7 @@ is <a b c>.SetHash.item.VAR.^name, 'Scalar', 'does .item work on SetHashes';
     is-deeply SetHash.new.of, Bool, 'does SetHash object return proper type';
 }
 
-# https://github.com/rakudo/rakudo/issues/4332
+
 {
     my %sh is SetHash = 1,2;
     lives-ok { while %sh.grab -> $n { $n } }, 'Emptying a SetHash works';
@@ -697,7 +697,7 @@ is <a b c>.SetHash.item.VAR.^name, 'Scalar', 'does .item work on SetHashes';
 lives-ok { my %h is SetHash = 42 },
   "Can we initialize a SetHash with a single value";
 
-# https://github.com/rakudo/rakudo/issues/5057
+
 {
     my $s := <a b c d e>.SetHash;
     is-deeply $s>>--, <a b c d e>.SetHash,
@@ -706,7 +706,7 @@ lives-ok { my %h is SetHash = 42 },
       'did on-the-fly value change original';
 }
 
-# https://github.com/rakudo/rakudo/issues/5229
+
 {
     is-deeply List.SetHash,  SetHash.new(List),  'got a SetHash with a List';
     is-deeply Array.SetHash, SetHash.new(Array), 'got a SetHash with an Array';
@@ -714,7 +714,7 @@ lives-ok { my %h is SetHash = 42 },
 
 is-deeply <a b>.SetHash.Capture, %(:a, :b).Capture, 'SetHash Capture';
 
-# https://github.com/rakudo/rakudo/issues/4678
+
 my %sh is SetHash;
 %sh ,= 1;
 for <Str gist raku> -> $method {

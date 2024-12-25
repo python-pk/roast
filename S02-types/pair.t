@@ -298,7 +298,7 @@ Note, "non-chaining binary" was later renamed to "structural infix".
     ok($pair eqv (code => &code), ':&foo syntax works');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1103
+
 {
     eval-lives-ok ':a()',    'can parse ":a()"';
     lives-ok     {; :a() }, 'can execute ":a()"';
@@ -330,7 +330,7 @@ Note, "non-chaining binary" was later renamed to "structural infix".
     is { a => (1,2), b => <x y z> }.pairs.invert.sort.gist, '(1 => a 2 => a x => b y => b z => b)', 'list of hash pairs can be inverted';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3584
+
 {
     cmp-ok (:a(2) :b(3) :c(4)), "eqv", ( a => 2, b => 3, c => 4 ),
         "chained colonpairs in parens build a list of pairs";
@@ -356,14 +356,14 @@ Note, "non-chaining binary" was later renamed to "structural infix".
       'cannot assign a Str to an Int';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4649
+
 {
     my $y = 42;
     $y := :$y;
     is-deeply $y, 'y' => 42, 'pair binding';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5540
+
 {
     throws-like { (1,2,3).invert },
 	X::TypeCheck, got => Int, expected => Pair,
@@ -459,14 +459,14 @@ subtest 'Clone of Pair does not share .WHICH' => {
     cmp-ok $clone.WHICH, &[!===], $p.WHICH, 'clone, different value';
 }
 
-# https://github.com/rakudo/rakudo/issues/1500
+
 {
     my Pair $p;
     is-deeply ($p .= new :key<foo> :value<bar>), :foo<bar>.Pair,
         'fake-infix adverbs (named args) on a construct inside args to another routine';
 }
 
-# https://github.com/rakudo/rakudo/issues/3555
+
 {
     is ('$foo' => 42).raku, Q/"\$foo" => 42/, "did we not do parens?";
 }

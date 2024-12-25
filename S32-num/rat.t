@@ -23,7 +23,7 @@ is( (1/5).raku, "0.2", '(1/5).raku is .2' );
 is( (1/2).raku, "0.5", '(1/2).raku is .5' );
 is 1/128, (1/128).raku.EVAL, '(1/128).raku.EVAL round trips with sufficient accuracy';
 is 1/128, (1/128).raku.EVAL, '(1/128).raku.EVAL round trips with sufficient accuracy';
-# https://github.com/Raku/old-issue-tracker/issues/4845
+
 is(Rat.new(807412079564, 555).raku.EVAL, Rat.new(807412079564, 555), '807412079564/555 round trips without a compile_time_value error');
 
 # Test ~
@@ -165,7 +165,7 @@ subtest '±Inf/NaN ⇿ Rat' => {
         throws-like { (-Inf)."$m"().Str }, X::Numeric::DivideByZero,
             "(-Inf).$m.Str throws division-by-zero";
 
-        # https://github.com/Raku/old-issue-tracker/issues/5822
+        
 
         is-deeply    NaN."$m"().raku.EVAL, ::($m).new(0, 0),
                "NaN.$m.raku.EVAL roundtrips";
@@ -174,7 +174,7 @@ subtest '±Inf/NaN ⇿ Rat' => {
         is-deeply (-Inf)."$m"().raku.EVAL, ::($m).new(-1, 0),
             "(-Inf).$m.raku.EVAL roundtrips";
 
-        # https://github.com/Raku/old-issue-tracker/issues/5822
+        
 
         is-deeply    NaN."$m"() * 0, ::($m).new(0, 0),
                "NaN.$m does not explode when used in Rational math";
@@ -183,7 +183,7 @@ subtest '±Inf/NaN ⇿ Rat' => {
         is-deeply (-Inf)."$m"() * 0, ::($m).new(0, 0),
             "(-Inf).$m does not explode when used in Rational math";
 
-        # https://github.com/Raku/old-issue-tracker/issues/5538
+        
 
         cmp-ok    NaN."$m"(), '~~', ::($m),    "NaN.$m smartmatches with $m";
         cmp-ok    Inf."$m"(), '~~', ::($m),    "Inf.$m smartmatches with $m";
@@ -191,7 +191,7 @@ subtest '±Inf/NaN ⇿ Rat' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1723
+
 throws-like { Inf.Int / 1 }, X::Numeric::CannotConvert, 'Inf.Int / 1 throws';
 
 # Quick test of some basic mixed type math
@@ -221,7 +221,7 @@ is( exp(1).Rat(Rat.new(1,1e4.Int)), Rat.new(193, 71),
     "Num to Rat with epsilon of Rat");
 
 is (5/4).Int,       1, 'Rat.Int';
-# https://github.com/Raku/old-issue-tracker/issues/1358
+
 is <a b c>.[4/3],  'b', 'Indexing an array with a Rat (RT #69738)';
 
 is-approx 424/61731 + 832/61731, 424.Num / 61731.Num + 832.Num / 61731.Num, "424/61731 + 832/61731 works";
@@ -275,10 +275,10 @@ ok Rat.new() == 0, 'Rat.new() is 0';
 
 ok 16/5 eqv 16/5, 'infix:<eqv> works with rats';
 
-# https://github.com/Raku/old-issue-tracker/issues/1515
+
 is .88888888888.WHAT.gist, Rat.gist, 'WHAT works on Rat created from 11 digit decimal fraction';
 
-# https://github.com/Raku/old-issue-tracker/issues/1717
+
 {
     my $a += 0.1;
     isa-ok $a, Rat, 'Any() + 0.1 is a Rat';
@@ -323,10 +323,10 @@ is Rat.new(9,33).norm.nude, (3, 11), ".norm exists and doesn't hurt matters";
 isa-ok 241025348275725.3352, Rat, "241025348275725.3352 is a Rat";
 is 241025348275725.3352.Rat.norm.nude, (301281685344656669, 1250), "Rat.Rat yields correct Rat";
 
-# https://github.com/Raku/old-issue-tracker/issues/2755
+
 is 241025348275725.3352.Str, "241025348275725.3352", 'stringification of bigish Rats';
 
-# https://github.com/Raku/old-issue-tracker/issues/4253
+
 
 {
     isa-ok((10 ** -1).WHAT, Rat);
@@ -334,10 +334,10 @@ is 241025348275725.3352.Str, "241025348275725.3352", 'stringification of bigish 
     isa-ok((9.0 ** 0.5).WHAT, Num);
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4660
+
 try {say 42/(.1+.2-.3)}; isnt $!.numerator, 420, "no bogus errors";
 
-# https://github.com/Raku/old-issue-tracker/issues/4524
+
 
 subtest '0.9999999999999999999999 to string conversions' => {
     plan 4;
@@ -353,11 +353,11 @@ subtest '0.9999999999999999999999 to string conversions' => {
         | '⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹⁹/₁₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀₀',
         '.raku gives accurate result';
     is-deeply r.raku.EVAL, r, '.raku.EVAL roundtrips';
-    # https://github.com/Raku/old-issue-tracker/issues/4549
+    
     nok 0.99999999999999999999999 > 1, '0.99999... not rounded to larger than 1';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5926
+
 
 cmp-ok Rat.Range, '===', -∞..∞,
     'Rat.Range is from -inf to inf, including end points';
@@ -420,7 +420,7 @@ subtest '=== with 0-denominator Rats' => {
     is-deeply <2/0>  ===  <0/0>, False, ' 2/0 === 0/0';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6013
+
 is-deeply 5   cmp <.5>, More, 'Real   cmp RatStr does not crash';
 is-deeply <.5> cmp  .5, Same, 'RatStr cmp Real   does not crash';
 
@@ -486,7 +486,7 @@ subtest 'Rational.Int on zero-denominator rats' => {
     fails-like { t  1/0 }, X::Numeric::DivideByZero,  '1/0 (signature coercer)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6092
+
 
 is-deeply (4.99999999999999999999999999999999999999999999 ~~ 0..^5), True,
     'literal with denominator > 64bit does not aquire f.p. noise';
@@ -498,10 +498,10 @@ subtest '.^roles on Rationals does not hang' => {
     does-ok FatRat.^roles.grep(Rational).head, Rational, 'FatRat:U';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 is-deeply <3147483648/1>.Int, 3147483648, 'numerators over 32 bits work';
 
-# https://github.com/rakudo/rakudo/issues/1353
+
 subtest 'eqv with zero-denominator Rationals' => {
     plan 2;
     sub e-so (\r1, \r2, \desc) { is-deeply r1 eqv r2, True,  desc }
@@ -562,7 +562,7 @@ subtest 'eqv with zero-denominator Rationals' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/1552
+
 subtest 'Rational.Bool' => {
     # If numerator is zero, the Rational is False, otherwise, it's True.
     # This applies to <0/0> as well. It is False, despite Num's NaN being True.
@@ -646,7 +646,7 @@ group-of 4 => 'no funny business in stringification of huge Rationals' => {
     is-deeply 3 / < 42/17>,  17/14, 'Can we perform Int / on a RatStr';
 }
 
-# https://github.com/rakudo/rakudo/issues/1818
+
 {
     is <1/99999999999999999999>.gist, "0.00000000000000000001", "No trailing zeros when calling Rat.gist";
     is <1/99999999999999999999>.Str, "0.00000000000000000001", "No trailing zeros when calling Rat.Str";

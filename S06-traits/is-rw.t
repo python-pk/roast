@@ -14,7 +14,7 @@ plan 9;
   is $bar,      23, "basic sanity";
   is foo($bar), 19, "calling a sub with an is rw param";
   is $bar,      42, "sub changed our variable";
-  # https://github.com/Raku/old-issue-tracker/issues/2593
+  
 
   dies-ok { EVAL('foo(28)') }, 'is rw requires a variable';
 }
@@ -42,10 +42,10 @@ plan 9;
 
 # for ... -> ... is rw {...} already tested for in t/statements/for.t.
 
-# https://github.com/Raku/old-issue-tracker/issues/6366
+
 throws-like { sub ($ is rw) {}(42) }, X::Parameter::RW;
 
-# https://github.com/rakudo/rakudo/issues/1211
+
 throws-like { Q/sub foo(+$x [$ is rw = False]) { $x }/.EVAL }, X::Trait::Invalid
 
 # vim: expandtab shiftwidth=4

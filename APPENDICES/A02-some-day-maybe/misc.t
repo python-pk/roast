@@ -10,11 +10,11 @@ use Test::Util;
 
 plan 6;
 
-# https://github.com/rakudo/rakudo/issues/1476
+
 throws-like ｢*+42:foo｣, X::Syntax::Adverb, :what{.so},
     'error in Whatever closure with adverb mentions what cannot be adverbed';
 
-# https://github.com/Raku/old-issue-tracker/issues/6299
+
 subtest 'same exception with and without type smiley for failing coercion on var' => {
     plan 3;
     my \XTAD = X::TypeCheck::Attribute::Default;
@@ -30,7 +30,7 @@ subtest 'attempting to use defaults with slurpy parameters throws' => {
     for @slurpies;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4900
+
 {
     my @a[;];
     pass 'shaped array declaration without numbers does not infini-loop';

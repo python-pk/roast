@@ -32,7 +32,7 @@ is ?(1,2,3), True, 'non-empty List is True';
 
 lives-ok { <5 7 8>[] }, 'can zen slice a List';
 
-# https://github.com/Raku/old-issue-tracker/issues/2922
+
 # modified for lolly branch
 is $(;).elems, 0, '$(;) parses, and is empty';
 
@@ -82,7 +82,7 @@ is $(;).elems, 0, '$(;) parses, and is empty';
     is ~$p, 'a b c d e', 'original still unmodified (negative)';
 } #13
 
-# https://github.com/Raku/old-issue-tracker/issues/4433
+
 # Make sure List.rotate is Cool with stuff
 {
     my $p = <a b c d e>;
@@ -107,7 +107,7 @@ is $(;).elems, 0, '$(;) parses, and is empty';
     is $p, <a b c>, 'did we get what we put in';
 } #4
 
-# https://github.com/Raku/old-issue-tracker/issues/3035
+
 {
     role sidecat {};
     my @a = 1,2,3;
@@ -133,7 +133,7 @@ is $(;).elems, 0, '$(;) parses, and is empty';
       'fail if they are non-numeric strings';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5610
+
 {
     is-deeply (a => 2).first(/a/), (a => 2), "first with a Regexp object";
     is-deeply (a => 2).grep(/a/), ((a => 2),), "grep with a Regexp object";
@@ -153,7 +153,7 @@ subtest '.sum can handle Junctions' => {
     ok     $sum   !==        42, 'sum is correct (6)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5819
+
 {
     my @a := <a b c>[0..2, 0..2].flat.cache;
     @a.Bool;
@@ -161,7 +161,7 @@ subtest '.sum can handle Junctions' => {
     is-deeply @a, <a b c a b c>, '.flat does not skip inner iterables';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4500
+
 {
   my $a = (1, 2, 3);
   throws-like { $a[42] = 21 }, X::Assignment::RO,
@@ -178,7 +178,7 @@ subtest '.sum can handle Junctions' => {
   is $c[0, 1, 2, 5], [1, 2, 3, 21], 'can assign to a List element if it is a container';
 }
 
-# https://github.com/rakudo/rakudo/issues/1260
+
 subtest 'List.new does not create unwanted containers' => {
     plan 4;
     my $l := List.new: 1, 2, my $ = 3;

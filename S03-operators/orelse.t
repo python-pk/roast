@@ -24,11 +24,11 @@ nok $tracker, 'orelse thunks';
     };
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5783
+
 is-deeply (Str andthen .uc orelse "foo"), 'foo',
     'orelse can be chained after andthen';
 
-# https://github.com/Raku/old-issue-tracker/issues/6085
+
 is-deeply (Nil andthen 'foo' orelse Nil orelse 'bar'), 'bar',
     'chain: andthen + orelse + orelse';
 

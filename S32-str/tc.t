@@ -8,7 +8,7 @@ is tc("hello world"), "Hello world", "simple";
 is tc(""),            "",            "empty string";
 is tc("üüüü"),        "Üüüü",        "umlaut";
 is tc("óóóó"),        "Óóóó",        "accented chars";
-# https://github.com/Raku/old-issue-tracker/issues/3963
+
 is tc('ßß'),          'Ssß',         'sharp s => Ss';
 is tc('ǉ'),           'ǈ',           'lj => Lj (in one character)';
 is 'abc'.tc,          'Abc',         'method form of title case';

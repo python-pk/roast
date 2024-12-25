@@ -12,7 +12,7 @@ plan 77;
 #   pad rows to add empty cells to ensure all rows have same number of cells: https://github.com/Raku/old-issue-tracker/issues/6627
 #   handle inline Z<> comments on table rows: https://github.com/Raku/old-issue-tracker/issues/6630
 
-# https://github.com/Raku/old-issue-tracker/issues/3798
+
 # test fix - incorrect table parse:
 =table
 +-----+----+---+
@@ -34,7 +34,7 @@ is @rows[0], "foo*52*Y";
 is @rows[1], "bar*17*N";
 is @rows[2], "dz*9*Y";
 
-# https://github.com/Raku/old-issue-tracker/issues/5336
+
 # test fix for internal error
 #       This test, with a '-r0c0' entry in
 #       the single table row, column 0,
@@ -47,7 +47,7 @@ is $r.contents.elems, 1;
 is $r.contents[0][0], "-r0c0"; # <= note leading hyphen which caused the original issue
 is $r.contents[0][1], "r0c1";
 
-# https://github.com/Raku/old-issue-tracker/issues/5746
+
 # an expanded test for uneven rows
 # note expected results have been corrected from that time
 =begin table
@@ -71,7 +71,7 @@ is @rows[0], "r0Col 1|-r0Col 2|_r0Col 3|=r0Col 4";
 is @rows[1], "r1Col 1 r1|-r1Col 2 r1Col 2|_r1Col 3 _r1Col 3|=r1Col 4 =r1Col 4", "test for merged cells";
 is @rows[2], "r2Col 1|r2Col 2|r2Col 3|r2Col 4";
 
-# https://github.com/Raku/old-issue-tracker/issues/5746
+
 # uneven rows
 =begin table
 a | b | c

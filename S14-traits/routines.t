@@ -51,7 +51,7 @@ plan 17;
     is $recorder, 'wrap', 'and the wrapper has been called once';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2736
+
 {
     multi trait_mod:<is>(Routine $m, :$a!) {
 	multi y(|) { my $x = $m }   #OK not used
@@ -63,7 +63,7 @@ plan 17;
     '[BUG] multi without proto gets wrong lexical lookup chain (RT #112664)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1668
+
 {
     try { EVAL 'sub yulia is krassivaya { }' };
     diag $!
@@ -92,7 +92,7 @@ plan 17;
         'Applying traits to submethods retains submethod semantics';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2737
+
 # Note: it's important this test stays in its nested block, not in the test
 # mainline, as there was a bug that was hidden in the case it was in the
 # mainline.
@@ -112,7 +112,7 @@ plan 17;
     ok $called, 'interaction of mixin to routine with array attribute and wrap is correct';
 }
 
-# https://github.com/rakudo/rakudo/issues/3573
+
 {
     my $seen;
     multi sub trait_mod:<is>(Routine:D $r is raw, :$foo!) {

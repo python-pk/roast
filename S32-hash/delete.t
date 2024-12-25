@@ -33,7 +33,7 @@ ok !defined(%hash{"a"}), "deleted hash elements are really deleted";
     throws-like '$a:delete', Exception, "Can't :delete a scalar";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1222
+
 {
     my %rt68482 = 1 => 3;
     is (%rt68482<1>:delete).WHAT.gist, 3.WHAT.gist, 'delete.WHAT is the element';

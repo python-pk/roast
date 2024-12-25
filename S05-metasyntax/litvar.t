@@ -51,13 +51,13 @@ is("abc" ~~ m/ || @var /,  'a',  'Array using explicit sequential semantics');
 
 # contextializer $( )
 
-# https://github.com/Raku/old-issue-tracker/issues/2927
+
 ok 'foobar' ~~ /$( $_ )/, '$( $_ ) will match';
 is $/, 'foobar', '... $( $_ ) matched entire string';
 is 'foobar' ~~ /$( $_.substr(3) )/, 'bar', 'Contextualizer with functions calls';
 is 'foobar' ~~ /@( <a b c o> )+/,   'ooba', '@( <a b c o> )+';
 
-# https://github.com/Raku/old-issue-tracker/issues/3069
+
 {
     my $rex = 'rex';
     ok 'Rex' ~~ m:i/$rex/, 'can case-insensitive match against interpolated var';
@@ -87,7 +87,7 @@ is "foo" ~~ /<$var>/, 'foo', 'string with metachars in assertion matches';
 $var = 'fO+';
 is "foo" ~~ /:i <$var>/, 'foo', 'string with metachars in assertion matches (:i)';
 
-# https://github.com/Raku/old-issue-tracker/issues/3841
+
 #?rakudo.jvm 3 skip ':ignoremark needs NFG'
 $var = 'fö+';
 is "foo" ~~ /:m <$var>/, 'foo', 'string with metachars in assertion matches (:m)';

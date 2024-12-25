@@ -20,7 +20,7 @@ plan 7;
     ok(!(Mu ~~ &nuhuh), "negated scalar sub false");
 }
 
-# https://github.com/rakudo/rakudo/issues/1566
+
 subtest 'no glitches with Routines not doing Callable role' => {
     plan +my @routines := &min, &max, &minmax;
     does-ok $_, Callable, .name for @routines;

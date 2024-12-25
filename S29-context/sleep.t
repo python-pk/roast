@@ -76,7 +76,7 @@ my $b;
 } #2
 
 
-{ # https://github.com/Raku/old-issue-tracker/issues/5821
+{ 
     is_run ｢start { sleep 3; exit }; sleep 9999999999999999999; say "Fail"｣, {
         :out(''), :err(''), :0status
     }, 'huge values to sleep() work';

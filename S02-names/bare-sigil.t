@@ -12,7 +12,7 @@ is (my $ = "foo"), "foo", 'initialized bare sigil scalar $';
 ok (my @ = 1, 2, 3), 'initialized bare sigil array @';
 ok (my % = baz => "luhrman"), 'initialized bare sigil hash %';
 
-# https://github.com/Raku/old-issue-tracker/issues/3033
+
 # 'state' with anonymous scalars works more like 'my' in Rakudo
 {
     sub f { ++state $ ; }
@@ -28,7 +28,7 @@ ok (my % = baz => "luhrman"), 'initialized bare sigil hash %';
     is d()[2], 2, "anonymous 'state' bare sigil array can grow";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2467
+
 lives-ok { sub f { f(|$) } },
     'no misleading warning about P5 special var \'$)\'';
 

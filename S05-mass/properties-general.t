@@ -19,7 +19,7 @@ plan 615;
 # L           Letter
 
 ok 'a' ~~ /<:L>/, 'a is a letter';
-# https://github.com/Raku/old-issue-tracker/issues/3124
+
 nok '' ~~ /<:L>/, 'empty string has no letter';
 ok("\x[846D]" ~~ m/^<:L>$/, q{Match <:L> (Letter)} );
 ok(!( "\x[846D]" ~~ m/^<:!L>$/ ), q{Don't match negated <L> (Letter)} );
@@ -801,7 +801,7 @@ ok("\c[KHMER VOWEL INHERENT AQ]"      ~~ m/^<:!Format>$/,   q{Match unrelated ne
 ok("\c[KHMER VOWEL INHERENT AQ]"      ~~ m/^<-:Format>$/,   q{Match unrelated inverted <Format>} );
 ok("\c[DEVANAGARI VOWEL SIGN AU]\c[SYRIAC ABBREVIATION MARK]" ~~ m/<:Format>/, q{Match unanchored <Format>} );
 
-# https://github.com/Raku/old-issue-tracker/issues/4245
+
 {
     my $ascii-chars = [~] chr(0)..chr(0x7F);
     my $latin-chars = [~] chr(0)..chr(0xFF);
@@ -812,7 +812,7 @@ ok("\c[DEVANAGARI VOWEL SIGN AU]\c[SYRIAC ABBREVIATION MARK]" ~~ m/<:Format>/, q
 
     #?rakudo.jvm todo 'get: Match.new(orig => "\t \t", pos => 2,  made => Any, from => 1, list => (), hash => Map.new(()))'
     #?rakudo.js 1 skip 'test seems wrong'
-    # https://github.com/Raku/old-issue-tracker/issues/5966
+    
     is "\t \t" ~~ /<:space>+/, "\t \t", 'space chars';
 
     is $latin-chars.comb(/<:cntrl>/)>>.ord.join(","), (flat 0..31, 127..159).join(","), 'cntrl chars';

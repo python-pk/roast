@@ -360,7 +360,7 @@ sub gen_array { (1..10).list }
     is @a.elems, 0,  'should not vivify';
 } #86
 
-# https://github.com/Raku/old-issue-tracker/issues/4339
+
 {
     my Int @a = ^3;
     @a[2] :delete;
@@ -369,7 +369,7 @@ sub gen_array { (1..10).list }
     is @a[2], Int, 'properly nulled even at end of array';
 } #2
 
-# https://github.com/Raku/old-issue-tracker/issues/6409
+
 subtest ':delete on lazy Arrays' => {
     plan 2;
     my @a is default(99) = 1...*;
@@ -379,7 +379,7 @@ subtest ':delete on lazy Arrays' => {
     ok @a[2] == 99, 'deleted element replaced with default value';
 }
 
-# https://github.com/rakudo/rakudo/issues/3657
+
 {
     my @a = 3, 4;
     is-deeply @a[1.5, 0.5]:delete, (4,3), 'did :delete return ok';

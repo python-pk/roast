@@ -25,7 +25,7 @@ enum Day <Sun Mon Tue Wed Thu Fri Sat>;
 
 #?rakudo todo 'rakudo#1296 butting issue on Str and Enum'
 {
-    # https://github.com/Raku/old-issue-tracker/issues/4014
+    
     # this is originally about RT #124832, but issue goes different.
     my $x = 'Today' but Day::Mon;
     ok $x.does(Day),      'Can test with .does() for enum type';
@@ -100,13 +100,13 @@ eval-lives-ok 'my enum Empty2 ()', 'empty enum with () can be constructed';
     ok Color.pick(2) == 2, '.pick(2) on enums';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1448
+
 {
     my enum RT71460::Bug <rt71460 bug71460 ticket71460>;
     ok bug71460 == 1, 'enum element of enum with double colons is in namespace';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2182
+
 {
     my enum T1 <a b c>;
     my enum T2 <d e f>;
@@ -114,14 +114,14 @@ eval-lives-ok 'my enum Empty2 ()', 'empty enum with () can be constructed';
     is T2.enums.keys.sort.join('|'), 'd|e|f', 'enum keys (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1788
+
 {
     my enum somenum <a b c d e>;
     my somenum $temp = d;
     ok $temp eq 'd', "RT #75370 enum name";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1492
+
 {
     my enum S1 <a b c>;
     my enum S2 <b c d>;
@@ -129,13 +129,13 @@ eval-lives-ok 'my enum Empty2 ()', 'empty enum with () can be constructed';
     ok S1::b == 1 && S2::b == 0, 'still can access redeclared enum values via package';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5315
+
 {
     my enum Foo <a b>;
     isa-ok Foo.enums, Map, '.enums returns a Map';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3773
+
 subtest 'dynamically created lists can be used to define an enum' => {
     plan 2;
     my enum rt124251 ('a'..'c' X~ 1 .. 2);
@@ -187,7 +187,7 @@ subtest '.pred/.succ' => {
     Z.succ.&is-enum-named: Z, '.succ on enum with 1 value works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6522
+
 subtest '=== on different enums with same values' => {
     plan 6;
     my enum WHICHTester (A => 1, B => 2, C => 2);
@@ -201,10 +201,10 @@ subtest '=== on different enums with same values' => {
     cmp-ok WHICHTester, &[===], WHICHTester, 'type object vs. type object => same';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6498
+
 cmp-ok Bool.enums.WHAT, '===', Map, 'Bool.enums returns a Map, not a Hash';
 
-# https://github.com/Raku/old-issue-tracker/issues/3049
+
 {
   lives-ok {
     my enum RT116719 (<red green purple> Z=> 1,2,4);
@@ -213,14 +213,14 @@ cmp-ok Bool.enums.WHAT, '===', Map, 'Bool.enums returns a Map, not a Hash';
   }, 'can build enum using Z=> operator';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3612
+
 group-of 3 => 'can build enum with built-ins\' names' => {
   eval-lives-ok q[enum RT1234571 <Block>; subset B;], 'Block';
   eval-lives-ok q[enum RT1234572 <Code>], 'Code';
   eval-lives-ok q[enum RT1234573 <Code> #123457], 'Code';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5272
+
 {
     my enum RT128017 ( (('RT128017-' X~ 1..8) Z=> (1, 2, 4 ... 256)) );
     is-deeply RT128017.enums,  Map.new((
@@ -230,7 +230,7 @@ group-of 3 => 'can build enum with built-ins\' names' => {
     )), 'enums can be created via Seq of Pairs';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5785
+
 subtest 'can provide enum values via Pairs' => {
     plan 5;
 
@@ -245,7 +245,7 @@ subtest 'can provide enum values via Pairs' => {
     is-deeply +RT130041-E, 24, '(5)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5943
+
 is-deeply do { BEGIN my %h = <a 1 b 2>; my enum Bits (%h); Bits.enums },
     Map.new((:a<1>,:b<2>)), 'can create enum with a Hash';
 
@@ -253,7 +253,7 @@ is-deeply do { BEGIN my %h = <a 1 b 2>; my enum Bits (%h); Bits.enums },
 is-deeply do { my enum Foos (a => <42>); a.Str }, 'a',
     '"NumericStringyEnumeration" uses key as .Str value';
 
-# https://github.com/Raku/old-issue-tracker/issues/3546
+
 {
     my enum Bug ("foo" => -42, "A", "bar" => 100, "B", :12ber, "C", "D");
     is-deeply [+foo, +A,  +bar, +B,  +ber, +C, +D],
@@ -261,7 +261,7 @@ is-deeply do { my enum Foos (a => <42>); a.Str }, 'a',
     'Pair elements in the list given to enum declaration work';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5627
+
 {
     eval-lives-ok 'my enum FF <zero one two three>; my enum GG <fee fie foo fum>; { FF(GG(2)).raku }',
                   'Coercing an enum from a coercion of an enum from an int works';

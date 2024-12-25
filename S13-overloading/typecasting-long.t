@@ -73,7 +73,7 @@ plan 39;
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2821
+
 {
     my $*res = 0;
     sub somesub () { $*res = 42; };
@@ -90,7 +90,7 @@ plan 39;
     is $*res, 42, 'example code works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2821
+
 {
     class A { method CALL-ME (A:U:) { 3 } };
     is A.(), 3, '.() -> (:U) works, dotted form';
@@ -115,7 +115,7 @@ plan 39;
     isa-ok A(Any).HOW, Metamodel::CoercionHOW, 'A(Any) is a type coercion literal';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2821
+
 {
     class Bar {
         has $.str;
@@ -125,7 +125,7 @@ plan 39;
     is $x(2, 1), 'c', 'example works';
 }
 
-{ # https://github.com/rakudo/rakudo/issues/4094
+{ 
     my role R01 {
         multi method CALL-ME(::?ROLE:U:) { ::?ROLE }
         multi method CALL-ME(::?ROLE:U: \v) {

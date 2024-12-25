@@ -202,13 +202,13 @@ lives-ok { do {die 'blah'; CATCH {default {}}}; }, 'do block with CATCH {default
     is $s, 'ab', 'CATCH indirectly nested in CATCH catches exceptions thrown in the outer CATCH';
 };
 
-# https://github.com/Raku/old-issue-tracker/issues/617
+
 {
     try { die "Goodbye cruel world!" };
     ok $!.^isa(Exception), '$!.^isa works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/841
+
 {
     dies-ok {
         try {
@@ -222,14 +222,14 @@ lives-ok { do {die 'blah'; CATCH {default {}}}; }, 'do block with CATCH {default
     }, 'can throw exceptions in CATCH';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2298
+
 eval-lives-ok 'my %a; %a{ CATCH { } }', 'can define CATCH bock in .{}';
-# https://github.com/Raku/old-issue-tracker/issues/1634
+
 throws-like 'do { CATCH {}; CATCH { } }', X::Phaser::Multiple, 'only one CATCH per block allowed';
-# https://github.com/Raku/old-issue-tracker/issues/2911
+
 throws-like 'try { CATCH { ~$! }; die }', X::AdHoc, "doesn't segfault";
 
-# https://github.com/Raku/old-issue-tracker/issues/3330
+
 {
     sub failing-routine {
         try {
@@ -249,15 +249,15 @@ throws-like 'try { CATCH { ~$! }; die }', X::AdHoc, "doesn't segfault";
     }, 'Two invocations of a die()ing routine should still hit the CATCH handler';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3759
+
 lives-ok { for ^1000 { die Exception.new; CATCH { default {} } } },
     'Hot-path optimization does not break exception hanhttps://github.com/Raku/old-issue-tracker/issues/3330dling';
 
-# https://github.com/Raku/old-issue-tracker/issues/3267
+
 lives-ok { loop { CATCH { default { say 'hi' } }; last if $++ > 100 } },
     'CATCH in a loop lives';
 
-# https://github.com/rakudo/rakudo/issues/3080
+
 {
     for ^500000 {
         CATCH {
@@ -271,7 +271,7 @@ lives-ok { loop { CATCH { default { say 'hi' } }; last if $++ > 100 } },
     pass "did not deadlock";
 }
 
-# https://github.com/rakudo/rakudo/issues/3777
+
 {
     my $message = "meh";
     my class E is Exception { method message { "E" } }

@@ -43,7 +43,7 @@ for @signals -> $signal {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6304
+
 doesn't-hang ｢
         await ^4 .map: -> $n {
             start {
@@ -60,7 +60,7 @@ doesn't-hang ｢
     ｣,   :out('All done!'), :err(''), :10wait,
 '.kill kills when multi-procs kill in multi-promises';
 
-# https://github.com/Raku/old-issue-tracker/issues/4418
+
 subtest 'can rapid-kill our Proc::Async without hanging' => {
     plan 1;
     my $proc = Proc::Async.new: $*EXECUTABLE, "-e", "sleep";

@@ -1,8 +1,8 @@
 use Test;
 plan 13;
 
-# https://github.com/Raku/old-issue-tracker/issues/1060
-# https://github.com/Raku/old-issue-tracker/issues/1695
+
+
 {
     my $ro_call     = 0;
     my $rw_call     = 0;

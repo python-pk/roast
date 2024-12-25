@@ -108,7 +108,7 @@ plan 40;
 
 is classify( { "foo" }, () ).elems, 0, 'classify an empty list';
 
-# https://github.com/Raku/old-issue-tracker/issues/4529
+
 {
     is-deeply
         <a b c>.classify({ ~($ ~= $_); }),
@@ -116,7 +116,7 @@ is classify( { "foo" }, () ).elems, 0, 'classify an empty list';
         '&test only run once for each item';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5205
+
 # https://github.com/Raku/problem-solving/issues/312
 subtest 'classify works with Junctions' => {
     plan 6;

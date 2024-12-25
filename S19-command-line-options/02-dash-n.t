@@ -41,7 +41,7 @@ is_run(
     :compiler-args['-ne .say'],
 );
 
-# https://github.com/Raku/old-issue-tracker/issues/2610
+
 subtest '-n -e "" works like awk ""' => {
     plan 3;
     my $proc = run :out, :err, :in, $*EXECUTABLE, '-n', '-e', '';
@@ -52,7 +52,7 @@ subtest '-n -e "" works like awk ""' => {
     is $proc.exitcode, 0;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5374
+
 #?rakudo todo 'LAST working with -n NYI'
 is_run(
     $str,          # input
@@ -63,7 +63,7 @@ is_run(
     :compiler-args['-n -e "FIRST .say"'],
 );
 
-# https://github.com/Raku/old-issue-tracker/issues/5374
+
 #?rakudo todo 'LAST working with -n NYI'
 is_run(
     $str,          # input
@@ -74,7 +74,7 @@ is_run(
     :compiler-args['-n -e "LAST .say"'],
 );
 
-# https://github.com/Raku/old-issue-tracker/issues/5374
+
 #?rakudo todo 'LAST working with -n NYI'
 is_run(
     $str,          # input

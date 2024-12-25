@@ -24,7 +24,7 @@ plan 35;
     is($a, 'a', "post with");
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3317
+
 {
     my $a = '';
     for ^2 { my $b = $_ with 'a'; $a ~= $b; }
@@ -40,14 +40,14 @@ plan 35;
     is $i, 13, 'postfix with worked';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2501
+
 {
     $_ = 'bogus';
     my @r = gather { take "{$_}" with 'cool' }
     is @r[0], 'cool', 'with modifies the $_ that is visible to the {} interpolator';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2668
+
 {
     my $a = 'many ';
     try { $a ~= $_ } with 'pelmeni';
@@ -190,7 +190,7 @@ plan 35;
     is @x, (12,6,4,3), 'with/for list comprehension works with parens';
 }
 
-# https://github.com/rakudo/rakudo/issues/5049
+
 {
     my @x;
     try push @x, .abs with 12 div $_ for 0..4;
@@ -203,7 +203,7 @@ plan 35;
     is @x, '(Failure)', 'without/for list comprehension works with parens';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2257
+
 {
     is (1,2, with 3), "1 2", "with is a terminator even after comma";
 }

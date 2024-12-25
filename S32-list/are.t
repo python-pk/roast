@@ -20,7 +20,7 @@ class Ztr is Str { }
 is-deeply ("foo",Ztr.new(value => "bar")).are, Str,
   'list of str and custom class';
 
-# https://github.com/rakudo/rakudo/issues/5568
+
 is-deeply (Numeric,42).are, Numeric, 'bare roles also supported';
 
 # vim: expandtab shiftwidth=4

@@ -35,7 +35,19 @@ my@x =<abc>;suby(@z){@z[1]};y(@x)
 '), "b", "FORM FEED (FF)");
 
 is(try_eval('
-my@x =<abc>;suby(@z){@z[1]};y(@x)
+my
+@x
+ =
+<a
+b
+c>;
+sub
+y
+(@z)
+{
+@z[1]
+};
+y(@x)
 '), "b", "CARRIAGE RETURN (CR)");
 
 is(try_eval('
@@ -133,7 +145,8 @@ is(try_eval('foo\
 .lc'), 'a', 'long dot with LINE FEED (LF)');
 is(try_eval('foo\.lc'), 'a', 'long dot with LINE TABULATION');
 is(try_eval('foo\.lc'), 'a', 'long dot with FORM FEED (FF)');
-is(try_eval('foo\.lc'), 'a', 'long dot with CARRIAGE RETURN (CR)');
+is(try_eval('foo\
+.lc'), 'a', 'long dot with CARRIAGE RETURN (CR)');
 is(try_eval('foo\ .lc'), 'a', 'long dot with SPACE');
 is(try_eval('foo\.lc'), 'a', 'long dot with NEXT LINE (NEL)');
 is(try_eval('foo\ .lc'), 'a', 'long dot with NO-BREAK SPACE');

@@ -164,7 +164,7 @@ plan 76;
 #     todo_throws_ok { 'unshift @unshift, 10' }, '?? what should this error message be ??', 'cannot unshift onto a Inf array';
 # }
 
-# https://github.com/Raku/old-issue-tracker/issues/1340
+
 {
      my $x = 1;
      my @a = ();
@@ -174,7 +174,7 @@ plan 76;
      is @a[0], 1, 'New element created by unshift(@a, $x) isn\'t affected by changes to $x';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1340
+
 {
     my $x = 1;
     my @a = ();
@@ -191,7 +191,7 @@ plan 76;
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/3196
+
 {
     my Int @a;
     throws-like '@a.unshift: "a"', X::TypeCheck,

@@ -22,7 +22,7 @@ is (* o *)(* + 1, * * 2)(3), 7, "can autocurry with Whatever on both sides";
 is ((* + *) o { $_ + 7, $_ * 6 })(5), 42, "can compose functions that pass two arguments";
 is ({ [+] @_ } o *.map(* * 2))(1..10), 110, "can compose functions that pass multiple arguments";
 
-# https://github.com/Raku/old-issue-tracker/issues/6112
+
 {
     subtest 'infix:<∘> preserves .count and .arity of RHS' => {
         plan 5;

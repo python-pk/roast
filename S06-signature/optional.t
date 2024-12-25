@@ -38,7 +38,7 @@ is opt_typed() , 'undef',  'can leave out optional typed param';
 # before those bound to optional positional">
 throws-like 'sub wrong1 ($a?, $b) {...}', X::Parameter::WrongOrder,
     'optional params before required ones are forbidden';
-# https://github.com/Raku/old-issue-tracker/issues/1869
+
 {
     throws-like 'sub wrong2 ($a = 1, $b) {...}', X::Parameter::WrongOrder,
         "...even if they're only optional by virtue of a default";
@@ -46,7 +46,7 @@ throws-like 'sub wrong1 ($a?, $b) {...}', X::Parameter::WrongOrder,
         '...and the default is 0';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/78
+
 sub foo_53814($w, $x?, :$y = 2) { $w~"|"~$x~"|"~$y };
 dies-ok {foo_53814(1,Mu,'something_extra',:y(3))},
       'die on too many parameters (was once bug RT #53814)';
@@ -82,7 +82,7 @@ is opt_array2(), 0, "optional array not passed is empty (copy)";
 is opt_hash1(),  0, "optional hash not passed is empty";
 is opt_hash2(),  0, "optional hash not passed is empty (copy)";
 
-# https://github.com/Raku/old-issue-tracker/issues/3171
+
 {
     sub opt_array(Int @foo?) { @foo.push(42); @foo };
     is-deeply opt_array(),                  Array[Int].new(42),    'can assign to an optional typed array not passed';
@@ -93,11 +93,11 @@ is opt_hash2(),  0, "optional hash not passed is empty (copy)";
     is-deeply opt_hash(my Int % = :baz(1)), (my Int % = :baz(1), :bar(42)), 'can assign to an optional typed hash that is passed';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1431
+
 throws-like 'sub opt($a = 1, $b) { }', X::Parameter::WrongOrder,
     'Cannot put required parameter after optional parameters';
 
-# https://github.com/Raku/old-issue-tracker/issues/1732
+
 {
     sub opt-type1(Int $x?) { $x };
     ok opt-type1() === Int,
@@ -107,7 +107,7 @@ throws-like 'sub opt($a = 1, $b) { }', X::Parameter::WrongOrder,
     dies-ok { EVAL('opt-type2()') }, 'default values are type-checked';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     sub opt-hash(%h?) {
         %h<a> = 'b';
@@ -115,20 +115,20 @@ throws-like 'sub opt($a = 1, $b) { }', X::Parameter::WrongOrder,
     }
     is opt-hash().keys, 'a', 'can assign to optional parameter';
 
-    # https://github.com/Raku/old-issue-tracker/issues/2274
+    
     sub opt-hash2(%h?) {
         %h;
     }
     ok opt-hash2() eqv ().hash, 'an optional-but-not-filled hash is just an empty Hash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2081
+
 {
     lives-ok { sub foo(::T $?) {} },
         'question mark for optional parameter is parsed correctly';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2262
+
 {
     throws-like ｢sub foo($x? is rw) {}｣, X::Trait::Invalid,
         :type('is'), :subtype('rw'),
@@ -139,8 +139,8 @@ throws-like 'sub opt($a = 1, $b) { }', X::Parameter::WrongOrder,
         'making an "is rw" parameter optional dies with adequate error message';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2765
-# https://github.com/Raku/old-issue-tracker/issues/3697
+
+
 {
     throws-like 'sub foo(Int $x = "omg") { }', X::Parameter::Default::TypeCheck,
         'Catch impossible default types at compile time';

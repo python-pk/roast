@@ -58,10 +58,10 @@ subtest "Recursive-ish parameterization" => {
     dies-ok { R2[C3].new.call_fail },  'classes being used as type constraints inside roles work';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1491
+
 throws-like 'role ABCD[EFGH] { }', X::Parameter::InvalidType, 'role with undefined type as parameter dies';
 
-# https://github.com/Raku/old-issue-tracker/issues/1193
+
 {
     my role TreeNode[::T] does Positional {
         has TreeNode[T] @!children handles <AT-POS ASSIGN-POS BIND-POS>;
@@ -77,7 +77,7 @@ throws-like 'role ABCD[EFGH] { }', X::Parameter::InvalidType, 'role with undefin
         'parameterized role doing non-parameterized role';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1192
+
 {
     my role P[$x] { }
     # ::T only makes sense in a signature here, not in
@@ -86,14 +86,14 @@ throws-like 'role ABCD[EFGH] { }', X::Parameter::InvalidType, 'role with undefin
         'can not use ::T in role application';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2515
+
 {
     my role R[::T = my role Q[::S = role { method baz { "OH HAI" } }] { method bar { S.baz } }] { method foo { T.bar } };
     is R.new.foo, 'OH HAI', 'can use a parameterized role as a default value of a parameterized role';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2902
+
 {
     my module A {
         role B[$x] is export {
@@ -104,14 +104,14 @@ throws-like 'role ABCD[EFGH] { }', X::Parameter::InvalidType, 'role with undefin
     is B['blubb'].payload, 'blubb', 'can export and import parameterized roles';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2374
+
 {
     my role R[::T] { multi method foo(T $t) { T.gist } };
     my class A does R[Str] does R[Int] { };
     is A.new.foo(5), 5.WHAT.gist, 'correct multi selected from multiple parametric roles';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2767
+
 {
     throws-like 'sub f(Int @x) {}; f( [] )',
         X::TypeCheck::Binding,
@@ -119,7 +119,7 @@ throws-like 'role ABCD[EFGH] { }', X::Parameter::InvalidType, 'role with undefin
         'error message mentions expected type when a typed array in a signature fails to bind';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3648
+
 lives-ok { EVAL 'my role A [ :$bs where { True } = 512] { }; class B does A { }' },
     'role with where clause and default in parametric signature works out OK';
 

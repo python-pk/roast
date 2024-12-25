@@ -54,7 +54,7 @@ is ([eqv] ()), Bool::True, "[eqv] () eq True";
 is ([!eqv] ()), Bool::True, "[!eqv] () eq True";
 is ([&&] ()), Bool::True, "[&&] () eq True";
 is ([||] ()), Bool::False, "[||] () eq False";
-# https://github.com/Raku/old-issue-tracker/issues/952
+
 is ([^^] ()), Bool::False, "[^^] () eq False";
 is ([//] ()), Any, "[//] () is Any";
 is ([,] ()), (), "[,] () eq ()";

@@ -146,7 +146,7 @@ throws-like 'class RT64642 is ::Nowhere {}', X::Inheritance::UnknownParent,
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2339
+
 {
     my class A {
         method new { self.bless }
@@ -162,7 +162,7 @@ throws-like 'class RT64642 is ::Nowhere {}', X::Inheritance::UnknownParent,
     is B.new.c, 42, 'nextsame in constructor works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1789
+
 {
     my class RT75376::A { };
     lives-ok { our class RT75376::B is RT75376::A { } },
@@ -171,11 +171,11 @@ throws-like 'class RT64642 is ::Nowhere {}', X::Inheritance::UnknownParent,
         'our-scoped class inherited from my-scoped class has proper inheritance hierarchy';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4441
+
 throws-like 'class X is nosuchtrait { }', X::Inheritance::UnknownParent,
     'Get unkown parent error even when class is called X';
 
-# https://github.com/rakudo/rakudo/issues/2829
+
 {
     class SubParameter is Parameter {
         has $.p2829;

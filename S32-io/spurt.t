@@ -130,7 +130,7 @@ if $path.IO.e {
     unlink $path;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4520
+
 {
     given 'temp-file-RT-126006-test'.IO {
         LEAVE .unlink;
@@ -176,7 +176,7 @@ if $path.IO.e {
 
     test-spurt make-temp-file(), $str;
     test-spurt make-temp-file(), $str, :meth;
-    # https://github.com/Raku/old-issue-tracker/issues/5283
+    
     #?rakudo.jvm 2 todo '[io grant] expected: Buf[uint8].new(200); got: Buf[uint8].new(200)'
     test-spurt make-temp-file(), $bin;
     test-spurt make-temp-file(), $bin, :meth;
@@ -199,7 +199,7 @@ if $path.IO.e {
 
     test-spurt make-temp-file(), $lstr, :enc<Latin-1>;
     test-spurt make-temp-file(), $lstr, :enc<Latin-1>, :meth;
-    # https://github.com/Raku/old-issue-tracker/issues/5283
+    
     #?rakudo.jvm 2 todo '[io grant] expected: Buf[uint8].new(200); got: Buf[uint8].new(200)'
     test-spurt make-temp-file(), $lbin;
     test-spurt make-temp-file(), $lbin, :meth;
@@ -227,7 +227,7 @@ subtest 'IO::Handle spurt' => { # 2017 IO Grant; IO::Handle.spurt
     ok $fh.spurt( Buf.new: 200), 'can spurt a Blob [method]';
     ok spurt($fh, Buf.new: 200), 'can spurt a Blob [sub]';
     $fh.close;
-    # https://github.com/Raku/old-issue-tracker/issues/5283
+    
     #?rakudo.jvm todo 'problem with Buf[uint8]'
     is-deeply $file.slurp(:bin), Buf[uint8].new(200, 200),
         'Blob spurted contents look right';

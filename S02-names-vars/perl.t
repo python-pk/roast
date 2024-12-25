@@ -81,7 +81,7 @@ my @tests = (
         ".raku worked correctly on a mixed arrayitem/hashitem recursive structure";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3771
+
 {
     class Bug {
         has @.myself;
@@ -95,7 +95,7 @@ my @tests = (
     pass "survived saying a self-referencing object";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3437
+
 {
     class Location {...}
     class Item {
@@ -127,7 +127,7 @@ my @tests = (
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/567
+
 {
     class RT61918 {
         has $.inst is rw;
@@ -150,19 +150,19 @@ my @tests = (
     # TODO: more tests that show EVAL($t1_init) has the same guts as $t1.
     ok $t1_new ~~ /<< krach >>/, 'attribute value appears in .raku output';
 
-    # https://github.com/Raku/old-issue-tracker/issues/2593
+    
     my $t2_init = EVAL($t1_init).raku;
     is $t1_init, $t2_init, '.raku on user-defined type roundtrips okay';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3564
+
 {
     my $a = 0.219947518065601987e0;
     is $a.raku, EVAL($a.raku).raku,
         '.raku on float with many digits roundtrips okay';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/819
+
 {
     my %h;
     lives-ok { %h<a> = [%h<a>] },
@@ -171,7 +171,7 @@ my @tests = (
     ok %h<a> !=== %h<a>[0], 'hoa does not refer to hash element';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1156
+
 {
     class RT67790 {}
     lives-ok { RT67790.HOW.raku }, 'can .raku on .HOW';
@@ -179,14 +179,14 @@ my @tests = (
     ok EVAL(RT67790.HOW.raku) === RT67790.HOW, '... and it returns the right thing';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1366
+
 {
     is 1.0.WHAT.gist, Rat.gist, '1.0 is Rat';
     is EVAL( 1.0.raku ).WHAT.gist, Rat.gist, "1.0 raku'd and EVAL'd is Rat";
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/1177
+
 {
     my @a;
     ([0, 0], [1, 1]).grep({@a.push: .raku; 1}).eager;
@@ -213,7 +213,7 @@ my @tests = (
     lives-ok { $ch = EVAL 780.chr.raku }, '780.chr.raku - lives';
     is $ch, 780.chr, ".raku on composing character";
 
-    # https://github.com/Raku/old-issue-tracker/issues/4219
+    
     my $non-print-then-combchar = 1.chr ~ 780.chr;
     lives-ok { $ch = EVAL $non-print-then-combchar.raku },
         '.raku on string with combining char on a non-printable - lives';

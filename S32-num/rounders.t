@@ -127,7 +127,7 @@ for @testkeys -> $t {
         'large positive numbers rounded do not give negative numbers (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     my $integer = 987654321;
     is $integer.round(1),   987654321, "round integer with argument";
@@ -145,7 +145,7 @@ for @testkeys -> $t {
         "($num).round(1e-5) =~= 123.45679e0";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4825
+
 {
     my $complex = 5.123456789+3.987654321i;
     is $complex.round(1),             5+4i,  "complex round with argument";

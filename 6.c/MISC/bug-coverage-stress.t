@@ -9,7 +9,7 @@ use Test::Util;
 
 plan 14;
 
-# https://github.com/Raku/old-issue-tracker/issues/6501
+
 #?rakudo.jvm todo 'Fails more often than it passes'
 doesn't-hang ｢
     my $fh = ｣ ~ make-temp-file.raku ~ ｢.open: :w;
@@ -30,7 +30,7 @@ doesn't-hang ｢
 ｣, :5wait, :out<pass>, 'no deadlock while acquiring mutex';
 
 
-# https://github.com/Raku/old-issue-tracker/issues/6490
+
 #?rakudo.jvm skip "The spawned command './rakudo-j' exited unsuccessfully (exit code: 1)"
 #?DOES 3
 {
@@ -79,7 +79,7 @@ doesn't-hang ｢
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5742
+
 with make-temp-dir() -> $dir {
     $dir.add("$_$_$_").spurt("") for "a".."z";
 
@@ -99,7 +99,7 @@ with make-temp-dir() -> $dir {
     'dir() does not produce wrong results under concurrent load';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5678
+
 # "invalid free" bug is present on Rakudo 2016.07. Running something with
 # slower startup, like $*EXECUTABLE, does not exercise the bug, so we use `echo`
 #?rakudo.jvm skip 'hangs'
@@ -117,7 +117,7 @@ with make-temp-dir() -> $dir {
 }
 
 # https://github.com/tokuhirom/p6-WebSocket/issues/15#issuecomment-339120879
-# https://github.com/Raku/old-issue-tracker/issues/6628
+
 is_run ｢
     # fire up a few socks first to fill up affinity workers to make
     # the bug more prevalent
@@ -136,7 +136,7 @@ is_run ｢
     sleep 2;
 ｣, {:out<pass>, :err(''), :0status}, 'supply inside sock does not hang';
 
-# https://github.com/Raku/old-issue-tracker/issues/5254
+
 given make-temp-dir() {
     .child('myclass.rakumod').spurt: ｢
         unit class myclass;
@@ -164,7 +164,7 @@ given make-temp-dir() {
     'no serialization crashes with roles and traits';
 }
 
-# https://github.com/rakudo/rakudo/issues/1413
+
 #?rakudo.jvm todo 'IllegalArgumentException: bad parameter count 850; https://github.com/rakudo/rakudo/issues/1413'
 my $package-lib-prefix = $?FILE.IO.parent(3).IO.add('packages/RAKUDO1413/lib').absolute;
 is_run ｢use RAKUDO1413; print 'pass'｣,
@@ -172,13 +172,13 @@ is_run ｢use RAKUDO1413; print 'pass'｣,
     {:out<pass>, :err(''), :0status},
 'no crashes with giant enums in packages';
 
-# https://github.com/rakudo/rakudo/issues/1483
+
 {
     for ^5 { sub meow ($) {}; for ^300 {$^i %% $_ && meow "$_ " for ^$i} }
     pass 'no segfault in a `for` loop + some ops';
 }
 
-{ # https://github.com/rakudo/rakudo/issues/1550
+{ 
     my &f = *.self;
     $_».self    given map 1/*.&f, ^550+1;
     .eager.self for   map 1/*.&f, ^550+1;
@@ -186,7 +186,7 @@ is_run ｢use RAKUDO1413; print 'pass'｣,
 }
 
 #?rakudo.jvm skip 'atomicint NYI'
-{ # https://github.com/rakudo/rakudo/issues/1535
+{ 
     my class R1535Log::Async {
         has $.supplier = Supplier.new;
         has $.supply = $!supplier.Supply;
@@ -210,7 +210,7 @@ is_run ｢use RAKUDO1413; print 'pass'｣,
 }
 
 #?rakudo.jvm skip 'atomicint NYI'
-{ # https://github.com/rakudo/rakudo/issues/1535
+{ 
     my class R1535Log::Async {
         has $.supplier = Supplier.new;
         has $.supply = $!supplier.Supply;
@@ -234,7 +234,7 @@ is_run ｢use RAKUDO1413; print 'pass'｣,
     is $x, 4000, 'collected right amount of characters (with { foo })';
 }
 
-# https://github.com/rakudo/rakudo/issues/2120
+
 {
     sub foo($self,+@mods) { ($self, @mods).flat.Seq }
     is-deeply ((1..10)[2.&foo($_ xx 1000).map($_ ** *) »%» *] with 1),

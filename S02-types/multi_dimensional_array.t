@@ -29,7 +29,7 @@ plan 59;
     is(@md.elems, 2, '.elems works on multidimensional array');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3830
+
 #?rakudo skip 'ragged multi-dim sized arrays NYI'
 {
     my @md[*;*;2];

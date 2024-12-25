@@ -162,7 +162,7 @@ nok 'b' ~~ 'c'..*,      "not 'b' ~~ 'c'..*";
 ok 'b' ~~ *..'c',       "'b' ~~ *..'c'";
 nok 'd' ~~ *..'c',      "not 'd' ~~ *..'c'";
 
-# https://github.com/Raku/old-issue-tracker/issues/1803
+
 # Some non-alphanumeric ranges don't work
 {
     ok ' ' ~~ ' '..' ', "' ' ~~ ' '..' '";

@@ -238,7 +238,7 @@ for @ok -> \value, @strings {
     ok-val(value, @strings);
 }
 
-# https://github.com/rakudo/rakudo/issues/4475
+
 {
     for <½ ↉ ⅓ ⅔ ¼ ¾ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅐ ⅛ ⅜ ⅝ ⅞ ⅑ ⅒ > {
         my $allo := val($_);

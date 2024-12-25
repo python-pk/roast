@@ -57,7 +57,7 @@ is ~@b, "a b d e z", "inplace sort";
     is($_, 42, '.=foo form works on $_');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/842
+
 {
     my @a = 1,3,2;
     my @a_orig = @a;
@@ -72,7 +72,7 @@ is ~@b, "a b d e z", "inplace sort";
     is @a, [1,2,3],            'worked: @a.=sort';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1408
+
 {
    my $x = 5.5;
    $x .= Int;
@@ -90,7 +90,7 @@ is ~@b, "a b d e z", "inplace sort";
    is $x, True, '.= Bool (value)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1290
+
 {
     my $a = 'oh hai';
     my $b = 'uc';
@@ -170,7 +170,7 @@ subtest 'coverage for performance optimizations' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/1485
+
 subtest '.= works with fake-infix adverb named args' => {
     plan 4;
     my Pair $p .= new :key<foo> :value<bar>;
@@ -193,7 +193,7 @@ subtest '.= works with fake-infix adverb named args' => {
     is-deeply $o2, Foo.new(:42z), '($ ... method chain).=new no args';
 }
 
-# https://github.com/rakudo/rakudo/issues/1461
+
 subtest '.= works to init sigilles vars' => {
     plan 16;
     my class Foo { has $.foo; has $.bar };
@@ -238,7 +238,7 @@ subtest '.= works to init sigilles vars' => {
         'Foo[Bar] type constraint with .= on attributes';
 }
 
-# https://github.com/rakudo/rakudo/issues/1506
+
 subtest '.= inside andthen and relatives' => {
     plan 4;
 
@@ -284,7 +284,7 @@ subtest 'various weird cases of .= calls' => {
     }
 }
 
-# https://github.com/rakudo/rakudo/issues/1504
+
 subtest 'constants' => {
     plan 4;
 

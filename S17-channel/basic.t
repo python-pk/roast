@@ -106,7 +106,7 @@ plan 29;
     throws-like { Channel.new.elems }, Exception, 'Channel:D.elems fails';
 }
 
-# https://github.com/rakudo/rakudo/issues/1974
+
 {
     my @seen;
     (my Channel $c .= new).Supply.tap: { @seen.push($_) };

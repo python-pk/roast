@@ -21,7 +21,7 @@ is 2988348162058574136915891421498819466320163312926952423791023078876139.expmod
         10 ** 40),
    1527229998585248450016808958343740453059, "Rosettacode example is correct";
 
-# https://github.com/Raku/old-issue-tracker/issues/6053
+
 # libtommath used to hang for these values (https://github.com/libtom/libtommath/issues/475)
 {
   subtest '.expmod with negative powers does not hang' => {

@@ -45,7 +45,7 @@ is        A.base(16),  'FF',     '... same with type object invocant';
     is Cc.new.foo, 42, 'role method calls works through role delegation independent of declaration order.';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3721
+
 {
     role R3721 {
         method foo () handles 'uc' { 'foo' }

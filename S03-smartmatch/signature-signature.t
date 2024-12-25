@@ -53,7 +53,7 @@ plan 38;
     nok (:(&foo:(Int --> Bool)) ~~ :(&bar:(Int --> Str))),
         "Code params with different signature return types doesn't match";
 
-    # https://github.com/Raku/old-issue-tracker/issues/5028
+    
     nok :(Int --> Int) ~~ :(), 'Can smartmatch against empty signature (False)';
     nok :() ~~ :(Int ), 'Can smartmatch an empty signature (False)';
     ok :() ~~ :(), 'Can smartmatch against empty signature (True)';

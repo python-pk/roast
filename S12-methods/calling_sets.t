@@ -74,7 +74,7 @@ class E is D {
     multi method foo($x, $y, $z) { 'eAnyAnyAny' }   #OK not used
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3203
+
 {
     my $e = E.new();
 

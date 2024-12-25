@@ -72,12 +72,12 @@ sub showset($s) { $s.keys.sort.join(' ') }
     isa-ok {a => 2, b => 4, c => 0}.Set, Set, '{a => 2, b => 4, c => 0}.Set makes a Set';
     is showset({a => 2, b => 4, c => 0}.Set), 'a b', '{a => 2, b => 4, c => 0}.Set makes the set a b';
 
-    # https://github.com/Raku/old-issue-tracker/issues/6147
+    
     is-deeply (:a, :!b, :3c, :0d, :e<meow>, :f(''), 'g').Set,
         set('a', 'c', 'e', 'g'),
     '.Set on List of Pairs treats Pair.value as weight';
 
-    # https://github.com/Raku/old-issue-tracker/issues/6147
+    
     is-deeply {:a, :!b, :3c, :0d, :e<meow>, :f('')}.Set,
         set('a', 'c', 'e'),
     '.Set on Hash of Pairs treats Pair.value as weight';
@@ -334,7 +334,7 @@ sub showset($s) { $s.keys.sort.join(' ') }
     dies-ok { $s.grabpairs }, 'cannot call .grabpairs on a Set';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2585
+
 {
     my $s1 = Set.new(( set <a b c> ), <c d>);
     is +$s1, 2, "Two elements";
@@ -403,20 +403,20 @@ sub showset($s) { $s.keys.sort.join(' ') }
     dies-ok { $s.pairs[0].value = 0 }, 'Cannot change value of Set.pairs';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3071
+
 {
     my $s = set();
     $s (|)= 5;
     is $s, set(5), 'can metaop set assign like: (|)=';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3835
+
 {
     isnt 'a Str|b Str|c'.Set.WHICH, <a b c>.Set.WHICH,
       'Faulty .WHICH creation';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2997
+
 {
     my $s = Set.new([1,2],[3,4]);
     is $s.elems, 2, 'arrays not flattened out by Set.new (1)';
@@ -424,7 +424,7 @@ sub showset($s) { $s.keys.sort.join(' ') }
     is $s.keys.sort[1], [3,4], 'arrays not flattened out by Set.new (3)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4399
+
 {
     class MySet is Set { };
     my $s = MySet.new([1, 2], 3);
@@ -445,7 +445,7 @@ sub showset($s) { $s.keys.sort.join(' ') }
     is $a.kv[1,3,5], (True, True, True), "Set.kv returns list of keys and values (2)";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4975
+
 {
     ok <one two three>.map({$_}) ~~ set(<two three one>), 'smartmatch a Seq';
 }
@@ -454,7 +454,7 @@ sub showset($s) { $s.keys.sort.join(' ') }
     isa-ok set(42).Hash.keys[0], Int, "make sure set.Hash returns objects";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5095
+
 subtest '.hash does not cause keys to be stringified' => {
     plan 3;
     is Set.new($(<a b>)).hash.keys[0][0], 'a', 'Set.new';
@@ -502,7 +502,7 @@ subtest '.hash does not cause keys to be stringified' => {
     throws-like { Set.new(^Inf) }, X::Cannot::Lazy, :what<Set>;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3135
+
 {
     throws-like 'set;', Exception, message => /set/,
         'set listop called without arguments and parentheses dies (1)';
@@ -510,7 +510,7 @@ subtest '.hash does not cause keys to be stringified' => {
         'set listop called without arguments dies (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6240
+
 subtest 'set ops do not hang with Setty/Baggy/Mixy type objects' => {
     my @ops =
       &infix:<<∈>>,      '∈',
@@ -555,8 +555,8 @@ subtest 'set ops do not hang with Setty/Baggy/Mixy type objects' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6632
-# https://github.com/Raku/old-issue-tracker/issues/6633
+
+
 {
     my %h is Set = <a b c d>;
     is %h.elems, 4, 'did we get right number of elements';
@@ -589,7 +589,7 @@ is-deeply (1,2,3).Set.ACCEPTS(().Set), False, 'can we smartmatch empty';
     is-deeply $set.MixHash, <a b c>.MixHash, 'coerce Set -> MixHash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6689
+
 {
     my %s is Set[Int] = 1,2,3;
     is-deeply %s.keys.sort, (1,2,3), 'parameterized Set';
@@ -604,7 +604,7 @@ my @a = ["a", "b", "c"];
 my @b = [1, 2, 4];
 is-deeply BagHash.new.STORE(@a, @b), BagHash.new.STORE(@a Z=> @b), 'the two Set:D.STORE candidates create equivalent objects';
 
-# https://github.com/rakudo/rakudo/issues/1862
+
 is <a b c>.Set.item.VAR.^name, 'Scalar', 'does .item work on Sets';
 
 {
@@ -614,7 +614,7 @@ is <a b c>.Set.item.VAR.^name, 'Scalar', 'does .item work on Sets';
 
 lives-ok { my %h is Set = 42 }, "Can we initialize a Set with a single value";
 
-# https://github.com/rakudo/rakudo/issues/5057
+
 {
     my $s := <a b c d e>.Set;
     is-deeply $s>>.&{ 1 }, <a b c d e>.Set,
@@ -623,7 +623,7 @@ lives-ok { my %h is Set = 42 }, "Can we initialize a Set with a single value";
       'did on-the-fly value leave original unchanged';
 }
 
-# https://github.com/rakudo/rakudo/issues/5229
+
 {
     is-deeply List.Set,  Set.new(List),  'did we get a Set with a List';
     is-deeply Array.Set, Set.new(Array), 'did we get a Set with an Array';

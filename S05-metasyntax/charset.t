@@ -23,7 +23,7 @@ ok(!( "a" ~~ m/<-[aeiou]>/ ), 'Simple neg set failure');
 ok("f" ~~ m/(<-[aeiou]>)/, 'Simple neg set match');
 is($0, 'f', 'Simple neg set capture');
 
-# https://github.com/Raku/old-issue-tracker/issues/4791
+
 {
     ok "a" ~~ m/<![a]>/, "zerowidth negated character class can match at end of string";
 }
@@ -33,7 +33,7 @@ ok(!( "a" ~~ m/(<[a..z]-[aeiou]>)/ ), 'Difference set failure');
 ok("y" ~~ m/(<[a..z]-[aeiou]>)/, 'Difference set match');
 is($0, 'y', 'Difference set capture');
 
-# https://github.com/Raku/old-issue-tracker/issues/2978
+
 ok(  "abc" ~~ m/<[\w]-[\n]>/,  'Difference set match 1');
 ok(!("abc" ~~ m/<[\w]-[\N]>/), 'Difference set match 2');
 is(("abc123" ~~ m/<[\w]-[a\d]>+/), 'bc', 'Difference set match 3');
@@ -58,15 +58,15 @@ is($0, '{', 'quoted open LCB capture');
 ok('}' ~~ m/(<[\}]>)/, 'quoted close LCB match');
 is($0, '}', 'quoted close LCB capture');
 
-# https://github.com/Raku/old-issue-tracker/issues/1113
+
 eval-lives-ok( '"foo" ~~ /<[f] #`[comment] + [o]>/',
                'comment embedded in charset can be parsed' );
 ok( "foo" ~~ /<[f] #`[comment] + [o]>/, 'comment embedded in charset works' );
 
-# https://github.com/Raku/old-issue-tracker/issues/1112
+
 ok "\x[FFEF]" ~~ /<[\x0..\xFFEF]>/, 'large \\x char spec';
 
-# https://github.com/Raku/old-issue-tracker/issues/1458
+
 throws-like "'RT #71702' ~~ /<[d..b]>? RT/", Exception,
     'reverse range in charset is lethal';
 
@@ -79,10 +79,10 @@ throws-like "'x' ~~ /<:Kata :Hira]>? RT/", Exception,
 throws-like "'x' ~~ /<+alpha digit]>? RT/", Exception,
     'missing + or - is fatal 3';
 
-# https://github.com/Raku/old-issue-tracker/issues/839
+
 ok 'b' ~~ /<[. .. b]>/, 'weird char class matches at least its end point';
 
-# https://github.com/Raku/old-issue-tracker/issues/1354
+
 {
 try { EVAL "/<[a-z]>/"; }
 # TODO Replace when the actual error message is changed.
@@ -90,22 +90,22 @@ ok ~$! ~~ / 'Unsupported use of - as character range'/,
     "STD error message for - as character range";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2500
+
 ok 'ab' ~~ /^(.*) b/, 'Quantifiers in capture groups work';
 
-# https://github.com/Raku/old-issue-tracker/issues/1652
+
 # backslashed characters in char classes
 ok '[]\\' ~~ /^ <[ \[ .. \] ]>+ $ /, 'backslashed chars in char classes';
 nok '^'   ~~ /  <[ \[ .. \] ]>    /, '... does not match outside its range';
 
-# https://github.com/Raku/old-issue-tracker/issues/2416
+
 {
     nok  '' ~~ / <[a..z]-[x]> /, 'Can match empty string against char class';
     nok 'x' ~~ / <[a..z]-[x]> /, 'char excluded from class';
      ok 'z' ~~ / <[a..z]-[x]> /, '... but others are fine';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3271
+
 {
     is "\r\na" ~~ /<?[\n]>"\r\na"/, "\r\na",
         'look-ahead with windows newline does not advance cursor position';
@@ -117,14 +117,14 @@ nok '^'   ~~ /  <[ \[ .. \] ]>    /, '... does not match outside its range';
     dies-ok { 'a' ~~ / <+xdigit-digit> / }, "accidental kebabs disallowed";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4454
+
 #?rakudo.jvm 2 todo 'ignorecase and character ranges RT #125753'
 dies-ok { EVAL '/<[Ḍ̇..\x2FFF]>/' }, 'Cannot use NFG synthetic as range endpoint';
 
-# https://github.com/Raku/old-issue-tracker/issues/4454
+
 is "Aa1" ~~ /:i <[a..z0..9]>+/, "Aa1", ':i with cclass with multiple ranges works';
 
-# https://github.com/Raku/old-issue-tracker/issues/4454
+
 #?rakudo.jvm 3 todo 'ignorecase and character ranges'
 is '%E3%81%82' ~~ /:ignorecase ['%' (<[a..f0..9]>|x)**2]+/, '%E3%81%82',
     ':ignorecase in combination with charclass ranges works with LTM';
@@ -137,7 +137,7 @@ is 'Ä' ~~ /:ignoremark :ignorecase (<[a..f]>|x)/, 'Ä',
     is ("\0\0\0" ~~ /<[\0]>+/).Str, "\0\0\0", '\0 works inside character classes and matches null';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5341
+
 ok "a" ~~ m:g:ignoremark/<[á]>/, ':g, :ignoremark, and cclass interaction ok';
 
 # vim: expandtab shiftwidth=4

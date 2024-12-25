@@ -27,7 +27,7 @@ plan 11;
     dies-ok { EVAL 'typed(:i)' }, 'type constraint on var propagates to alias';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3709
+
 {
     sub rt123956 (:t( :$th )) { $th }
     is rt123956( th => 5 ), 5,

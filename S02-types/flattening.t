@@ -76,7 +76,7 @@ plan 50;
     is(@a.elems, 5, 'Hash flattened by .append');
 }
 
-# https://github.com/rakudo/rakudo/issues/4034
+
 {
     my (@a, @b);
     my \values = 1, 2;
@@ -95,7 +95,7 @@ plan 50;
      'unshift and .unshift flatten multiple values the same way';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2708
+
 {
     my @a = <a b c d e f>;
     is @a[$[3, 4], 0,], 'c a', '$[] in array slice numifies (1)';
@@ -122,7 +122,7 @@ plan 50;
     is-deeply +@h-h, 3, '% sigil flattening of itemized hash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4588
+
 {
     my @a1 = 1,2,3; my @b1; @b1.push:   @a1,;
     my @a2 = 1,2,3; my @b2; @b2.push:   @a2;
@@ -135,14 +135,14 @@ plan 50;
     is-deeply @b4,  [1, 2, 3],   'method append does flatten an array arg (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2735
+
 {
     sub foo (\v) {
         is-deeply v, True, 'slipping a Bool into arguments does not crash'
     }( |True )
 }
 
-# https://github.com/rakudo/rakudo/issues/2442
+
 {
     my @types = array, Array, Iterable.^pun, List, Range, Supply;
     subtest '.flat on type objects' => {

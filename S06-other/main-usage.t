@@ -43,7 +43,7 @@ is_run 'sub MAIN(:xen(:$xin)) { print $xin }', {out => "23"}, :args['--xin=23'],
 is_run 'sub MAIN(:xen(:$xin)) { print $xin }', {out => "23"}, :args['--xen=23'],
     'named alias (outer name)';
 
-# https://github.com/Raku/old-issue-tracker/issues/1443
+
 is_run 'sub MAIN($a, :$var) { say "a: $a, optional: $var"; }',
     {err => /\-\-var/, out => ''}, :args['param', '--var'],
     'Non Bool option last with no value';
@@ -55,7 +55,7 @@ is_run 'sub MAIN($a, Bool :$var) { say "a: $a, optional: $var"; }',
 # Arguments with vertical or horizontal space don't get quoted corrected using is_run
 # so many of the following tests use run directly to work around issues on windows.
 
-# https://github.com/Raku/old-issue-tracker/issues/4714
+
 subtest 'Valid arg with zero length value' => {
     my $proc = run :out, :err, $*EXECUTABLE, '-e', 'sub MAIN(:$y) { $y.ords.print }', '-y=';
     is $proc.out.slurp(:close), '';
@@ -169,7 +169,7 @@ is_run 'subset Command of Str where "run";
     ', {:out<2>};
 
 
-# https://github.com/Raku/old-issue-tracker/issues/2441
+
 is_run 'multi MAIN($) { print q[Any] }; multi MAIN(Str) { print q[Str] }',
     {:out<Str>}, :args['foo'],
     'best multi matches (not just first one)';
@@ -178,7 +178,7 @@ is_run 'sub MAIN() { print 42 }',
     {:out(''), err => rx:i/usage/}, :args['--foo'],
     'superfluous options trigger usage message';
 
-# https://github.com/Raku/old-issue-tracker/issues/2973
+
 is_run 'sub MAIN($arg) { print $arg }', {:out<--23>}, :args['--', '--23'],
     'Stopping option processing';
 
@@ -186,8 +186,8 @@ is_run 'sub MAIN($arg, Bool :$bool) { print $bool, $arg }',
     {:out<True-option>}, :args['--bool', '--', '-option'],
     'Boolean argument with --';
 
-# https://github.com/Raku/old-issue-tracker/issues/3950
-# https://github.com/rakudo/rakudo/issues/2797
+
+
 is_run 'sub MAIN(:@foo) { print @foo }', {out => "bar"}, :args['--foo=bar'],
     'single occurence for named array param';
 
@@ -204,17 +204,17 @@ is_run 'multi MAIN(:$foo) { print "Scalar" }; multi MAIN(:@foo) { print "Array" 
     {out => "Array"}, :args['--foo=bar', '--foo=baz'],
     'correct select Array candidate from Scalar and Array candidates.';
 
-# https://github.com/Raku/old-issue-tracker/issues/3194
+
 is_run 'sub MAIN (Str $value) { print "String $value" }',
     {out => 'String 10', err => ''}, :args[10],
     'passing an integer matches MAIN(Str)';
 
-# https://github.com/Raku/old-issue-tracker/issues/5262
+
 is_run 'sub MAIN(*@arg where { False }) { }; sub GENERATE-USAGE(|) { "GENERATE-USAGE called" }',
     {out => '', err => "GENERATE-USAGE called\n"},
     "failed constraint check doesn't leak internal exception out to the user";
 
-# https://github.com/Raku/old-issue-tracker/issues/5155
+
 is_run 'sub MAIN($, *%) { }', { err => '', }, :args['--help'],
     'use of anon slurpy hash does not cause a crash';
 

@@ -47,7 +47,7 @@ for <hyper race> -> $meth {
             is-deeply @result, [0, 1, 2, 3, 4], "$meth + grep";
         }
 
-        # https://github.com/Raku/old-issue-tracker/issues/5008
+        
 
         for <batch degree> -> $name {
             for (-1,0) -> $value {
@@ -57,7 +57,7 @@ for <hyper race> -> $meth {
             }
         }
 
-        # https://github.com/Raku/old-issue-tracker/issues/5651
+        
 
         dies-ok { for (1..1)."$meth"() { die } },
             "Exception thrown in $meth for is not lost (1..1)";
@@ -72,7 +72,7 @@ for <hyper race> -> $meth {
         dies-ok { sink (1..1000)."$meth"().grep: { die } },
             "Exception thrown in $meth grep is not lost (1..1000)";
 
-        # https://github.com/Raku/old-issue-tracker/issues/5111
+        
 
         subtest ".$meth with .map that sleep()s" => {
             plan 10;
@@ -88,7 +88,7 @@ for <hyper race> -> $meth {
             for ^5;
         }
 
-        # https://github.com/Raku/old-issue-tracker/issues/5301
+        
 
         {
             multi sub f { $^a² }
@@ -97,7 +97,7 @@ for <hyper race> -> $meth {
                 "$meth map with a multi sub works";
         }
 
-        # https://github.com/Raku/old-issue-tracker/issues/6435
+        
 
         {
             my atomicint $got = 0;
@@ -105,7 +105,7 @@ for <hyper race> -> $meth {
             is $got, 3, "for <a b c>.$meth \{ } actually iterates";
         }
 
-        # https://github.com/Raku/old-issue-tracker/issues/5994
+        
 
         is-deeply ([+] (1..100)."$meth"()), 5050,
             "Correct result for [+] (1..100).$meth";
@@ -172,10 +172,10 @@ for <hyper race> -> $meth {
         'hyper to sequential Seq switch does not break results or disorder';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4967
+
 is-deeply ^1000 .hyper.map(*+1).Array, [^1000 + 1], '.hyper preserves order';
 
-# https://github.com/Raku/old-issue-tracker/issues/4792
+
 
 {
     sub foo() {
@@ -187,13 +187,13 @@ is-deeply ^1000 .hyper.map(*+1).Array, [^1000 + 1], '.hyper preserves order';
     is-deeply @a, [‘++’ xx 100], ‘hyperized s/…/…/;’
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5261
+
 {
     is-deeply (^100).race(batch=>1).map({ sprintf '%s %s', 5, 42 }).List, ‘5 42’ xx 100,
         'sprintf is threadsafe when format tokens use explicit indices';
 }
 
-# https://github.com/rakudo/rakudo/issues/3165
+
 {
     dies-ok
         {
@@ -211,7 +211,7 @@ is-deeply ^1000 .hyper.map(*+1).Array, [^1000 + 1], '.hyper preserves order';
         'die in a hyper nested in a hyper propagates exception';
 }
 
-# https://github.com/rakudo/rakudo/issues/4413
+
 {
     throws-like
         { (.iterator, .iterator) given (^10).hyper },

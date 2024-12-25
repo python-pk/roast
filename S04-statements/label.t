@@ -68,13 +68,13 @@ plan 13;
 
 throws-like { EVAL q[label1: say "OH HAI"; label1: say "OH NOES"] }, X::Redeclaration;
 
-# https://github.com/Raku/old-issue-tracker/issues/4688
+
 {
     throws-like 'A: for 1 { for 1 { last A }; CONTROL { default { die $_ } } }', CX::Last,
         "last-ing and outer loop and catching that in a CONTROL block doesn't SEGV";
 }
 
-# https://github.com/rakudo/rakudo/issues/2699
+
 {
     my @nexts;
     FOO: for <a b> { NEXT @nexts.push($_); next FOO }
@@ -85,7 +85,7 @@ throws-like { EVAL q[label1: say "OH HAI"; label1: say "OH NOES"] }, X::Redeclar
     is @lasts, "a", 'did the labelled LASTs run?';
 }
 
-# https://github.com/rakudo/rakudo/issues/3622
+
 # NB(bartolin) As of 2020-04-13 Rakudo has different classes for different loop
 #              types. The tests resemble Rakudo's current internal structure,
 #              but the code should work for all implementations.
@@ -126,7 +126,7 @@ throws-like { EVAL q[label1: say "OH HAI"; label1: say "OH NOES"] }, X::Redeclar
     is-deeply @res, ["Loop"], 'nested loop with labeled last (4)';
 }
 
-# https://github.com/rakudo/rakudo/issues/4456
+
 {
     my int $i;
     for ^1000 { gather L: for ^1 { $i++; next L } }

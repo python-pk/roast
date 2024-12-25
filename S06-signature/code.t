@@ -29,14 +29,14 @@ dies-ok { EVAL 'tester2(not_returns_a_sub)' },
 
 is tester2({ 'block' }), 1, 'Can pass a block to a &parameter';
 
-# https://github.com/Raku/old-issue-tracker/issues/1231
+
 {
     sub rt68578( Callable &x ) {}   #OK not used
     dies-ok { rt68578({ 'block' }) },
             "Can't pass something that isn't typed as returning Callable";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1174
+
 {
     my $tracker;
     sub foo(&foo = &foo) {

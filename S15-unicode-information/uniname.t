@@ -6,7 +6,7 @@ plan 48;
 
 # L<S15/Character Name>
 
-# https://github.com/Raku/old-issue-tracker/issues/3841
+
 is uniname(""), Nil, "uniname an empty string yields Nil";
 is uninames(""), (), "uninames an empty string yields an empty list";
 is "".uniname, Nil, "''.uniname yields Nil";
@@ -27,14 +27,14 @@ is uniname("नि"), uniname("न"), "string version of uniname converts to NFG
 
 is uniname("A"), "LATIN CAPITAL LETTER A",
   "uniname() returns current Unicode name for graphic character.";
-# https://github.com/Raku/old-issue-tracker/issues/3472
+
 is uniname("\0"), "<control-0000>",
   "uniname() returns codepoint label for control character without a current name.";
 is uniname("¶"), "PILCROW SIGN",
   "uniname() on character with current & Unicode 1 name returns current name.";
 is uniname("\x[2028]"), "LINE SEPARATOR",
   "uniname() returns current Unicode name for formatting character.";
-# https://github.com/Raku/old-issue-tracker/issues/3473
+
 is uniname("\x[80]"), "<control-0080>",
   "uniname() returns codepoint label for control character without any name.";
 
@@ -50,7 +50,7 @@ is uniname("\x[2028]", :one), "<format-2028>",
 is uniname("\x[80]", :one),
   "<control-0080>", "uniname(:one) returns codepoint label for control character without any name.";
 
-# https://github.com/Raku/old-issue-tracker/issues/4196
+
 #?rakudo 5 skip ":either NYI"
 is uniname("A", :either), "LATIN CAPITAL LETTER A",
   "uniname(:either) returns current Unicode name for graphic character.";
@@ -63,7 +63,7 @@ is uniname("\x[2028]", :either), "LINE SEPARATOR",
 is uniname("\x[80]", :either), "<control-0080>",
   "uniname(:either) returns codepoint label for control character without any name.";
 
-# https://github.com/Raku/old-issue-tracker/issues/4198
+
 #?rakudo 5 skip ":either and :one NYI"
 is uniname("A", :either :one), "LATIN CAPITAL LETTER A",
   "uniname(:either :one) returns current Unicode name for graphic character.";
@@ -76,13 +76,13 @@ is uniname("\x[2028]", :either :one), "LINE SEPARATOR",
 is uniname("\x[80]", :either :one), "<control-0080>",
   "uniname(:either :one) returns codepoint label for control character without any name.";
 
-# https://github.com/Raku/old-issue-tracker/issues/3749
+
 is uniname(-1), '<illegal>', "uniname with negative returns <illegal> (1)";
 is uniname(-5), '<illegal>', "uniname with negative returns <illegal> (2)";
 is uniname(0x110000), '<unassigned>', "uniname too high returns <unassigned> (1)";
 is uniname(0x210000), '<unassigned>', "uniname too high returns <unassigned> (2)";
 
-# https://github.com/Raku/old-issue-tracker/issues/3841
+
 is uninames("AB"), ("LATIN CAPITAL LETTER A", "LATIN CAPITAL LETTER B"), "uninames correctly works on every character";
 is "AB".uninames, ("LATIN CAPITAL LETTER A", "LATIN CAPITAL LETTER B"), "uninames correctly works on every character";
 

@@ -40,7 +40,7 @@ try {
     die; # use the default argument
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1379
+
 {
     $! = Nil;
     try { die('goodbye'); }

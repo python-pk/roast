@@ -31,7 +31,7 @@ is Simple::Bar.new.baz, 'hi', 'class test';
         'autovivification(?) for nested packages'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/976
+
 {
     lives-ok {ThisEmpty.raku ne "tbd"}, 'test for working .raku method'
 }
@@ -55,7 +55,7 @@ is Simple::Bar.new.baz, 'hi', 'class test';
 
 # more sophisticated variants of test exist elsewhere - but seems basic ...
 
-# https://github.com/Raku/old-issue-tracker/issues/350
+
 #?rakudo skip 'RT #59484'
 {
     is  EVAL('package Simp2 {sub pkg { $?PACKAGE }}; Simp2::pkg'),
@@ -100,7 +100,7 @@ eval-lives-ok 'package A1 { role B1 {}; class C1 does A1::B1 {}} ',
     ok "$!" ~~ / RT64828p /, 'error message mentions the undefined package';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/944
+
 {
     eval-lives-ok '{ package C1Home { class Baz {} }; package C2Home { class Baz {} } }',
         'two different packages should be two different Baz';
@@ -137,7 +137,7 @@ our $outer_package = 19;
         'Should be able to update outer package var';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/837
+
 # change tests to match likely error (top of file) when they pass (RT #64204)
 {
     try { EVAL 'my $x = ::P' };
@@ -149,7 +149,7 @@ our $outer_package = 19;
         'another simple package case that should not blow platform';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/881
+
 eval-lives-ok q' module MapTester { (1, 2, 3).map: { $_ } } ',
               'map works in a module (RT #64606)';
 
@@ -161,7 +161,7 @@ eval-lives-ok q' module MapTester { (1, 2, 3).map: { $_ } } ',
        'array initialization works fine in imported subs';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     throws-like q[class A { sub a { say "a" }; sub a { say "a" } }],
         X::Redeclaration, 'sub redefined in class dies';
@@ -196,7 +196,7 @@ eval-lives-ok q' module MapTester { (1, 2, 3).map: { $_ } } ',
     eval-lives-ok 'use LoadFromInsideAClass',
         'can "use" a class inside a class';
 
-    # https://github.com/Raku/old-issue-tracker/issues/1000
+    
     use Foo;
     use OverrideTest;
     is test_tc('moin'), 'Moin',
@@ -204,7 +204,7 @@ eval-lives-ok q' module MapTester { (1, 2, 3).map: { $_ } } ',
 }
 
 #?rakudo.js.browser skip "EVAL time use doesn't work in the browser"
-# https://github.com/Raku/old-issue-tracker/issues/1617
+
 # also checks RT #73740
 {
     eval-lives-ok 'use PM6', 'can load a module ending in .rakumod';
@@ -212,13 +212,13 @@ eval-lives-ok q' module MapTester { (1, 2, 3).map: { $_ } } ',
 }
 
 # package Foo; is Perl code;
-# https://github.com/Raku/old-issue-tracker/issues/1797
+
 {
     throws-like "package PerlCode;\n'this is Perl code'", Exception,
         'package Foo; is indicator for Perl code';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2297
+
 throws-like 'module RT80856 is not_RT80856 {}', X::Inheritance::UnknownParent,
     'die if module "is" a nonexistent';
 
@@ -228,13 +228,13 @@ throws-like 'module RT80856 is not_RT80856 {}', X::Inheritance::UnknownParent,
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/2468
+
 eval-lives-ok q[
     package NewFoo { }
     class   NewFoo { }
 ], 'can re-declare a class over a package of the same name';
 
-# https://github.com/Raku/old-issue-tracker/issues/1578
+
 throws-like q[
     my package A {
         package B;
@@ -242,7 +242,7 @@ throws-like q[
     }
 ], X::UnitScope::TooLate, 'Too late for semicolon form';
 
-# https://github.com/Raku/old-issue-tracker/issues/1710
+
 {
     my $p = my package My74592 { };
     ok $p === My74592, 'return value of "my" package declaration';
@@ -251,7 +251,7 @@ throws-like q[
     ok $p === Our74592, 'return value of "Our" package declaration';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3333
+
 {
     use Bar;
     use Baz;
@@ -259,12 +259,12 @@ throws-like q[
     is Foo.foo, 'foo', 'can use two packages that both use the same third package'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2270
+
 {
     lives-ok {Foo1::bar(); module Foo1 { our $x = 42; our sub bar() { $x.defined } }}, 'accessing module variable from within sub called from outside the module';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1952
+
 {
     use lib $?FILE.IO.parent(2).add("packages/RT76606/lib");
     lives-ok { use RT76606 },
@@ -272,13 +272,13 @@ throws-like q[
 }
 
 #?rakudo.js.browser skip "use lib doesn't work in the browser"
-# https://github.com/Raku/old-issue-tracker/issues/3277
+
 {
     lives-ok { use lib "." },
         'no Null PMC access with "use lib $double_quoted_string"';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3159
+
 {
     class Pub::Bar::Tap { }
     is Pub::Bar::Tap.gist, '(Tap)', 'type object of class gists to short name in parens';
@@ -328,13 +328,13 @@ throws-like q[
         '.WHO of nested subset definition stringifies to long name';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6167
+
 {
     eval-lives-ok '{ my @z; my $x = *²; for $x(42), $x(50) { push @z, $_ } }',
         "loop that isn't Perl is not identified as such";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6335
+
 #?rakudo.js.browser 2 skip "use lib doesn't work in the browser"
 subtest '`use lib` accepts IO::Path objects' => {
     plan 2;

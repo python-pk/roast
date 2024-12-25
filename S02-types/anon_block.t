@@ -28,7 +28,7 @@ my $anon_block = { 1 };
 isa-ok($anon_block, Block);
 is($anon_block(), 1, '{} <anon block> works');
 
-# https://github.com/Raku/old-issue-tracker/issues/907
+
 {
     EVAL '$anon_block( 1 )';
     #?rakudo todo 'Parrot support for zero-arg subs?'
@@ -125,7 +125,7 @@ throws-like {(sub { { $^x } }).()},
   'implicit params become errors';
 isnt((sub { -> { 3 } }).(), 3, 'as are pointies');
 
-# https://github.com/Raku/old-issue-tracker/issues/1191
+
 {
     sub rt68116 { 68116 }
     is &rt68116(), 68116, 'check that sub is callable via &';

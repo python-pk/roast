@@ -234,7 +234,7 @@ for
       "$name with a Failure:D on the LHS throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/3945
+
 {
     is-deeply (1..3, 1..3 Z(.) 2..4, 1..4),
       ((2,3).Bag, (1,2,3).Bag),
@@ -253,7 +253,7 @@ for
       'did Z handle ⊍ correctly (1)';
 }
 
-# https://github.com/rakudo/rakudo/issues/1726
+
 {
     is-deeply ((<a 1>,) X⊍ (<a 2>,)).head, Bag('a'),
       'did X handle ⊍ correctly';
@@ -262,7 +262,7 @@ for
       'did cross handle ⊍ correctly';
 }
 
-# https://github.com/rakudo/rakudo/issues/2167
+
 {
     is-deeply 1 (.) ($ = :42foo,), Bag.new, 'no explosion';
 }

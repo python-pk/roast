@@ -111,7 +111,7 @@ for 1..4 -> $attempt {
     is atomic-fetch($i), 100000 + 4 * 4 * 20000, "Atomic add of lexical works ($attempt)";
 }
 
-# https://github.com/rakudo/rakudo/issues/2317
+
 {
     is-deeply atomicint.Range, int64.Range | int32.Range,
       'do we get correct Range for atomicint';

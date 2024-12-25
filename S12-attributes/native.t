@@ -114,7 +114,7 @@ class NoTwigilNatives {
 
 throws-like { EVAL 'class Warfare { has int $a; say $a }' }, X::Syntax::NoSelf;
 
-# https://github.com/Raku/old-issue-tracker/issues/5139
+
 {
     my class MV {
         has uint64 $.start;
@@ -126,7 +126,7 @@ throws-like { EVAL 'class Warfare { has int $a; say $a }' }, X::Syntax::NoSelf;
         'uint64 native attribute use in method works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6184
+
 #?rakudo.js.browser skip 'CStruct not supported in the browser'
 {
     my class C1 {
@@ -146,7 +146,7 @@ throws-like { EVAL 'class Warfare { has int $a; say $a }' }, X::Syntax::NoSelf;
     is-deeply $c2.ff, 200, 'large unsigned ints';
 }
 
-# https://github.com/rakudo/rakudo/issues/2392
+
 group-of 5 => 'ops on native attributes' => {
     my class Foo {
         has int $.x; has int $.y;

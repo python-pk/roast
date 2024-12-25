@@ -50,7 +50,7 @@ fails-like { indices("xxy", "y", -1) }, X::OutOfRange,
   got => -1,
   'indices with negative start position fails';
 
-# https://github.com/Raku/old-issue-tracker/issues/4466
+
 {
     for -1e34, -1e35 -> $pos {
         fails-like { indices( 'xxy','y', $pos ) }, X::OutOfRange,

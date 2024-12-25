@@ -84,7 +84,7 @@ plan 101;
     is $var, 'b', 'q-style string with LEFT/RIGHT ANGLE BRACKET';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1049
+
 {
     throws-like { EVAL "q\c[SNOWMAN].\c[COMET]" },
       X::Comp,

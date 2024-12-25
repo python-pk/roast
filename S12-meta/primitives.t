@@ -74,7 +74,7 @@ plan 21;
     $int-or-rat.^compose;
     $union-type-checks = 0;
     $union-find-method-calls = 0;
-    # https://github.com/Raku/old-issue-tracker/issues/3606
+    
     #?rakudo.jvm 4 todo 'RT #123426'
     ok Int ~~ $int-or-rat, 'Union type works with cache (1)';
     ok Rat ~~ $int-or-rat, 'Union type works with cache (2)';
@@ -85,7 +85,7 @@ plan 21;
 
     ok $int-or-rat ~~ Int, "Union type ok after comopes if on LHS";
 
-    # https://github.com/Raku/old-issue-tracker/issues/3606
+    
     #?rakudo.jvm 1 todo 'RT #123426'
     is $union-type-checks, 0, 'Really did use type cache';
 }

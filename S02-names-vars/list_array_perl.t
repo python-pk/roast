@@ -67,7 +67,7 @@ my @tests = (
     is +@list, 3, 'EVAL($@list.raku) gives a scalar list, not a list';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/757
+
 {
     my @original      = (1,2,3);
     my $dehydrated    = @original.raku;
@@ -84,20 +84,20 @@ my @tests = (
        "EVAL of .raku returns original for '$dehydrated'";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3792
+
 {
     my $l := (1,);
     is-deeply (EVAL $l.raku), $l;
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1017
+
 {
     my $rt65988 = (\(1,2), \(3,4));
     is-deeply EVAL( $rt65988.raku ), $rt65988, $rt65988.raku ~ '.raku';
 }
 
 # probably there is a better place for this test
-# https://github.com/Raku/old-issue-tracker/issues/3074
+
 {
     my %count;
     for ('/foo/bar/baz/' ~~ m/^ $<dirname>=(.* '/'+)? $<basename>=(<-[\/]>+) '/'* $ /).gist.lines {

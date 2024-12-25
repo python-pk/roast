@@ -189,7 +189,7 @@ for
       "$name with a Failure:D on the LHS throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/3945
+
 {
     is-deeply (1..3, 1..3 Z(|) 2..4, 2..5),
       ((1,2,3,4).Set, (1,2,3,4,5).Set),
@@ -208,7 +208,7 @@ for
       'did Z handle ∪ correctly (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/1726
+
 subtest "cross operations work as expected", {
     ok ((<a 1>.Bag,) X∪ (<a 2>.Bag,) ~~ ((IntStr.new(2, "2")=>1,"a"=>1,(IntStr.new(1, "1")=>1,"a"=>1).Bag=>1).Bag,).Seq),
       'did X handle ∪';
@@ -216,7 +216,7 @@ subtest "cross operations work as expected", {
       'did cross() handle ∪';
 }
 
-# https://github.com/rakudo/rakudo/issues/2167
+
 {
     is-deeply 1 (|) ($ = :42foo,), Set.new(1,"foo"), 'no explosion';
 }

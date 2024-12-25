@@ -44,7 +44,7 @@ is ({ try { if 1 { die } else { die } }; 42 }()), 42, "die in if";
 my sub die_in_return () { return die };
 is ({ try { die_in_return(); 23 }; 42 }()), 42, "die in return";
 
-# https://github.com/Raku/old-issue-tracker/issues/1129
+
 {
     my $msg = 'die or fail without parameters';
     try { die $msg };
@@ -72,7 +72,7 @@ is_run( 'say "hello"; die "Nos morituri te salutant!\n"',
 # (which is what we want). (Test primarily aimed at PIL2JS)
 is 42-19, 23, "basic sanity";
 
-# https://github.com/Raku/old-issue-tracker/issues/4384
+
 is_run( 'use Test; pass; die "uh-oh"',
         { status => sub { 0 != $^a },
           out    => rx/'ok 1 -'/,

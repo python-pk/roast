@@ -322,7 +322,7 @@ test-leading($fancy-var.VAR, 'Very fancy!');
 
 is $=pod.elems, $pod_index;
 
-# https://github.com/Raku/old-issue-tracker/issues/5835
+
 eval-lives-ok q:to/CODE/, 'Can put multi-line Pod on a role with a required method';
     #|{
     Base role for Antennas

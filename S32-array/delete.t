@@ -98,7 +98,7 @@ sub make-string(@a) {
     "deletion of array elements accessed by a range of positive indices (4)";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1130
+
 {
     my @array = 0..1;
     is ~(EVAL @array.raku ), '0 1', '@array.raku works after init';
@@ -108,7 +108,7 @@ sub make-string(@a) {
     lives-ok { map { 1 }, @array }, 'map @array lives after delete';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3044
+
 {
     my @array;
     @array[0,2] = (Any, 'two');
@@ -121,7 +121,7 @@ sub make-string(@a) {
         'deletion of trailing item does not purge elements we assigned to (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4339
+
 {
     my @array = 1, 2, 3;
     @array[2]:delete;
@@ -129,7 +129,7 @@ sub make-string(@a) {
     is @array[2], Any, 'deletion of trailing item followed by add item beyond does not resurrect deleted item';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6406
+
 subtest '.Slip and .List on Arrays with holes' => {
     plan 4;
 
@@ -172,7 +172,7 @@ subtest '.Slip and .List on Arrays with holes' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6592
+
 {
     (my @a = <a b c>)[1]:delete;
     @a[5] = 70;

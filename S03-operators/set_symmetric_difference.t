@@ -245,7 +245,7 @@ for
       "$name with a Failure:D on the LHS throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/3945
+
 {
     is-deeply (1..3, 1..3 Z(^) 2..4, 1..4),
       ((1,4).Set, (4,).Set),
@@ -264,13 +264,13 @@ for
       'did Z handle ⊖ correctly (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/4118
+
 {
     is-deeply ([⊖] (0,1,2), (0,1,2), (0,1,2)), set(),
       'using 0 in symmetric difference should be counted as 1';
 }
 
-# https://github.com/rakudo/rakudo/issues/2167
+
 {
     is-deeply 1 (^) ($ = :42foo,), Set.new(1,"foo"), 'no explosion';
 }

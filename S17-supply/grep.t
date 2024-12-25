@@ -21,7 +21,7 @@ for ThreadPoolScheduler.new, CurrentThreadScheduler -> $*SCHEDULER {
       ["a".."e"],
       "grepping taps with a Regex works";
 
-    # https://github.com/Raku/old-issue-tracker/issues/5060
+    
     tap-ok Supply.from-list(<foo bar foobar>).grep(/foo/).grep(/bar/),
       ['foobar'],
       "second grep only gets the results of the first";

@@ -16,13 +16,13 @@ plan 27;
     is +EnumGrammar::G::b, 1, 'enum element in grammar has the right value';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1070
+
 {
     enum RT66648 <a b c>;
     dies-ok { RT66648.c }, 'die attempting to access enum item as method';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1418
+
 
 {
     enum SomeEnum <a b c>;
@@ -31,7 +31,7 @@ plan 27;
 }
 
 # L<S12/Miscellaneous Rules>
-# https://github.com/Raku/old-issue-tracker/issues/744
+
 # see also: RT #63650
 {
     enum Maybe <OK FAIL>;
@@ -41,11 +41,11 @@ plan 27;
     is OK(),  'sub OK', 'but () is still a function call';
     is FAIL,  'FAIL',   'non-conflicting enum key';
     is +FAIL, 1,        'non-conflicting enum key (numeric)';
-    # https://github.com/Raku/old-issue-tracker/issues/2694
+    
     lives-ok { OK.^methods }, 'can call .^methods on an enum';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3481
+
 # anonymous Enum in our context,
 {
     enum :: <un>;
@@ -53,7 +53,7 @@ plan 27;
     is ~un, 'un', 'is un the right string';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     module RT123114 {
         enum A is export <B C>;
@@ -70,14 +70,14 @@ plan 27;
     is (+A,+B,+C), (0,1,2), "and they get the right values";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5631
+
 
 {
     my enum RT<R T>;
     is-deeply R.ACCEPTS(RT), False, 'enum member does not ACCEPTS the enum type object';
 }
 
-# https://github.com/rakudo/rakudo/issues/4310
+
 {
     my Array enum PageSizes «
       :Letter[0,0,612,793]
@@ -123,7 +123,7 @@ plan 27;
     throws-like { Foo.new }, X::Constructor::BadType, "invoking .new on an enum throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/3349
+
 {
     my enum Direction (:LEFT(-1), :NEUTRAL(0), :RIGHT(1));
     throws-like { Direction( 2 <=> 3 ) }, X::Enum::NoValue,
@@ -132,7 +132,7 @@ plan 27;
     ;
 }
 
-# https://github.com/rakudo/rakudo/issues/4134
+
 {
     enum BooleanEnum (:!Lies, :Truth);
     is-deeply True ~~ BooleanEnum, False, 'should not match';

@@ -102,7 +102,7 @@ is $same3, "aebebebc", 'all for blocks get $_';
     is $seen, 42, 'block should not have executed';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4337
+
 {
     my $did-we-leave = 0;
     class A {
@@ -112,14 +112,14 @@ is $same3, "aebebebc", 'all for blocks get $_';
     is $did-we-leave, 1, 'will leave trait on class-scoped my variable ran';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3200
+
 {
     my $what;
     my @a will begin { $what = $_.WHAT.raku; };
     is $what, 'Array', 'will begin block gets var as topic';
 }
 
-# https://github.com/rakudo/rakudo/issues/4403
+
 {
     my $i = 0;
     for ^4000 {

@@ -88,7 +88,7 @@ sub j(*@i) {
        'smartmach against non-closure constraint (-)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1407
+
 {
     is :(3).params[0].constraints, 3, ':(3) contains the 3';
     ok :(3).params[0].type === Int,   ':(3) has a parameter of type Int';
@@ -117,7 +117,7 @@ sub j(*@i) {
     ok :(\x).raku ~~ / '\\' /, 'prefix \\ appears in .raku output';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1333
+
 {
     sub foo(:$) {};
     ok &foo.signature.raku ~~ / ':(:$)' /, '.raku of a signature with anonymous named parameter';
@@ -219,13 +219,13 @@ class C does A {  };
 my $rolesig = try C.foo.signature.raku;
 is $rolesig, ':($a, $b, ::?CLASS $c)', ".raku of a sigature that has ::?CLASS";
 
-# https://github.com/Raku/old-issue-tracker/issues/3696
+
 {
     is_run q[sub wtvr(|) {}; &wtvr.raku], { err => "", out => "" }, ".raku on unnamed | parameters doesn't err";
     is_run q[sub prcl(\\) {}; &prcl.raku], { err => "", out => "" }, ".raku on unnamed \\ parameters doesn't err";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4347
+
 {
     sub rt125482($a;; $b) { 42 };
     is &rt125482.signature.gist, '($a;; $b)',
@@ -234,7 +234,7 @@ is $rolesig, ':($a, $b, ::?CLASS $c)', ".raku of a sigature that has ::?CLASS";
         '";;" in signature stringifies correctly using .raku';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5371
+
 {
     is :(Callable $a).raku, ':(Callable $a)',
         'Callable in signature stringifies correctly using .raku';
@@ -294,7 +294,7 @@ is :(@a = [1,2,3]).params[0].suffix, '',
 is :(:@a = [1,2,3]).params[0].suffix, '',
   'default values for named parameters do not give a ! suffix';
 
-# https://github.com/rakudo/rakudo/issues/3492
+
 is :($ is raw where 42).params.head.sigil, '$',
   "an unnamed raw parameter should have the '\$' sigil";
 
@@ -312,7 +312,7 @@ class {
 cmp-ok { $_ }.signature.params[0].raku, &[~~], / 'OUTER::<$_>' /,
   'OUTER defaults have the correct .raku';
 
-{ # https://github.com/rakudo/rakudo/issues/4258
+{ 
   cmp-ok :([]), &[!eqv], :(@), "use of destructures differentiates signatures";
   cmp-ok :([]), &[eqv], :([]), "empty destructures are ok";
   cmp-ok :([$a, *@]), &[eqv], :([$a, *@]), "same destructures are ok";

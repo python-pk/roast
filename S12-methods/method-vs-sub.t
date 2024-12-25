@@ -13,7 +13,7 @@ is foo($obj:),  'method', 'method with colon notation';
 is $obj.foo,    'method', 'method with dot notation';
 is foo($obj),   'sub', 'adding trailing comma should call the "sub"';
 
-# https://github.com/Raku/old-issue-tracker/issues/1346
+
 {
     class RT69610 {
         our method rt69610() {
@@ -25,7 +25,7 @@ is foo($obj),   'sub', 'adding trailing comma should call the "sub"';
         "Can return from method called from a hash lookup (RT #69610)" );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2432
+
 {
     my @a;
     my $n;

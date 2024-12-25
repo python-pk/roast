@@ -65,7 +65,7 @@ is(++$bool, Bool::True, 'Increment of Bool::True still produces Bool::True');
 is(--$bool, Bool::False, 'Decrement of Bool::True produces Bool::False');
 is(--$bool, Bool::False, 'Decrement of Bool::False produces Bool::False');
 
-# https://github.com/Raku/old-issue-tracker/issues/983
+
 {
     ok (0 but Bool::True), 'Bool::True works with "but"';
     is (0 but Bool::True), 0, 'Bool::True works with "but"';
@@ -89,13 +89,13 @@ is(--$bool, Bool::False, 'Decrement of Bool::False produces Bool::False');
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1486
+
 {
     ok True ~~ Int, "True ~~ Int";
     ok Bool ~~ Int, "Bool ~~ Int";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4924
+
 {
     my Bool $b = True;
     is-deeply $b.Int, 1, 'Bool typed scalar coerces to Int';
@@ -122,14 +122,14 @@ is(--$bool, Bool::False, 'Decrement of Bool::False produces Bool::False');
     is-deeply infix:<and>(  ), True, 'infix:<and> with no args returns True';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6102
+
 is-deeply quietly { Bool.Str }, '', 'Bool:U stringifies to empty string';
 
 # https://irclog.perlgeek.de/perl6-dev/2017-07-10#i_14852407
 is-deeply (((my int $ = 0) < 1) || 3), True, 'construct returns Bool, not Int';
 
-# https://github.com/rakudo/rakudo/issues/2098
-# https://github.com/Raku/old-issue-tracker/issues/6682
+
+
 dies-ok { my %hash; !%hash<a>:exists; }, 'confusing prefix ! and :exists adverb dies with good error';
 
 my $r = 4;

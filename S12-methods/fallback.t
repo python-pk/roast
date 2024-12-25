@@ -61,7 +61,7 @@ my $i = I.new;
 is $i.spy, 'yes, I work', 'FALLBACK is effective with a CALL-ME';
 is $i(), 'invaught', 'CALL-ME beats FALLBACK';
 
-# https://github.com/rakudo/rakudo/issues/4543
+
 {
     multi trait_mod:<is>(Routine $r, :$me'd!) {
         $r does role :: {

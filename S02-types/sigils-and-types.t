@@ -67,7 +67,7 @@ does-ok &pro, Callable, 'a proto does Callable';
     does-ok &quux, Callable, 'a macro does Callable';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1312
+
 {
     sub a { return 'a' };
     sub b { return 'b' };
@@ -76,7 +76,7 @@ does-ok &pro, Callable, 'a proto does Callable';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1724
+
 {
     sub f() { '42' };
     my $x = &f;

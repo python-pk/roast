@@ -39,7 +39,7 @@ plan 64;
   ok( $/.hash.keys[0] eq 'alpha', 'the .hash method returns a hash object');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/640
+
 {
   use MONKEY-TYPING;
   augment class Match { method beys () {return %(self).keys }; };
@@ -50,7 +50,7 @@ plan 64;
   is $x.beys, 'a', 'match copy should be same as match';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/932
+
 {
     my regex o { o };
     "foo" ~~ /f<o=&o>+/;
@@ -63,7 +63,7 @@ plan 64;
     is ~$<o>, 'o o', 'match list stringifies like a normal list AFTER "isa"';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/935
+
 {
     'ab' ~~ /(.)+/;
     is $/[0][0], 'a', 'match element [0][0] from /(.)+/';
@@ -74,13 +74,13 @@ plan 64;
     is @match[0][1], 'b', 'match element [0][1] from /(.)+/ coerced';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/933
+
 {
     ok %( 'foo' ~~ /<alpha> oo/ )<alpha>:exists,
        'Match coerced to Hash says match exists';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1378
+
 {
     # undefined captures should fail to match
     # note the use of $1 (and not $0)
@@ -99,7 +99,7 @@ plan 64;
         'match with undefined capture emits a warning' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1032
+
 {
     $_ = 'Regex match';
     m/(R.)/;
@@ -107,26 +107,26 @@ plan 64;
     is $/, 'Re', 'Matched as intended in void context';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1377
+
 {
     'abc' ~~ /a/;
     is ($/.orig).rindex('a'), 0, 'rindex() works on $/.orig';
     is ($/.orig).rindex('a', 2), 0, 'rindex() works on $/.orig';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2887
+
 {
     lives-ok { my $/ := 42 }, 'can bind $/';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1441
+
 {
     my $/ := 'foobar';
     is $0, 'foobar', '$0 works like $/[0], even for non-Match objects';
     nok $1.defined, '$1 is not defined';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1527
+
 {
     my $/ := Any;
     lives-ok { $0 },
@@ -136,7 +136,7 @@ plan 64;
     nok $0.defined, '$0 is undefined';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2057
+
 {
     ok 'abc' ~~ /(.)+/, 'regex sanity';
     my $x = 0;
@@ -149,7 +149,7 @@ plan 64;
     is $x, 2, '$/.list does not flattens subcaptures';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1657
+
 {
     my $s;
     try { $s = EVAL '"foo" ~~ /(foo)/; "$0a"' };
@@ -159,7 +159,7 @@ plan 64;
 
 # L<S32::Rules/Match>
 
-# https://github.com/Raku/old-issue-tracker/issues/3097
+
 {
     ok "a \n \b \n c \n d" ~~ /a .* c/, "match multiple lines with '.'";
     ok $/.can('lines'), "Match has a .lines method";
@@ -167,7 +167,7 @@ plan 64;
     isa-ok $/, Cool, "Match is Cool";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2352
+
 {
     'x' ~~ /(y)? (z)*/;
     is-deeply $0, Nil, 'quantifier ? matching 0 values returns Nil';
@@ -175,7 +175,7 @@ plan 64;
       'quantifier * matching 0 values returns empty list';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4304
+
 {
     my $*guard = 0;
     grammar Foo1 { regex TOP { [a | [ "[" <R> b? "]" ]]+ % b { die if $*guard++ > 500 } }; regex b { b }; regex R { <TOP>+ % [ <.b>? "/" ] } };
@@ -188,14 +188,14 @@ plan 64;
     is Foo2.parse("[abab]").gist, "｢[abab]｣\n R => ｢aba｣\n  TOP => ｢aba｣", '(non-)capturing subrules advance cursor position (4)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4530
+
 {
     my $a = '<4';
     $a = $a ~~ /\<(\d+)/;
     is ~$a, '<4', 'result of match assigned to variable matched against works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3163
+
 {
     my $rt118453 = 'pre x post';
     $rt118453 ~~ /^ (<-[x]>+) 'x' (\N+) $/;
@@ -203,21 +203,21 @@ plan 64;
     is ~$1, ' post', 'Reassigning to matched-against string and then accessing submatches works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4279
+
 {
     my $m = 'rule1 foo rule2 bar' ~~ /^ ( 'rule1' || 'rule2' )* %% (.+?) $/;
     is $m[0].elems, 2, 'Correct number of captures when backtracking (1)';
     is $m[1].elems, 2, 'Correct number of captures when backtracking (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3056
+
 {
     my $m = "abcde" ~~ / (a | b | bc | cde)+»/;
     is $m[0].elems, 3, 'LTM alternation does not capture the wrong stuff when backtracking (1)';
     is join(" ", $m[0]), 'a b cde', 'LTM alternation does not capture the wrong stuff when backtracking (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5174
+
 {
     subtest 'postfix operators do not interfere with interpolation of $/[0]', {
         plan 3;
@@ -233,7 +233,7 @@ plan 64;
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4957
+
 {
     lives-ok
         { grammar { token TOP { <número>+ }; token número {<< \d+ >>} } },
@@ -243,7 +243,7 @@ plan 64;
         'non-ascii token in a subcapture work';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5676
+
 {
     lives-ok
         { "a b" ~~ /(\w) \s (\w)/; my $a = $١ },

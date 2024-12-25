@@ -311,7 +311,7 @@ our $fancy-var = 17;
 test-trailing($fancy-var.VAR, 'Very fancy!');
 )
 
-# https://github.com/Raku/old-issue-tracker/issues/4266
+
 sub has-where(Int $n where * > 10) {}
 #= where constraints shouldn't prevent declarative comments
 

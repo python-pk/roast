@@ -17,7 +17,7 @@ sub two_placeholders is test-assertion {
 
 two_placeholders(:a(2), :b(1));
 
-# https://github.com/rakudo/rakudo/issues/1356
+
 {
     use isms 'Perl5';
     { is-deeply $:F, 42, 'named placeholder $:F ok' }(:42F)

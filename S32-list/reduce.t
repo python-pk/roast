@@ -86,7 +86,7 @@ eval-lives-ok( 'reduce -> $a, $b, $c? { $a + $b * ($c//1) }, 1, 2', 'Use proper 
     is( ((1..4).list.reduce: &infix:<*>), 24, '.reduce: &infix:<*> works' );
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1042
+
 {
     multi a (Str $a, Str $b) { [+$a, +$b] };
     multi a (Array $a,$b where "+") { [+] @($a) };  #OK not used
@@ -99,7 +99,7 @@ eval-lives-ok( 'reduce -> $a, $b, $c? { $a + $b * ($c//1) }, 1, 2', 'Use proper 
     }, 'no warnings when setting associativity on the reduce &with';
 }
 
-# https://github.com/rakudo/rakudo/issues/3541
+
 {
     sub infix:<eog> ( $a,  $b ) is assoc<chain> is pure {
         so $a == $b+1
@@ -108,7 +108,7 @@ eval-lives-ok( 'reduce -> $a, $b, $c? { $a + $b * ($c//1) }, 1, 2', 'Use proper 
         'Reduce method respects chain associativity';
 }
 
-# https://github.com/rakudo/rakudo/issues/4458
+
 {
     is-deeply (True, True, True, True).permutations».reduce(&infix:<&&>).reduce(&infix:<&&>),
     True,
@@ -130,7 +130,7 @@ eval-lives-ok( 'reduce -> $a, $b, $c? { $a + $b * ($c//1) }, 1, 2', 'Use proper 
     '.reduce with infix:<&&> and callable returns True';
 }
 
-# https://github.com/rakudo/rakudo/issues/2000
+
 {
     my %hash;
     my @path = <a b c>;
@@ -139,7 +139,7 @@ eval-lives-ok( 'reduce -> $a, $b, $c? { $a + $b * ($c//1) }, 1, 2', 'Use proper 
     is-deeply %hash, %(:a(%(:b(%(:c(42)))))), "reduce returns raw containers when specified"
 }
 
-# https://github.com/rakudo/rakudo/issues/4458
+
 {
     is-deeply (True, True, False).reduce(&infix:<&&>), False,
       'reduce handled && correctly';

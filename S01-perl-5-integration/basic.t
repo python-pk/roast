@@ -76,7 +76,7 @@ my $s = 'str';
     is($result,4,$test);
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2127
+
 {
     dies-ok { q/sub a() { use v5; }/.EVAL }, 'cannot switch languages inside a sub';
     dies-ok { q/{ use v5; }/.EVAL }, 'or any scope for that matter';

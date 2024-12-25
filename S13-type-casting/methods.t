@@ -14,7 +14,7 @@ my $o = CoercionTest.new();
 is ~$o, 'foo', 'method Stringy takes care of correct stringification';
 ok +$o == 1.2, 'method Numeric takes care of correct numification';
 
-# https://github.com/Raku/old-issue-tracker/issues/1319
+
 {
     class RT69378 {
         has $.x = 'working';

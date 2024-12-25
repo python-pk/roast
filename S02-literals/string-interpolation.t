@@ -27,7 +27,7 @@ plan 42;
     ok "$a" ~~ Str, '"$a" results in a Str';
     ok "{3}" ~~ Str, '"{3}" results in a Str';
 
-    # https://github.com/Raku/old-issue-tracker/issues/1891
+    
     is "{}", '', 'Interpolating an empty block is cool';
 }
 
@@ -50,24 +50,24 @@ line 4
     is +''.new, 0, '... and that strinig works normally';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2273
+
 {
     my $w = 'work';
     is "this should $w\</a>", 'this should work</a>', 'backslash after scalar';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2953
+
 {
     is ord("\a"), 7, "alarm"
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2205
+
 {
     sub Good ($time) { "Good $time #perl6." }
     is Good("morning"), "Good morning #perl6.", "# after an interpolated var";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3264
+
 {
     is_run 'say «1 see{2}it 3»',
     {
@@ -78,7 +78,7 @@ line 4
     'interpolation at edge of quoteword items does not cancel out inter-item space';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5664
+
 {
     is "%%one @@two &&three rt%%one@@two&&three rt%% one@@ two&& three@@",
        ｢%%one @@two &&three rt%%one@@two&&three rt%% one@@ two&& three@@｣,
@@ -140,7 +140,7 @@ line 4
 
 }
 
-# https://github.com/rakudo/rakudo/issues/3070
+
 {
     sub nil-return(--> Nil) {
         is "{1}", '1', 'block interpolation ignores Nil return value from enclosing sub';

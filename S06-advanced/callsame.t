@@ -1,7 +1,7 @@
 use Test;
 plan 3;
 
-# https://github.com/Raku/old-issue-tracker/issues/1461
+
 {
     my @called;
     multi rt71754( Numeric $x ) {    #OK not used
@@ -15,7 +15,7 @@ plan 3;
     is @called, <Int Numeric>, 'multi with "callsame" worked';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1310
+
 {
     # NOTE: do NOT eval this code using Test module routines as then we would
     # depend on whether or not those routines are implemented as multies

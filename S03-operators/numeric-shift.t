@@ -25,11 +25,11 @@ check -15, 3, -120, -2;
 check -16, 3, -128, -2;
 check -17, 3, -136, -3;
 
-# https://github.com/Raku/old-issue-tracker/issues/3387
+
 my int $t = 10;
 is (2 * $t) + ($t +> 2), 22;
 
-# https://github.com/Raku/old-issue-tracker/issues/4881
+
 is -123 +> 32, -1, "too large right shift for Int should be -1";
 
 # vim: expandtab shiftwidth=4

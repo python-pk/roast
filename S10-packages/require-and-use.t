@@ -6,7 +6,7 @@ plan 4;
 
 # L<S11/Runtime Importation>
 
-# https://github.com/Raku/old-issue-tracker/issues/4767
+
 subtest 'circular dependencies are detected and reported' => {
     plan 2;
 
@@ -19,11 +19,11 @@ subtest 'circular dependencies are detected and reported' => {
     "`use` $_" for 'first run', 'second run (precompiled)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6587
+
 throws-like ｢use lib ‘’｣, X::LibEmpty,
     'use lib with empty string throws a useful error';
 
-# https://github.com/rakudo/rakudo/issues/4911
+
 eval-lives-ok 'my class CompUnit {}; use Test', 'no confusion about CompUnit';
 
 eval-lives-ok 'use lib "' ~ $?FILE.IO.parent(2).add("packages/R3783/lib") ~ '"; use Shadow; $Shadow::debug or die "not ok"',

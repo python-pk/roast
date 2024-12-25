@@ -26,7 +26,7 @@ class Bar is Foo {
 my Foo $u .= new(x => 5);
 is($u.boo, 5, 'set attribute');
 
-# https://github.com/Raku/old-issue-tracker/issues/2236
+
 #?rakudo skip 'initialization of parent attributes'
 {
     $u= Bar.new(Foo{ x => 12 });

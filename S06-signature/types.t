@@ -9,7 +9,7 @@ sub f($x) returns Int { return $x };
 ok &f.returns === Int, 'sub f returns Int can be queried for its return value';
 ok &f.of === Int, 'sub f returns Int can be queried for its return value (.of)';
 
-# https://github.com/Raku/old-issue-tracker/issues/3355
+
 ok &f ~~ Callable[Int], 'sub f ~~ Callable[Int]';
 
 lives-ok { f(3) },      'type check allows good return';
@@ -20,18 +20,18 @@ sub g($x) returns  Int { $x };
 lives-ok { g(3)   },    'type check allows good implicit return';
 dies-ok  { g('m') },    'type check forbids bad implicit return';
 
-# https://github.com/Raku/old-issue-tracker/issues/2056
+
 is-deeply .raku.EVAL, $_, ".raku on an {.raku} roundtrips"
     for :(Int), :(Array of Int);
 
-# https://github.com/Raku/old-issue-tracker/issues/3678
+
 {
     sub rt123789 (int $x) { say $x };
     throws-like { rt123789(Int) }, Exception,
         'no segfault when calling a routine having a native parameter with a type object argument';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4569
+
 {
     throws-like { sub f(Mu:D $a) {}; f(Int) }, X::Parameter::InvalidConcreteness, :expected<Mu>, :got<Int>,
         'expected and got types in the exception are the correct ones';
@@ -42,7 +42,7 @@ is-deeply .raku.EVAL, $_, ".raku on an {.raku} roundtrips"
         'expected and got types in the exception are the correct ones';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5676
+
 {
     lives-ok
         { sub f(-١) { 2 }; f(-1) },
@@ -60,7 +60,7 @@ subtest 'Code.of() returns return type' => {
     cmp-ok                 {;}.of, '=:=', Mu, 'no explicit return constraint';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5759
+
 group-of 10 => 'numeric literals as type constraints' => {
     group-of 4 => 'integers' => {
         eval-lives-ok ｢sub f( 42){}( 42)｣, 'bare';
@@ -135,7 +135,7 @@ group-of 10 => 'numeric literals as type constraints' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5824
+
 
 {
     is_run ｢-> True  { }($)｣, {:err(/'smartmatch'/), :out('')},

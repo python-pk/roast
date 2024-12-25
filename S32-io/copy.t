@@ -89,7 +89,7 @@ nok $non-existent-file.IO.e, "It doesn't";
 ok unlink($existing-file), 'file has been removed';
 ok unlink($zero-length-file), 'file has been removed';
 
-# https://github.com/Raku/old-issue-tracker/issues/6216
+
 subtest 'copying when target and source are same file' => {
     plan 2;
     my $file = make-temp-file :content<foo>;

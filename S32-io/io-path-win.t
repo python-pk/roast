@@ -88,7 +88,7 @@ is $numfile.pred,    "foo\\file00.txt", "pred basic";
 is IO::Path::Win32.new("foo\\()").succ, "foo\\()", "succ only effects basename";
 is IO::Path::Win32.new("foo\\()").succ, "foo\\()", "pred only effects basename";
 
-# https://github.com/Raku/old-issue-tracker/issues/5531
+
 isnt IO::Path::Win32.new('-a').absolute, '',
     '.absolute on paths starting with `-` does not produce empty string';
 

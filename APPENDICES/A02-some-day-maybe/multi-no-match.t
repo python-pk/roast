@@ -9,7 +9,7 @@ use Test;
 
 plan 16;
 
-# https://github.com/Raku/old-issue-tracker/issues/5710
+
 {
     throws-like { [].splice: 0, [] }, X::Multi::NoMatch,
         '.splice(offset, array) throws';
@@ -18,7 +18,7 @@ plan 16;
 }
 
 
-# https://github.com/rakudo/rakudo/issues/1644
+
 throws-like ｢Lock.protect: %()｣, X::Multi::NoMatch,
     'Lock.protect with wrong args gives sane error';
 throws-like ｢Lock::Async.protect: %()｣, X::Multi::NoMatch,
@@ -41,7 +41,7 @@ dies-ok { 42.lines: |<bunch of incorrect args> },
 throws-like { "".match: Nil }, X::Multi::NoMatch,
     '.match with Nil matcher does not hang';
 
-# https://github.com/Raku/old-issue-tracker/issues/6259
+
 {
     throws-like { Pair.new: <foo bar ber meow>, <meows>, 42 }, X::Multi::NoMatch,
         'Pair.new with wrong positional args does not go to Mu.new';
@@ -49,7 +49,7 @@ throws-like { "".match: Nil }, X::Multi::NoMatch,
         'Pair.new with wrong named args does not go to Mu.new';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6308
+
 subtest "Junction.new does not use Mu.new's candidates" => {
     plan 3;
     throws-like { Junction.new: 42      }, X::Multi::NoMatch, 'positional';
@@ -67,7 +67,7 @@ throws-like { Int.new: <a b c>, 42, 'meow', 'wrong', 'args' },
         'Range.new with wrong args does not claim it takes only named args';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4921
+
 dies-ok { Date.new(Int, 1, 1) },
     'dies when its year is given as an Int type object';
 

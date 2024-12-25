@@ -1,7 +1,7 @@
 use Test;
 plan 3;
 
-# https://github.com/Raku/old-issue-tracker/issues/2408
+
 # A user-declared infix:<;> clashes with statement stopper ';' in Rakudo
 
 my $marker = 0;

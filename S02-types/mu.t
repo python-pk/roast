@@ -40,7 +40,7 @@ plan 9;
     is-deeply infix:<eqv>(False), Bool::True, 'single-arg eqv returns True (1)';
     is-deeply infix:<eqv>(42),    Bool::True, 'single-arg eqv returns True (2)';
 
-    # https://github.com/rakudo/rakudo/issues/1940
+    
     subtest 'smartmatching' => {
         my Mu:_ @todo = |([X] Mu.new X Mu xx 2), |(Any, Any.new X Mu, Mu.new);
 

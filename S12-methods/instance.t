@@ -61,7 +61,7 @@ is($foo.noargs(), 42, "... parentheses after method");
 # doesn't match, but defines "b"
 sub b() { die "oops" }
 
-# https://github.com/Raku/old-issue-tracker/issues/590
+
 # this used to be a Rakudo bug, RT #62046
 {
     class TestList {
@@ -100,7 +100,7 @@ sub b() { die "oops" }
 }
 
 # test that public attributes don't interfere with private methods of the same
-# https://github.com/Raku/old-issue-tracker/issues/546
+
 # name (RT #61774)
 
 {
@@ -120,7 +120,7 @@ sub b() { die "oops" }
        'call to private method in presence of attribute';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1291
+
 # used to be RT #69206
 
 class AnonInvocant {
@@ -132,7 +132,7 @@ class AnonInvocant {
 is AnonInvocant.new().me, AnonInvocant, 'a typed $: as invocant is OK';
 
 # check that sub foo() is available from withing method foo();
-# https://github.com/Raku/old-issue-tracker/issues/1653
+
 
 {
     my $tracker = '';
@@ -148,7 +148,7 @@ is AnonInvocant.new().me, AnonInvocant, 'a typed $: as invocant is OK';
     is $tracker, 'bla', 'can call a sub of the same name as the current method';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1616
+
 # usage of *%_ in in methods, RT #73892
 {
     my $tracker = '';
@@ -185,7 +185,7 @@ is AnonInvocant.new().me, AnonInvocant, 'a typed $: as invocant is OK';
     is $tracker, 5, ' ... and got right result (implicit)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1523
+
 {
     class X {
         method x(*@_) { @_[0] };
@@ -210,7 +210,7 @@ is AnonInvocant.new().me, AnonInvocant, 'a typed $: as invocant is OK';
     dies-ok { InvocantTypeCheck.new.x() }, 'Invocant type is checked';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2363
+
 {
     my $tracker;
     class A {
@@ -222,7 +222,7 @@ is AnonInvocant.new().me, AnonInvocant, 'a typed $: as invocant is OK';
     is $tracker, 42, 'nested methods work';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1703
+
 {
     my $tracker;
     class HasMethod {

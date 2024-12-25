@@ -45,7 +45,7 @@ is(sign(Inf), 1, 'got correct sign for +Inf');
 is(sign(-Inf), -1, 'got correct sign for -Inf');
 isa-ok(sign(Inf), Int, 'got correct type for +Inf');
 isa-ok(sign(-Inf), Int, 'got correct type for -Inf');
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 is(sign(NaN),NaN, 'sign of NaN is NaN');
 
 throws-like { sign(Int) }, Exception;

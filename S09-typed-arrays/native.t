@@ -61,7 +61,7 @@ subtest '.STORE(HLL iterable) does not leave behind previous values' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5189
+
 subtest 'no rogue leftovers when resizing natives' => {
     plan 5;
     {

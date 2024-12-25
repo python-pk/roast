@@ -16,7 +16,7 @@ plan 17;
 
     is Afoo(), 'sub A::Afoo', 'import imports things marked as "is export"';
     dies-ok {EVAL(q{ Abar() })}, "doesn't import non-exported routines";
-    # https://github.com/Raku/old-issue-tracker/issues/2837
+    
     is pub, 42, 'can import constants';
     dies-ok { EVAL 'priv' }, 'cannot access non-exported constants';
 }
@@ -72,7 +72,7 @@ plan 17;
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 
 {
     module F {
@@ -82,7 +82,7 @@ plan 17;
     is f1(), 42, 'can import the same symbol through multiple tags';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3150
+
 #?rakudo.js.browser skip "EVAL time use doesn't work in the browser"
 {
     lives-ok { EVAL 'use Test' },

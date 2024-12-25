@@ -49,15 +49,15 @@ is('fooäàaáâåbar' ~~ m:m/<-[a]>+/, 'foo',      'Ignoremark with negated cha
 
 is('fooäàaáâåbar' ~~ m:m/<[a..b]>+/, 'äàaáâåba', 'Ignoremark with range in character class');
 
-# https://github.com/rakudo/rakudo/issues/3815
+
 ok('' ~~ m:m/''/, ':m can match empty string regex to the empty string');
 
-# https://github.com/Raku/old-issue-tracker/issues/3017
+
 {
     ok("ü" ~~ /:ignoremark 'u'/, 'Ignoremark with subrule');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5956
+
 {
     ok qq["\c[COMBINING TILDE]"] ~~ / ^ :ignoremark '"'/,
         'Ignoremark on quoted double-quote';
@@ -81,7 +81,7 @@ nok "\c[SYRIAC ABBREVIATION MARK, ARABIC NUMBER SIGN]" ~~ /:m "\c[ARABIC NUMBER 
 nok "\c[SYRIAC ABBREVIATION MARK, COMBINING CARON]" ~~ /:m "\c[COMBINING CARON]" /, "Ignoremark doesn't match second codepoint for Prepend+Extend degenerate";
 is "\c[SYRIAC ABBREVIATION MARK, COMBINING CARON]" ~~ /:m "\c[SYRIAC ABBREVIATION MARK]" /, "\c[SYRIAC ABBREVIATION MARK, COMBINING CARON]", "Ignoremark matches the first codepoint for all Prepend+Extend degenerates";
 
-# https://github.com/rakudo/rakudo/issues/2961
+
 {
     is "a\x[300]" ~~ / :ignoremark <[ a b c ]> /, 'à', 'charclass ok';
 }

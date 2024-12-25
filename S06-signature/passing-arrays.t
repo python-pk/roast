@@ -35,7 +35,7 @@ plan 12;
     dies-ok { EVAL('ph(3)') }, 'an Int is not a Hash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/605
+
 # this used to be a rakudobug, RT #62172
 {
     my @a = 1..8;
@@ -65,7 +65,7 @@ plan 12;
 }
 
 # Positional Bind Failover
-# https://github.com/rakudo/rakudo/issues/4864
+
 subtest "Positional Bind Failover" => {
     #| @-siglled
     my sub pos_a(@a) { @a.List }

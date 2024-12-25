@@ -9,7 +9,7 @@ plan 28;
 is 0 * Inf  , NaN, "0 * Inf";
 is Inf / Inf, NaN, "Inf / Inf";
 is Inf - Inf, NaN, "Inf - Inf";
-# https://github.com/Raku/old-issue-tracker/issues/3804
+
 is NaN ** 0,  1, "NaN ** 0";
 
 is 0**0     , 1, "0**0 is 1, _not_ NaN";
@@ -32,14 +32,14 @@ ok NaN + 1i ~~ (NaN)i, "NaN + 1i ~~ (NaN)i";
 
 ok truncate(NaN) ~~ NaN, 'truncate(NaN) ~~ NaN';
 
-# https://github.com/Raku/old-issue-tracker/issues/2557
+
 is NaN.raku, 'NaN', 'NaN perlification ok';
 
-# https://github.com/Raku/old-issue-tracker/issues/2357
+
 ok NaN===NaN, "NaN value identity";
 ok (my num $ = NaN) === (my num $ = NaN), "NaN value identity (native num)";
 
-# https://github.com/Raku/old-issue-tracker/issues/4903
+
 {
     throws-like ｢my Int $x = NaN｣, X::Syntax::Number::LiteralType,
         :value(NaN), :vartype(Int),
@@ -49,7 +49,7 @@ ok (my num $ = NaN) === (my num $ = NaN), "NaN value identity (native num)";
     is $x, NaN, 'assigning NaN to Num works without errors';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5576
+
 {
     my $mynan = my class MyNum is Num {}.new(NaN);
     is-deeply $mynan == NaN,  False, 'sublcass of NaN !== NaN';

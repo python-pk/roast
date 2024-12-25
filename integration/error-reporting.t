@@ -23,7 +23,7 @@ is_run "say 'Hello';\nsay 'a'.my_non_existent_method_6R5();",
         err     => all(rx/my_non_existent_method_6R5/, rx/<<2>>/),
     }, 'Method not found error mentions method name and line number';
 
-# https://github.com/Raku/old-issue-tracker/issues/1795
+
 is_run '
 sub bar {
     pfff();
@@ -44,7 +44,7 @@ is_run 'say 42; nosuchsub()',
     },
     'non-existing subroutine is caught before run time';
 
-# https://github.com/Raku/old-issue-tracker/issues/1689
+
 {
     subset Even of Int where { $_ %% 2 };
     sub f(Even $x) { $x };
@@ -57,7 +57,7 @@ is_run 'say 42; nosuchsub()',
         'subset type check fail mentions constraint';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1878
+
 is_run '
 class A { has $.x is rw };
 A.new.x(42);',
@@ -67,7 +67,7 @@ A.new.x(42);',
         err     => rx/<<3>>/,
     }, 'got the right line number for accessors';
 
-# https://github.com/Raku/old-issue-tracker/issues/2300
+
 is_run 'say 0080982',
     {
         status => 0,
@@ -75,7 +75,7 @@ is_run 'say 0080982',
         err => rx/ octal /,
     }, 'use of leading zero causes warning about octal';
 
-# https://github.com/Raku/old-issue-tracker/issues/2011
+
 is_run 'my $ = 2; my $ = 3; say q[alive]',
     {
         status  => 0,
@@ -83,7 +83,7 @@ is_run 'my $ = 2; my $ = 3; say q[alive]',
         out     => "alive\n",
     }, 'multiple anonymous variables do not warn or err out';
 
-# https://github.com/Raku/old-issue-tracker/issues/2744
+
 #?rakudo.jvm todo 'Use of uninitialized value of type Any in numeric context'
 is_run 'sub mysub {
         + Any # trigger an uninitialized warning
@@ -95,7 +95,7 @@ is_run 'sub mysub {
         out     => '',
     }, 'warning reports correct line number and subroutine';
 
-# https://github.com/Raku/old-issue-tracker/issues/2144
+
 is_run 'die "foo"; END { say "end run" }',
     {
         status => * != 0,
@@ -104,7 +104,7 @@ is_run 'die "foo"; END { say "end run" }',
     },
     'END phasers are run after die()';
 
-# https://github.com/Raku/old-issue-tracker/issues/2799
+
 {
     try EVAL '            # line 1
              # another line so we three in total
@@ -115,7 +115,7 @@ is_run 'die "foo"; END { say "end run" }',
         'correct line number reported for assignment to non-variable';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2550
+
 #?DOES 3
 {
     use lib $?FILE.IO.parent(2).add("packages/FooBarBaz/lib");
@@ -147,7 +147,7 @@ sub a {
 a();
 ok $b1 === $b2, "Backtrace does not change on additional .backtrace";
 
-# https://github.com/Raku/old-issue-tracker/issues/4355
+
 {
     is_run 'class RT125495 {
             sub foo( $class, \@args, $object_name ) is export { 42 }
@@ -170,7 +170,7 @@ is_run 'sub foo { ({a=>1,b=>2}, {c=>3,d=>4}).map({ if (.<a>) {return $_} else { 
         }, "Correct error and a backtrace for return in mainline code";
 
 
-# https://github.com/Raku/old-issue-tracker/issues/2802
+
 {
     is_run 'print "a".WHAT',
         {
@@ -180,29 +180,29 @@ is_run 'sub foo { ({a=>1,b=>2}, {c=>3,d=>4}).map({ if (.<a>) {return $_} else { 
         }, 'Using type object in string context provides help';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4614
+
 throws-like 'begin 42', X::Undeclared::Symbols, message => /'BEGIN'/,
     '`BEGIN` suggested when `begin` is used';
 
-# https://github.com/Raku/old-issue-tracker/issues/4917
+
 throws-like 'gather for ^3 -> $a, $b { take 1 }', Exception, backtrace => /line/,
     '`too few positionals` error in gather/for/take includes line number';
 
-# https://github.com/Raku/old-issue-tracker/issues/4462
+
 throws-like ‘%::{''}’, X::Undeclared, line => /^\d+$/,
     Q|useful error message for ‘%::{''}’ construct|;
 
-# https://github.com/Raku/old-issue-tracker/issues/4435
+
 is_run '...', {:out(''), :err{ not $^o.contains: 'Unhandled exception' }},
     'stub code must not produce `Unhandled exception` message';
 
-# https://github.com/Raku/old-issue-tracker/issues/4262
+
 #?rakudo.jvm todo 'NullPointerException in error reporting, https://github.com/rakudo/rakudo/issues/5180'
 is_run Q[#`{{ my long
 	      unfinished comment'],
 	      { :out(''), :err{ $^o.contains: 'line 1' }}, 'Unfinished comment error points on correct line';
 
-# https://github.com/Raku/old-issue-tracker/issues/5837
+
 throws-like 'role R-RT130211 { method overload-this(){...} };
              role C-RT130211 { method overload-this(){...} };
              class A does R-RT130211 does C-RT130211 {};',
@@ -210,7 +210,7 @@ throws-like 'role R-RT130211 { method overload-this(){...} };
 'all roles with unimplemented method shown in error';
 
 
-# https://github.com/Raku/old-issue-tracker/issues/5723
+
 group-of 4 => 'X::Multi::NoMatch correct shows named arguments' => {
     my class RT129800 { multi method foo ($) {} }
     throws-like { RT129800.foo: :foo(42) }, X::Multi::NoMatch,
@@ -224,7 +224,7 @@ group-of 4 => 'X::Multi::NoMatch correct shows named arguments' => {
     'fallback mechanism works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5754
+
 subtest 'composition errors do not crash when printing' => {
     plan 2;
 
@@ -245,11 +245,11 @@ throws-like { await start die 'test' }, Exception,
 	backtrace => *.is-runtime.so,
 'broken promise exception backtrace knows it is runtime';
 
-# https://github.com/Raku/old-issue-tracker/issues/6148
+
 is_run "\n" x 1336 ~ 'use x $;', {err => /1337/},
     'bad `use` gives line number in error message';
 
-subtest 'Backtrace.gist' => { # https://github.com/rakudo/rakudo/issues/1521
+subtest 'Backtrace.gist' => { 
     plan 2;
     sub foo { die };
     try foo;

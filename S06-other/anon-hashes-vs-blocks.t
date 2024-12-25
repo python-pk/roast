@@ -53,10 +53,10 @@ ok $bar ~~ Hash, '%foo in a block causes hash composing';
     is %hash<1>, 'b', 'state variable declaration certainly makes it a block (2)';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1211
+
 is (map { $_ => $_ * $_ }, 1..3).hash<2>, 4, 'block with $_ is not a hash';
 
-# https://github.com/Raku/old-issue-tracker/issues/1996
+
 {
     my %fs = ();
 
@@ -78,14 +78,14 @@ is (map { $_ => $_ * $_ }, 1..3).hash<2>, 4, 'block with $_ is not a hash';
     is('FB', %fs{ lc( 'B' ) }(), "fb has been called");
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2903
+
 {
     my %*dyn = x => 42;
     ok { %*dyn } ~~ Hash, '{ %*foo } is a Hash';
     is { %*dyn }<x>, 42,  '{ %*foo } constructs correct hash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3650
+
 ok { 1 R=> "a" } ~~ Hash,  '{ 1 R=> "a" } is a Hash';
 is { 1 R=> "a" }<a>, 1,    '{ 1 R=> "a" } constructs correct hash';
 

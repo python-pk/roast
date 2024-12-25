@@ -5,7 +5,7 @@ plan 6;
 # See "=begin DATA" at the end of file.
 
 # L<S02/Double-underscore forms/filehandle, "named as" $=pod{'DATA'}>
-# https://github.com/Raku/old-issue-tracker/issues/4224
+
 #?rakudo skip 'postcircumfix:<{ }> not defined for type Array RT #125130'
 {
     ok $=pod{'DATA'}, '=begin DATA works and $=pod<DATA> defined';
@@ -55,7 +55,7 @@ plan 6;
 hello, world!
 =end DATA
 
-# https://github.com/Raku/old-issue-tracker/issues/6626
+
 is-deeply $=pod.grep(*.name eq 'SEE-ALSO').head.contents.head.contents.head,
     'foo132339',
     'custom named paras with `-` in identifiers works';

@@ -64,26 +64,26 @@ plan 59;
     is %h{*}.sort.join(","), "2,3", 'check whatever access with Mu as key';
 } #6
 
-# https://github.com/Raku/old-issue-tracker/issues/3139
+
 {
     my %h{Any};
     %h{Any}=1;
     ok %h{Any}:exists, '.exists returns True on a %h{Any} in a TypedHash';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4264
+
 {
     lives-ok { my %h = my %x{Date}; },
         'declaring empty object hash on rhs of assignment to hash does not die with "Cannot look up attributes in a type object"';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4307
+
 {
     is (my %h1).list.elems, 0, 'empty hash listifies to empty list';
     is (my %h2{Any}).list.elems, 0, 'empty object hash listifies to empty list';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3138
+
 {
     my %h{Any};
     my %i:=%h.new;
@@ -93,7 +93,7 @@ plan 59;
     is %h.WHAT, %j.WHAT, "Clone of an object hash instance is an object hash";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2660
+
 {
     my $r1 = role { method foo() { 5 } };
     my $r2 = role { method foo() { 7 } };
@@ -104,7 +104,7 @@ plan 59;
     is %hash.keys>>.foo.sort, (5, 7), 'Can use mixin objects as keys';
 }
 
-# https://github.com/rakudo/rakudo/issues/5165
+
 {
     my %input = foo => True, bar => True;
     my %input-typed{Any} = %input;
@@ -145,7 +145,7 @@ plan 59;
     eval-lives-ok 'my %*a{Int}', "Accept dynamic object hash"
 }
 
-# https://github.com/rakudo/rakudo/issues/4678
+
 my %oh{Any};
 %oh<a> = %oh;
 for <Str gist raku> -> $method {

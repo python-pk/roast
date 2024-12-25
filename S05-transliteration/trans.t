@@ -110,7 +110,7 @@ is($b.trans('A..H..' => 'a..h__'), 'abcdefghIJKLMNOPQRSTUVWXYZ',
 is($b.trans('..A..H..' => '__a..h__'), 'abcdefghIJKLMNOPQRSTUVWXYZ',
     'leading, trailing ranges interpreted as string');
 
-# https://github.com/Raku/old-issue-tracker/issues/1970
+
 is("hello".trans("l" => ""), "heo", "can replace with empty string");
 
 # complement, squeeze/squash, delete
@@ -228,7 +228,7 @@ is("&nbsp;&lt;&gt;&amp;".trans(:c, :s, (['&nbsp;', '&gt;', '&amp;'] =>
 # y/// is dead
 throws-like '$_ = "axbycz"; y/abc/def/', X::Obsolete, 'y/// does not exist any longer';
 
-# https://github.com/Raku/old-issue-tracker/issues/1429
+
 {
     lives-ok { "".subst(/x/, "").trans() },
         'trans on subst output lives';
@@ -252,10 +252,10 @@ is('ababab'.trans([/ab/, 'aba', 'bab', /baba/] =>
 is 'aa'.trans(/^a/ => 'b'), 'ba', 'trans with anchored regex';
 is 'aa'.trans(/ <after a> ./ => 'b'), 'ab', 'trans with look-around regex';
 
-# https://github.com/Raku/old-issue-tracker/issues/2358
+
 lives-ok { my @a = 1..2; @a>>.trans((1..2) => (14..15,1..2)); }, 'trans works with Cool signature';
 
-# https://github.com/Raku/old-issue-tracker/issues/2360
+
 is((1, 2)>>.trans((1..26) => (14..26,1..13)), <14 15>, '.trans with a pair of lists using postfix hypermetaoperator works');
 is ("!$_!" for (1, 2)>>.trans((1..26) => (14..26,1..13))), <!14! !15!>, "same with explicit for";
 
@@ -264,7 +264,7 @@ is ("!$_!" for (1, 2)>>.trans((1..26) => (14..26,1..13))), <!14! !15!>, "same wi
     is $f ~~ tr/o/u/, 'fuu', 'StrDistance stringifies to $!after';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5665
+
 group-of 4 => 'Adverbs on Cool.trans work the same as on Str.trans' => {
     is-deeply 912381237    .trans(['7'..'9'] => '0',      :complement),
         '900080007',                                      ':complement';
@@ -281,18 +281,18 @@ is_run ｢print '@x'.trans: (/\@/ => '-',), :c｣, {
     :out('@-'), :err(''),
 }, '.trans with complement regex pair does not produce spurious warnings';
 
-# https://github.com/rakudo/rakudo/issues/2305
+
 {
     is 4200.trans(42 => 14), "1400", 'Cool values allowed in .trans';
 }
 
-# https://github.com/rakudo/rakudo/issues/5488
+
 {
     is 'twone'.trans((/<?after o>ne/, 'two') => (1, 2)), '21',
       'handles lookbehind assertions correctly';
 }
 
-# https://github.com/rakudo/rakudo/issues/1227
+
 {
     is "abc".trans("z" => "♥", :c), "♥♥♥",
       'handles :c and no matching needles correctly';
@@ -300,7 +300,7 @@ is_run ｢print '@x'.trans: (/\@/ => '-',), :c｣, {
       'handles :c and no matching needles and squased correctly';
 }
 
-# https://github.com/rakudo/rakudo/issues/5745
+
 {
     is "fusk".trans("U" => "", "u" => ""), "fsk",
       'multi-needle without any replacements';

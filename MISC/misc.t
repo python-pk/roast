@@ -99,7 +99,7 @@ group-of 6 => '$()/@()/%() have no magick' => {
 group-of 3 => 'smiley constraints default to type object without smiley' => {
     group-of 14 => ':D' => {
         # XXX TODO: spec enums. POV currently blocked by
-        # https://github.com/rakudo/rakudo/issues/2297
+        
         is-eqv (my Int:D constant \a .= new: 42), 42, 'sigilless-constant';
         is-eqv (my Int:D constant $  .= new: 42), 42, '$-constant';
 
@@ -123,7 +123,7 @@ group-of 3 => 'smiley constraints default to type object without smiley' => {
 
     group-of 14 => ':U' => {
         # XXX TODO: spec enums. POV currently blocked by
-        # https://github.com/rakudo/rakudo/issues/2297
+        
         is-eqv (my Int:U constant \a .= self), Int, 'sigilless-constant';
         is-eqv (my Int:U constant $  .= self), Int, '$-constant';
 
@@ -153,7 +153,7 @@ group-of 3 => 'smiley constraints default to type object without smiley' => {
         # isn't present without smileys.
 
         # XXX TODO: spec enums. POV currently blocked by
-        # https://github.com/rakudo/rakudo/issues/2297
+        
         is-eqv (my Int:_ constant \a .= new: 42), 42, 'sigilless-constant';
         is-eqv (my Int:_ constant $  .= new: 42), 42, '$-constant';
 

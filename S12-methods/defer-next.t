@@ -128,7 +128,7 @@ class BarNextWithInt is Foo {
     nok $after-ns, 'control does not reach beyond nextsame that has nowhere to go';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3718
+
 {
     my @output;
 	proto foo($) { * }
@@ -152,7 +152,7 @@ class BarNextWithInt is Foo {
     is @output, [|('>0', '<10', 'generic') xx 500], '...including in a repeated loop';
 }
 
-# https://github.com/rakudo/rakudo/issues/1573
+
 lives-ok
     {
         my class C {

@@ -4,7 +4,7 @@ use Test::Util;
 
 plan 21;
 
-# https://github.com/rakudo/rakudo/issues/3634
+
 
 ## last in loop
 {

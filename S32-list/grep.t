@@ -67,10 +67,10 @@ my @list = (1 .. 10);
        '2|4', 'last works in grep';
     is (1..12).grep({next if $_ % 5 == 0; $_ % 2 == 0}).join('|'),
        '2|4|6|8|12', 'next works in grep';
-    # https://github.com/Raku/old-issue-tracker/issues/5329
+    
     is (^Inf).grep({last if $_ > 5; True}).eager.join, '012345',
         'last in grep on infinite list';
-    # https://github.com/Raku/old-issue-tracker/issues/5992
+    
     {
         my $retries = 0;
         is (1..5).grep({
@@ -94,7 +94,7 @@ my @list = (1 .. 10);
        '2,4,5', "grep() with non-Code matcher";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1456
+
 {
     my @in = ( 1, 1, 2, 3, 4, 4 );
 
@@ -113,7 +113,7 @@ my @list = (1 .. 10);
 }
 
 # sensible boolification
-# https://github.com/Raku/old-issue-tracker/issues/1661
+
 # since rakudo returns an iterator (and not a list) and some internals leaked,
 # a zero item list/iterator would return True, which is obviously wrong
 {
@@ -137,7 +137,7 @@ my @list = (1 .. 10);
     is (True,False,Int).grep(Bool), (True,False), 'can we match on Bool as type';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3180
+
 {
     my @a = 1..10;
     @a.grep(* %% 2).>>++;
@@ -145,7 +145,7 @@ my @list = (1 .. 10);
         'grep is rw-like, can chain it to modify elements of grepped list/array';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5499
+
 {
     is (^∞).grep(*.is-prime).is-lazy, True, '.grep propagates .is-lazy';
     is (grep *.is-prime, ^∞).is-lazy, True, 'grep() propagates .is-lazy';
@@ -182,7 +182,7 @@ my @list = (1 .. 10);
   }
 }
 
-# https://github.com/rakudo/rakudo/issues/2614
+
 is-deeply ("foo").grep({ /foo/ }), ("foo",),
     'Block returning a regex to grep will Do The Right Thing, dubious as it is';
 
@@ -196,7 +196,7 @@ is-deeply ("foo").grep({ /foo/ }), ("foo",),
       'is none junction handled correctly in grep';
 }
 
-# https://github.com/rakudo/rakudo/issues/4660
+
 {
     is-deeply (^12).grep(*+*+*), ((0,1,2),(3,4,5),(6,7,8),(9,10,11)),
       'does grep work with more than 2 args';

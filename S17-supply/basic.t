@@ -82,7 +82,7 @@ for ThreadPoolScheduler.new, CurrentThreadScheduler -> $*SCHEDULER {
         ok $done, 'done callback fires';
         nok $quit, 'quit callback does not fire';
 
-        # https://github.com/Raku/old-issue-tracker/issues/3617
+        
         $p.emit(46);
         is @emitted, [42, 44], 'no further events after done';
 
@@ -113,18 +113,18 @@ for ThreadPoolScheduler.new, CurrentThreadScheduler -> $*SCHEDULER {
         nok $done, 'done callback does not fire';
         ok $quit, 'quit callback fires';
 
-        # https://github.com/Raku/old-issue-tracker/issues/3617
+        
         $p.emit(46);
         is @emitted, [42, 44], 'no further events after quit';
 
         $t1.close;
     }
 
-    # https://github.com/Raku/old-issue-tracker/issues/4653
+    
     is_run q[Supply.interval(1).tap(-> { say 'hi' }); sleep 3;], {:1status},
         '.tap block with incorrect signature must fail';
 
-    # https://github.com/Raku/old-issue-tracker/issues/5584
+    
     subtest 'can use .emit as a method' => {
         plan 3;
         react { whenever supply { .emit for "foo", 42, .5 } {
@@ -132,7 +132,7 @@ for ThreadPoolScheduler.new, CurrentThreadScheduler -> $*SCHEDULER {
         }}
     }
 
-    # https://github.com/Raku/old-issue-tracker/issues/6124
+    
     subtest 'call done/quit on all taps' => {
         plan 2;
 

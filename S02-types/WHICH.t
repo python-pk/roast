@@ -473,13 +473,13 @@ for @moar -> $class {
     my $short = $class.split('::')[* - 1];
     nok %seen-which{::($class).WHICH}++, "checking $class.WHICH";
     isa-ok ::($class).WHICH,      ObjAt, "$class returns an ObjAt";
-    # https://github.com/Raku/old-issue-tracker/issues/3841
+    
     #?rakudo.jvm 2    skip 'NFC NYI on jvm'
     is ::($class).raku,          $class, "$class.raku returns self";
     is ::($class).gist,      "($short)", "$class.gist returns self";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5577
+
 subtest 'ObjAt.raku gives distinct results for different objects' => {
     my @obj = "rt", 128944, <128944>, rx/^/, NaN, ∞, τ+i, .5, class {}, 'a'|42,
                 sub {}, -> {}, method {}, *, *+5, start {}, supply {};
@@ -494,10 +494,10 @@ subtest 'ObjAt.raku gives distinct results for different objects' => {
         'number of unique .WHICH.rakus matches number of objects we tested';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5860
+
 ok Bag.new.clone.WHICH.defined, 'cloned Bag does not lose WHICH';
 
-# https://github.com/Raku/old-issue-tracker/issues/4547
+
 subtest 'Mixins to Code:U objects do not cause crash on .WHICH' => {
     plan +my @tests = Method, Submethod, Sub, Block, Code, Whatever;
 

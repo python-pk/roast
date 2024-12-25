@@ -420,7 +420,7 @@ for $%a, Any, $%i, Int, $%c, Mu, $%j, Int -> %h, $T {
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4697
+
 {
     my %h{Any};
     my $key = $(1,2,3);

@@ -36,7 +36,7 @@ dies-ok {EVAL 'use Poison; 1'}, "EVAL dies on fatal use";
 # L<S04/Exception handlers/Raku's EVAL function only evaluates strings, not blocks.>
 dies-ok({EVAL {; 42} }, 'block EVAL is gone');
 
-# https://github.com/Raku/old-issue-tracker/issues/800
+
 # EVAL didn't work in methods
 {
     class EvalTester1 {
@@ -57,7 +57,7 @@ dies-ok({EVAL {; 42} }, 'block EVAL is gone');
        'EVAL works inside instance methods, with outer lexicals';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3432
+
 {
     is EVAL("'møp'".encode('UTF-8')), 'møp', 'EVAL(Buf)';
 #?rakudo skip 'Buf.EVAL NYI (if ever)'
@@ -73,7 +73,7 @@ dies-ok({EVAL {; 42} }, 'block EVAL is gone');
     is $number.EVAL, $number, '.EVAL of non-string variable works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2134
+
 {
     my $x = 0;
     EVAL '$x++' for 1..4;
@@ -81,30 +81,30 @@ dies-ok({EVAL {; 42} }, 'block EVAL is gone');
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2716
+
 {
     try EVAL(:lang<rt112472>, '1');
     ok "$!" ~~ / 'rt112472' /, 'EVAL in bogus language mentions the language';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2933
+
 my $rt115344 = 115344;
 is('$rt115344'.EVAL, $rt115344, 'method form of EVAL sees outer lexicals');
 
-# https://github.com/Raku/old-issue-tracker/issues/2977
+
 {
     my int $a; EVAL('');
     ok(1, "presence of low level types doesn't cause EVAL error")
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3781
+
 {
     my \a = rand;
     lives-ok { EVAL 'a' }, 'Can EVAL with a sigilless var';
     is EVAL('a'), a, 'EVAL with sigilless var gives correct result';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3781
+
 {
     use nqp;
     is

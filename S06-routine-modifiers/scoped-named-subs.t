@@ -59,7 +59,7 @@ throws-like 'my Num List sub f () { ("A",) }; f()',
     X::Comp::NYI,
     'implicit return of list with wrong type dies';
 
-# https://github.com/Raku/old-issue-tracker/issues/5137
+
 eval-lives-ok Q/sub foo { }; anon sub foo() { }/,
     'anon sub produces no redeclaration error';
 

@@ -67,7 +67,7 @@ my @triplets =
   <a b b c>.Bag,             <b c d>.Bag,       <a b>.Bag,
   <a b b>.BagHash,           <c d>.BagHash,     <a b b>.BagHash,
   <a b b c>.BagHash,         <b c d>.BagHash,   <a b>.BagHash,
-  # https://github.com/Raku/old-issue-tracker/issues/6679
+  
   <a a a b>.Bag,             <a a>,             <a b>.Bag,
 
   # result should be a Mix
@@ -244,7 +244,7 @@ for
       "$name with a Failure:D on the LHS throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/3945
+
 {
     is-deeply (1..3, 1..3 Z(-) 2..4, 1..4),
       ((1,).Set, ().Set),
@@ -263,7 +263,7 @@ for
       'did Z handle ∖ correctly (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/2167
+
 {
     is-deeply 1 (-) ($ = :42foo,), Set.new(1), 'no explosion';
 }

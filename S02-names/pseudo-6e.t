@@ -301,7 +301,7 @@ subtest "Root" => {
     ok &none =:= &f1, '... and works';
     lives-ok { CORE::.<&none> := &f2 }, 'CORE::.{} binding lives';
     ok &none =:= &f2, '... and works';
-    # https://github.com/Raku/old-issue-tracker/issues/4560
+    
     #?rakudo 2 skip 'Cannot bind to &::("CORE")::foo'
     lives-ok { &::($core)::none := &f3 }, '::("CORE") binding lives';
     ok &none =:= &f3, '... and works';
@@ -310,7 +310,7 @@ subtest "Root" => {
     # make sure accessing it in CORE works
     lives-ok { $CORE::_ := 50 }, 'Binding to $CORE::_ lives';
     is $CORE::_, 50, 'Accessing $CORE::_ works';
-    # https://github.com/Raku/old-issue-tracker/issues/4560
+    
     #?rakudo 2 skip 'Cannot bind to &::("CORE")::foo'
     lives-ok { $::($core)::_ := 51 }, 'Binding to $::("CORE")::_ lives';
     is $::($core)::_, 51, 'Accessing $::("CORE")::_ works';
@@ -336,7 +336,7 @@ subtest "Root" => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2420
+
 {
     $PROCESS::PROGRAM-NAME = "otter";
     is $*PROGRAM-NAME, "otter", 'existing $* assignable via PROCESS';
@@ -507,7 +507,7 @@ my $x110 = 110; #OK
 
 # PARENT - NYI in any compiler
 
-# https://github.com/Raku/old-issue-tracker/issues/3578
+
 {
     my $x = 'really unlikely value';
     ok MY::.values.grep({ ($_ // '') eq 'really unlikely value' }),
@@ -518,10 +518,10 @@ my $x110 = 110; #OK
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5617
+
 lives-ok { my @keys = CORE::.keys }, 'calling CORE::.keys lives';
 
-# https://github.com/Raku/old-issue-tracker/issues/3222
+
 subtest 'no guts spillage when going too high up scope in pseudopackages' => {
     plan 3 + my @packs = <
         DYNAMIC::  OUTER::   CALLER::   UNIT::     CORE::
@@ -597,7 +597,7 @@ subtest 'no guts spillage when going too high up scope in pseudopackages' => {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5134
+
 is_run q|BEGIN { UNIT; Nil }|, { :0status, :out(''), :err('') },
     'no crash if UNIT:: is used at compile time';
 

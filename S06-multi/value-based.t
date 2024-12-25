@@ -32,7 +32,7 @@ plan 13;
     is m2(-1),  "e", 'negative literal Int in signature matches value correctly';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2405
+
 {
     multi m3(0     ,     $       ) { 'a' };
     multi m3(Int $n, Str $a = 'A') { 'b' };  #OK not used
@@ -47,7 +47,7 @@ plan 13;
 }
 
 # not quite a multi, but also value based
-# https://github.com/Raku/old-issue-tracker/issues/2600
+
 
 {
     sub f(True) { 'a' }

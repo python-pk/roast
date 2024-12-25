@@ -95,7 +95,7 @@ is-deeply @searches[0].Array, @expected-searches, 'seq => array works 3';
     is @n, <a b>, 'Seq slice assignment works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5124
+
 {
     eager my \s = ().Seq.slice; # eager consumes the Seq
     cmp-ok s.raku.EVAL, '~~', Seq:D, '.raku.EVAL on consumed Seq gives Seq:D';
@@ -121,7 +121,7 @@ is-deeply @searches[0].Array, @expected-searches, 'seq => array works 3';
     is $count, 10, '&afterward is called after each call to &body.';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6209
+
 with (1, 2).Seq {
     .cache; # Cache the seq
     is .raku, (1, 2).Seq.raku,
@@ -219,14 +219,14 @@ group-of 2 => 'ZEN slices do not cache Seqs' => {
 }
 
 
-# https://github.com/Raku/old-issue-tracker/issues/3014
+
 {
     my $s = (1, 2, 3).Seq.slice(0,1,2);
     is $s.iterator.pull-one, 1, 'did we get 1 as the first value';
     dies-ok { $s[0] }, 'did accessing first element die';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6007
+
 {
     my $sum1 = 0;
     is (lazy for ^4 { $sum1 += $_; $_ }).WHAT, Seq,
@@ -239,7 +239,7 @@ group-of 2 => 'ZEN slices do not cache Seqs' => {
     ok $sum2 == 6, 'parenthesis do not imply laziness (2)';
 }
 
-# https://github.com/rakudo/rakudo/issues/2976
+
 {
     lives-ok {
         given Seq.new((1,2,3).iterator) {
@@ -250,13 +250,13 @@ group-of 2 => 'ZEN slices do not cache Seqs' => {
     }, 'elems call caches Seq';
 }
 
-# https://github.com/rakudo/rakudo/issues/4039
+
 {
     is-deeply ({ 1 | -1 } ... *)[^3], (any(1, -1),any(1, -1),any(1, -1)),
       'check that we do not create 1 element lists';
 }
 
-# https://github.com/rakudo/rakudo/issues/5662
+
 {
     is-deeply <one two three four>.Seq.sort(:k), (3,0,2,1),
       'Seq.sort(:k) works as it should';

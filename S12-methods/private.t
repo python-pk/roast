@@ -79,7 +79,7 @@ dies-ok {$o."b"() },  'can not call private method via quotes from outside';   #
         typename => { m/'B'/ }, method => { m/'role_private'/ }; #'can not call role private methods scoped with my';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2528
+
 {
     class RT101964 {
         has @!c;
@@ -91,11 +91,11 @@ dies-ok {$o."b"() },  'can not call private method via quotes from outside';   #
     is RT101964.new.foo, 'OH HAI', 'can pass private array attribute to private method param';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2928
+
 #?DOES 2
 throws-like '$_!X::a', X::Method::Private::Permission;
 
-# https://github.com/Raku/old-issue-tracker/issues/4425
+
 throws-like q[class Foo {method bar () {try {self!wrong()}}};
               my $f = Foo.new;
               $f.bar;

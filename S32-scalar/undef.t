@@ -316,13 +316,13 @@ lives-ok { uc(EVAL("")) }, 'can use EVAL("") in further expressions';
     ok def() ~~ Array, 'can still call sub after attempt to undefine it';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1299
+
 {
     sub foo { my $a = "baz"; undefine $a; undefine $a; $a; }
     ok !defined(foo()), 'can undefine $a twice without any troubles';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3117
+
 {
     my $a = "foo";
     undefine($a) = "bar";

@@ -50,11 +50,11 @@ dies-ok { dependent(4, Array.new(:shape(4,3))) }, 'can use earlier parameters in
 
 is-deeply (my @a[Bool]).shape, (2,), "can have an Enum as a shape definition";
 
-# https://github.com/rakudo/rakudo/issues/3314
+
 is (-> @a[3] { @a[1] })(my @b[3] = <a b c>), 'b',
     'Shape-constrained array in signature declares a variable that we can access';
 
-# https://github.com/rakudo/rakudo/issues/4363
+
 lives-ok { my @a[1]; my @b[1]; @a = @b; @a.gist },
   "does copying from an uninitialized shaped array work";
 

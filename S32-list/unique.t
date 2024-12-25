@@ -52,20 +52,20 @@ This test tests the C<unique> builtin.
     is @array.unique.elems, 2, ".unique does not use naive WHICH (2)";
 } #2
 
-# https://github.com/Raku/old-issue-tracker/issues/2654
+
 {
     my class A { method Str { '' } };
     is (A.new, A.new).unique.elems, 2, 'unique has === semantics';
 } #1
 
-# https://github.com/Raku/old-issue-tracker/issues/2350
+
 {
     my @list = 1, "1";
     my @unique = unique(@list);
     is @unique, @list, "unique has === semantics";
 } #1
 
-# https://github.com/Raku/old-issue-tracker/issues/3357
+
 {
     my $a = <a b c b d>;
     $a .= unique;
@@ -143,7 +143,7 @@ This test tests the C<unique> builtin.
       "final result with :as and :with and objects in place";
 } #4
 
-# https://github.com/Raku/old-issue-tracker/issues/3357
+
 {
     my %a;
     %a<foo> = <a b c>;
@@ -154,10 +154,10 @@ This test tests the C<unique> builtin.
 
 is ((1,2,3),(1,2),(1,2)).unique(:with({$^a eqv $^b})), "1 2 3 1 2", ".unique doesn't flatten";
 
-# https://github.com/Raku/old-issue-tracker/issues/6095
+
 eval-lives-ok ｢Scalar.unique｣, 'no SEGV with Scalar.unique';
 
-# https://github.com/rakudo/rakudo/issues/4513
+
 {
     is-deeply
       [[1], ['1'], [4]].unique(:as(*.map(&[~])), :with(&[eqv])),

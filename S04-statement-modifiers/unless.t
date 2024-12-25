@@ -47,12 +47,12 @@ plan 10;
     is $a, 0, 'Statement-modifier unless runs block with placeholder';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2257
+
 {
     is (1,2, unless 0), "1 2", "unless is a terminator even after comma";
 }
 
-# https://github.com/rakudo/rakudo/issues/2601
+
 {
     my $res;
     for 1..3 {

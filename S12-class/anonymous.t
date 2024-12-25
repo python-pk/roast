@@ -45,7 +45,7 @@ is($t3.x, 42,        'anonymous classes can have attributes');
     is($x.foo, 42,       'inherited method from TestParent');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/924
+
 {
     sub rt64888 {
         (
@@ -65,11 +65,11 @@ is($t3.x, 42,        'anonymous classes can have attributes');
     is +$i1, 64888, 'anonymous class numified works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2282
+
 throws-like q[anon class C { }; C.WHAT; ], X::Undeclared::Symbols,
     'anon class is actually anon';
 
-# https://github.com/Raku/old-issue-tracker/issues/2884
+
 {
     ok (class {}) !=== (class {}), 'anonymous classes are distinct';
 }

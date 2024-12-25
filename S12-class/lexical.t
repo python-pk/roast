@@ -41,7 +41,7 @@ throws-like '{ my class B {}; B.new; }; B.new', X::Undeclared::Symbols,
     is $ltapint.name, 'Baltika 7',                 'can call inherited method that accesses inherited attribute';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1311
+
 {
     class Forest {
         class Frog {

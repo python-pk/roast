@@ -84,7 +84,7 @@ plan 21;
     is @a[2], 6,       '... and  the third is 6';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/669
+
 {
     my @a;
     @a[2] = 'b';

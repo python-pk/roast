@@ -16,7 +16,7 @@ sub f($str) is test-assertion {
 }
 
 check '',           Int,      0;
-# https://github.com/Raku/old-issue-tracker/issues/5419
+
 check ' ',          Int,      0; # RT128543
 check '   ',        Int,      0;
 check '123',        Int,    123;
@@ -154,16 +154,16 @@ f      '3+Infi';
 
 # TODO: Complex with radix
 
-# https://github.com/Raku/old-issue-tracker/issues/2505
+
 {
     is +Str.new, 0, 'RT #100778'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5418
+
 throws-like Q|"34\x[308]5".Int|, X::Str::Numeric,
     '.Int on strings with numerics with combining characters throws';
 
-# https://github.com/Raku/old-issue-tracker/issues/5945
+
 {
     my $n;
     lives-ok { $n = 'a'.Int; 'notafailure' }, '"a".Int lives...';

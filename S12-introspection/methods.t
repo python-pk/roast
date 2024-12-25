@@ -153,11 +153,11 @@ is @methods[0].name, 'bar', 'methods call found public method in subclass (with 
     lives-ok { Method.^methods.raku }, 'Can .raku methods of a method';
     lives-ok { { $^a }.^methods.gist }, 'Can .gist methods of a block';
     lives-ok { { $^a }.^methods.raku }, 'Can .raku methods of a block';
-    # https://github.com/Raku/old-issue-tracker/issues/2619
+    
     lives-ok { :(Int).^methods>>.gist }, 'Can >>.gist methods of a Signature';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1962
+
 # order of ^methods
 {
     class Foo { has $.bar; has $.baz; has $.antler };

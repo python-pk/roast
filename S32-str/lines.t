@@ -51,13 +51,13 @@ is "a\nb\r\rc\r".lines(2).join('|'),
 is lines("a\nb\nc\n").join('|'), 'a|b|c', '&lines';
 is lines("a\nb\nc\n",2).join('|'), 'a|b', '&lines(2)';
 
-# https://github.com/Raku/old-issue-tracker/issues/2910
+
 is_run( 'print lines[0]',
         "abcd\nefgh\nijkl\n",
         { out => "abcd", err => '', status => 0 },
         'lines returns things in lines' );
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     my $expected = "A, then B\nC, then D\n";
     my $result;
@@ -68,7 +68,7 @@ is_run( 'print lines[0]',
     is $result, $expected, 'lines iterates correctly with for block taking two arguments at a time';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5927
+
 is-deeply "a\nb\nc".lines(2000), ('a', 'b', 'c'),
     'we stop when data ends, even if limit has not been reached yet';
 

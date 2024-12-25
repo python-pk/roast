@@ -39,14 +39,14 @@ is(&multi-sub.cando(\()).[0].(),"m3","you can invoke through introspection");
     ok(\()    ~~ $sig, "junction sig matches third candidate");
 }
 
-# https://github.com/rakudo/rakudo/issues/2420
+
 for (* == 42), -> $ { } -> &callable {
     is &callable.cando( \() ).elems,       0, 'Whatevercode with \()';
     is &callable.cando( \(666) ).elems,    1, 'Whatevercode with \(666)';
     is &callable.cando( \(666,42) ).elems, 0, 'Whatevercode with \(666,42)';
 }
 
-# https://github.com/rakudo/rakudo/issues/4730
+
 {
     sub foo(Str :@foo) { }
 

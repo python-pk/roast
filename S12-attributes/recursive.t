@@ -69,7 +69,7 @@ Test attributes with recursively typed attributes
     isa-ok $d.attr, C, '::?CLASS is lexical, not virtual';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1119
+
 {
     class Z {
         has Z @.a is rw;

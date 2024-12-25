@@ -24,10 +24,10 @@ sub MAIN($a, $b, *@c) {
 
 ok( @*ARGS == 5, '@*ARGS has correct elements');
 
-# https://github.com/Raku/old-issue-tracker/issues/2844
+
 lives-ok { require HasMain }, 'MAIN in a module did not get executed';
 
-# https://github.com/Raku/old-issue-tracker/issues/4527
+
 is_run 'sub MAIN() { map { print "ha" }, ^3 }',
     {
         out => "hahaha",
@@ -35,7 +35,7 @@ is_run 'sub MAIN() { map { print "ha" }, ^3 }',
     'MAIN return value is sunk';
 
 
-# https://github.com/Raku/old-issue-tracker/issues/5808
+
 subtest 'MAIN can take type-constraint using Enums' => {
     plan 3;
 
@@ -90,21 +90,21 @@ subtest '%*SUB-MAIN-OPTS<named-anywhere>', {
     '<named-anywhere> set to true allows named args anywhere';
 }
 
-# https://github.com/rakudo/rakudo/issues/3929
+
 {
     is_run 'sub MAIN($a is rw) { }; sub GENERATE-USAGE(|) { print "usage" }', :args[],
       { :out<usage>, :err{ .contains("'is rw'") }, :2status },
       'Worry about "is rw" on parameters of MAIN';
 }
 
-# https://github.com/rakudo/rakudo/issues/1803
+
 {
     is_run '@*ARGS = 42; sub MAIN($x) { say $x }', :args[],
       { :out("42\n"), :err(''), :0status },
       'non-string values in @*ARGS do not crash'
 }
 
-# https://github.com/rakudo/rakudo/issues/2445
+
 {
     is_run 'my %*SUB-MAIN-OPTS = :named-anywhere; sub MAIN(|c) { say c }',
       :args<--foo foo>,
@@ -112,7 +112,7 @@ subtest '%*SUB-MAIN-OPTS<named-anywhere>', {
       'named arguments are also captured'
 }
 
-# https://github.com/rakudo/rakudo/issues/2794
+
 {
     is_run 'sub MAIN(*@a) { say .raku for @a }',
       :args<True False Less More BigEndian>,

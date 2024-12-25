@@ -50,7 +50,7 @@ is $a.test-hash-a,   2, '%.a contextualizes as hash';
     is $o.x, 5, 'attribute has new value after assignment with qualified method name';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2237
+
 {
     class Parent {
         has $.x is rw;

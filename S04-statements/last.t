@@ -95,7 +95,7 @@ plan 9;
     is($var, 0, "var is 0 because last before increment in nested loop");
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3007
+
 {
     lives-ok { repeat while False { "foo" ~~ / 'f' { 1 } 'o' { last } / } },
         'can use last in code block in regex in loop';

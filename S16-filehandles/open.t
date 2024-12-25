@@ -40,7 +40,7 @@ I/O Redirection to scalar tests
 
 =end pod
 
-# https://github.com/rakudo/rakudo/issues/3073
+
 {
     my $io = "/tmp/bla".IO;
     with $io.open(:w) -> $h {

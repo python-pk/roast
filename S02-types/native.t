@@ -77,7 +77,7 @@ plan 143;
 }
 
 # methods on native type objects
-# https://github.com/Raku/old-issue-tracker/issues/2537
+
 {
     isa-ok int, Mu, 'int ~~ Mu';
     is num.gist, '(num)', 'num.gist';
@@ -93,7 +93,7 @@ plan 143;
     is slurpy($i, $s), '42 roads', 'can bind native vars to slurpy arrays';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2519
+
 {
     my int $x;
     my num $y;
@@ -101,7 +101,7 @@ plan 143;
     is-deeply $y, 0e0, 'initialization of native num';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2541
+
 {
     my int $x;
     ($x) = (5);
@@ -109,7 +109,7 @@ plan 143;
     is $x.WHAT, Int, 'WHAT boxes value in native variable';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3350
+
 {
     my @j;
     my int $j = 42;
@@ -207,12 +207,12 @@ plan 143;
     is class :: { has uint64 $.x; }.new( x => 2**64-1 ).x, 2**64-1, 'uint64 attributes don\'t get sign-extended';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3678
+
 dies-ok { EVAL 'my int $x = Int;' }, '"my int $x = Int" dies';
 dies-ok { EVAL 'my num $x = Num;' }, '"my num $x = Num" dies';
 dies-ok { EVAL 'my str $x = Str;' }, '"my str $x = Str" dies';
 
-# https://github.com/Raku/old-issue-tracker/issues/3739
+
 {
     my num $a;
     is-deeply $a, 0e0, "num defaults to 0e0";
@@ -222,7 +222,7 @@ dies-ok { EVAL 'my str $x = Str;' }, '"my str $x = Str" dies';
     is-deeply $c, 0e0, "num64 defaults to 0e0";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3739
+
 {
     my num $d = 42e0;
     is-deeply $d, 42e0, "assign 42e0 to num";
@@ -350,7 +350,7 @@ dies-ok { EVAL 'my str $x = Str;' }, '"my str $x = Str" dies';
     i8_o(257);
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3779
+
 {
     my int32 $i32 = 2 ** 32 - 1;
     #?rakudo.jvm todo 'signed/unsigned native ints'
@@ -386,7 +386,7 @@ dies-ok { EVAL 'my str $x = Str;' }, '"my str $x = Str" dies';
     ok $u8 >= 0, 'cannot make a uint8 go negative by overflowing it';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4989
+
 # uint increment in sink context
 {
     sub d { "++ on uint$^n overflows to 0 in sink context" }
@@ -407,7 +407,7 @@ dies-ok { EVAL 'my str $x = Str;' }, '"my str $x = Str" dies';
     is($uint64, 0, d 64);
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5207
+
 #?rakudo.jvm todo 'Expected a native int argument for $a; works standalone, probably wrong multi selected'
 {
     group-of 13 => 'using native types as named parameters' => {
@@ -434,7 +434,7 @@ dies-ok { EVAL 'my str $x = Str;' }, '"my str $x = Str" dies';
         'a too large argument for a native parameter should throw';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3738
+
 subtest 'meta-assign op with native nums' => {
     plan 2;
 

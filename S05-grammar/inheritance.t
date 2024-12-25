@@ -12,7 +12,7 @@ grammar Grammar::Foo {
     token so { 'so' };
 };
 
-# https://github.com/Raku/old-issue-tracker/issues/2083
+
 is( try { Grammar::Foo.parse( 'so', :rule<so> ) }, 'so',
   "don't let a Mu based action method fail the parse" );
 
@@ -72,7 +72,7 @@ nok Grammar::Baz.parse('boo', :rule<any>), 'No match for bad input (any)';
 
 is(Grammar.WHAT.gist,"(Grammar)", "Grammar.WHAT.gist = Grammar()");
 
-# https://github.com/rakudo/rakudo/issues/2611
+
 {
     my class A is Array[Str] { }
     my @a is A = <a b c>;
@@ -81,7 +81,7 @@ is(Grammar.WHAT.gist,"(Grammar)", "Grammar.WHAT.gist = Grammar()");
     dies-ok { @a[0] = 42 }, 'does it type check ok';
 }
 
-# https://github.com/rakudo/rakudo/issues/2851
+
 {
     my grammar A {
         token TOP { <to> }
@@ -90,7 +90,7 @@ is(Grammar.WHAT.gist,"(Grammar)", "Grammar.WHAT.gist = Grammar()");
     is A.parse("abc"), "abc", 'use of "to" as token is ok';
 }
 
-# https://github.com/rakudo/rakudo/issues/3038
+
 {
     lives-ok { $_="a\n"; m/(..)/ && $0.print }, 'can call Match.print';
 }

@@ -67,7 +67,7 @@ is($result3, 6, 'the &?ROUTINE magical works correctly in overloaded operators' 
     is @collected.join(''), 'aaaa', 'Correct closure semantics with &?ROUTINE in nested closure';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/6065
+
 {
     sub f() {
         sub g() {
@@ -76,7 +76,7 @@ is($result3, 6, 'the &?ROUTINE magical works correctly in overloaded operators' 
             }
         }
     }
-    # https://github.com/Raku/old-issue-tracker/issues/6065
+    
     #?rakudo.js todo 'RT #130761'
     #?rakudo.moar todo 'RT #130761'
     is f()(), 'g', 'Inner blocks are transparent to &?ROUTINE (RT#130761)';

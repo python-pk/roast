@@ -35,7 +35,7 @@ This test tests the C<WHAT> builtin.
 
 # L<S12/Introspection/"which also bypasses the macros.">
 
-# https://github.com/Raku/old-issue-tracker/issues/445
+
 {
     class Foo {
         method WHAT {'Bar'}
@@ -47,7 +47,7 @@ This test tests the C<WHAT> builtin.
     is($o.$meth,  'Bar', '.$meth calls the method instead of the macro');
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/584
+
 # these used to be Rakudo regressions, RT #62006
 {
     # proto as a term
@@ -57,10 +57,10 @@ This test tests the C<WHAT> builtin.
     is +("bac" ~~ /a/).WHAT, 0, 'numification of .WHAT of a Match works';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1098
+
 ok &infix:<+>.WHAT ~~ Sub, '.WHAT of built-in infix op is Multi (RT #66928)';
 
-# https://github.com/Raku/old-issue-tracker/issues/1370
+
 {
     sub rt69915f($b, :$a! ) { return WHAT($a).gist ~ '~' ~ WHAT($b).gist }
     sub rt69915m( $b, :$a! ) { return $a.WHAT.gist  ~ '~' ~ $b.WHAT.gist }
@@ -86,7 +86,7 @@ is 6.02e23.WHAT.gist, Num.gist, 'decimal using "e" is a Num';
 is 1.23456.WHAT.gist, Rat.gist, 'decimal without "e" is Rat';
 ok 1.1 == 11/10, 'decimal == the equivalent rational';
 
-# https://github.com/Raku/old-issue-tracker/issues/1387
+
 {
     is 1.WHAT.gist, '(Int)', '1.WHAT sanity';
     dies-ok { Int.WHAT = Str }, '.WHAT is readonly';
@@ -106,7 +106,7 @@ ok 1.1 == 11/10, 'decimal == the equivalent rational';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2709
+
 {
     class RT112364 {
         our sub xyz() { 'xyz' }

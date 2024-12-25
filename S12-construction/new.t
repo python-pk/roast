@@ -17,7 +17,7 @@ lives-ok { $o =  Child.new(:x(2), :y(3)) },
 is $o.y, 3, '... worked for the child';
 is $o.x, 2, '... worked for the parent';
 
-# https://github.com/Raku/old-issue-tracker/issues/2236
+
 #?rakudo 3 skip 'parent attributes in initialization'
 lives-ok { $o = Child.new( :y(4), Parent{ :x<5> }) },
          'can instantiate class with explicit specification of parent attrib';
@@ -28,7 +28,7 @@ is $o.x, 5, '... worked for the parent';
 class GrandChild is Child {
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2236
+
 #?rakudo 6 skip 'parent attributes in initialization'
 lives-ok { $o = GrandChild.new( Child{ :y(4) }, Parent{ :x<5> }) },
          'can instantiate class with explicit specification of parent attrib (many parents)';
@@ -39,7 +39,7 @@ lives-ok { $o = GrandChild.new( Parent{ :x<5> }, Child{ :y(4) }) },
 is $o.y, 4, '... worked for the class Child (other order)';
 is $o.x, 5, '... worked for the class Parent (other order)';
 
-# https://github.com/Raku/old-issue-tracker/issues/1030
+
 {
     class RT66204 {}
     ok ! RT66204.defined, 'NewClass is not .defined';
@@ -47,7 +47,7 @@ is $o.x, 5, '... worked for the class Parent (other order)';
     ok ! RT66204.defined, 'NewClass is still not .defined';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1460
+
 {
     class RT71706 {
         class RT71706::Artie {}
@@ -57,7 +57,7 @@ is $o.x, 5, '... worked for the class Parent (other order)';
     dies-ok { RT71706::Artie.new }, 'die trying to instantiate missing class';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1353
+
 {
     class NewFromMu {
         has $.x;
@@ -85,7 +85,7 @@ is $o.x, 5, '... worked for the class Parent (other order)';
        'Mu.new is a multi method';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1250
+
 {
 
     class RT68756 {
@@ -109,7 +109,7 @@ is $o.x, 5, '... worked for the class Parent (other order)';
         'multi-constructor class alternate default named constructor';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1228
+
 {
     class RT68558 {
         has $.foo;
@@ -119,13 +119,13 @@ is $o.x, 5, '... worked for the class Parent (other order)';
 
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2506
+
 {
-    # https://github.com/Raku/old-issue-tracker/issues/2506
+    
     dies-ok { X.new }, 'RT #100780'
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1673
+
 {
     class RT74300 {
         has $.foo;
@@ -134,14 +134,14 @@ is $o.x, 5, '... worked for the class Parent (other order)';
     is RT74300.new(:foo<bar>).foo, 'bar', 'multi method($) does not break attribute initialization';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/2053
+
 {
     my class RT77200 { }
     lives-ok { my RT77200 $lex .= new },
         "Can call .=new on a variable of a lexical type";
 }
 
-# https://github.com/rakudo/rakudo/issues/2782
+
 {
     my class A { has $.a; }
     my class B { has $.b }

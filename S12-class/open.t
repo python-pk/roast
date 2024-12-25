@@ -36,7 +36,7 @@ is $x.in_Something, 'ab', 'basic OO sanity';
 }
 
 # now try to extend "core" types
-# https://github.com/Raku/old-issue-tracker/issues/1763
+
 {
     augment class Str {
         method mydouble {
@@ -47,7 +47,7 @@ is $x.in_Something, 'ab', 'basic OO sanity';
     is 'aBc'.mydouble, 'ABCabc', 'can extend Str';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/1763
+
 {
     augment class Int {
         method triple { self * 3 }

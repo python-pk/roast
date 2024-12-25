@@ -30,7 +30,7 @@ plan 10;
     is $pany.status, Kept, "Other promise keeping doesn't affect status";
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/4969
+
 {
      my $p = Promise.anyof(my @promises);
      is $p.status, Kept, 'an empty list should give a kept Promise';

@@ -109,7 +109,7 @@ plan 70;
 
 # Non-object (native) types are lowercase: int, num, complex, rat, buf, bit.
 
-# https://github.com/Raku/old-issue-tracker/issues/4709
+
 #?rakudo.jvm todo "trying to put a big Int into an int"
 {
  throws-like { my int $namcu; $namcu = 2**100 }, Exception,
@@ -142,7 +142,7 @@ plan 70;
  isa-ok($namcu,rat);
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/3814
+
 #?rakudo skip 'bit NYI'
 {
  my bit $namcu =1;
@@ -412,7 +412,7 @@ plan 70;
 # my Hash:of(Array:of(Recipe)) %book;
 # my Hash of Array of Recipe %book; my %book of Hash of Array of Recipe
 
-# https://github.com/Raku/old-issue-tracker/issues/1858
+
 {
   my Array of Int @box;
   ok(1,'Array of Int @box');

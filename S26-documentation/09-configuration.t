@@ -30,7 +30,7 @@ is $r.config<formatted>, 'I';
 $r = $=pod[$p++].contents[0];
 is $r.config<number>, 42;
 
-{ # https://github.com/Raku/old-issue-tracker/issues/4958
+{ 
   is-deeply $r.config<zebras>, True, 'bool config uses Bool type (True)';
   is-deeply $r.config<sheep>, False, 'bool config uses Bool type (False)';
 }

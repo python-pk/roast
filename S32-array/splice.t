@@ -215,7 +215,7 @@ for @testing -> @a, $T {
     is( @a, [6..8], "Explicit scalar context returns an array reference");
 } #1
 
-# https://github.com/Raku/old-issue-tracker/issues/3057
+
 {
     my @empty = ();
     my $i = 0;
@@ -223,21 +223,21 @@ for @testing -> @a, $T {
     is $i, 0, "'while (…splice…)' should neither hang nor even run";
 } #1
 
-# https://github.com/Raku/old-issue-tracker/issues/4383
+
 {
     my Int @a = 1, 2, 3;
     dies-ok { splice @a, 1, 1, 'not an integer'}, '&splice is type-safe';
     dies-ok { @a.splice(1, 1, 'not an integer')}, '.splice is type-safe';
 } #2
 
-# https://github.com/Raku/old-issue-tracker/issues/3236
+
 {
     my @l = 1..100;
     @l.splice( 5, *, "borrowed", "blue");
     is @l.join(" "), "1 2 3 4 5 borrowed blue", "Whatever splice"
 } #1
 
-# https://github.com/Raku/old-issue-tracker/issues/5486
+
 {
     subtest 'splice can extend an array' => {
         plan 4;
@@ -257,7 +257,7 @@ for @testing -> @a, $T {
     }
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5710
+
 {
     lives-ok { [].splice: *, {42;}       }, 'splice(Whatever, Callable) lives';
     lives-ok { [].splice: *, {42;}, [42] }, 'splice(Whatever, Callable, @a) lives';

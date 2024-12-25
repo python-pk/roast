@@ -41,7 +41,7 @@ class NastyChild is Parent { };
 # with definedness checks
 
 
-# https://github.com/Raku/old-issue-tracker/issues/2593
+
 {
     sub f1(Str:D(Cool:D) $x) { $x }
     sub f2(Str(Cool:D)   $x) { $x; }
@@ -91,7 +91,7 @@ class NastyChild is Parent { };
 }
 
 # coercion types on hashes (keys)
-# https://github.com/Raku/old-issue-tracker/issues/6176
+
 {
     my %h{Int(Str)} = "10" => 42;
     isa-ok %h.keys[0], Int, "a hash with coercion type for keys (1)";
@@ -118,13 +118,13 @@ class NastyChild is Parent { };
 
 is Str(Any).gist, '(Str(Any))', 'Can gist a coercion type';
 
-# https://github.com/Raku/old-issue-tracker/issues/6353
+
 {
     my \a = -42;
     is Int(a), -42, "Sigilless variable does not confuse coercion type parsing";
 }
 
-# https://github.com/rakudo/rakudo/issues/1753
+
 { 
     my subset ZInt of Cool where *.elems;
     sub foo(ZInt(Cool) $Z) {};
@@ -141,7 +141,7 @@ is Str(Any).gist, '(Str(Any))', 'Can gist a coercion type';
     is foo($s), 42, "coercions from a Str subclass works";
 }
 
-# https://github.com/rakudo/rakudo/issues/4040
+
 { 
     throws-like { Int(Str).^coerce(pi) },
                 X::Coerce::Impossible,
@@ -151,14 +151,14 @@ is Str(Any).gist, '(Str(Any))', 'Can gist a coercion type';
                 "assigning unacceptable value to a coercive variable throws";
 }
 
-# https://github.com/rakudo/rakudo/issues/2427
+
 { 
     my Str(Int(Cool)) $x;
     $x = 42.13;
     is $x, "42", "nested coercions work";
 }
 
-# https://github.com/rakudo/rakudo/issues/4092
+
 { 
     sub with-optional(Int(Str) $foo?) {
         ok $foo === Int, "optional coercive parameter defaults to its target type";
@@ -181,7 +181,7 @@ is Str(Any).gist, '(Str(Any))', 'Can gist a coercion type';
         MULTI
 }
 
-# https://github.com/rakudo/rakudo/issues/1800
+
 {
     sub test() {
         my regex suffix { <[dhms]> };

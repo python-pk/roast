@@ -107,7 +107,7 @@ This test tests the C<head> builtin.
     is-deeply head(5,$range<>),      (), 'head(N,Range) works if empty';
 }
 
-# https://github.com/Raku/old-issue-tracker/issues/5867
+
 is-deeply (4,5,6).head(-999999999999999999999999999), (),
     '.head works correctly with large negative Ints';
 

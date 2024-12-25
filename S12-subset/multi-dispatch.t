@@ -24,7 +24,7 @@ multi foo ($foo where { $_ eq "foo"}) { $foo }
 is foo("foo"), "foo", "when we have a single candidate with a constraint, it's enforced";
 dies-ok { foo("bar") }, "value that doesn't meet single constraint causes failed dispatch";
 
-# https://github.com/rakudo/rakudo/issues/1801
+
 {
     my $arity-ok;
     subset CAT of Code where .arity == 2;
